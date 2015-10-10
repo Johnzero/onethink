@@ -1,0 +1,76 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>{$meta_title}</h2>
+    </div>
+    <form method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">用户名<span class="check-tips">（用户名会作为默认的昵称）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="username" value="{$data.nickname}">
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">上级</label>
+            <div class="controls">
+            <select name="pid">
+                <option selected> 主用户 </option>
+                <volist name="parents" id="vo">
+                    <option value="{$vo.uid}" <eq name="data.pid" value="$vo.uid"> selected</eq> >{$vo.nickname}</option>
+                </volist>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">密码
+                <span class="check-tips">
+                （用户密码不能少于6位）
+                <eq name="ACTION_NAME" value="edit">
+                    留空则不修改
+                </eq>
+                </span>
+            </label>
+            <div class="controls">
+                <input type="password" class="text input-large" name="password" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">确认密码</label>
+            <div class="controls">
+                <input type="password" class="text input-large" name="repassword" value="">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">邮箱<span class="check-tips">（用户邮箱，用于找回密码等安全操作）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$data.email}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">联系人</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="contact" value="{$data.contact}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">联系电话</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="tel" value="{$data.tel}">
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('User/index')}');
+    </script>
+</block>
