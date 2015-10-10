@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2015-09-30 16:35:31
+Date: 2015-10-10 17:04:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `ot_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ot_action_log
@@ -94,6 +94,62 @@ INSERT INTO `ot_action_log` VALUES ('24', '1', '1', '0', 'member', '1', 'admin�
 INSERT INTO `ot_action_log` VALUES ('25', '1', '1', '-1062730068', 'member', '1', 'admin在2015-09-28 15:32登录了后台', '1', '1443425541');
 INSERT INTO `ot_action_log` VALUES ('26', '10', '1', '-1062730068', 'Menu', '128', '操作url：/admin.php?s=/Menu/add.html', '1', '1443428695');
 INSERT INTO `ot_action_log` VALUES ('27', '1', '1', '0', 'member', '1', 'admin在2015-09-30 10:37登录了后台', '1', '1443580673');
+INSERT INTO `ot_action_log` VALUES ('28', '1', '1', '0', 'member', '1', 'admin在2015-10-08 08:12登录了后台', '1', '1444263178');
+INSERT INTO `ot_action_log` VALUES ('29', '1', '1', '-1062730068', 'member', '1', 'admin在2015-10-08 09:14登录了后台', '1', '1444266848');
+INSERT INTO `ot_action_log` VALUES ('30', '1', '1', '-1062730160', 'member', '1', 'admin在2015-10-09 11:05登录了后台', '1', '1444359921');
+INSERT INTO `ot_action_log` VALUES ('31', '1', '1', '-1062730167', 'member', '1', 'admin在2015-10-09 11:08登录了后台', '1', '1444360105');
+INSERT INTO `ot_action_log` VALUES ('32', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 14:08登录了后台', '1', '1444370937');
+INSERT INTO `ot_action_log` VALUES ('33', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 14:09登录了后台', '1', '1444370990');
+INSERT INTO `ot_action_log` VALUES ('34', '10', '1', '0', 'Menu', '129', '操作url：/admin.php?s=/Menu/add.html', '1', '1444371210');
+INSERT INTO `ot_action_log` VALUES ('35', '10', '1', '0', 'Menu', '127', '操作url：/admin.php?s=/Menu/edit.html', '1', '1444371288');
+INSERT INTO `ot_action_log` VALUES ('36', '10', '1', '0', 'Menu', '130', '操作url：/admin.php?s=/Menu/add.html', '1', '1444371371');
+INSERT INTO `ot_action_log` VALUES ('37', '10', '1', '0', 'Menu', '131', '操作url：/admin.php?s=/Menu/add.html', '1', '1444371427');
+INSERT INTO `ot_action_log` VALUES ('38', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 14:27登录了后台', '1', '1444372023');
+INSERT INTO `ot_action_log` VALUES ('39', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 14:29登录了后台', '1', '1444372182');
+INSERT INTO `ot_action_log` VALUES ('40', '10', '1', '0', 'Menu', '130', '操作url：/admin.php?s=/Menu/edit.html', '1', '1444372462');
+INSERT INTO `ot_action_log` VALUES ('41', '10', '1', '0', 'Menu', '130', '操作url：/admin.php?s=/Menu/edit.html', '1', '1444372471');
+INSERT INTO `ot_action_log` VALUES ('42', '10', '1', '0', 'Menu', '131', '操作url：/admin.php?s=/Menu/edit.html', '1', '1444372477');
+INSERT INTO `ot_action_log` VALUES ('43', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 14:34登录了后台', '1', '1444372495');
+INSERT INTO `ot_action_log` VALUES ('44', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 14:49登录了后台', '1', '1444373386');
+INSERT INTO `ot_action_log` VALUES ('45', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 14:50登录了后台', '1', '1444373421');
+INSERT INTO `ot_action_log` VALUES ('46', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 14:54登录了后台', '1', '1444373666');
+INSERT INTO `ot_action_log` VALUES ('47', '1', '1', '0', 'member', '1', 'admin在2015-10-09 14:58登录了后台', '1', '1444373908');
+INSERT INTO `ot_action_log` VALUES ('48', '1', '2', '-1062730068', 'member', '2', '合肥市在2015-10-09 15:06登录了后台', '1', '1444374382');
+INSERT INTO `ot_action_log` VALUES ('49', '1', '1', '-1062730068', 'member', '1', 'admin在2015-10-09 15:08登录了后台', '1', '1444374486');
+INSERT INTO `ot_action_log` VALUES ('50', '11', '1', '-1062730068', 'category', '39', '操作url：/admin.php?s=/Category/add.html', '1', '1444374643');
+INSERT INTO `ot_action_log` VALUES ('51', '11', '1', '-1062730068', 'category', '39', '操作url：/admin.php?s=/Category/remove/id/39.html', '1', '1444374674');
+INSERT INTO `ot_action_log` VALUES ('52', '1', '2', '-1062730068', 'member', '2', '合肥市在2015-10-09 15:33登录了后台', '1', '1444376036');
+INSERT INTO `ot_action_log` VALUES ('53', '1', '2', '-1062730068', 'member', '2', '合肥市在2015-10-09 15:34登录了后台', '1', '1444376065');
+INSERT INTO `ot_action_log` VALUES ('54', '11', '1', '-1062730068', 'category', '1', '操作url：/admin.php?s=/Category/edit.html', '1', '1444376874');
+INSERT INTO `ot_action_log` VALUES ('55', '10', '1', '-1062730068', 'Menu', '132', '操作url：/admin.php?s=/Menu/add.html', '1', '1444377107');
+INSERT INTO `ot_action_log` VALUES ('56', '1', '1', '-1062730068', 'member', '1', 'admin在2015-10-09 15:54登录了后台', '1', '1444377252');
+INSERT INTO `ot_action_log` VALUES ('57', '1', '2', '0', 'member', '2', '合肥市在2015-10-09 16:08登录了后台', '1', '1444378086');
+INSERT INTO `ot_action_log` VALUES ('58', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 09:13登录了后台', '1', '1444439639');
+INSERT INTO `ot_action_log` VALUES ('59', '1', '1', '0', 'member', '1', 'admin在2015-10-10 09:14登录了后台', '1', '1444439664');
+INSERT INTO `ot_action_log` VALUES ('60', '1', '1', '-1062730068', 'member', '1', 'admin在2015-10-10 09:23登录了后台', '1', '1444440186');
+INSERT INTO `ot_action_log` VALUES ('61', '9', '1', '-1062730068', 'channel', '5', '操作url：/index.php?s=/Admin/Channel/edit.html', '1', '1444440390');
+INSERT INTO `ot_action_log` VALUES ('62', '1', '1', '0', 'member', '1', 'admin在2015-10-10 11:21登录了后台', '1', '1444447276');
+INSERT INTO `ot_action_log` VALUES ('63', '10', '1', '0', 'Menu', '133', '操作url：/admin.php?s=/Menu/add.html', '1', '1444447368');
+INSERT INTO `ot_action_log` VALUES ('64', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 11:23登录了后台', '1', '1444447398');
+INSERT INTO `ot_action_log` VALUES ('65', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 13:20登录了后台', '1', '1444454409');
+INSERT INTO `ot_action_log` VALUES ('66', '1', '1', '0', 'member', '1', 'admin在2015-10-10 13:49登录了后台', '1', '1444456144');
+INSERT INTO `ot_action_log` VALUES ('67', '9', '1', '0', 'channel', '3', '操作url：/admin.php?s=/Channel/edit.html', '1', '1444456204');
+INSERT INTO `ot_action_log` VALUES ('68', '9', '1', '0', 'channel', '0', '操作url：/admin.php?s=/Channel/del/id/3.html', '1', '1444456209');
+INSERT INTO `ot_action_log` VALUES ('69', '9', '1', '0', 'channel', '0', '操作url：/admin.php?s=/Channel/del/id/2.html', '1', '1444456214');
+INSERT INTO `ot_action_log` VALUES ('70', '10', '1', '0', 'Menu', '134', '操作url：/admin.php?s=/Menu/add.html', '1', '1444456348');
+INSERT INTO `ot_action_log` VALUES ('71', '10', '1', '0', 'Menu', '0', '操作url：/admin.php?s=/Menu/del/id/134.html', '1', '1444456374');
+INSERT INTO `ot_action_log` VALUES ('72', '10', '1', '0', 'Menu', '135', '操作url：/admin.php?s=/Menu/add.html', '1', '1444456386');
+INSERT INTO `ot_action_log` VALUES ('73', '10', '1', '0', 'Menu', '136', '操作url：/admin.php?s=/Menu/add.html', '1', '1444456474');
+INSERT INTO `ot_action_log` VALUES ('74', '10', '1', '0', 'Menu', '137', '操作url：/admin.php?s=/Menu/add.html', '1', '1444456526');
+INSERT INTO `ot_action_log` VALUES ('75', '10', '1', '0', 'Menu', '138', '操作url：/admin.php?s=/Menu/add.html', '1', '1444456551');
+INSERT INTO `ot_action_log` VALUES ('76', '10', '1', '0', 'Menu', '0', '操作url：/admin.php?s=/Menu/del/id/128.html', '1', '1444456616');
+INSERT INTO `ot_action_log` VALUES ('77', '10', '1', '0', 'Menu', '135', '操作url：/admin.php?s=/Menu/edit.html', '1', '1444456638');
+INSERT INTO `ot_action_log` VALUES ('78', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 13:58登录了后台', '1', '1444456687');
+INSERT INTO `ot_action_log` VALUES ('79', '10', '1', '0', 'Menu', '133', '操作url：/admin.php?s=/Menu/edit.html', '1', '1444459566');
+INSERT INTO `ot_action_log` VALUES ('80', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 15:12登录了后台', '1', '1444461160');
+INSERT INTO `ot_action_log` VALUES ('81', '10', '1', '0', 'Menu', '139', '操作url：/admin.php?s=/Menu/add.html', '1', '1444461211');
+INSERT INTO `ot_action_log` VALUES ('82', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 15:25登录了后台', '1', '1444461937');
+INSERT INTO `ot_action_log` VALUES ('83', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 15:26登录了后台', '1', '1444462005');
 
 -- ----------------------------
 -- Table structure for ot_addons
@@ -140,18 +196,17 @@ CREATE TABLE `ot_ask` (
   `status` int(5) DEFAULT '0' COMMENT '审核类型 （-1审批不通过，1审批通过，2待办理，3办理完成，4退回）',
   `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(11) DEFAULT NULL,
+  `finish_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
 
 -- ----------------------------
 -- Records of ot_ask
 -- ----------------------------
-INSERT INTO `ot_ask` VALUES ('17', '2', '111', '新桥路面一个大坑何时能补补？', '333', '444', '555', '666', '0', '0', '1443056542', null);
-INSERT INTO `ot_ask` VALUES ('18', '3', '11131231', '新桥路面一个大坑何时能补补？', '2342', '23423', '2342', '23542', '0', '10', '1443056542', null);
-INSERT INTO `ot_ask` VALUES ('19', '4', '34534', '新桥路面一个大坑何时能补补？', '瓦尔特入5', '534', '2342', '2342', '0', '5', '1443056542', null);
-INSERT INTO `ot_ask` VALUES ('20', '5', '34534', '新桥路面一个大坑何时能补补？', '瓦尔特入5', '534', '2342', '2342', '0', '0', '1443056542', null);
-INSERT INTO `ot_ask` VALUES ('21', '21', '342', '新桥路面一个大坑何时能补补？', '235423', '54675', '567', '562342', '0', '1', '1443056542', null);
-INSERT INTO `ot_ask` VALUES ('22', '21', '111', '新桥路面一个大坑何时能补补？', '33', '44', '55', '666', '0', '2', '1443056542', null);
+INSERT INTO `ot_ask` VALUES ('25', null, '测试受理单位', '测试受理单位', '111', '测试受理单位', '测试受理单位', '测试受理单位', '0', '0', '0', null, null);
+INSERT INTO `ot_ask` VALUES ('26', '16', 'uid测试', 'uid测试', 'uid测试', 'uid测试', 'uid测试', 'uid测试', '0', '0', '0', null, null);
+INSERT INTO `ot_ask` VALUES ('23', '2', '111', '新桥路面一', '33', '44', '55', '666', '0', '1', '1443056542', '1444462696', null);
+INSERT INTO `ot_ask` VALUES ('24', null, '123123123123', '3123123', '1312312312', '12313', 'qsqs', ' asfa', '0', '0', '0', null, null);
 
 -- ----------------------------
 -- Table structure for ot_attachment
@@ -269,6 +324,8 @@ INSERT INTO `ot_auth_extend` VALUES ('1', '3', '1');
 INSERT INTO `ot_auth_extend` VALUES ('1', '3', '2');
 INSERT INTO `ot_auth_extend` VALUES ('1', '4', '1');
 INSERT INTO `ot_auth_extend` VALUES ('1', '37', '1');
+INSERT INTO `ot_auth_extend` VALUES ('3', '1', '1');
+INSERT INTO `ot_auth_extend` VALUES ('3', '2', '1');
 
 -- ----------------------------
 -- Table structure for ot_auth_group
@@ -290,7 +347,7 @@ CREATE TABLE `ot_auth_group` (
 -- ----------------------------
 INSERT INTO `ot_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '1,2,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,79,80,81,82,83,84,86,87,88,89,90,91,92,93,94,95,96,97,100,102,103,105,106');
 INSERT INTO `ot_auth_group` VALUES ('4', 'admin', '1', '二级用户', '省直下属部门，县区', '1', '');
-INSERT INTO `ot_auth_group` VALUES ('3', 'admin', '1', '一级用户', '省直，地市', '1', '1,2,7,8,9,10,11,12,13,14,15,16,17,18,79,195,211,217,219');
+INSERT INTO `ot_auth_group` VALUES ('3', 'admin', '1', '一级用户', '省直，地市', '1', '1,2,8,10,11,15,16,18,195,217,220,221,222,223,224,225,226,228,229,230,231,232');
 INSERT INTO `ot_auth_group` VALUES ('5', 'admin', '1', '审核编辑', '审核编辑', '1', '1,2,5,7,8,9,10,11,12,13,14,15,16,17,18,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,79,80,81,82,83,84,86,87,89,90,91,92,93,100,102,103,205,206,207,208,211,212,213,214,215,216,217,218');
 
 -- ----------------------------
@@ -340,7 +397,7 @@ CREATE TABLE `ot_auth_rule` (
   `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件',
   PRIMARY KEY (`id`),
   KEY `module` (`module`,`status`,`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=223 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=233 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ot_auth_rule
@@ -562,8 +619,18 @@ INSERT INTO `ot_auth_rule` VALUES ('217', 'admin', '1', 'Admin/article/index', '
 INSERT INTO `ot_auth_rule` VALUES ('218', 'admin', '1', 'Admin/think/lists', '数据列表', '1', '');
 INSERT INTO `ot_auth_rule` VALUES ('219', 'admin', '2', 'Admin/Article/ask_list', '问题', '-1', '');
 INSERT INTO `ot_auth_rule` VALUES ('220', 'admin', '1', 'Admin/Ask/index', '全部问题', '1', '');
-INSERT INTO `ot_auth_rule` VALUES ('221', 'admin', '1', 'Admin/Ask/my', '我的问题', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('221', 'admin', '1', 'Admin/Ask/my', '待审核', '1', '');
 INSERT INTO `ot_auth_rule` VALUES ('222', 'admin', '2', 'Admin/Ask/index', '办事', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('223', 'admin', '1', 'Admin/Ask/reply', '答复', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('224', 'admin', '1', 'Admin/Ask/all', '未认领', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('225', 'admin', '1', 'Admin/Ask/processing', '办理中', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('226', 'admin', '1', 'Admin/Ask/done', '已回复', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('227', 'admin', '2', 'Admin/stats/index', '统计', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('228', 'admin', '1', 'Admin/Ask/unsatisfied', '退回重办', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('229', 'admin', '1', 'Admin/Ask/sp', ' 审批', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('230', 'admin', '1', 'Admin/Ask/change', '更改受理单位', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('231', 'admin', '1', 'Admin/Ask/action', '用户行为', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('232', 'admin', '1', 'Admin/Ask/detail', '流程明细', '1', '');
 
 -- ----------------------------
 -- Table structure for ot_category
@@ -601,12 +668,12 @@ CREATE TABLE `ot_category` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_name` (`name`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='分类表';
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='分类表';
 
 -- ----------------------------
 -- Records of ot_category
 -- ----------------------------
-INSERT INTO `ot_category` VALUES ('1', 'blog', '博客', '0', '0', '10', '', '', '', '', '', '', '', '2,3', '2', '2,1', '0', '0', '1', '0', '0', '1', '', '1379474947', '1382701539', '1', '0', '');
+INSERT INTO `ot_category` VALUES ('1', 'blog', '投稿', '0', '0', '10', '', '', '', '', '', '', '', '2,3', '2', '2,1', '0', '0', '1', '0', '0', '1', '', '1379474947', '1444376874', '1', '0', '');
 INSERT INTO `ot_category` VALUES ('2', 'default_blog', '默认分类', '1', '1', '10', '', '', '', '', '', '', '', '2,3', '2', '2,1,3', '0', '1', '1', '0', '1', '1', '', '1379475028', '1386839751', '1', '0', '');
 
 -- ----------------------------
@@ -625,14 +692,14 @@ CREATE TABLE `ot_channel` (
   `target` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '新窗口打开',
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ot_channel
 -- ----------------------------
 INSERT INTO `ot_channel` VALUES ('1', '0', '首页', 'Index/index', '1', '1379475111', '1379923177', '1', '0');
-INSERT INTO `ot_channel` VALUES ('2', '0', '博客', 'Article/index?category=blog', '2', '1379475131', '1379483713', '1', '0');
-INSERT INTO `ot_channel` VALUES ('3', '0', '官网', 'http://www.onethink.cn', '3', '1379475154', '1387163458', '1', '0');
+INSERT INTO `ot_channel` VALUES ('4', '0', '办事', '/Article/ask/', '0', '1444374692', '1444374692', '1', '0');
+INSERT INTO `ot_channel` VALUES ('5', '0', '进度查询', '/Article/ask_list/', '0', '1444440253', '1444440390', '1', '0');
 
 -- ----------------------------
 -- Table structure for ot_config
@@ -720,17 +787,19 @@ CREATE TABLE `ot_document` (
   PRIMARY KEY (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of ot_document
 -- ----------------------------
-INSERT INTO `ot_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '2', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '132', '0', '0', '0', '1406001413', '1406001413', '1');
-INSERT INTO `ot_document` VALUES ('2', '1', '', 'asdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087785', '1443087785', '2');
-INSERT INTO `ot_document` VALUES ('3', '1', '', 'asdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087792', '1443087792', '2');
-INSERT INTO `ot_document` VALUES ('4', '1', '', 'v', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087798', '1443087798', '2');
-INSERT INTO `ot_document` VALUES ('5', '1', '', 'sd', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087806', '1443087806', '2');
-INSERT INTO `ot_document` VALUES ('6', '1', '', 'sdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087814', '1443087814', '2');
+INSERT INTO `ot_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '2', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '133', '0', '0', '0', '1406001413', '1406001413', '1');
+INSERT INTO `ot_document` VALUES ('2', '1', '', 'asdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087785', '1443087785', '1');
+INSERT INTO `ot_document` VALUES ('3', '1', '', 'asdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087792', '1443087792', '1');
+INSERT INTO `ot_document` VALUES ('4', '1', '', 'v', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1443087798', '1443087798', '1');
+INSERT INTO `ot_document` VALUES ('5', '1', '', 'sd', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087806', '1443087806', '1');
+INSERT INTO `ot_document` VALUES ('6', '1', '', 'sdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087814', '1443087814', '1');
+INSERT INTO `ot_document` VALUES ('7', '1', '', 'ceshi', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1444353313', '1444353313', '1');
+INSERT INTO `ot_document` VALUES ('8', '2', '', '1232', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1444375844', '1444375844', '1');
 
 -- ----------------------------
 -- Table structure for ot_document_article
@@ -754,6 +823,8 @@ INSERT INTO `ot_document_article` VALUES ('3', '0', 'asdf', '', '0');
 INSERT INTO `ot_document_article` VALUES ('4', '0', 'fasdfasdf', '', '0');
 INSERT INTO `ot_document_article` VALUES ('5', '0', 'fsdfsdfsdfsfsf', '', '0');
 INSERT INTO `ot_document_article` VALUES ('6', '0', 'sdfsd', '', '0');
+INSERT INTO `ot_document_article` VALUES ('7', '0', 'ceshiceshiceshi', '', '0');
+INSERT INTO `ot_document_article` VALUES ('8', '0', '235423', '', '0');
 
 -- ----------------------------
 -- Table structure for ot_document_download
@@ -857,8 +928,8 @@ CREATE TABLE `ot_member` (
 -- ----------------------------
 -- Records of ot_member
 -- ----------------------------
-INSERT INTO `ot_member` VALUES ('1', null, 'admin', '0', '0000-00-00', '', '50', '11', '0', '1442801047', '0', '1443580673', '1', null, null);
-INSERT INTO `ot_member` VALUES ('2', null, '合肥市', '0', '0000-00-00', '', '10', '8', '0', '0', '0', '1443084252', '1', '123', '2147483647');
+INSERT INTO `ot_member` VALUES ('1', null, 'admin', '0', '0000-00-00', '', '70', '22', '0', '1442801047', '0', '1444456144', '1', null, null);
+INSERT INTO `ot_member` VALUES ('2', null, '合肥市', '0', '0000-00-00', '', '20', '27', '0', '0', '0', '1444462005', '1', '123', '2147483647');
 INSERT INTO `ot_member` VALUES ('3', '2', '肥东县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('4', '2', '肥西县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('8', '2', '庐江县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
@@ -874,7 +945,6 @@ INSERT INTO `ot_member` VALUES ('16', null, '省科技厅', '0', '0000-00-00', '
 INSERT INTO `ot_member` VALUES ('17', null, '省经济和信息化委', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('18', null, '国家统计局安徽调查总队', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('20', '0', '编辑', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', 'asdfa', '0');
-INSERT INTO `ot_member` VALUES ('21', '0', '其他', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', '12312', '1231231');
 
 -- ----------------------------
 -- Table structure for ot_menu
@@ -894,7 +964,7 @@ CREATE TABLE `ot_menu` (
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=129 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=140 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ot_menu
@@ -1013,8 +1083,17 @@ INSERT INTO `ot_menu` VALUES ('123', '审核列表', '3', '0', 'Article/examine'
 INSERT INTO `ot_menu` VALUES ('124', '办事', '0', '10', 'Ask/index', '0', '', '', '0', '1');
 INSERT INTO `ot_menu` VALUES ('125', '全部问题', '124', '0', 'Ask/index', '0', '', '办事大厅', '0', '1');
 INSERT INTO `ot_menu` VALUES ('126', '全部问题', '125', '0', 'Ask/index', '0', '', '', '0', '1');
-INSERT INTO `ot_menu` VALUES ('127', '我的问题', '124', '1', 'Ask/my', '0', '', '办事大厅', '0', '1');
-INSERT INTO `ot_menu` VALUES ('128', '问题回复', '124', '0', 'Ask/reply', '0', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('127', '待审核', '124', '1', 'Ask/my', '0', '', '我的问题', '0', '1');
+INSERT INTO `ot_menu` VALUES ('129', '未认领', '124', '0', 'Ask/all', '0', '未认领问题', '办事大厅', '0', '1');
+INSERT INTO `ot_menu` VALUES ('130', '办理中', '124', '2', 'Ask/processing', '0', '', '我的问题', '0', '1');
+INSERT INTO `ot_menu` VALUES ('131', '已回复', '124', '3', 'Ask/done', '0', '', '我的问题', '0', '1');
+INSERT INTO `ot_menu` VALUES ('132', '统计', '0', '0', 'stats/index', '0', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('133', '退回重办', '124', '4', 'Ask/unsatisfied', '0', '', '我的问题', '0', '1');
+INSERT INTO `ot_menu` VALUES ('135', '用户行为', '124', '999', 'Ask/action', '1', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('136', ' 审批', '135', '0', 'Ask/sp', '1', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('137', '答复', '135', '0', 'Ask/reply', '1', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('138', '更改受理单位', '135', '0', 'Ask/change', '1', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('139', '流程明细', '135', '0', 'Ask/detail', '1', '', '', '0', '1');
 
 -- ----------------------------
 -- Table structure for ot_model
@@ -1082,12 +1161,18 @@ CREATE TABLE `ot_process` (
   `status` int(5) NOT NULL COMMENT '审核类型 （0审批不通过，1审批通过，2待办理，3办理完成，4退回）',
   `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
   `create_uid` int(11) DEFAULT NULL,
+  `info` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
 
 -- ----------------------------
 -- Records of ot_process
 -- ----------------------------
+INSERT INTO `ot_process` VALUES ('28', '2', '23', '0', '1444376639', '1', '将问题指派到');
+INSERT INTO `ot_process` VALUES ('24', '21', '22', '1', '1444273987', '1', null);
+INSERT INTO `ot_process` VALUES ('25', '21', '22', '10', '1444287093', '1', '未通过原因未通过原因未通过原因未通过原因未通过原因');
+INSERT INTO `ot_process` VALUES ('26', '1', '22', '4', '1444290828', '1', '222');
+INSERT INTO `ot_process` VALUES ('29', '2', '23', '1', '1444462696', '2', null);
 
 -- ----------------------------
 -- Table structure for ot_reply
@@ -1107,12 +1192,28 @@ CREATE TABLE `ot_reply` (
   `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
   `update_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
 
 -- ----------------------------
 -- Records of ot_reply
 -- ----------------------------
-INSERT INTO `ot_reply` VALUES ('24', '22', null, '111', '222', '0', '333', '44', null, '55', '0', null);
+INSERT INTO `ot_reply` VALUES ('30', '22', null, '11', '222', '0', '333', '444', null, '555', '0', null);
+
+-- ----------------------------
+-- Table structure for ot_score
+-- ----------------------------
+DROP TABLE IF EXISTS `ot_score`;
+CREATE TABLE `ot_score` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ask_id` int(11) unsigned DEFAULT NULL,
+  ` score` decimal(3,0) unsigned zerofill DEFAULT NULL,
+  `lastupdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ot_score
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for ot_ucenter_admin
@@ -1177,8 +1278,8 @@ CREATE TABLE `ot_ucenter_member` (
 -- ----------------------------
 -- Records of ot_ucenter_member
 -- ----------------------------
-INSERT INTO `ot_ucenter_member` VALUES ('1', 'admin', 'dba1f2b355020ca960aab274c992cf73', 'wangsong1233276@sina.com', '', '1442801047', '0', '1443580673', '0', '1442801047', '1');
-INSERT INTO `ot_ucenter_member` VALUES ('2', '合肥市', '15f61c11ca0ba54277f3841ba11053ee', 'h@zf.com', '', '1443057312', '0', '1443084252', '0', '1443057312', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('1', 'admin', 'dba1f2b355020ca960aab274c992cf73', 'wangsong1233276@sina.com', '', '1442801047', '0', '1444456144', '0', '1442801047', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('2', '合肥市', '15f61c11ca0ba54277f3841ba11053ee', 'h@zf.com', '', '1443057312', '0', '1444462005', '0', '1443057312', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('3', '肥东县', '15f61c11ca0ba54277f3841ba11053ee', 'fd@123.com', '', '1442890436', '0', '0', '0', '1442890436', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('4', '肥西县', '15f61c11ca0ba54277f3841ba11053ee', 'fx@1.com', '', '1442913624', '0', '0', '0', '1442913624', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('5', 'dfasdfa', '15f61c11ca0ba54277f3841ba11053ee', 'asdf@fsf.com', '', '1442913687', '0', '0', '0', '1442913687', '1');

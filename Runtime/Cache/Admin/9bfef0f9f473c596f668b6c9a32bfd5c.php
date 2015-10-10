@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome.min.css">
      <!--[if lt IE 9]>
     <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
-    <![endif]--><!--[if gte IE 9]><!-->
+    <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->
@@ -119,7 +121,7 @@
     (function(){
         var ThinkPHP = window.Think = {
             "ROOT"   : "", //当前网站地址
-            "APP"    : "/index.php?s=", //当前项目地址
+            "APP"    : "/admin.php?s=", //当前项目地址
             "PUBLIC" : "/Public", //项目公共目录地址
             "DEEP"   : "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
             "MODEL"  : ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],

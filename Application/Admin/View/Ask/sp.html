@@ -5,13 +5,15 @@
         <h2>留言问题：{$title}</h2>
     </div>
     <form method="post" class="form-horizontal">
-
+        <?php if ($group_id == 1) { ?>
         <div class="form-item">
             <label class="item-label">留言用户</label>
             <div class="controls">
                 <input type="text" class="text input-large" value="{$name}" readonly="readonly">
             </div>
         </div>
+        <?php } ?>
+
         <div class="form-item">
             <label class="item-label">留言内容</label>
             <div class="controls">

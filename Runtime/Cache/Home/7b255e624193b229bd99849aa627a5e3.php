@@ -177,13 +177,66 @@
 				<option value="0">不满意</option>
 			</select>
 			
-			<button class="btn btn-return" onclick="set_score();return false;">提交</button>
+			<button id='type_button' class="btn btn-return" onclick="set_score();return false;">打分</button>
         </div>
        
         <div class="form-item">
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
-
+		<script type="text/javascript">
+			function set_score(){
+				var tel = $('#tel').val();
+				var ticket = $('#ticket').val();
+				var score = $('#score').val();
+				
+				if(tel=="")
+				{
+					alert("请输入电话号码!");return false;
+				}
+				
+				if(ticket=="")
+				{
+					alert("请输入验证码!");return false;
+				}
+				
+				if(score=="")
+				{
+					alert("请选择分数!");return false;
+				}
+				
+				$.ajax({
+					type : 'POST',
+					url : '/Article/ask_detail_score',
+					data : {
+						tel : tel,
+						ticket : ticket,
+						score : score,
+						ask_id : <?php echo ($id); ?>
+					},
+					success : function (response , status , xhr) {
+						if(response.error==true || response.error==false)
+						{
+							alert(response.msg);
+							if(response.error==false){
+								//window.location.reload();
+							}
+							return false;
+						}
+						else
+						{
+							alert("系统繁忙，请稍候再试");
+							return false;
+						}
+					},
+					beforeSend : function(){
+						$('#type_button').hide();
+					},
+					complete : function(){
+						$('#type_button').show();
+					}
+				});
+			}
+		</script>
 
     </div>
 </div>

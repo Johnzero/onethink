@@ -122,6 +122,18 @@
                 <td><textarea placeholder="请填写详情！" rows="3" style="width:90%;" name='content'></textarea>
                 <span style="color:#FF0000" id="password_notice"> *</span></td>
             </tr>
+			
+			<tr>	
+				<div class="form-item">
+					<td align="right">受理单位：&nbsp;</td>
+					<td><select name="uid" >
+							<?php if(is_array($yjdw)): $i = 0; $__LIST__ = $yjdw;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["uid"]); ?>"><?php echo ($vo["nickname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+							<option value="0">未知</option>
+						</select>
+					<span style="color:#FF0000" id="password_notice"> *</span></td>
+				</div>
+			</tr>
+			
 			<tr>
 				<td></td>
 				<td><input name="act" type="hidden" value="act_register">
@@ -135,12 +147,21 @@
 	
 	<script type="text/javascript">
 		function check(theForm){
-			/*if(theForm.login.value == ""){
-				alert("请输入用户名!");theForm.login.focus();return false;
+			if(theForm.name.value == ""){
+				alert("请输入用户名!");theForm.name.focus();return false;
 			}
-			if(theForm.password.value == ""){
-				alert("请输入密码!");theForm.password.focus();return false;
-			}*/
+			if(theForm.title.value == ""){
+				alert("请输入标题!");theForm.title.focus();return false;
+			}
+			if(theForm.tel.value == ""){
+				alert("请输入电话!");theForm.tel.focus();return false;
+			}
+			if(theForm.sfz.value == ""){
+				alert("请输入身份证!");theForm.sfz.focus();return false;
+			}
+			if(theForm.content.value == ""){
+				alert("请输入详情!");theForm.content.focus();return false;
+			}
 			return true;
 		}
     </script>

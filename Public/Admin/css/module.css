@@ -11,6 +11,22 @@
 .blue {
 	color: blue;
 }
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    background: #f30808;
+    box-shadow: 0px 0px 5px #404040;
+    left: 90px;
+    top: 6px;
+}
+.circle p {
+    font-family: sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
 /* = 表单
 ------------------------------------------ */
 /* 表单组件 */

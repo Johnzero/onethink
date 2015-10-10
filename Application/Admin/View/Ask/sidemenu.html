@@ -9,7 +9,13 @@
             <ul class="side-sub-menu">
                 <volist name="sub_menu" id="menu">
                     <li>
-                        <a class="item" href="{$menu.url|U}">{$menu.title}</a>
+                        <a class="item" href="{$menu.url|U}">{$menu.title}
+                            <?php if ($_SESSION["menu_nums"][$menu['title']]) { ?>
+                            <div class="circle">
+                                <p id="messages">{$_SESSION["menu_nums"][$menu['title']]}</p>
+                            </div>
+                            <?php } ?>
+                        </a>
                     </li>
                 </volist>
             </ul>

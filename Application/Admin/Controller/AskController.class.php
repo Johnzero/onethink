@@ -18,6 +18,8 @@ class AskController extends AdminController {
     
     public function _initialize(){
         
+        parent:: _initialize();
+
         $this->getMenu();
         $group_id = $_SESSION["onethink_admin"]["user_auth"]["group_id"];
         if ( is_administrator($uid) ) {
@@ -29,7 +31,30 @@ class AskController extends AdminController {
         //     layout('Ask/base');
         // }
 
-        parent:: _initialize();
+        //菜单后数量
+        $maps  =  array();
+        $maps['uid'] = array('EXP','IS NULL');
+        $wrl_count = M('Ask')->where($maps)->count();
+        $_SESSION["menu_nums"]["未认领"] = $wrl_count;
+
+        $maps  =  array();
+        $maps['uid'] = array("eq",$_SESSION["onethink_admin"]["user_auth"]["uid"]);
+        $maps['status'] = array("eq",0);
+        $dsh_count = M('Ask')->where($maps)->count();
+        $_SESSION["menu_nums"]["待审核"] = $dsh_count;
+
+        $maps['status']    =   array("eq",1);
+        $blz_count = M('Ask')->where($maps)->count();
+        $_SESSION["menu_nums"]["办理中"] = $blz_count;
+
+        $maps['status'] = array('in','4,5');
+        $ydf_count = M('Ask')->where($maps)->count();
+        $_SESSION["menu_nums"]["已回复"] = $ydf_count;
+
+        $maps['status'] = array("eq",60);
+        $thcb_count = M('Ask')->where($maps)->count();
+        $_SESSION["menu_nums"]["退回重办"] = $thcb_count;
+
     }
 	
     /* 全部问题 */
@@ -134,7 +159,7 @@ class AskController extends AdminController {
         $this->display("index");
     }
 
-    /* 我的待办理问题 */
+    /* 我的待审核 */
     public function my(){
         
         $title       =   trim(I('title'));
@@ -233,6 +258,107 @@ class AskController extends AdminController {
         $this->meta_title = '待办理问题';
         $this->display("index");
     }
+
+    /* 已答复 */
+    public function done(){
+        
+        $title       =   trim(I('title'));
+        $maps  =  array();
+        $maps['status'] = array('in','4,5');
+        $maps['uid']    =   array("eq",$_SESSION["onethink_admin"]["user_auth"]["uid"]);
+
+        if ( $title ) {
+            if(is_numeric($title)){
+                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
+            }else{
+                $maps['title']    =   array('like', '%'.(string)$title.'%');
+            }
+        }
+
+        if ( isset($_GET['time-start']) ) {
+            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
+        }
+        if ( isset($_GET['time-end']) ) {
+            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
+        }
+
+        $total = M('Ask')->where($maps)->count();
+
+        $request    =   (array)I('request.');
+        $total      =   $total? $total : 1 ;
+        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
+        $page       =   new \Think\Page($total, $listRows, $request);
+        $p          =   $page->show();
+        $this->assign('_page', $p? $p: '');
+
+        Cookie('__forward__',$_SERVER['REQUEST_URI']);
+
+        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
+
+        foreach ($lists as $key => $value) {
+            if ($value["uid"]) {
+                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
+                if (!empty($member)) {
+                    $lists[$key]["member"] = $member;
+                }
+            }
+        }
+        $this->assign('lists', $lists);
+
+        $this->meta_title = '待办理问题';
+        $this->display("index");
+    }
+
+    /* 退回 */
+    public function unsatisfied(){
+        
+        $title       =   trim(I('title'));
+        $maps  =  array();
+        $maps['status'] = array('eq', 60);
+        $maps['uid']    =   array("eq",$_SESSION["onethink_admin"]["user_auth"]["uid"]);
+
+        if ( $title ) {
+            if(is_numeric($title)){
+                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
+            }else{
+                $maps['title']    =   array('like', '%'.(string)$title.'%');
+            }
+        }
+
+        if ( isset($_GET['time-start']) ) {
+            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
+        }
+        if ( isset($_GET['time-end']) ) {
+            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
+        }
+
+        $total = M('Ask')->where($maps)->count();
+
+        $request    =   (array)I('request.');
+        $total      =   $total? $total : 1 ;
+        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
+        $page       =   new \Think\Page($total, $listRows, $request);
+        $p          =   $page->show();
+        $this->assign('_page', $p? $p: '');
+
+        Cookie('__forward__',$_SERVER['REQUEST_URI']);
+
+        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
+
+        foreach ($lists as $key => $value) {
+            if ($value["uid"]) {
+                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
+                if (!empty($member)) {
+                    $lists[$key]["member"] = $member;
+                }
+            }
+        }
+        $this->assign('lists', $lists);
+
+        $this->meta_title = '待办理问题';
+        $this->display("index");
+    }
+
 
     /* 审批 */
     public function sp() {
@@ -507,35 +633,6 @@ class AskController extends AdminController {
         }else{
             $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
         }
-    }
-
-    /**
-     * 待审核列表
-     */
-    public function examine(){
-        //获取左边菜单
-        $this->getMenu();
-
-        $map['status']  =   2;
-        if ( !IS_ROOT ) {
-            $cate_auth  =   AuthGroupModel::getAuthCategories(UID);
-            if($cate_auth){
-                $map['category_id']    =   array('IN',$cate_auth);
-            }else{
-                $map['category_id']    =   -1;
-            }
-        }
-        $list = $this->lists(M('Document'),$map,'update_time desc');
-        //处理列表数据
-        if(is_array($list)){
-            foreach ($list as $k=>&$v){
-                $v['username']      =   get_nickname($v['uid']);
-            }
-        }
-
-        $this->assign('list', $list);
-        $this->meta_title       =   '待审核';
-        $this->display();
     }
 
     protected function checkDynamic(){

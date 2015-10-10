@@ -145,7 +145,10 @@ class ArticleController extends HomeController {
 			}
 			exit;
 		}
-
+		
+		$yjdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3))->select();
+		$this->assign('yjdw', $yjdw);
+		
 		$tmpl = 'article/Ask/detail';
 		$this->display($tmpl);
 	}
@@ -207,4 +210,24 @@ class ArticleController extends HomeController {
 		$this->display($tmpl);
 	}
 	
+	//2015-10-10 打分
+	public function ask_detail_score()
+	{
+		$tel = I('post.tel');
+		$ticket = I('post.ticket');
+		$score = I('post.score');
+		$ask_id = I('post.ask_id');
+
+		if(empty($tel) || empty($ticket) || empty($score) || empty($ask_id))
+		{
+			$result = array();
+			$result['error'] = true;
+			$result['msg'] = '信息不完善！';
+			$this->ajaxReturn ( $result );
+			exit();
+		}
+		
+		$ask = M("Ask")->where(array("id"=>$ask_id,"tel"=>$tel,"status"=>5))->find();//校验信息和状态进行打分
+		
+	}
 }

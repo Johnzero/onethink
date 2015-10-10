@@ -60,7 +60,7 @@ class AdminController extends Controller {
                     }
                 }
             }
-        }        
+        }
 
         $this->meta_title = '安徽省人民政府政务服务平台';
         $this->assign('__MENU__', $this->getMenus());

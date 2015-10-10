@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome.min.css">
      <!--[if lt IE 9]>
     <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
-    <![endif]--><!--[if gte IE 9]><!-->
+    <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->

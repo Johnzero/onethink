@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome.min.css">
      <!--[if lt IE 9]>
     <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
-    <![endif]--><!--[if gte IE 9]><!-->
+    <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->
@@ -54,7 +56,13 @@
         <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
             <ul class="side-sub-menu">
                 <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
-                        <a class="item" href="<?php echo (U($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a>
+                        <a class="item" href="<?php echo (U($menu["url"])); ?>"><?php echo ($menu["title"]); ?>
+                            <?php if ($_SESSION["menu_nums"][$menu['title']]) { ?>
+                            <div class="circle">
+                                <p id="messages"><?php echo ($_SESSION["menu_nums"][$menu['title']]); ?></p>
+                            </div>
+                            <?php } ?>
+                        </a>
                     </li><?php endforeach; endif; else: echo "" ;endif; ?>
             </ul><?php endif; ?>
         <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -156,14 +164,18 @@
 			<th>标题</th>
 			<th>留言日期</th>
 			<th>受理单位</th>
-			<th>办理情况</th>
-			<th>办理完成日期</th>
-			<th>操作</th>
+			<th>办理情况</th>	
+			<?php if (ACTION_NAME == "done") {?>
+			<th>办理完成</th>
+			<?php } ?>
 			<th>办理天数</th>
+			<?php if (ACTION_NAME != "all" && ACTION_NAME != "index") {?>
+			<th>操作</th>
+			<?php } ?>
 		</tr>
     </thead>
-   	
    	<tbody>
+   		<?php if (!empty($lists)) { ?>
 		<?php if(is_array($lists)): $i = 0; $__LIST__ = $lists;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
 	        <td><input class="ids" type="checkbox" name="ids[]" value="<?php echo ($vo["id"]); ?>" /></td>
 			<td><?php echo ($vo["id"]); ?></td>
@@ -184,34 +196,45 @@
 				<?php $types = C('STATUS'); ?>
 				<?php echo ($types[$vo['status']]); ?>
 			</td>
-			<td>
+			
+	        <?php if (ACTION_NAME == "done") {?>
+	        <td>
 				<?php if ($vo['finish_time']) {?>
 				<span>{$vo.finish_time|time_format}</span>
 				<?php } ?>
 			</td>
-			<td>
+			<?php } ?>
+	        <td>
+				<?php if ($vo['finish_time']) { $diff_day = round(abs($vo['finish_time']-$vo['create_time'])/86400); }else { $diff_day = round(abs(time()-$vo['create_time'])/86400); } ?>
+				<b <?php if(($diff_day) > "5"): ?>class="red"<?php endif; ?>><?php echo ($diff_day); ?> 天</b>
+	        </td>
+	        <?php if (ACTION_NAME != "all" && ACTION_NAME != "index") { ?>
+	        <td>
 				<?php if ( $vo['status'] != 10 ) { ?>
 				
 					<?php if ( $vo['status'] == 0 ) { ?>
-						<a href="<?php echo U('Ask/sp?id='.$vo['id']);?>">审批</a>
+						<a href="<?php echo U('Ask/sp',array('id'=>$vo['id']));?>">审核</a>
 					<?php } ?>
 
 					<!-- <a href="<?php echo U('Ask/edit?cate_id='.$vo['category_id'].'&id='.$vo['id']);?>">编辑</a>
 					
 					<a href="<?php echo U('Ask/setStatus?ids='.$vo['id'].'&status='.abs(1-$vo['status']));?>" class="ajax-get"><?php echo (show_status_op($vo["status"])); ?></a> -->
-
+					<?php if ( $vo['status'] == 1 ) { ?>
 					<a href="<?php echo U('Ask/reply?&id='.$vo['id']);?>">答复</a>
+					<?php } ?>
 
 					<!-- <a href="<?php echo U('Ask/setStatus?status=-1&ids='.$vo['id']);?>" class="confirm ajax-get">删除</a> -->
 				<?php } else { ?>
 					<a href="<?php echo U('Ask/detail?id='.$vo['id']);?>">查看</a>
 				<?php } ?>
 	        </td>
-	        <td>
-				<?php if ($vo['finish_time']) { $diff_day = round(abs($vo['finish_time']-$vo['create_time'])/86400); }else { $diff_day = round(abs(time()-$vo['create_time'])/86400); } ?>
-				<b <?php if(($diff_day) > "5"): ?>class="red"<?php endif; ?>><?php echo ($diff_day); ?> 天</b>
-	        </td>
+	        <?php } ?>
 		</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+		<?php } else { ?>
+			<tr>
+				<td colspan="10" class="text-center"> 暂时还没有内容! </td>
+			</tr>
+		<?php } ?>
 	</tbody>
 
     </table> 

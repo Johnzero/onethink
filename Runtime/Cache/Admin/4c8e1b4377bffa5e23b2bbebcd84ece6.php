@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome.min.css">
      <!--[if lt IE 9]>
     <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
-    <![endif]--><!--[if gte IE 9]><!-->
+    <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->
@@ -50,19 +52,35 @@
     <div class="sidebar">
         <!-- 子导航 -->
         
-            <div id="subnav" class="subnav">
-                <?php if(!empty($_extra_menu)): ?>
-                    <?php echo extra_menu($_extra_menu,$__MENU__); endif; ?>
-                <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
-                    <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
-                        <ul class="side-sub-menu">
-                            <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
-                                    <a class="item" href="<?php echo (U($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a>
-                                </li><?php endforeach; endif; else: echo "" ;endif; ?>
-                        </ul><?php endif; ?>
-                    <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
-            </div>
-        
+    <div id="subnav" class="subnav">
+    <?php if(!empty($_extra_menu)): echo extra_menu($_extra_menu,$__MENU__); endif; ?>
+    <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
+        <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
+            <ul class="side-sub-menu">
+                <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
+                        <a class="item" href="<?php echo (U($menu["url"])); ?>"><?php echo ($menu["title"]); ?>
+                            <?php if ($_SESSION["menu_nums"][$menu['title']]) { ?>
+                            <div class="circle">
+                                <p id="messages"><?php echo ($_SESSION["menu_nums"][$menu['title']]); ?></p>
+                            </div>
+                            <?php } ?>
+                        </a>
+                    </li><?php endforeach; endif; else: echo "" ;endif; ?>
+            </ul><?php endif; ?>
+        <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
+    
+</div>
+<script>
+    $(function(){
+        $(".side-sub-menu li").hover(function(){
+            $(this).addClass("hover");
+        },function(){
+            $(this).removeClass("hover");
+        });
+    })
+</script>
+
+
         <!-- /子导航 -->
     </div>
     <!-- /边栏 -->
