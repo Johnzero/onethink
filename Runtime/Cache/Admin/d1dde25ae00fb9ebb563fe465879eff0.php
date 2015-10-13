@@ -161,7 +161,7 @@
         <tr>
 			<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
 			<th>编号</th>
-			<th>标题</th>
+			<th class="text-left">标题</th>
 			<th>留言日期</th>
 			<th>受理单位</th>
 			<th>办理情况</th>	
@@ -188,8 +188,17 @@
 				<?php if ( $group_id == 1 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
 					<a href="<?php echo U('Ask/change?id='.$vo['id']);?>" title="更改"><i class="fa fa-reply-all"></i></a>
 				<?php }else if ( $group_id == 3 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
-					<a href="<?php echo U('Ask/adopt?id='.$vo['id']);?>" title="认领"><i class="fa fa-reply-all"></i></a>
+					<a href="<?php echo U('Ask/adopt?id='.$vo['id']);?>" class="ajax-get confirm" title="认领" target-form="form-horizontal"><i class="fa fa-reply-all"></i></a>
 				<?php } ?>
+				
+				<?php if ( $group_id == 3 && $vo['status'] == 1 && $vo['uid'] == UID) { ?>
+					<a href="<?php echo U('Ask/assign_to?id='.$vo['id']);?>" title="指派" target-form="form-horizontal"><i class="fa fa-reply-all"></i></a>
+				<?php } ?>
+
+				<?php if ( ($group_id == 3 || $group_id == 1) && $vo['status'] == 1 && $vo['uid'] != UID) { ?>
+					<a href="" title="督办" target-form="form-horizontal"><i class="fa fa-bell-o"></i></a>
+				<?php } ?>
+
 				</span>
 			</td>
 			<td>
@@ -197,10 +206,10 @@
 				<?php echo ($types[$vo['status']]); ?>
 			</td>
 			
-	        <?php if (ACTION_NAME == "done") {?>
+	        <?php if (ACTION_NAME == "done") { ?>
 	        <td>
-				<?php if ($vo['finish_time']) {?>
-				<span>{$vo.finish_time|time_format}</span>
+				<?php if ($vo['finish_time']) { ?>
+				<span><?php echo (time_format($vo["finish_time"])); ?></span>
 				<?php } ?>
 			</td>
 			<?php } ?>
@@ -219,8 +228,13 @@
 					<!-- <a href="<?php echo U('Ask/edit?cate_id='.$vo['category_id'].'&id='.$vo['id']);?>">编辑</a>
 					
 					<a href="<?php echo U('Ask/setStatus?ids='.$vo['id'].'&status='.abs(1-$vo['status']));?>" class="ajax-get"><?php echo (show_status_op($vo["status"])); ?></a> -->
-					<?php if ( $vo['status'] == 1 ) { ?>
-					<a href="<?php echo U('Ask/reply?&id='.$vo['id']);?>">答复</a>
+
+					<?php if ( $vo['status'] == 1 && $vo['uid'] == UID ) { ?>
+						<a href="<?php echo U('Ask/reply?&id='.$vo['id']);?>">办理</a>
+					<?php } ?>
+
+					<?php if ( ($group_id == 3 || $group_id == 1) && $vo['status'] == 1 && $vo['uid'] != UID) { ?>
+						<a href="" title="督办" target-form="form-horizontal">督办</a>
 					<?php } ?>
 
 					<!-- <a href="<?php echo U('Ask/setStatus?status=-1&ids='.$vo['id']);?>" class="confirm ajax-get">删除</a> -->

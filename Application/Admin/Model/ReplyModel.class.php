@@ -58,9 +58,10 @@ class ReplyModel extends Model {
 	 * 提交答复
 	 */
 	public function save_ask($field = false){
-		$parents = M("Reply")->where(array("aid"=>$field['aid']))->find();
+
+		$ask = M("Reply")->where(array("aid"=>$field['aid']))->find();
 		
-		if(!empty($parents))
+		if(!empty($ask))
 		{
 			//$where = array();
 			//$where['aid'] = $field['aid'];
@@ -68,14 +69,14 @@ class ReplyModel extends Model {
 		}
 		else
 		{
-			M("Ask")->where(array("id"=>$field['aid']))->save(array("status"=>4,"update_time"=>time()));
+			M("Ask")->where(array("id"=>$field['aid']))->save(array("status"=>4,"update_time"=>time(),"finist_time"=>time()));
 			$process = array();
-			$process["uid"] = UID;
+			$process["uid"] = $ask["uid"];
 			$process["aid"] = $field['aid'];
 			$process["status"] = 4;
 			$process["create_time"] = time();
 			$process["create_uid"] = UID;
-			$process["info"] = $field['reply_content'];
+			$process["info"] = "回复成功";
 			M("Process")->add($process);
 			
 			return $this->add($field);

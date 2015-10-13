@@ -13,11 +13,26 @@
     <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome.min.css">
      <!--[if lt IE 9]>
     <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
-    <![endif]--><!--[if gte IE 9]><!-->
+    <link rel="stylesheet" href="/Public/static/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->
     
+<link rel="stylesheet" type="text/css" href="/Public/Admin/css/table.css" media="all">
+<style type="text/css">
+    .form-horizontal {
+        width: 45%;
+        display: inline-block;
+    }
+    .show-detail {
+        width: 50%;
+        float: right;
+    }
+</style>
+
+
 </head>
 <body>
     <!-- 头部 -->
@@ -48,19 +63,35 @@
     <div class="sidebar">
         <!-- 子导航 -->
         
-            <div id="subnav" class="subnav">
-                <?php if(!empty($_extra_menu)): ?>
-                    <?php echo extra_menu($_extra_menu,$__MENU__); endif; ?>
-                <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
-                    <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
-                        <ul class="side-sub-menu">
-                            <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
-                                    <a class="item" href="<?php echo (U($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a>
-                                </li><?php endforeach; endif; else: echo "" ;endif; ?>
-                        </ul><?php endif; ?>
-                    <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
-            </div>
-        
+    <div id="subnav" class="subnav">
+    <?php if(!empty($_extra_menu)): echo extra_menu($_extra_menu,$__MENU__); endif; ?>
+    <?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><!-- 子导航 -->
+        <?php if(!empty($sub_menu)): if(!empty($key)): ?><h3><i class="icon icon-unfold"></i><?php echo ($key); ?></h3><?php endif; ?>
+            <ul class="side-sub-menu">
+                <?php if(is_array($sub_menu)): $i = 0; $__LIST__ = $sub_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li>
+                        <a class="item" href="<?php echo (U($menu["url"])); ?>"><?php echo ($menu["title"]); ?>
+                            <?php if ($_SESSION["menu_nums"][$menu['title']]) { ?>
+                            <div class="circle">
+                                <p id="messages"><?php echo ($_SESSION["menu_nums"][$menu['title']]); ?></p>
+                            </div>
+                            <?php } ?>
+                        </a>
+                    </li><?php endforeach; endif; else: echo "" ;endif; ?>
+            </ul><?php endif; ?>
+        <!-- /子导航 --><?php endforeach; endif; else: echo "" ;endif; ?>
+    
+</div>
+<script>
+    $(function(){
+        $(".side-sub-menu li").hover(function(){
+            $(this).addClass("hover");
+        },function(){
+            $(this).removeClass("hover");
+        });
+    })
+</script>
+
+
         <!-- /子导航 -->
     </div>
     <!-- /边栏 -->
@@ -89,44 +120,65 @@
     <div class="main-title">
         <h2><?php echo ($meta_title); ?></h2>
     </div>
-    <form method="post" class="form-horizontal">
+    <form method="post" class="form-horizontal reply-form">
 
         <div class="form-item">
             <label class="item-label">办理情况</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="explain" value="<?php echo ($parents["explain"]); ?>">
+                <label class="textarea input-large">
+                    <textarea name="explain"></textarea>
+                    <?php echo hook('adminArticleEdit', array('name'=>explain,'value'=>$reply.explain));?>
+                </label>
             </div>
         </div>
 		
 		<div class="form-item">
-            <label class="item-label">答复口径</label>
+            <label class="item-label">网上答复口径</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="reply_content" value="<?php echo ($parents["reply_content"]); ?>">
+                <label class="textarea input-large">
+                    <textarea name="reply_content"></textarea>
+                    <?php echo hook('adminArticleEdit', array('name'=>reply_content,'value'=>$reply.reply_content));?>
+                </label>
             </div>
         </div>
 
-		<div class="form-item">
-            <label class="item-label">备注</label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="remarks" value="<?php echo ($parents["remarks"]); ?>">
-            </div>
-        </div>
-       
         <div class="form-item">
             <label class="item-label">经办人</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="transactor" value="<?php echo ($parents["transactor"]); ?>">
+                <input type="text" class="text input-large" name="transactor" value="<?php echo ($reply["transactor"]); ?>">
             </div>
         </div>
+
         <div class="form-item">
-            <label class="item-label">联系电话</label>
+            <label class="item-label">联系方式</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="transactor_tel" value="<?php echo ($parents["transactor_tel"]); ?>">
+                <input type="text" class="text input-large" name="transactor_tel" value="<?php echo ($reply["transactor_tel"]); ?>">
             </div>
         </div>
+
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <label class="item-label">备注</label>
+            <div class="controls">
+                <label class="textarea input-large">
+                    <textarea name="remarks"></textarea>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="reply-form">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+
+    </form>
+    <form class="form-horizontal show-detail">    
+        <div class="form-item">
+            <label class="item-label">留言内容</label>
+            <div class="controls">
+                <label class="textarea input-large">
+                    <textarea readonly="readonly"><?php echo ($content); ?></textarea>
+                </label>
+            </div>
         </div>
     </form>
 

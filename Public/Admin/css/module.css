@@ -25,7 +25,7 @@
     font-family: sans-serif;
     color: #fff;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
 }
 /* = 表单
 ------------------------------------------ */
@@ -214,6 +214,9 @@ label.textarea ~ .check-tips {
 /* 表单宽度预设 */
 .input-large {
 	width: 390px;
+}
+.textarea.input-large {
+	width: 90%;
 }
 .input-mid {
 	width: 150px;

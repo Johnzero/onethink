@@ -21,11 +21,11 @@ class AskController extends AdminController {
         parent:: _initialize();
 
         $this->getMenu();
-        $group_id = $_SESSION["onethink_admin"]["user_auth"]["group_id"];
+        $this->group_id = $_SESSION["onethink_admin"]["user_auth"]["group_id"];
         if ( is_administrator($uid) ) {
-            $group_id = 1;
+            $this->group_id = 1;
         }
-        $this->assign('group_id', $group_id);
+        $this->assign('group_id', $this->group_id);
 
         // if (in_array(ACTION_NAME,array("index","my","all","processing"))) {
         //     layout('Ask/base');
@@ -38,7 +38,17 @@ class AskController extends AdminController {
         $_SESSION["menu_nums"]["未认领"] = $wrl_count;
 
         $maps  =  array();
-        $maps['uid'] = array("eq",$_SESSION["onethink_admin"]["user_auth"]["uid"]);
+
+        $children = M("Member")->where(array("pid"=>UID))->select();
+        $uid_array = array();
+        $uid_array[] = UID;
+        if (!empty($children)) {
+            foreach ($children as $key => $value) {
+                $uid_array[] = $value["uid"];
+            }
+        }
+        $maps['uid']    =   array("in",implode(",",$uid_array));
+
         $maps['status'] = array("eq",0);
         $dsh_count = M('Ask')->where($maps)->count();
         $_SESSION["menu_nums"]["待审核"] = $dsh_count;
@@ -165,7 +175,7 @@ class AskController extends AdminController {
         $title       =   trim(I('title'));
         $maps  =  array();
         $maps['status']    =   array("eq",0);
-        $maps['uid']    =   array("eq",$_SESSION["onethink_admin"]["user_auth"]["uid"]);
+        $maps['uid']    =   array("eq",UID);
 
         if ( $title ) {
             if(is_numeric($title)){
@@ -205,7 +215,7 @@ class AskController extends AdminController {
         }
         $this->assign('lists', $lists);
 
-        $this->meta_title = '我的问题';
+        $this->meta_title = '待审核的问题';
         $this->display("index");
     }
 
@@ -215,7 +225,16 @@ class AskController extends AdminController {
         $title       =   trim(I('title'));
         $maps  =  array();
         $maps['status']    =   array("eq",1);
-        $maps['uid']    =   array("eq",$_SESSION["onethink_admin"]["user_auth"]["uid"]);
+
+        $children = M("Member")->where(array("pid"=>UID))->select();
+        $uid_array = array();
+        $uid_array[] = UID;
+        if (!empty($children)) {
+            foreach ($children as $key => $value) {
+                $uid_array[] = $value["uid"];
+            }
+        }
+        $maps['uid']    =   array("in",implode(",",$uid_array));
 
         if ( $title ) {
             if(is_numeric($title)){
@@ -255,7 +274,7 @@ class AskController extends AdminController {
         }
         $this->assign('lists', $lists);
 
-        $this->meta_title = '待办理问题';
+        $this->meta_title = '办理中的问题';
         $this->display("index");
     }
 
@@ -265,7 +284,7 @@ class AskController extends AdminController {
         $title       =   trim(I('title'));
         $maps  =  array();
         $maps['status'] = array('in','4,5');
-        $maps['uid']    =   array("eq",$_SESSION["onethink_admin"]["user_auth"]["uid"]);
+        $maps['uid']    =   array("eq",UID);
 
         if ( $title ) {
             if(is_numeric($title)){
@@ -315,7 +334,7 @@ class AskController extends AdminController {
         $title       =   trim(I('title'));
         $maps  =  array();
         $maps['status'] = array('eq', 60);
-        $maps['uid']    =   array("eq",$_SESSION["onethink_admin"]["user_auth"]["uid"]);
+        $maps['uid']    =   array("eq",UID);
 
         if ( $title ) {
             if(is_numeric($title)){
@@ -459,15 +478,19 @@ class AskController extends AdminController {
     public function reply(){
 
         $id = I('get.id');
-        empty($id) && $this->error('参数不能为空！');
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
         
-        $this->meta_title = '问题答复';
-
+        $ask = M("Ask")->where(array("id"=>$id))->find();
+        $this->assign($ask);
+        
         if(IS_POST){
 
+            $_POST['create_time'] = time();
+            $_POST['uid'] = UID;
 
             $Reply = D('Reply');
-            
             $check_ask = $Reply->check_reply($_POST);
             
             if($check_ask['error'])
@@ -484,18 +507,17 @@ class AskController extends AdminController {
 
             if($return)
             {
-                $this->success("保存成功！");
+                $this->success("答复成功！",U('Ask/processing'));
             }
             else
             {
-                $this->error("保存失败，请重新提交！");
+                $this->error("答复失败，请重新提交！");
             }
             exit;
 
         } else {
-            $parents = M("Reply")->where(array("aid"=>$id))->find();
-            $this->assign('parents', $parents);
-            $this->display("reply");
+            $this->meta_title = '回复：'.$ask['name'];
+            $this->display();
         }
     }
 
@@ -524,9 +546,9 @@ class AskController extends AdminController {
                 $process["info"] = "将问题指派到".$pmember['nickname'];
 
                 M("Process")->add($process);
+
                 $this->success("处理成功！",U('Ask/index'));
 
-                $this->success("处理成功！");
             }
 
         }
@@ -535,7 +557,76 @@ class AskController extends AdminController {
         $this->display();
     }
 
+    // 指派
+    public function assign_to() {
+        $id = I('get.id');
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
+        $ask = M("Ask")->where(array("id"=>$id))->find();
+        $this->assign($ask);
+        if (IS_POST) {
+            $pid = I('post.pid');
+            if ( !$pid ) {
+                $this->error("请选择指派单位");
+            }else {
+                M("Ask")->where(array("id"=>$id))->save(array("uid"=>$pid,"update_time"=>time()));
 
+                $member = M("Member")->where(array("uid"=>$pid))->find();
+                $old_member = M("Member")->where(array("uid"=>$ask["uid"]))->find();
+
+                $process = array();
+                $process["uid"] = $pid;
+                $process["aid"] = $id;
+                $process["status"] = 1;
+                $process["create_time"] = time();
+                $process["create_uid"] = UID;
+                $process["info"] = $old_member['nickname']."将问题指派到".$member['nickname'];
+
+                M("Process")->add($process);
+
+                $this->success("指派问题成功！",U('Ask/processing'));
+
+            }
+
+        }
+        $yjdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("B.pid"=>UID))->select();
+        $this->assign('yjdw', $yjdw);
+        $this->display();
+    }
+
+    // 认领
+    public function adopt() {
+
+        $id = I('get.id');
+
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
+
+        $ask = M("Ask")->where(array("id"=>$id))->find();
+
+        if ($ask['uid']) {
+            $this->error("该问题已指派受理单位！");
+        }else {
+
+            M("Ask")->where(array("id"=>$id))->save(array("uid"=>UID,"update_time"=>time(),"status"=>1));
+            $member = M("Member")->where(array("uid"=>UID))->find();
+
+            $process = array();
+            $process["uid"] = UID;
+            $process["aid"] = $id;
+            $process["status"] = 1;
+            $process["create_time"] = time();
+            $process["create_uid"] = UID;
+            $process["info"] = $member['nickname']." 认领了该问题";
+
+            M("Process")->add($process);
+            
+            $this->success("认领成功！");
+        }
+
+    }
 
     public function add(){
         //获取左边菜单
@@ -577,10 +668,6 @@ class AskController extends AdminController {
         $this->display();
     }
 
-    /**
-     * 文档编辑页面初始化
-     * @author huajie <banhuajie@163.com>
-     */
     public function edit(){
         //获取左边菜单
         $this->getMenu();

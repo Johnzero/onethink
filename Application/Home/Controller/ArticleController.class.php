@@ -215,10 +215,10 @@ class ArticleController extends HomeController {
 	{
 		$tel = I('post.tel');
 		$ticket = I('post.ticket');
-		$score = I('post.score');
+		$scores = I('post.score');
 		$ask_id = I('post.ask_id');
 
-		if(empty($tel) || empty($ticket) || empty($score) || empty($ask_id))
+		if(empty($tel) || empty($ticket) || empty($ask_id))
 		{
 			$result = array();
 			$result['error'] = true;
@@ -229,5 +229,26 @@ class ArticleController extends HomeController {
 		
 		$ask = M("Ask")->where(array("id"=>$ask_id,"tel"=>$tel,"status"=>5))->find();//校验信息和状态进行打分
 		
+		if(empty($ask))
+		{
+			$result = array();
+			$result['error'] = true;
+			$result['msg'] = '只有结束的问题才允许打分';
+			$this->ajaxReturn ( $result );
+			exit();
+		}
+		
+		
+		$ask_score = M("Score")->where(array("ask_id"=>$ask_id))->find();
+		if ( empty($ask_score) ) {
+			M("Score")->query("INSERT INTO `ot_score` (`ask_id`,`scores`,`lastupdate`) VALUES ('".$ask_id."','".$scores."','".time()."')");
+		}else {
+			M("Score")->query("UPDATE `ot_score` SET `scores`='".$scores."',`lastupdate`='".time()."' WHERE `ask_id` = '".$ask_id."'");
+		}
+		$result = array();
+		$result['error'] = false;
+		$result['msg'] = '打分成功';
+		$this->ajaxReturn ( $result );
+		exit();
 	}
 }

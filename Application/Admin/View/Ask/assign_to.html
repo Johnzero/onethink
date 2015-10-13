@@ -11,25 +11,10 @@
     <form method="post" class="form-horizontal">
 
         <div class="form-item">
-            <label class="item-label">留言用户</label>
-            <div class="controls">
-                <input type="text" class="text input-large" value="{$name}" readonly="readonly">
-            </div>
-        </div>
-        <div class="form-item">
-            <label class="item-label">留言内容</label>
-            <div class="controls">
-                <label class="textarea input-large">
-                    <textarea readonly="readonly">{$content}</textarea>
-                </label>
-            </div>
-        </div>
-
-        <div class="form-item">
-            <label class="item-label">受理单位</label>
+            <label class="item-label">指派下级单位：</label>
             <div class="controls">
                 <select name="pid">
-                    <option <?php if (!$uid) { ?> selected <?php } ?> >未知</option>
+                    <option <?php if (!$uid) { ?> selected <?php } ?> >请选择下级单位</option>
                     <volist name="yjdw" id="vo">
                         <option value="{$vo.uid}" <eq name="uid" value="$vo.uid"> selected</eq> >{$vo.nickname}</option>
                     </volist>
@@ -38,7 +23,7 @@
         </div>
 
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确定</button>
+            <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="form-horizontal">确定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
 

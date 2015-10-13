@@ -22,10 +22,18 @@
         var target;
         var that = this;
         if ( $(this).hasClass('confirm') ) {
-            if(!confirm('确认要执行该操作吗?')){
-                return false;
+            if ($(this).attr("title")) {
+                if(!confirm("确认要执行 " +$(this).attr("title")+ ' 操作吗?')){
+                    return false;
+                }
+            }else {
+                if(!confirm('确认要执行该操作吗?')){
+                    return false;
+                }
             }
+            
         }
+        
         if ( (target = $(this).attr('href')) || (target = $(this).attr('url')) ) {
             $.get(target).success(function(data){
                 if (data.status==1) {
