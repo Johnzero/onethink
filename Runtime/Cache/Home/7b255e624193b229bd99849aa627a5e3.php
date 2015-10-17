@@ -165,6 +165,10 @@
         </div>
 		
 		<div class="form-item">
+			<input type="button" id="message_button" value="免费获取验证码"/>
+		</div>
+		
+		<div class="form-item">
             <label class="item-label">打分</label>
                 
 			电话号码：
@@ -184,6 +188,80 @@
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
 		<script type="text/javascript">
+		
+		
+		var wait=60;
+		function time(o) {
+			if (wait == 0) {
+				o.removeAttribute("disabled");           
+				o.value="免费获取验证码";
+				wait = 60;
+			} else {
+				if(wait==60)
+				{
+					var tel = $('#tel').val();
+					if(tel=="")
+					{
+						alert("请输入电话号码!");return false;
+					}
+				
+					get_message();
+				}
+				
+				o.setAttribute("disabled", true);
+				o.value="重新发送(" + wait + ")";
+				
+				wait--;
+				setTimeout(function() {
+					time(o)
+				},
+				1000)
+			}
+		}
+		document.getElementById("message_button").onclick=function(){time(this);}
+				
+				
+				
+				
+			function get_message(){
+				var tel = $('#tel').val();
+				if(tel=="")
+				{
+					alert("请输入电话号码!");return false;
+				}
+				
+				$.ajax({
+					type : 'POST',
+					url : '/Article/get_message',
+					data : {
+						tel : tel
+					},
+					success : function (response , status , xhr) {
+						if(response.error==true || response.error==false)
+						{
+							alert(response.msg);
+							if(response.error==false){
+								//window.location.reload();
+							}
+							return false;
+						}
+						else
+						{
+							alert("系统繁忙，请稍候再试");
+							return false;
+						}
+					},
+					beforeSend : function(){
+						$('#message_button').hide();
+					},
+					complete : function(){
+						$('#message_button').show();
+					}
+				});
+				
+			}
+		
+			//get_message
 			function set_score(){
 				var tel = $('#tel').val();
 				var ticket = $('#ticket').val();
@@ -236,6 +314,14 @@
 					}
 				});
 			}
+			
+			
+			
+			$(function () { 
+				$('#btn').click(function () {
+				
+				})
+			});
 		</script>
 
     </div>

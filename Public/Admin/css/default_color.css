@@ -224,7 +224,7 @@ select {
  *************************************/
 
 /* 普通按钮 */
-.btn {
+/*.btn {
     color: #edffd1;
 	background-color: #4bbd00;
 }
@@ -232,7 +232,7 @@ select {
     color: #ffffff;
     background-color: #4cdb00;
 }
-
+*/
 /* 表单返回按钮 */
 .btn-return {
 	color: #fff;

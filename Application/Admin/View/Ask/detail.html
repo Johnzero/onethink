@@ -13,86 +13,145 @@
         <h2>留言问题：{$title}</h2>
     </div>
     <form method="post" class="form-horizontal">
+        <div class="form-left">
+            <div class="form-item">
+                <label class="item-label">留言用户</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" value="{$name}" readonly="readonly">
+                </div>
+            </div>
 
-        <div class="form-item">
-            <label class="item-label">留言用户</label>
-            <div class="controls">
-                <input type="text" class="text input-large" value="{$name}" readonly="readonly">
+            <div class="form-item">
+                <label class="item-label">联系方式</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" value="{$tel}" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">留言内容</label>
+                <div class="controls">
+                    <label class="textarea input-large">
+                        <textarea readonly="readonly">{$content}</textarea>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">附件</label>
+                <div class="controls">
+                    
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">受理单位</label>
+                <div class="controls">
+                    <select name="pid" disabled="disabled">
+                        <volist name="yjdw" id="vo">
+                            <option value="{$vo.uid}" <eq name="$vo.uid" value="$uid"> selected</eq> >{$vo.nickname}</option>
+                        </volist>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="form-item">
-            <label class="item-label">留言内容</label>
-            <div class="controls">
-                <label class="textarea input-large">
-                    <textarea readonly="readonly">{$content}</textarea>
-                </label>
+        <?php if(!empty($reply)) { ?>
+        <div class="form-right">
+            <div class="form-item">
+                <label class="item-label">办理情况</label>
+                <div class="controls">
+                    <label class="textarea input-large">
+                        <section id="contents">{$reply.explain}</section>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">网上答复口径</label>
+                <div class="controls">
+                    <label class="textarea input-large">
+                        <section id="contents">{$reply.reply_content}</section>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">经办人</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="transactor" value="{$reply.transactor}" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">联系方式</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="transactor_tel" value="{$reply.transactor_tel}" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">备注</label>
+                <div class="controls">
+                    <label class="textarea input-large">
+                        <textarea name="remarks" readonly="readonly">{$reply.remarks}</textarea>
+                    </label>
+                </div>
             </div>
         </div>
-
-        <div class="form-item">
-            <label class="item-label">受理单位</label>
-            <div class="controls">
-                <select name="pid" disabled="disabled">
-                    <volist name="yjdw" id="vo">
-                        <option value="{$vo.uid}" <eq name="$vo.uid" value="$uid"> selected</eq> >{$vo.nickname}</option>
-                    </volist>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-item">
-            <label class="item-label">办理流程</label>
-            <div class="controls">
-                <table class="table-fill">
-                    <thead>
-                        <tr>
-                            <th class="text-left">
-                                状态
-                            </th>
-                            <th class="text-left">
-                                处理人
-                            </th>
-                            <th class="text-left">
-                                意见
-                            </th>
-                            <th class="text-left">
-                                处理时间
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-hover">
-                        <foreach name="process" item="vo">
-                            <tr>
-                                <td class="text-left">
-                                    <php>$types = C('STATUS');</php>
-                                    {$types[$vo['status']]}
-                                </td>
-                                <td class="text-left">
-                                    {$vo['member']['nickname']}
-                                </td>
-                                <td class="text-left">
-                                    <?php if (!$vo["info"]) { ?>
-                                        更改状态
-                                    <?php }else { ?>
-                                        {$vo.info}
-                                    <?php } ?>
-                                    
-                                </td>
-                                <td class="text-left">
-                                    {$vo.create_time|time_format}
-                                </td>
-                            </tr>
-                        </foreach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-       
-        <div class="form-item">
-            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-        </div>
-
+        <?php } ?>
     </form>
+    <div class="clearfix">
+    <div class="form-item">
+        <label class="item-label">办理流程</label>
+        <div class="controls">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="text-left">
+                            状态
+                        </th>
+                        <th class="text-left">
+                            处理人
+                        </th>
+                        <th class="text-left">
+                            意见
+                        </th>
+                        <th class="text-left">
+                            处理时间
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
+                    <foreach name="process" item="vo">
+                        <tr>
+                            <td class="text-left">
+                                <php>$types = C('STATUS');</php>
+                                {$types[$vo['status']]}
+                            </td>
+                            <td class="text-left">
+                                {$vo['member']['nickname']}
+                            </td>
+                            <td class="text-left">
+                                <?php if (!$vo["info"]) { ?>
+                                    更改状态
+                                <?php }else { ?>
+                                    {$vo.info}
+                                <?php } ?>
+                                
+                            </td>
+                            <td class="text-left">
+                                {$vo.create_time|time_format}
+                            </td>
+                        </tr>
+                    </foreach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+       
+    <div class="form-item">
+        <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+    </div>
 </block>
 <block name="script">
     <script type="text/javascript">

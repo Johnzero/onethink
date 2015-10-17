@@ -14,7 +14,7 @@
             <label class="item-label">指派下级单位：</label>
             <div class="controls">
                 <select name="pid">
-                    <option <?php if (!$uid) { ?> selected <?php } ?> >请选择下级单位</option>
+                    <option value="" <?php if (!$uid) { ?> selected <?php } ?>>请选择下级单位</option>
                     <volist name="yjdw" id="vo">
                         <option value="{$vo.uid}" <eq name="uid" value="$vo.uid"> selected</eq> >{$vo.nickname}</option>
                     </volist>

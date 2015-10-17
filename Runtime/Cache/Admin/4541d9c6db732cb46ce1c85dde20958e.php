@@ -12,7 +12,7 @@
 				var editor_<?php echo ($addons_data["name"]); ?>;
 				KindEditor.ready(function(K) {
 					editor_<?php echo ($addons_data["name"]); ?> = K.create('textarea[name="<?php echo ($addons_data["name"]); ?>"]', {
-						allowFileManager : false,
+						allowFileManager : true,
 						themesPath: K.basePath,
 						width: '100%',
 						height: '<?php echo ($addons_config["editor_height"]); ?>',
@@ -22,6 +22,14 @@
 						fileManagerJson : '<?php echo U('fileManagerJson');?>',
 						//uploadJson : '<?php echo U('uploadJson');?>' }
 						uploadJson : '<?php echo addons_url("EditorForAdmin://Upload/ke_upimg");?>',
+						items : ['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'cut', 'copy', 'paste',
+							'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+							'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+							'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '|',
+							'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+							'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+							'table', 'hr', 'emoticons', 'map',  'pagebreak', 'anchor', 'link', 'unlink', '|', 'about'
+						],
 						extraFileUploadParams: {
 							session_id : '<?php echo session_id();?>'
 	                    }

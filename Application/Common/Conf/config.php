@@ -22,7 +22,7 @@ return array(
     'DATA_AUTH_KEY' => 'IUX;=z(tDv3F&}Q[]n5Bf?TSZP^a<MbwdhN.{9,:', //默认数据加密KEY
 
     /* 用户相关设置 */
-    'USER_MAX_CACHE'     => 5000, //最大缓存用户数
+    'USER_MAX_CACHE'     => 10000, //最大缓存用户数
     'USER_ADMINISTRATOR' => 1, //管理员用户ID
 
     /* URL配置 */
@@ -32,7 +32,7 @@ return array(
     'URL_PATHINFO_DEPR'    => '/', //PATHINFO URL分割符
 
     /* 全局过滤配置 */
-    'DEFAULT_FILTER' => 'strip_tags,stripslashes,htmlspecialchars', //全局过滤函数
+    'DEFAULT_FILTER' => 'strip_tags,stripslashes,htmlspecialchars,trim', //全局过滤函数
 
     /* 数据库配置 */
     'DB_TYPE'   => 'mysql', // 数据库类型
@@ -47,6 +47,6 @@ return array(
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),
 
     // 审核类型 （0待审批，10审批拒绝，1审批通过，2待办理，5办理完成，6退回）
-    'STATUS'=>array(0 => '待审核', 1 => '待办理', 4=>'已答复', 5=>'办理完成',60=>'退回',10=>'审批拒绝'),
+    'STATUS'=>array(0 => '<b>待审核</b>', 1 => '<b>待办理</b>', 4=>"<b>已答复</b>", 5=>"<b class='red'>办理完成</b>",60=>'<b>退回重办</b>',10=>'<b>审批拒绝</b>'),
 
 );

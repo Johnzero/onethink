@@ -110,82 +110,141 @@
         <h2>留言问题：<?php echo ($title); ?></h2>
     </div>
     <form method="post" class="form-horizontal">
+        <div class="form-left">
+            <div class="form-item">
+                <label class="item-label">留言用户</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" value="<?php echo ($name); ?>" readonly="readonly">
+                </div>
+            </div>
 
-        <div class="form-item">
-            <label class="item-label">留言用户</label>
-            <div class="controls">
-                <input type="text" class="text input-large" value="<?php echo ($name); ?>" readonly="readonly">
+            <div class="form-item">
+                <label class="item-label">联系方式</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" value="<?php echo ($tel); ?>" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">留言内容</label>
+                <div class="controls">
+                    <label class="textarea input-large">
+                        <textarea readonly="readonly"><?php echo ($content); ?></textarea>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">附件</label>
+                <div class="controls">
+                    
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">受理单位</label>
+                <div class="controls">
+                    <select name="pid" disabled="disabled">
+                        <?php if(is_array($yjdw)): $i = 0; $__LIST__ = $yjdw;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["uid"]); ?>" <?php if(($$vo["uid"]) == $uid): ?>selected<?php endif; ?> ><?php echo ($vo["nickname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="form-item">
-            <label class="item-label">留言内容</label>
-            <div class="controls">
-                <label class="textarea input-large">
-                    <textarea readonly="readonly"><?php echo ($content); ?></textarea>
-                </label>
+        <?php if(!empty($reply)) { ?>
+        <div class="form-right">
+            <div class="form-item">
+                <label class="item-label">办理情况</label>
+                <div class="controls">
+                    <label class="textarea input-large">
+                        <section id="contents"><?php echo ($reply["explain"]); ?></section>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">网上答复口径</label>
+                <div class="controls">
+                    <label class="textarea input-large">
+                        <section id="contents"><?php echo ($reply["reply_content"]); ?></section>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">经办人</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="transactor" value="<?php echo ($reply["transactor"]); ?>" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">联系方式</label>
+                <div class="controls">
+                    <input type="text" class="text input-large" name="transactor_tel" value="<?php echo ($reply["transactor_tel"]); ?>" readonly="readonly">
+                </div>
+            </div>
+
+            <div class="form-item">
+                <label class="item-label">备注</label>
+                <div class="controls">
+                    <label class="textarea input-large">
+                        <textarea name="remarks" readonly="readonly"><?php echo ($reply["remarks"]); ?></textarea>
+                    </label>
+                </div>
             </div>
         </div>
-
-        <div class="form-item">
-            <label class="item-label">受理单位</label>
-            <div class="controls">
-                <select name="pid" disabled="disabled">
-                    <?php if(is_array($yjdw)): $i = 0; $__LIST__ = $yjdw;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["uid"]); ?>" <?php if(($$vo["uid"]) == $uid): ?>selected<?php endif; ?> ><?php echo ($vo["nickname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-item">
-            <label class="item-label">办理流程</label>
-            <div class="controls">
-                <table class="table-fill">
-                    <thead>
-                        <tr>
-                            <th class="text-left">
-                                状态
-                            </th>
-                            <th class="text-left">
-                                处理人
-                            </th>
-                            <th class="text-left">
-                                意见
-                            </th>
-                            <th class="text-left">
-                                处理时间
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-hover">
-                        <?php if(is_array($process)): foreach($process as $key=>$vo): ?><tr>
-                                <td class="text-left">
-                                    <?php $types = C('STATUS'); ?>
-                                    <?php echo ($types[$vo['status']]); ?>
-                                </td>
-                                <td class="text-left">
-                                    <?php echo ($vo['member']['nickname']); ?>
-                                </td>
-                                <td class="text-left">
-                                    <?php if (!$vo["info"]) { ?>
-                                        更改状态
-                                    <?php }else { ?>
-                                        <?php echo ($vo["info"]); ?>
-                                    <?php } ?>
-                                    
-                                </td>
-                                <td class="text-left">
-                                    <?php echo (time_format($vo["create_time"])); ?>
-                                </td>
-                            </tr><?php endforeach; endif; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-       
-        <div class="form-item">
-            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-        </div>
-
+        <?php } ?>
     </form>
+    <div class="clearfix">
+    <div class="form-item">
+        <label class="item-label">办理流程</label>
+        <div class="controls">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="text-left">
+                            状态
+                        </th>
+                        <th class="text-left">
+                            处理人
+                        </th>
+                        <th class="text-left">
+                            意见
+                        </th>
+                        <th class="text-left">
+                            处理时间
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
+                    <?php if(is_array($process)): foreach($process as $key=>$vo): ?><tr>
+                            <td class="text-left">
+                                <?php $types = C('STATUS'); ?>
+                                <?php echo ($types[$vo['status']]); ?>
+                            </td>
+                            <td class="text-left">
+                                <?php echo ($vo['member']['nickname']); ?>
+                            </td>
+                            <td class="text-left">
+                                <?php if (!$vo["info"]) { ?>
+                                    更改状态
+                                <?php }else { ?>
+                                    <?php echo ($vo["info"]); ?>
+                                <?php } ?>
+                                
+                            </td>
+                            <td class="text-left">
+                                <?php echo (time_format($vo["create_time"])); ?>
+                            </td>
+                        </tr><?php endforeach; endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+       
+    <div class="form-item">
+        <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+    </div>
 
         </div>
         <div class="cont-ft">

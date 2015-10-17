@@ -162,8 +162,8 @@
 			<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
 			<th>编号</th>
 			<th class="text-left">标题</th>
-			<th>留言日期</th>
 			<th>受理单位</th>
+			<th>留言日期</th>
 			<th>办理情况</th>	
 			<?php if (ACTION_NAME == "done") {?>
 			<th>办理完成</th>
@@ -179,8 +179,7 @@
 		<?php if(is_array($lists)): $i = 0; $__LIST__ = $lists;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
 	        <td><input class="ids" type="checkbox" name="ids[]" value="<?php echo ($vo["id"]); ?>" /></td>
 			<td><?php echo ($vo["id"]); ?></td>
-			<td style="text-align: left;"><i class="fa fa-credit-card"></i>&nbsp;&nbsp;<a href="<?php echo U('Ask/detail?id='.$vo['id']);?>"><?php echo ($vo["title"]); ?></a></td>
-			<td><span><?php echo (time_format($vo["create_time"])); ?></span></td>
+			<td style="text-align: left;"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;<a href="<?php echo U('Ask/detail?id='.$vo['id']);?>" title="查看"><?php echo ($vo["title"]); ?></a></td>
 			<td>
 				<span>
 				<?php echo ($vo['member']['nickname']?$vo['member']['nickname']:'未知'); ?>&nbsp;&nbsp;
@@ -201,6 +200,7 @@
 
 				</span>
 			</td>
+			<td><span><?php echo (time_format($vo["create_time"])); ?></span></td>
 			<td>
 				<?php $types = C('STATUS'); ?>
 				<?php echo ($types[$vo['status']]); ?>
@@ -214,8 +214,8 @@
 			</td>
 			<?php } ?>
 	        <td>
-				<?php if ($vo['finish_time']) { $diff_day = round(abs($vo['finish_time']-$vo['create_time'])/86400); }else { $diff_day = round(abs(time()-$vo['create_time'])/86400); } ?>
-				<b <?php if(($diff_day) > "5"): ?>class="red"<?php endif; ?>><?php echo ($diff_day); ?> 天</b>
+				<?php if ($vo['finish_time']) { $diff_day = round(abs($vo['finish_time']-$vo['create_time'])/86400); }else { $diff_day = round(abs(time()-$vo['create_time'])/86400); } if ( $diff_day < 1 ) { $diff_day = 1; } ?>
+				<span <?php if(($diff_day) > "5"): ?>class="red"<?php endif; ?>><?php echo ($diff_day); ?> 天</span>
 	        </td>
 	        <?php if (ACTION_NAME != "all" && ACTION_NAME != "index") { ?>
 	        <td>
@@ -237,7 +237,18 @@
 						<a href="" title="督办" target-form="form-horizontal">督办</a>
 					<?php } ?>
 
+					<?php if ( $group_id == 3 && $vo['status'] == 4 ) { ?>
+						<a href="<?php echo U('Ask/answer?&id='.$vo['id']);?>" title="回复网友">回复网友</a>
+						|
+						<a href="javascript:void(0);" data-aid="<?php echo ($vo['id']); ?>" title="退回重办" class="call_back_btn">退回重办</a>
+					<?php } ?>
+
+					<?php if ( $vo['status'] == 60 && $vo['uid'] == UID ) { ?>
+						<a href="<?php echo U('Ask/reply?&id='.$vo['id']);?>">重办</a>
+					<?php } ?>
+
 					<!-- <a href="<?php echo U('Ask/setStatus?status=-1&ids='.$vo['id']);?>" class="confirm ajax-get">删除</a> -->
+
 				<?php } else { ?>
 					<a href="<?php echo U('Ask/detail?id='.$vo['id']);?>">查看</a>
 				<?php } ?>
@@ -260,6 +271,35 @@
         <?php echo ($_page); ?>
     </div>
 
+    <div class="modal call_back">
+	    <form method="post" class="call_back_form" action="<?php echo U('Ask/call_back');?>">
+	        <div style="width: auto; padding: 0;" class="modal-dialog">
+	            <input name="aid" value="" type="hidden" />
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button aria-hidden="true" data-dismiss="modal" class="close close-dialog" type="button">
+	                        x
+	                    </button>
+	                    <h4 class="modal-title">
+	                        退回重办原因
+	                    </h4>
+	                </div>
+	                <div class="modal-body">
+	                    <textarea name="call_back_info">请输入内容！</textarea>
+	                </div>
+	                <div class="modal-footer">
+	                    <button href="<?php echo U('Ask/call_back?&id='.$vo['id']);?>" class="btn btn-primary ajax-post confirm"
+	                    target-form="call_back_form" type="button">
+	                        退回
+	                    </button>
+	                    <button class="btn btn-default close-dialog" type="button">
+	                        取消
+	                    </button>
+	                </div>
+	            </div>
+	        </div>
+	    </form>
+	</div>
 </div>
 
 
@@ -380,6 +420,20 @@ $(function(){
 		window.location.href = url;
 	});
 
+	$(".call_back_btn").click(function () {
+		var aid = $(this).data("aid");
+		$("input[name='aid']").val(aid);
+		$(".call_back").show();
+	})
+	$("textarea[name='call_back_info']").click(function () {
+		if ($(this).val() == "请输入内容！") {
+			$(this).val('');
+		}
+	});
+
+	$(".close-dialog").click(function () {
+		$(".call_back").hide();
+	})
 
 	/* 状态搜索子菜单 */
 	$(".search-form").find(".drop-down").hover(function(){

@@ -42,12 +42,14 @@ class AskController extends AdminController {
         $children = M("Member")->where(array("pid"=>UID))->select();
         $uid_array = array();
         $uid_array[] = UID;
+
         if (!empty($children)) {
             foreach ($children as $key => $value) {
                 $uid_array[] = $value["uid"];
             }
         }
         $maps['uid']    =   array("in",implode(",",$uid_array));
+        $this->uid_array = $uid_array;
 
         $maps['status'] = array("eq",0);
         $dsh_count = M('Ask')->where($maps)->count();
@@ -57,7 +59,7 @@ class AskController extends AdminController {
         $blz_count = M('Ask')->where($maps)->count();
         $_SESSION["menu_nums"]["办理中"] = $blz_count;
 
-        $maps['status'] = array('in','4,5');
+        $maps['status'] = array('in','4');
         $ydf_count = M('Ask')->where($maps)->count();
         $_SESSION["menu_nums"]["已回复"] = $ydf_count;
 
@@ -70,7 +72,7 @@ class AskController extends AdminController {
     /* 全部问题 */
     public function index(){
         
-        $title       =   trim(I('title'));
+        $title  = I('title');
         $status = I('status');
         $maps  =  array();
         if ( $title ) {
@@ -122,7 +124,7 @@ class AskController extends AdminController {
     /* 全部待认领问题 */
     public function all(){
 
-        $title  =   trim(I('title'));
+        $title  =   I('title');
         $status = I('status');
         $maps  =  array();
         $maps['uid'] = array('EXP','IS NULL');
@@ -172,7 +174,7 @@ class AskController extends AdminController {
     /* 我的待审核 */
     public function my(){
         
-        $title       =   trim(I('title'));
+        $title       =   I('title');
         $maps  =  array();
         $maps['status']    =   array("eq",0);
         $maps['uid']    =   array("eq",UID);
@@ -222,20 +224,10 @@ class AskController extends AdminController {
     /* 办理中 */
     public function processing(){
         
-        $title       =   trim(I('title'));
+        $title =   I('title');
         $maps  =  array();
         $maps['status']    =   array("eq",1);
-
-        $children = M("Member")->where(array("pid"=>UID))->select();
-        $uid_array = array();
-        $uid_array[] = UID;
-        if (!empty($children)) {
-            foreach ($children as $key => $value) {
-                $uid_array[] = $value["uid"];
-            }
-        }
-        $maps['uid']    =   array("in",implode(",",$uid_array));
-
+        $maps['uid']    =   array("in",implode(",",$this->uid_array));
         if ( $title ) {
             if(is_numeric($title)){
                 $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
@@ -281,10 +273,10 @@ class AskController extends AdminController {
     /* 已答复 */
     public function done(){
         
-        $title       =   trim(I('title'));
+        $title =   I('title');
         $maps  =  array();
         $maps['status'] = array('in','4,5');
-        $maps['uid']    =   array("eq",UID);
+        $maps['uid']    =   array("in",implode(",",$this->uid_array));
 
         if ( $title ) {
             if(is_numeric($title)){
@@ -328,10 +320,95 @@ class AskController extends AdminController {
         $this->display("index");
     }
 
+    // 回复网友
+    public function answer() {
+
+        $id = I('get.id');
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
+
+        $ask = M("Ask")->where(array("id"=>$id))->find();
+        $this->assign($ask);
+        if ( !in_array($ask["uid"],$this->uid_array) ) {
+            $this->error("出现错误！");
+        }
+
+        $reply = M("Reply")->order("id desc")->where(array("aid"=>$id))->find();
+
+        $this->assign("reply",$reply);
+        if (empty($reply)) {
+            $this->error("请先回复问题，再进行审核！");
+        }
+        if (IS_POST) {
+
+            $_POST['explain'] = html_entity_decode($_POST['explain']);
+            $_POST['reply_content'] = html_entity_decode($_POST['reply_content']);
+            $_POST['aid'] = $id;
+            $_POST['create_time'] = time();
+            $_POST['uid'] = UID;
+
+            M("Ask")->where(array("id"=>$id))->save(array("status"=>5,"finish_time"=>time(),"update_time"=>time()));
+            M("Reply")->where(array("id"=>$reply["id"]))->save($_POST);
+            
+            $member = M("Member")->where(array("uid"=>UID))->find();
+
+            $process = array();
+            $process["uid"] = $ask["uid"];
+            $process["aid"] = $id;
+            $process["status"] = 5;
+            $process["create_time"] = time();
+            $process["create_uid"] = UID;
+            $process["info"] = $member["nickname"]." 发布留言到网站";
+            M("Process")->add($process);
+
+            $this->success("回复网友成功！",U('Ask/done'));
+
+        }
+
+        $this->meta_title = '问题：'.$ask['name'];
+        $this->display("reply");
+
+    }
+
+    // 退回
+    public function call_back() {
+
+        $id = I('post.aid');
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
+        $info = I('post.call_back_info');
+        if ( !$info ) {
+            $this->error("退回重办原因不能为空！");
+        }
+
+        $ask = M("Ask")->where(array("id"=>$id))->find();
+        if ( !in_array($ask["uid"],$this->uid_array) ) {
+            $this->error("出现错误！");
+        }
+
+        M("Ask")->where(array("id"=>$id))->save(array("status"=>60,"finish_time"=>'',"update_time"=>time() ));
+        
+        $member = M("Member")->where(array("uid"=>UID))->find();
+
+        $process = array();
+        $process["uid"] = $ask["uid"];
+        $process["aid"] = $id;
+        $process["status"] = 60;
+        $process["create_time"] = time();
+        $process["create_uid"] = UID;
+        $process["info"] = $member["nickname"].": ".$info;
+        M("Process")->add($process);
+
+        $this->success('已退回！');
+
+    }
+
     /* 退回 */
     public function unsatisfied(){
         
-        $title       =   trim(I('title'));
+        $title       =   I('title');
         $maps  =  array();
         $maps['status'] = array('eq', 60);
         $maps['uid']    =   array("eq",UID);
@@ -374,7 +451,7 @@ class AskController extends AdminController {
         }
         $this->assign('lists', $lists);
 
-        $this->meta_title = '待办理问题';
+        $this->meta_title = '退回重办的问题';
         $this->display("index");
     }
 
@@ -405,8 +482,10 @@ class AskController extends AdminController {
                         $process["status"] = 1;
                         $process["create_time"] = time();
                         $process["create_uid"] = UID;
+                        $process["info"] = "审核通过";
+
                         M("Process")->add($process);
-                        $this->success("审批成功！",U('Ask/index'));
+                        $this->success("审批成功！",U('Ask/my'));
 
                     }else {
                         $this->error("出现错误！");
@@ -423,10 +502,10 @@ class AskController extends AdminController {
                         $process["status"] = 10;
                         $process["create_time"] = time();
                         $process["create_uid"] = UID;
-                        $process["info"] = $info;
+                        $process["info"] = "审核未通过 ".$info;
 
                         M("Process")->add($process);
-                        $this->success("处理完成！",U('Ask/index'));
+                        $this->success("处理完成！",U('Ask/my'));
 
                     }
                 } 
@@ -458,7 +537,14 @@ class AskController extends AdminController {
         }
         
         $ask = M("Ask")->where(array("id"=>$id))->find();
+        if ( !in_array($ask["uid"],$this->uid_array) ) {
+            $this->error("出现错误！");
+        }
+
         $this->assign($ask);
+
+        $reply = M("Reply")->order("id DESC")->where(array("aid"=>$id))->find();
+        $this->assign("reply",$reply);
 
         $yjdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3))->select();
         $this->assign('yjdw', $yjdw);
@@ -483,38 +569,63 @@ class AskController extends AdminController {
         }
         
         $ask = M("Ask")->where(array("id"=>$id))->find();
+        if ( !in_array($ask["uid"],$this->uid_array) ) {
+            $this->error("出现错误！");
+        }
         $this->assign($ask);
         
         if(IS_POST){
 
+            $_POST['explain'] = $_POST['explain'];
+            $_POST['reply_content'] = $_POST['reply_content'];
+            $_POST['aid'] = $id;
             $_POST['create_time'] = time();
             $_POST['uid'] = UID;
 
-            $Reply = D('Reply');
-            $check_ask = $Reply->check_reply($_POST);
-            
-            if($check_ask['error'])
+            if(empty($_POST['explain']))
             {
-                $this->error($check_ask['error']);
+                $this->error("办理情况不能为空");
+            }
+
+            if(empty($_POST['reply_content']))
+            {
+                $this->error("答复口径不能为空");
+            }
+
+            if(empty($_POST['transactor']))
+            {
+                $this->error("经办人不能为空");
+            }
+
+            if(empty($_POST['transactor_tel']))
+            {
+                $this->error("联系电话不能为空");
+            }
+            
+            $ask = M("Reply")->where(array("aid"=>$field['aid']))->find();
+        
+            if(!empty($ask))
+            {
+                $this->error("问题不存在！");
             }
             else
             {
-                $save_ask = $check_ask['data'];
-            }
-            
-            $save_ask['aid'] = $id;
-            $return = $Reply->save_ask($save_ask);
+                M("Reply")->add($_POST);
 
-            if($return)
-            {
+                M("Ask")->where(array("id"=>$_POST['aid']))->save(array("status"=>4,"update_time"=>time()));
+                $process = array();
+                $process["uid"] = $ask["uid"];
+                $process["aid"] = $_POST['aid'];
+                $process["status"] = 4;
+                $process["create_time"] = time();
+                $process["create_uid"] = UID;
+                $process["info"] = "回复成功";
+                M("Process")->add($process);
                 $this->success("答复成功！",U('Ask/processing'));
+                
             }
-            else
-            {
-                $this->error("答复失败，请重新提交！");
-            }
-            exit;
 
+            
         } else {
             $this->meta_title = '回复：'.$ask['name'];
             $this->display();
@@ -543,7 +654,7 @@ class AskController extends AdminController {
                 $process["status"] = 0;
                 $process["create_time"] = time();
                 $process["create_uid"] = UID;
-                $process["info"] = "将问题指派到".$pmember['nickname'];
+                $process["info"] = "将问题指派到 ".$pmember['nickname'];
 
                 M("Process")->add($process);
 
@@ -581,7 +692,7 @@ class AskController extends AdminController {
                 $process["status"] = 1;
                 $process["create_time"] = time();
                 $process["create_uid"] = UID;
-                $process["info"] = $old_member['nickname']."将问题指派到".$member['nickname'];
+                $process["info"] = $old_member['nickname']." 将问题指派到 ".$member['nickname'];
 
                 M("Process")->add($process);
 

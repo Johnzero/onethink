@@ -326,7 +326,84 @@ class ArticleController extends AdminController {
      * @author huajie <banhuajie@163.com>
      */
     public function setStatus($model='Document'){
+		if($_GET["status"]==1)//guth 审核前必须要校验编辑
+		{
+			$id = (int)$_GET['ids'];
+			$Document_indo = M("Document")->where(array("id"=>$id))->find();
+			
+			if($Document_indo['bianji_status'] != 1)
+			{
+				$s =  json_encode(array('status'=>1,"info"=>""));
+				$this->error("编辑还未校验");
+			}
+		}
+	
         return parent::setStatus('Document');
+    }
+	
+	public function jiaoyan()
+	{
+        //获取左边菜单
+        $this->getMenu();
+
+        $id     =   I('get.id','');
+        if(empty($id)){
+            $this->error('参数不能为空！');
+        }
+
+        // 获取详细数据 
+        $Document = D('Document');
+        $data = $Document->detail($id);
+        if(!$data){
+            $this->error($Document->getError());
+        }
+
+        if($data['pid']){
+            // 获取上级文档
+            $article        =   $Document->field('id,title,type')->find($data['pid']);
+            $this->assign('article',$article);
+        }
+        // 获取当前的模型信息
+        $model    =   get_document_model($data['model_id']);
+
+        $this->assign('data', $data);
+        $this->assign('model_id', $data['model_id']);
+        $this->assign('model',      $model);
+
+        //获取表单字段排序
+        $fields = get_model_attribute($model['id']);
+        $this->assign('fields',     $fields);
+
+
+        //获取当前分类的文档类型
+        $this->assign('type_list', get_type_bycate($data['category_id']));
+
+        $this->meta_title   =   '校验文档';
+        $this->display();
+	}
+	
+	/**
+     * 更新一条数据
+     * @author huajie <banhuajie@163.com>
+     */
+    public function jiaoyan_update(){
+
+		$id = (int)$_POST['id'];
+		if($id)
+		{
+			M("Document")->where(array("id"=>$id))->save(array("bianji_status"=>1));
+			$document   =   D('Document');
+			$res = $document->update();
+			if(!$res){
+				$this->error($document->getError());
+			}else{
+				$this->success($res['id']?'校验成功':'新增成功', Cookie('__forward__'));
+			}
+		}
+		else
+		{
+			$this->error("校验失败");
+		}
     }
 
     /**

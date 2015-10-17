@@ -210,6 +210,34 @@ class ArticleController extends HomeController {
 		$this->display($tmpl);
 	}
 	
+	public function get_message()
+	{
+		$tel = I('post.tel');
+		
+		
+		$num = rand(0000,9999);
+		M("Message_num")->query("INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('".$tel."','".$num."','".time()."')");
+
+		$re = message($tel,$num);
+		
+		if($re['res_code']==1)
+		{
+			$result = array();
+			$result['error'] = true;
+			$result['msg'] = '发送失败，请稍后再试！';
+			$this->ajaxReturn ( $result );
+			exit();
+		}
+		else
+		{
+			$result = array();
+			$result['error'] = false;
+			$result['msg'] = '短信已发送，请注意查收！';
+			$this->ajaxReturn ( $result );
+			exit();
+		}
+	}
+	
 	//2015-10-10 打分
 	public function ask_detail_score()
 	{

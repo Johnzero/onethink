@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2015-10-10 17:04:31
+Date: 2015-10-17 11:10:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `ot_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=84 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ot_action_log
@@ -150,6 +150,33 @@ INSERT INTO `ot_action_log` VALUES ('80', '1', '2', '0', 'member', '2', '合肥�
 INSERT INTO `ot_action_log` VALUES ('81', '10', '1', '0', 'Menu', '139', '操作url：/admin.php?s=/Menu/add.html', '1', '1444461211');
 INSERT INTO `ot_action_log` VALUES ('82', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 15:25登录了后台', '1', '1444461937');
 INSERT INTO `ot_action_log` VALUES ('83', '1', '2', '0', 'member', '2', '合肥市在2015-10-10 15:26登录了后台', '1', '1444462005');
+INSERT INTO `ot_action_log` VALUES ('84', '1', '1', '0', 'member', '1', 'admin在2015-10-12 08:27登录了后台', '1', '1444609666');
+INSERT INTO `ot_action_log` VALUES ('85', '10', '1', '0', 'Menu', '140', '操作url：/admin.php?s=/Menu/add.html', '1', '1444609727');
+INSERT INTO `ot_action_log` VALUES ('86', '1', '2', '0', 'member', '2', '合肥市在2015-10-12 08:31登录了后台', '1', '1444609904');
+INSERT INTO `ot_action_log` VALUES ('87', '10', '1', '0', 'Menu', '141', '操作url：/admin.php?s=/Menu/add.html', '1', '1444616925');
+INSERT INTO `ot_action_log` VALUES ('88', '1', '2', '0', 'member', '2', '合肥市在2015-10-12 10:29登录了后台', '1', '1444616964');
+INSERT INTO `ot_action_log` VALUES ('89', '1', '9', '0', 'member', '9', '巢湖市在2015-10-12 15:50登录了后台', '1', '1444636244');
+INSERT INTO `ot_action_log` VALUES ('90', '1', '9', '0', 'member', '9', '巢湖市在2015-10-12 15:51登录了后台', '1', '1444636275');
+INSERT INTO `ot_action_log` VALUES ('91', '1', '9', '0', 'member', '9', '巢湖市在2015-10-12 15:52登录了后台', '1', '1444636326');
+INSERT INTO `ot_action_log` VALUES ('92', '1', '9', '0', 'member', '9', '巢湖市在2015-10-13 08:50登录了后台', '1', '1444697421');
+INSERT INTO `ot_action_log` VALUES ('93', '1', '1', '0', 'member', '1', 'admin在2015-10-13 15:22登录了后台', '1', '1444720954');
+INSERT INTO `ot_action_log` VALUES ('94', '10', '1', '0', 'Menu', '142', '操作url：/admin.php?s=/Menu/add.html', '1', '1444721019');
+INSERT INTO `ot_action_log` VALUES ('95', '1', '2', '0', 'member', '2', '合肥市在2015-10-13 15:24登录了后台', '1', '1444721061');
+INSERT INTO `ot_action_log` VALUES ('96', '1', '9', '0', 'member', '9', '巢湖市在2015-10-13 16:20登录了后台', '1', '1444724419');
+INSERT INTO `ot_action_log` VALUES ('97', '1', '1', '0', 'member', '1', 'admin在2015-10-13 16:36登录了后台', '1', '1444725411');
+INSERT INTO `ot_action_log` VALUES ('98', '1', '1', '-1062730068', 'member', '1', 'admin在2015-10-13 17:17登录了后台', '1', '1444727830');
+INSERT INTO `ot_action_log` VALUES ('99', '1', '1', '0', 'member', '1', 'admin在2015-10-14 08:55登录了后台', '1', '1444784138');
+INSERT INTO `ot_action_log` VALUES ('100', '10', '1', '0', 'Menu', '143', '操作url：/admin.php?s=/Menu/add.html', '1', '1444784172');
+INSERT INTO `ot_action_log` VALUES ('101', '1', '2', '0', 'member', '2', '合肥市在2015-10-14 08:57登录了后台', '1', '1444784224');
+INSERT INTO `ot_action_log` VALUES ('102', '1', '1', '-1062730068', 'member', '1', 'admin在2015-10-14 15:23登录了后台', '1', '1444807429');
+INSERT INTO `ot_action_log` VALUES ('103', '1', '9', '0', 'member', '9', '巢湖市在2015-10-15 14:56登录了后台', '1', '1444892181');
+INSERT INTO `ot_action_log` VALUES ('104', '1', '1', '0', 'member', '1', 'admin在2015-10-15 15:04登录了后台', '1', '1444892684');
+INSERT INTO `ot_action_log` VALUES ('105', '1', '1', '-1062730167', 'member', '1', 'admin在2015-10-15 15:20登录了后台', '1', '1444893621');
+INSERT INTO `ot_action_log` VALUES ('106', '1', '1', '-1062730167', 'member', '1', 'admin在2015-10-15 15:27登录了后台', '1', '1444894023');
+INSERT INTO `ot_action_log` VALUES ('107', '1', '2', '-1062730068', 'member', '2', '合肥市在2015-10-15 15:53登录了后台', '1', '1444895605');
+INSERT INTO `ot_action_log` VALUES ('108', '1', '1', '-1062730068', 'member', '1', 'admin在2015-10-15 16:08登录了后台', '1', '1444896502');
+INSERT INTO `ot_action_log` VALUES ('109', '1', '2', '-1062730068', 'member', '2', '合肥市在2015-10-15 16:11登录了后台', '1', '1444896716');
+INSERT INTO `ot_action_log` VALUES ('110', '1', '1', '-1062730012', 'member', '1', 'admin在2015-10-15 16:54登录了后台', '1', '1444899254');
 
 -- ----------------------------
 -- Table structure for ot_addons
@@ -172,7 +199,7 @@ CREATE TABLE `ot_addons` (
 -- ----------------------------
 -- Records of ot_addons
 -- ----------------------------
-INSERT INTO `ot_addons` VALUES ('15', 'EditorForAdmin', '后台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"500px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1383126253', '0');
+INSERT INTO `ot_addons` VALUES ('15', 'EditorForAdmin', '后台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_markdownpreview\":\"0\",\"editor_height\":\"260px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1383126253', '0');
 INSERT INTO `ot_addons` VALUES ('2', 'SiteStat', '站点统计信息', '统计站点的基础信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"1\",\"display\":\"1\",\"status\":\"0\"}', 'thinkphp', '0.1', '1379512015', '0');
 INSERT INTO `ot_addons` VALUES ('4', 'SystemInfo', '系统环境信息', '用于显示一些服务器的信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512036', '0');
 INSERT INTO `ot_addons` VALUES ('5', 'Editor', '前台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"300px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1379830910', '0');
@@ -198,15 +225,104 @@ CREATE TABLE `ot_ask` (
   `update_time` int(11) DEFAULT NULL,
   `finish_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
+) ENGINE=MyISAM AUTO_INCREMENT=120 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
 
 -- ----------------------------
 -- Records of ot_ask
 -- ----------------------------
-INSERT INTO `ot_ask` VALUES ('25', null, '测试受理单位', '测试受理单位', '111', '测试受理单位', '测试受理单位', '测试受理单位', '0', '0', '0', null, null);
-INSERT INTO `ot_ask` VALUES ('26', '16', 'uid测试', 'uid测试', 'uid测试', 'uid测试', 'uid测试', 'uid测试', '0', '0', '0', null, null);
-INSERT INTO `ot_ask` VALUES ('23', '2', '111', '新桥路面一', '33', '44', '55', '666', '0', '1', '1443056542', '1444462696', null);
-INSERT INTO `ot_ask` VALUES ('24', null, '123123123123', '3123123', '1312312312', '12313', 'qsqs', ' asfa', '0', '0', '0', null, null);
+INSERT INTO `ot_ask` VALUES ('35', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('27', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('28', '2', 'asdfas', 'dfasdfas', 'fas', 'fasd', 'fasdfa', 'sdfasdf', '0', '60', '1444877007', '1444955559', '0');
+INSERT INTO `ot_ask` VALUES ('29', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('30', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('31', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('32', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('33', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('34', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('36', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('37', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('38', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('39', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('40', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('41', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('42', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('43', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('44', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('45', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('46', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('47', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('48', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('49', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('50', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('51', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('52', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('53', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('54', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('55', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('56', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('57', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('58', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('59', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('60', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('61', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('62', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('63', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('64', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('65', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('66', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('67', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('68', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('69', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('70', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('71', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('72', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('73', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('74', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('75', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('76', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('77', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('78', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('79', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('80', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('81', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('82', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('83', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('84', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('85', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('86', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('87', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('88', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('89', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('90', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('91', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('92', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('93', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('94', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('95', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('96', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('97', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('98', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('99', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('100', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('101', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('102', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('103', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('104', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('105', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('106', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('107', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('108', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('109', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('110', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('111', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('112', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('113', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('114', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '5', '1444876949', '1444900119', '1444900119');
+INSERT INTO `ot_ask` VALUES ('115', '9', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '5', '1444876949', '1444895164', '1444895164');
+INSERT INTO `ot_ask` VALUES ('116', '4', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '1', '1444876949', '1444879345', null);
+INSERT INTO `ot_ask` VALUES ('117', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '0', '1444876949', null, null);
+INSERT INTO `ot_ask` VALUES ('118', '2', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '10', '1444876949', '1444879076', null);
+INSERT INTO `ot_ask` VALUES ('119', '0', '13131313123', '13313131', '12313', '123123123', '123123', '123123', '0', '1', '1444876949', '1444879167', null);
 
 -- ----------------------------
 -- Table structure for ot_attachment
@@ -346,8 +462,8 @@ CREATE TABLE `ot_auth_group` (
 -- Records of ot_auth_group
 -- ----------------------------
 INSERT INTO `ot_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '1,2,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,79,80,81,82,83,84,86,87,88,89,90,91,92,93,94,95,96,97,100,102,103,105,106');
-INSERT INTO `ot_auth_group` VALUES ('4', 'admin', '1', '二级用户', '省直下属部门，县区', '1', '');
-INSERT INTO `ot_auth_group` VALUES ('3', 'admin', '1', '一级用户', '省直，地市', '1', '1,2,8,10,11,15,16,18,195,217,220,221,222,223,224,225,226,228,229,230,231,232');
+INSERT INTO `ot_auth_group` VALUES ('4', 'admin', '1', '二级用户', '省直下属部门，县区', '1', '1,2,7,8,10,11,15,16,18,217,222,223,225,226,228,231,232,233');
+INSERT INTO `ot_auth_group` VALUES ('3', 'admin', '1', '一级用户', '省直，地市', '1', '1,2,7,8,10,11,15,16,18,195,217,220,221,222,223,224,225,226,228,229,230,231,232,233,234,235,236');
 INSERT INTO `ot_auth_group` VALUES ('5', 'admin', '1', '审核编辑', '审核编辑', '1', '1,2,5,7,8,9,10,11,12,13,14,15,16,17,18,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,79,80,81,82,83,84,86,87,89,90,91,92,93,100,102,103,205,206,207,208,211,212,213,214,215,216,217,218');
 
 -- ----------------------------
@@ -397,7 +513,7 @@ CREATE TABLE `ot_auth_rule` (
   `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件',
   PRIMARY KEY (`id`),
   KEY `module` (`module`,`status`,`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=233 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=237 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ot_auth_rule
@@ -631,6 +747,10 @@ INSERT INTO `ot_auth_rule` VALUES ('229', 'admin', '1', 'Admin/Ask/sp', ' 审批
 INSERT INTO `ot_auth_rule` VALUES ('230', 'admin', '1', 'Admin/Ask/change', '更改受理单位', '1', '');
 INSERT INTO `ot_auth_rule` VALUES ('231', 'admin', '1', 'Admin/Ask/action', '用户行为', '1', '');
 INSERT INTO `ot_auth_rule` VALUES ('232', 'admin', '1', 'Admin/Ask/detail', '流程明细', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('233', 'admin', '1', 'Admin/Ask/adopt', '认领', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('234', 'admin', '1', 'Admin/Ask/assign_to', '指派', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('235', 'admin', '1', 'Admin/Ask/answer', '审批答复', '1', '');
+INSERT INTO `ot_auth_rule` VALUES ('236', 'admin', '1', 'Admin/Ask/call_back', '退回', '1', '');
 
 -- ----------------------------
 -- Table structure for ot_category
@@ -722,7 +842,7 @@ CREATE TABLE `ot_config` (
   UNIQUE KEY `uk_name` (`name`),
   KEY `type` (`type`),
   KEY `group` (`group`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ot_config
@@ -754,6 +874,7 @@ INSERT INTO `ot_config` VALUES ('34', 'DENY_VISIT', '3', '超管专限控制器�
 INSERT INTO `ot_config` VALUES ('35', 'REPLY_LIST_ROWS', '0', '回复列表每页条数', '2', '', '', '1386645376', '1387178083', '1', '10', '0');
 INSERT INTO `ot_config` VALUES ('36', 'ADMIN_ALLOW_IP', '2', '后台允许访问IP', '4', '', '多个用逗号分隔，如果不配置表示不限制IP访问', '1387165454', '1387165553', '1', '', '12');
 INSERT INTO `ot_config` VALUES ('37', 'SHOW_PAGE_TRACE', '4', '是否显示页面Trace', '4', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '1387165685', '1387165685', '1', '1', '1');
+INSERT INTO `ot_config` VALUES ('38', 'DF_MB', '2', '答复模板', '2', '', '', '1444893694', '1444893694', '1', '<p>\r\n	<strong>尊敬的网友：</strong>\r\n</p>\r\n<p>\r\n	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 您好！\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<strong>办理人：XXX</strong>\r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<strong>2015.10.12</strong>\r\n</p>', '3');
 
 -- ----------------------------
 -- Table structure for ot_document
@@ -784,22 +905,25 @@ CREATE TABLE `ot_document` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '数据状态',
+  `bianji_status` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of ot_document
 -- ----------------------------
-INSERT INTO `ot_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '2', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '133', '0', '0', '0', '1406001413', '1406001413', '1');
-INSERT INTO `ot_document` VALUES ('2', '1', '', 'asdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087785', '1443087785', '1');
-INSERT INTO `ot_document` VALUES ('3', '1', '', 'asdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087792', '1443087792', '1');
-INSERT INTO `ot_document` VALUES ('4', '1', '', 'v', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1443087798', '1443087798', '1');
-INSERT INTO `ot_document` VALUES ('5', '1', '', 'sd', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087806', '1443087806', '1');
-INSERT INTO `ot_document` VALUES ('6', '1', '', 'sdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087814', '1443087814', '1');
-INSERT INTO `ot_document` VALUES ('7', '1', '', 'ceshi', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1444353313', '1444353313', '1');
-INSERT INTO `ot_document` VALUES ('8', '2', '', '1232', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1444375844', '1444375844', '1');
+INSERT INTO `ot_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '2', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '133', '0', '0', '0', '1406001413', '1406001413', '1', '0');
+INSERT INTO `ot_document` VALUES ('2', '1', '', 'asdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087785', '1443087785', '1', '0');
+INSERT INTO `ot_document` VALUES ('3', '1', '', 'asdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087792', '1443087792', '1', '0');
+INSERT INTO `ot_document` VALUES ('4', '1', '', 'v', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1443087798', '1443087798', '1', '0');
+INSERT INTO `ot_document` VALUES ('5', '1', '', 'sd', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087806', '1443087806', '1', '0');
+INSERT INTO `ot_document` VALUES ('6', '1', '', 'sdf', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1443087814', '1443087814', '1', '0');
+INSERT INTO `ot_document` VALUES ('7', '1', '', 'ceshi', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1444353313', '1444353313', '2', '0');
+INSERT INTO `ot_document` VALUES ('8', '2', '', '1232', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '1', '0', '0', '0', '1444375844', '1444375844', '0', '0');
+INSERT INTO `ot_document` VALUES ('9', '1', '', '1423321111222', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1444726260', '1444811059', '1', '1');
+INSERT INTO `ot_document` VALUES ('10', '2', '', '合肥市新增的文章', '2', '0', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1444896720', '1444896809', '1', '1');
 
 -- ----------------------------
 -- Table structure for ot_document_article
@@ -825,6 +949,8 @@ INSERT INTO `ot_document_article` VALUES ('5', '0', 'fsdfsdfsdfsfsf', '', '0');
 INSERT INTO `ot_document_article` VALUES ('6', '0', 'sdfsd', '', '0');
 INSERT INTO `ot_document_article` VALUES ('7', '0', 'ceshiceshiceshi', '', '0');
 INSERT INTO `ot_document_article` VALUES ('8', '0', '235423', '', '0');
+INSERT INTO `ot_document_article` VALUES ('9', '0', '3242342323542324', '', '0');
+INSERT INTO `ot_document_article` VALUES ('10', '0', '合肥市新增的文章\r\n	合肥市新增的文章\r\n	合肥市新增的文章\r\n	合肥市新增的文章\r\n	合肥市新增的文章111', '', '0');
 
 -- ----------------------------
 -- Table structure for ot_document_download
@@ -928,13 +1054,13 @@ CREATE TABLE `ot_member` (
 -- ----------------------------
 -- Records of ot_member
 -- ----------------------------
-INSERT INTO `ot_member` VALUES ('1', null, 'admin', '0', '0000-00-00', '', '70', '22', '0', '1442801047', '0', '1444456144', '1', null, null);
-INSERT INTO `ot_member` VALUES ('2', null, '合肥市', '0', '0000-00-00', '', '20', '27', '0', '0', '0', '1444462005', '1', '123', '2147483647');
+INSERT INTO `ot_member` VALUES ('1', null, 'admin', '0', '0000-00-00', '', '90', '33', '0', '1442801047', '3232237284', '1444899254', '1', null, null);
+INSERT INTO `ot_member` VALUES ('2', null, '合肥市', '0', '0000-00-00', '', '50', '33', '0', '0', '3232237228', '1444896716', '1', '123', '2147483647');
 INSERT INTO `ot_member` VALUES ('3', '2', '肥东县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('4', '2', '肥西县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('8', '2', '庐江县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('7', '2', '长丰县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('9', '2', '巢湖市', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
+INSERT INTO `ot_member` VALUES ('9', '2', '巢湖市', '0', '0000-00-00', '', '20', '6', '0', '0', '0', '1444892181', '1', null, null);
 INSERT INTO `ot_member` VALUES ('10', '2', '瑶海区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('11', '2', '庐阳区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('12', '2', '蜀山区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
@@ -964,7 +1090,7 @@ CREATE TABLE `ot_menu` (
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=140 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=144 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ot_menu
@@ -1094,6 +1220,29 @@ INSERT INTO `ot_menu` VALUES ('136', ' 审批', '135', '0', 'Ask/sp', '1', '', '
 INSERT INTO `ot_menu` VALUES ('137', '答复', '135', '0', 'Ask/reply', '1', '', '', '0', '1');
 INSERT INTO `ot_menu` VALUES ('138', '更改受理单位', '135', '0', 'Ask/change', '1', '', '', '0', '1');
 INSERT INTO `ot_menu` VALUES ('139', '流程明细', '135', '0', 'Ask/detail', '1', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('140', '认领', '135', '0', 'Ask/adopt', '1', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('141', '指派', '135', '0', 'Ask/assign_to', '1', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('142', '审批答复', '135', '0', 'Ask/answer', '1', '', '', '0', '1');
+INSERT INTO `ot_menu` VALUES ('143', '退回', '135', '0', 'Ask/call_back', '1', '', '', '0', '1');
+
+-- ----------------------------
+-- Table structure for ot_message_num
+-- ----------------------------
+DROP TABLE IF EXISTS `ot_message_num`;
+CREATE TABLE `ot_message_num` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tel` char(100) NOT NULL,
+  `num` char(6) NOT NULL,
+  `lastupdate` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ot_message_num
+-- ----------------------------
+INSERT INTO `ot_message_num` VALUES ('1', '13856090487', '3005', '1444985198');
+INSERT INTO `ot_message_num` VALUES ('2', '13856090487', '9210', '1444986700');
+INSERT INTO `ot_message_num` VALUES ('3', '13856090487', '8494', '1444986802');
 
 -- ----------------------------
 -- Table structure for ot_model
@@ -1163,16 +1312,27 @@ CREATE TABLE `ot_process` (
   `create_uid` int(11) DEFAULT NULL,
   `info` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
 
 -- ----------------------------
 -- Records of ot_process
 -- ----------------------------
-INSERT INTO `ot_process` VALUES ('28', '2', '23', '0', '1444376639', '1', '将问题指派到');
-INSERT INTO `ot_process` VALUES ('24', '21', '22', '1', '1444273987', '1', null);
-INSERT INTO `ot_process` VALUES ('25', '21', '22', '10', '1444287093', '1', '未通过原因未通过原因未通过原因未通过原因未通过原因');
-INSERT INTO `ot_process` VALUES ('26', '1', '22', '4', '1444290828', '1', '222');
-INSERT INTO `ot_process` VALUES ('29', '2', '23', '1', '1444462696', '2', null);
+INSERT INTO `ot_process` VALUES ('57', '2', '28', '60', '1444955559', '2', '合肥市: 退回重办原因');
+INSERT INTO `ot_process` VALUES ('56', '2', '114', '5', '1444900119', '2', '合肥市 发布留言到网站');
+INSERT INTO `ot_process` VALUES ('55', null, '28', '4', '1444898421', '2', '回复成功');
+INSERT INTO `ot_process` VALUES ('54', null, '114', '4', '1444898191', '2', '回复成功');
+INSERT INTO `ot_process` VALUES ('53', '9', '115', '5', '1444895164', '2', '合肥市 发布留言到网站');
+INSERT INTO `ot_process` VALUES ('50', '4', '116', '1', '1444879345', '2', '合肥市将问题指派到肥西县');
+INSERT INTO `ot_process` VALUES ('51', null, '115', '4', '1444893007', '9', '回复成功');
+INSERT INTO `ot_process` VALUES ('52', null, '115', '4', '1444895038', '9', '回复成功');
+INSERT INTO `ot_process` VALUES ('49', '0', '119', '1', '1444879167', '2', '合肥市将问题指派到');
+INSERT INTO `ot_process` VALUES ('48', '2', '118', '10', '1444879076', '2', '审核未通过 未通过原因');
+INSERT INTO `ot_process` VALUES ('47', '2', '119', '1', '1444878915', '2', null);
+INSERT INTO `ot_process` VALUES ('46', '2', '116', '1', '1444878903', '2', null);
+INSERT INTO `ot_process` VALUES ('45', '2', '114', '1', '1444878893', '2', null);
+INSERT INTO `ot_process` VALUES ('44', '9', '115', '1', '1444878876', '2', '合肥市将问题指派到巢湖市');
+INSERT INTO `ot_process` VALUES ('43', '2', '115', '1', '1444878607', '2', null);
+INSERT INTO `ot_process` VALUES ('42', '2', '28', '1', '1444878097', '2', null);
 
 -- ----------------------------
 -- Table structure for ot_reply
@@ -1183,21 +1343,22 @@ CREATE TABLE `ot_reply` (
   `aid` int(11) DEFAULT NULL COMMENT '行为唯一标识',
   `uid` int(11) DEFAULT NULL,
   `explain` text,
-  `reply_content` text NOT NULL COMMENT '类型',
-  `code` int(10) NOT NULL DEFAULT '0' COMMENT '状态',
+  `reply_content` text COMMENT '类型',
   `remarks` text,
   `transactor` varchar(20) DEFAULT NULL,
-  `status` tinyint(3) DEFAULT NULL,
   `transactor_tel` varchar(15) DEFAULT NULL,
   `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
   `update_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
 
 -- ----------------------------
 -- Records of ot_reply
 -- ----------------------------
-INSERT INTO `ot_reply` VALUES ('30', '22', null, '11', '222', '0', '333', '444', null, '555', '0', null);
+INSERT INTO `ot_reply` VALUES ('35', '115', '9', '<p>\r\n	尊敬的用户您好：\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p style=\"text-align:right;\">\r\n	', '<p>\r\n	尊敬的用户您好：\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p style=\"text-align:right;\">\r\n	', '备注', '经办人', '联系方式', '1444893007', null);
+INSERT INTO `ot_reply` VALUES ('36', '115', '2', '<p>\r\n	<span style=\"color:#404040;font-family:\'microsoft yahei\', Helvetica, Tahoma, Arial, sans-serif;font-size:14px;font-weight:bold;line-height:30px;background-color:#F6F6F6;\">办理情况：</span> \r\n</p>\r\n<p>\r\n	<span style=\"color:#404040;font-family:\'microsoft yahei\', Helvetica, Tahoma, Arial, sans-serif;font-size:14px;font-weight:bold;line-height:30px;background-color:#F6F6F6;\">阿萨德法师打发</span> \r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<span style=\"color:#404040;font-family:\'microsoft yahei\', Helvetica, Tahoma, Arial, sans-serif;font-size:14px;font-weight:bold;line-height:30px;background-color:#F6F6F6;\">阿萨德法师</span> \r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<span style=\"color:#404040;font-family:\'microsoft yahei\', Helvetica, Tahoma, Arial, sans-serif;font-size:14px;font-weight:bold;line-height:30px;background-color:#F6F6F6;\">201.450</span> \r\n</p>', '<p>\r\n	<span style=\"color:#404040;font-family:\'microsoft yahei\', Helvetica, Tahoma, Arial, sans-serif;font-size:14px;font-weight:bold;line-height:30px;background-color:#F6F6F6;\">办理情况：</span> \r\n</p>\r\n<p>\r\n	<span style=\"color:#404040;font-family:\'microsoft yahei\', Helvetica, Tahoma, Arial, sans-serif;font-size:14px;font-weight:bold;line-height:30px;background-color:#F6F6F6;\">阿萨德法师打发</span> \r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<span style=\"color:#404040;font-family:\'microsoft yahei\', Helvetica, Tahoma, Arial, sans-serif;font-size:14px;font-weight:bold;line-height:30px;background-color:#F6F6F6;\">阿萨德法师</span> \r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<span style=\"color:#404040;font-family:\'microsoft yahei\', Helvetica, Tahoma, Arial, sans-serif;font-size:14px;font-weight:bold;line-height:30px;background-color:#F6F6F6;\">201.450</span> \r\n</p>', '', '经办人', '联系方式', '1444895164', null);
+INSERT INTO `ot_reply` VALUES ('37', '114', '2', '<p>\r\n	<strong>尊敬的网友：</strong> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>', '<p>\r\n	<strong>尊敬的网友：</strong> \r\n</p>\r\n<p>\r\n	<strong><br />\r\n</strong>\r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<strong><br />\r\n</strong>\r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<strong>asdfasdfa</strong>\r\n</p>\r\n<p>\r\n	<br />\r\n</p>', '', '经办人', '13956070164', '1444900119', null);
+INSERT INTO `ot_reply` VALUES ('38', '28', '2', '<p>\r\n	<strong>尊敬的网友：</strong> \r\n</p>\r\n<p>\r\n	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 您好！\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<strong>办理人：XXX</strong> \r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<strong>2015.10.12</strong> \r\n</p>', '<p>\r\n	<strong>尊敬的网友：</strong> \r\n</p>\r\n<p>\r\n	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 您好！\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<strong>办理人：XXX</strong> \r\n</p>\r\n<p style=\"text-align:right;\">\r\n	<strong>2015.10.12</strong> \r\n</p>', '', '经办人', '139560070166', '1444898421', null);
 
 -- ----------------------------
 -- Table structure for ot_score
@@ -1206,14 +1367,15 @@ DROP TABLE IF EXISTS `ot_score`;
 CREATE TABLE `ot_score` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ask_id` int(11) unsigned DEFAULT NULL,
-  ` score` decimal(3,0) unsigned zerofill DEFAULT NULL,
-  `lastupdate` datetime DEFAULT NULL,
+  `scores` decimal(3,0) unsigned zerofill DEFAULT NULL,
+  `lastupdate` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ot_score
 -- ----------------------------
+INSERT INTO `ot_score` VALUES ('14', '26', '000', '1444640074');
 
 -- ----------------------------
 -- Table structure for ot_ucenter_admin
@@ -1278,15 +1440,15 @@ CREATE TABLE `ot_ucenter_member` (
 -- ----------------------------
 -- Records of ot_ucenter_member
 -- ----------------------------
-INSERT INTO `ot_ucenter_member` VALUES ('1', 'admin', 'dba1f2b355020ca960aab274c992cf73', 'wangsong1233276@sina.com', '', '1442801047', '0', '1444456144', '0', '1442801047', '1');
-INSERT INTO `ot_ucenter_member` VALUES ('2', '合肥市', '15f61c11ca0ba54277f3841ba11053ee', 'h@zf.com', '', '1443057312', '0', '1444462005', '0', '1443057312', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('1', 'admin', 'dba1f2b355020ca960aab274c992cf73', 'wangsong1233276@sina.com', '', '1442801047', '0', '1444899254', '3232237284', '1442801047', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('2', '合肥市', '15f61c11ca0ba54277f3841ba11053ee', 'h@zf.com', '', '1443057312', '0', '1444896716', '3232237228', '1443057312', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('3', '肥东县', '15f61c11ca0ba54277f3841ba11053ee', 'fd@123.com', '', '1442890436', '0', '0', '0', '1442890436', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('4', '肥西县', '15f61c11ca0ba54277f3841ba11053ee', 'fx@1.com', '', '1442913624', '0', '0', '0', '1442913624', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('5', 'dfasdfa', '15f61c11ca0ba54277f3841ba11053ee', 'asdf@fsf.com', '', '1442913687', '0', '0', '0', '1442913687', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('6', 'tetsteteste', '15f61c11ca0ba54277f3841ba11053ee', 'leibiya110@sinal.com', '', '1442913938', '0', '0', '0', '1442913938', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('7', '长丰县', '15f61c11ca0ba54277f3841ba11053ee', '12312@sina.com', '', '1442914024', '0', '0', '0', '1442914024', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('8', '庐江县', '15f61c11ca0ba54277f3841ba11053ee', '123121@sina.com', '', '1442914044', '0', '0', '0', '1442914044', '1');
-INSERT INTO `ot_ucenter_member` VALUES ('9', '巢湖市', '15f61c11ca0ba54277f3841ba11053ee', '2312@sina.com', '', '1442914063', '0', '0', '0', '1442914063', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('9', '巢湖市', '15f61c11ca0ba54277f3841ba11053ee', '2312@sina.com', '', '1442914063', '0', '1444892181', '0', '1442914063', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('10', '瑶海区', '15f61c11ca0ba54277f3841ba11053ee', '123123@sina.com', '', '1442914082', '0', '0', '0', '1442914082', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('11', '庐阳区', '15f61c11ca0ba54277f3841ba11053ee', 'S@SINA.COM', '', '1442914111', '0', '0', '0', '1442914111', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('12', '蜀山区', '15f61c11ca0ba54277f3841ba11053ee', 'xx12@SINA.COM', '', '1442914142', '0', '0', '0', '1442914142', '1');

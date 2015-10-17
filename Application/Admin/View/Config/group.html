@@ -27,7 +27,53 @@
 			</case>
 			<case value="2">
 			<label class="textarea input-large">
+				<?php if ($config["name"] == "DF_MB") { ?>
+				<textarea name="config[{$config.name}]" id="dfmb">{$config.value}</textarea>
+				<link rel="stylesheet" href="/Public/static/kindeditor/default/default.css">
+				<script charset="utf-8" src="/Public/static/kindeditor/kindeditor-min.js"></script>
+				<script charset="utf-8" src="/Public/static/kindeditor/zh_CN.js"></script>
+				<script type="text/javascript">
+					var editor_dfmb;
+					KindEditor.ready(function(K) {
+						editor_dfmb = K.create('textarea[id="dfmb"]', {
+							allowFileManager : true,
+							themesPath: K.basePath,
+							width: '100%',
+							height: '260px',
+							resizeType: 1,
+							pasteType : 2,
+							urlType : 'absolute',
+							fileManagerJson : '/admin.php?s=/Config/fileManagerJson.html',
+							//uploadJson : '/admin.php?s=/Config/uploadJson.html' }
+							uploadJson : '/admin.php?s=/Addons/execute/_addons/EditorForAdmin/_controller/Upload/_action/ke_upimg.html',
+							items : ['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'cut', 'copy', 'paste',
+								'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+								'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+								'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '|',
+								'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+								'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+								'table', 'hr', 'emoticons', 'map',  'pagebreak', 'anchor', 'link', 'unlink', '|', 'about'
+							],
+							extraFileUploadParams: {
+								session_id : 'osvvst495p5pjuft5shh5hppv1'
+		                    }
+						});
+					});
+
+					$(function(){
+						//传统表单提交同步
+						$('textarea[name="config[DF_MB]"]').closest('form').submit(function(){
+							editor_dfmb.sync();
+						});
+						//ajax提交之前同步
+						$('button[type="submit"],#submit,.ajax-post,#autoSave').click(function(){
+							editor_dfmb.sync();
+						});
+					})
+				</script>
+				<?php }else { ?>
 				<textarea name="config[{$config.name}]">{$config.value}</textarea>
+				<?php } ?>
 			</label>
 			</case>
 			<case value="3">

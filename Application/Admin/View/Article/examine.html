@@ -41,7 +41,10 @@
 			<td><span>{:get_document_type($vo['type'])}</span></td>
 			<td><span>{:get_cate($vo['category_id'])}</span></td>
 			<td><span>{$vo.create_time|time_format}</span></td>
-			<td><a href="{:U('Article/edit?cate_id='.$vo['category_id'].'&id='.$vo['id'])}">编辑</a>
+			<td>
+				
+				<a href="{:U('Article/edit?cate_id='.$vo['category_id'].'&id='.$vo['id'])}">编辑</a>
+				<a href="{:U('Article/jiaoyan?cate_id='.$vo['category_id'].'&id='.$vo['id'])}">校验</a>
 				<a href="{:U('Article/setStatus?ids='.$vo['id'].'&status=1')}" class="ajax-get">审核</a>
 				<a href="{:U('Article/setStatus?status=-1&ids='.$vo['id'])}" class="confirm ajax-get">删除</a>
                 </td>

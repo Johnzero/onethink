@@ -126,18 +126,29 @@
             <label class="item-label">办理情况</label>
             <div class="controls">
                 <label class="textarea input-large">
-                    <textarea name="explain"></textarea>
-                    <?php echo hook('adminArticleEdit', array('name'=>explain,'value'=>$reply.explain));?>
+                    <textarea name="explain">
+                        <?php if ( trim($reply['explain']) ) { ?>
+                           <?php echo ($reply["explain"]); ?>
+                        <?php } else { ?>
+                            <?php echo C('DF_MB');?>
+                        <?php } ?>
+                    </textarea>
+                    <?php echo hook('adminArticleEdit', array('name'=>'explain'));?>
                 </label>
             </div>
         </div>
-		
 		<div class="form-item">
             <label class="item-label">网上答复口径</label>
             <div class="controls">
                 <label class="textarea input-large">
-                    <textarea name="reply_content"></textarea>
-                    <?php echo hook('adminArticleEdit', array('name'=>reply_content,'value'=>$reply.reply_content));?>
+                    <textarea name="reply_content">
+                        <?php if ( trim($reply['reply_content']) ) { ?>
+                            <?php echo ($reply["reply_content"]); ?>
+                        <?php } else { ?>
+                            <?php echo C('DF_MB');?>
+                        <?php } ?>
+                    </textarea>
+                    <?php echo hook('adminArticleEdit', array('name'=>'reply_content'));?>
                 </label>
             </div>
         </div>
@@ -160,24 +171,48 @@
             <label class="item-label">备注</label>
             <div class="controls">
                 <label class="textarea input-large">
-                    <textarea name="remarks"></textarea>
+                    <textarea name="remarks"><?php echo ($reply["remarks"]); ?></textarea>
                 </label>
             </div>
         </div>
 
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="reply-form">确 定</button>
+            <?php if ( ACTION_NAME == 'answer' ) { ?>
+                <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="reply-form" title="发 布">发 布</button>
+            <?php }else { ?>
+                <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="reply-form" title="回 复">回 复</button>
+            <?php } ?>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
 
     </form>
     <form class="form-horizontal show-detail">    
         <div class="form-item">
+            <label class="item-label">留言用户</label>
+            <div class="controls">
+                <input type="text" class="text input-large" value="<?php echo ($name); ?>" readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">联系方式</label>
+            <div class="controls">
+                <input type="text" class="text input-large" value="<?php echo ($tel); ?>" readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-item">
             <label class="item-label">留言内容</label>
             <div class="controls">
                 <label class="textarea input-large">
                     <textarea readonly="readonly"><?php echo ($content); ?></textarea>
                 </label>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">附件</label>
+            <div class="controls">
+                
             </div>
         </div>
     </form>
