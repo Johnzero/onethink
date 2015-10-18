@@ -1,0 +1,71 @@
+<volist name="tree" id="list">
+    <dl class="cate-item">
+        <dt class="cf ">
+            <form action="{:U('edit')}" method="post">
+                <table border="0" width="100%">
+                    <tr>
+                        <td width="5%">
+                            <div class="fold">
+                                <i>
+                                </i>
+                            </div>
+                        </td> 
+                        <td width="5%">{$list.uid} </td>
+                        <td width="15%" class="text-left">
+                            <if condition="$list.pid neq 0">
+                            <span class="tab-sign"></span>
+                            </if>
+                            &nbsp;{$list.nickname}
+                        </td>
+                        <td width="5%">{$list.score}</td>
+                        <td width="10%">{$list.login}</td>
+                        <td width="15%">
+                            <span>
+                                <if condition="$list.last_login_time eq 0">
+                                    暂未登陆
+                                <else/>
+                                    {$list.last_login_time|time_format}
+                                </if>
+                            </span>
+                        </td>
+                        <td width="15%">
+                        <span>
+                            <if condition="$list.last_login_ip eq 0">
+                                暂未登陆
+                            <else/>
+                                {:long2ip($list['last_login_ip'])}
+                            </if>
+                        </span>
+                        </td>
+                        <td width="10%">
+                            <php>
+                                $st = array(1=>'正常',-1=>'删除',0=>'禁用',2=>'未审核',3=>'草稿');
+                                echo $st[$list['status']];
+                            </php>
+                        </td>
+                        <td width="25%">
+                            
+                            <a href="{:U('User/edit?id='.$list['uid'])}">编辑</a>&nbsp;|
+
+                            <eq name="list.status" value="1">
+                                <a href="{:U('User/changeStatus?method=forbidUser&id='.$list['uid'])}" class="ajax-get">禁用</a>&nbsp;|
+                                <else/>
+                                <a href="{:U('User/changeStatus?method=resumeUser&id='.$list['uid'])}" class="ajax-get">启用</a>&nbsp;|
+                            </eq>
+                            <a href="{:U('AuthManager/group?uid='.$list['uid'])}" class="authorize">授权</a>&nbsp;|
+                            <a href="{:U('User/changeStatus?method=deleteUser&id='.$list['uid'])}" class="confirm ajax-get">删除</a>
+                        </td>
+                    </tr>
+                </table>
+                <span class="help-inline msg">
+                </span>
+
+            </form>
+        </dt>
+        <notempty name="list['_']">
+            <dd style="display:none;">
+                {:R('user/tree', array($list['_']))}
+            </dd>
+        </notempty>
+    </dl>
+</volist>

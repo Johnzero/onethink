@@ -1,0 +1,71 @@
+<extend name="Base/common"/>
+<block name="style">
+<link rel="stylesheet" type="text/css" href="/Public/Admin/css/table.css" media="all">
+</block>
+<block name="body">
+	<!-- 数据表格 -->
+    <div class="data-table">
+		<table>
+    <thead>
+        <tr>
+			<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+			<th>编号</th>
+			<th>标题</th>
+			<th>留言日期</th>
+			<th>受理单位</th>
+			<th>办理情况</th>
+			<th>办理完成日期</th>
+			<th>办理天数</th>
+		</tr>
+    </thead>
+   	
+   	<tbody>
+		<volist name="lists" id="vo">
+		<tr>
+	        <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+			<td>{$vo.id}</td>
+			<td style="text-align: left;"><i class="fa fa-credit-card"></i>&nbsp;&nbsp;<a href="{:U('Article/ask_detail?id='.$vo['id'])}">{$vo.title}</a></td>
+			<td><span>{$vo.create_time|time_format}</span></td>
+			<td>
+				<span>
+				{$vo['member']['nickname']?$vo['member']['nickname']:'未知'}&nbsp;&nbsp;
+				
+				<?php if ( $group_id == 1 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
+					<a href="{:U('Ask/change?id='.$vo['id'])}" title="更改"><i class="fa fa-reply-all"></i></a>
+				<?php }else if ( $group_id == 3 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
+					<a href="{:U('Ask/adopt?id='.$vo['id'])}" title="认领"><i class="fa fa-reply-all"></i></a>
+				<?php } ?>
+				</span>
+			</td>
+			<td>
+				<php>$types = C('STATUS');</php>
+				{$types[$vo['status']]}
+			</td>
+			<td>
+				<?php if ($vo['finish_time']) {?>
+				<span>{$vo.finish_time|time_format}</span>
+				<?php } ?>
+			</td>
+	        <td>
+				<php>
+					if ($vo['finish_time']) {
+						$diff_day = round(abs($vo['finish_time']-$vo['create_time'])/86400);
+					}else {
+						$diff_day = round(abs(time()-$vo['create_time'])/86400);
+					}
+				</php>
+				<b <gt name="diff_day" value="5">class="red"</gt>>{$diff_day} 天</b>
+	        </td>
+		</tr>
+		</volist>
+	</tbody>
+
+    </table> 
+
+	</div>
+
+	<!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</block>
