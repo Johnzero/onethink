@@ -3,11 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo ($meta_title); ?></title>
-<<<<<<< HEAD
     <!-- <script>document.write('<script src="http://192.168.6.80:8080/livereload.js?snipver=1"></' + 'script>')</script> -->
-=======
-    <script>document.write('<script src="http://192.168.6.80:8080/livereload.js?snipver=1"></' + 'script>')</script>
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
     <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css" media="all">
@@ -31,11 +27,7 @@
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
-<<<<<<< HEAD
         <span class="logo" style="background:none;color:white;font-size:22px;">办事平台</span>
-=======
-        <span class="logo"></span>
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
         <!-- /Logo -->
 
         <!-- 主导航 -->
@@ -115,11 +107,7 @@
 
             
     <div class="main-title">
-<<<<<<< HEAD
         <h2>留言留言：<?php echo ($title); ?></h2>
-=======
-        <h2>留言问题：<?php echo ($title); ?></h2>
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
     </div>
     <form method="post" class="form-horizontal">
         <div class="form-left">
@@ -167,7 +155,6 @@
             <div class="form-item">
                 <label class="item-label">办理情况</label>
                 <div class="controls">
-<<<<<<< HEAD
                     <ul class="tab-nav nav">
                         <?php foreach ($reply as $key => $value): ?>
                         <li class="nav-<?php echo ($value["id"]); ?> <?php if(($key) == "0"): ?>current<?php endif; ?> "><a href="javascript:void(0);" data-reply="<?php echo ($value["id"]); ?>"><?php echo (time_format($value["create_time"])); ?></a></li>
@@ -177,10 +164,6 @@
                         <?php foreach ($reply as $key => $value): ?>
                         <section class="contents-reply reply-<?php echo ($value["id"]); ?>" <?php if(($key) == "0"): ?>style="display:block;"<?php endif; ?>><?php echo ($value["explain"]); ?></section>
                         <?php endforeach ?>
-=======
-                    <label class="textarea input-large">
-                        <section id="contents"><?php echo ($reply["explain"]); ?></section>
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                     </label>
                 </div>
             </div>
@@ -188,7 +171,6 @@
             <div class="form-item">
                 <label class="item-label">网上答复口径</label>
                 <div class="controls">
-<<<<<<< HEAD
                     <ul class="tab-nav nav">
                         <?php foreach ($reply as $key => $value): ?>
                         <li class="nav-<?php echo ($value["id"]); ?> <?php if(($key) == "0"): ?>current<?php endif; ?> "><a href="javascript:void(0);" data-reply="<?php echo ($value["id"]); ?>"><?php echo (time_format($value["create_time"])); ?></a></li>
@@ -198,10 +180,6 @@
                         <?php foreach ($reply as $key => $value): ?>
                         <section class="contents-reply reply-<?php echo ($value["id"]); ?>" <?php if(($key) == "0"): ?>style="display:block;"<?php endif; ?>><?php echo ($value["reply_content"]); ?></section>
                         <?php endforeach ?>
-=======
-                    <label class="textarea input-large">
-                        <section id="contents"><?php echo ($reply["reply_content"]); ?></section>
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                     </label>
                 </div>
             </div>
@@ -209,7 +187,6 @@
             <div class="form-item">
                 <label class="item-label">经办人</label>
                 <div class="controls">
-<<<<<<< HEAD
                     <ul class="tab-nav nav">
                         <?php foreach ($reply as $key => $value): ?>
                         <li class="nav-<?php echo ($value["id"]); ?> <?php if(($key) == "0"): ?>current<?php endif; ?> "><a href="javascript:void(0);" data-reply="<?php echo ($value["id"]); ?>"><?php echo (time_format($value["create_time"])); ?></a></li>
@@ -218,16 +195,12 @@
                     <?php foreach ($reply as $key => $value): ?>
                     <input type="text" class="text input-large contents-reply reply-<?php echo ($value["id"]); ?>" name="transactor" value="<?php echo ($value["transactor"]); ?>" readonly="readonly" <?php if(($key) == "0"): ?>style="display:block;"<?php endif; ?>>
                     <?php endforeach ?>
-=======
-                    <input type="text" class="text input-large" name="transactor" value="<?php echo ($reply["transactor"]); ?>" readonly="readonly">
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                 </div>
             </div>
 
             <div class="form-item">
                 <label class="item-label">联系方式</label>
                 <div class="controls">
-<<<<<<< HEAD
                     <ul class="tab-nav nav">
                         <?php foreach ($reply as $key => $value): ?>
                         <li class="nav-<?php echo ($value["id"]); ?> <?php if(($key) == "0"): ?>current<?php endif; ?> "><a href="javascript:void(0);" data-reply="<?php echo ($value["id"]); ?>"><?php echo (time_format($value["create_time"])); ?></a></li>
@@ -250,17 +223,6 @@
                         <?php foreach ($reply as $key => $value): ?>
                         <section class="contents-reply reply-<?php echo ($value["id"]); ?>" <?php if(($key) == "0"): ?>style="display:block;"<?php endif; ?>><?php echo ($value["remarks"]); ?></section>
                         <?php endforeach ?>
-=======
-                    <input type="text" class="text input-large" name="transactor_tel" value="<?php echo ($reply["transactor_tel"]); ?>" readonly="readonly">
-                </div>
-            </div>
-
-            <div class="form-item">
-                <label class="item-label">备注</label>
-                <div class="controls">
-                    <label class="textarea input-large">
-                        <textarea name="remarks" readonly="readonly"><?php echo ($reply["remarks"]); ?></textarea>
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                     </label>
                 </div>
             </div>
@@ -412,7 +374,6 @@
     
     <script type="text/javascript">
         highlight_subnav('<?php echo U('User/index');?>');
-<<<<<<< HEAD
         $(".tab-nav li a").click(function () {
             var id = $(this).data("reply");
 
@@ -422,8 +383,6 @@
             $(".contents-reply").hide();
             $(".reply-"+id).show();
         })
-=======
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
     </script>
 
 </body>

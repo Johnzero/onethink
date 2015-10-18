@@ -563,11 +563,7 @@ var utils = UE.utils = {
         return  value;
     },
     /**
-<<<<<<< HEAD
      * 只针对border,padding,margin做了处理，因为性能留言
-=======
-     * 只针对border,padding,margin做了处理，因为性能问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
      * @public
      * @function
      * @param {String}    val style字符串
@@ -3894,11 +3890,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');///import editor.js
                 start, tmp, parent;
             if ( ie ) {
                 if ( !range ) {
-<<<<<<< HEAD
                     //todo 给第一个值可能会有留言
-=======
-                    //todo 给第一个值可能会有问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                     return this.document.body.firstChild;
                 }
                 //control元素
@@ -4175,11 +4167,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');///import editor.js
                         //设置四周的留边
                         '.view{padding:0;word-wrap:break-word;cursor:text;height:90%;}\n' +
                         //设置默认字体和字号
-<<<<<<< HEAD
                         //font-family不能呢随便改，在safari下fillchar会有解析留言
-=======
-                        //font-family不能呢随便改，在safari下fillchar会有解析问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                         'body{margin:8px;font-family:sans-serif;font-size:16px;}' +
                         //设置段落间距
                         'p{margin:5px 0;}</style>' +
@@ -4198,11 +4186,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');///import editor.js
                         'document.write("' + html + '");document.close();}())'
                 }));
                 container.style.overflow = 'hidden';
-<<<<<<< HEAD
                 //解决如果是给定的百分比，会导致高度算不对的留言
-=======
-                //解决如果是给定的百分比，会导致高度算不对的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                 setTimeout(function(){
                     if( /%$/.test(options.initialFrameWidth)){
                         options.minFrameWidth = options.initialFrameWidth = container.offsetWidth;
@@ -4559,11 +4543,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');///import editor.js
             !notFireSelectionchange && me._selectionChange();
             //清除保存的选区
             me._bakRange = me._bakIERange = me._bakNativeRange = null;
-<<<<<<< HEAD
             //trace:1742 setContent后gecko能得到焦点留言
-=======
-            //trace:1742 setContent后gecko能得到焦点问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             var geckoSel;
             if (browser.gecko && (geckoSel = this.selection.getNative())) {
                 geckoSel.removeAllRanges();
@@ -4669,11 +4649,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');///import editor.js
          */
         _selectionChange: function (delay, evt) {
             var me = this;
-<<<<<<< HEAD
             //有光标才做selectionchange 为了解决未focus时点击source不能触发更改工具栏状态的留言（source命令notNeedUndo=1）
-=======
-            //有光标才做selectionchange 为了解决未focus时点击source不能触发更改工具栏状态的问题（source命令notNeedUndo=1）
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 //            if ( !me.selection.isFocus() ){
 //                return;
 //            }
@@ -5217,11 +5193,7 @@ var filterWord = UE.filterWord = function () {
                 })
                 //清除多余的font/span不能匹配&nbsp;有可能是空格
                 .replace( /<(font|span)[^>]*>\s*<\/\1>/gi, '' )
-<<<<<<< HEAD
                 //处理style的留言
-=======
-                //处理style的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                 .replace( /(<[a-z][^>]*)\sstyle=(["'])([^\2]*?)\2/gi, function( str, tag, tmp, style ) {
                     var n = [],
                         s = style.replace( /^\s+|\s+$/, '' )
@@ -7309,11 +7281,7 @@ UE.plugins['font'] = function () {
 
 
                                 text.parentNode.insertBefore(span, text);
-<<<<<<< HEAD
                                 //修复，span套span 但样式不继承的留言
-=======
-                                //修复，span套span 但样式不继承的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                                 if (!browser.ie || browser.ie && browser.version == 9) {
                                     var spanParent = span.parentNode;
                                     while (!domUtils.isBlockElm(spanParent)) {
@@ -7509,11 +7477,7 @@ UE.plugins['link'] = function(){
             opt.href && (opt.href = utils.unhtml(opt.href,/[<">]/g));
             opt.textValue && (opt.textValue = utils.unhtml(opt.textValue,/[<">]/g));
             doLink(range=this.selection.getRange(),opt,this);
-<<<<<<< HEAD
             //闭合都不加占位符，如果加了会在a后边多个占位符节点，导致a是图片背景组成的列表，出现空白留言
-=======
-            //闭合都不加占位符，如果加了会在a后边多个占位符节点，导致a是图片背景组成的列表，出现空白问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             range.collapse().select(true);
 
         },
@@ -9309,11 +9273,7 @@ UE.plugins['undo'] = function () {
             //去掉展位符
             me.document.body.innerHTML = root.toHtml();
             me.fireEvent('afterscencerestore');
-<<<<<<< HEAD
             //处理undo后空格不展位的留言
-=======
-            //处理undo后空格不展位的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             if (browser.ie) {
                 utils.each(domUtils.getElementsByTagName(me.document,'td th caption p'),function(node){
                     if(domUtils.isEmptyNode(node)){
@@ -9532,11 +9492,7 @@ UE.plugins['paste'] = function () {
         //bk.start.innerHTML = '&nbsp;';
         bk.start.style.display = '';
         pastebin.style.cssText = "position:absolute;width:1px;height:1px;overflow:hidden;left:-1000px;white-space:nowrap;top:" +
-<<<<<<< HEAD
             //要在现在光标平行的位置加入，否则会出现跳动的留言
-=======
-            //要在现在光标平行的位置加入，否则会出现跳动的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             domUtils.getXY(bk.start).y + 'px';
 
         range.selectNodeContents(pastebin).select(true);
@@ -9924,11 +9880,7 @@ UE.plugins['list'] = function () {
         //如果不给宽度会在自定应样式里出现滚动条
         utils.cssRule('list', 'ol,ul{margin:0;pading:0;'+(browser.ie ? '' : 'width:95%')+'}li{clear:both;}'+customCss.join('\n'), me.document);
     });
-<<<<<<< HEAD
     //单独处理剪切的留言
-=======
-    //单独处理剪切的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
     me.ready(function(){
         domUtils.on(me.body,'cut',function(){
             setTimeout(function(){
@@ -10435,11 +10387,7 @@ UE.plugins['list'] = function () {
 
         }
         if (keyCode == 8) {
-<<<<<<< HEAD
             //修中ie中li下的留言
-=======
-            //修中ie中li下的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             range = me.selection.getRange();
             if (range.collapsed && domUtils.isStartInblock(range)) {
                 tmpRange = range.cloneRange().trimBoundary();
@@ -11054,11 +11002,7 @@ UE.plugins['list'] = function () {
         }
 
         var bakCssText;
-<<<<<<< HEAD
         //解决在源码模式下getContent不能得到最新的内容留言
-=======
-        //解决在源码模式下getContent不能得到最新的内容问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
         var oldGetContent = me.getContent,
             bakAddress;
 
@@ -11238,11 +11182,7 @@ UE.plugins['enterkey'] = function() {
                 start = range.startContainer,
                 doSave;
 
-<<<<<<< HEAD
             //修正在h1-h6里边回车后不能嵌套p的留言
-=======
-            //修正在h1-h6里边回车后不能嵌套p的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             if (!browser.ie) {
 
                 if (/h\d/i.test(hTag)) {
@@ -11277,11 +11217,7 @@ UE.plugins['enterkey'] = function() {
                         me.undoManger.save();
                     }
                 }
-<<<<<<< HEAD
                 //没有站位符，会出现多行的留言
-=======
-                //没有站位符，会出现多行的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                 browser.opera &&  range.select();
             }else{
                 me.fireEvent('saveScene',true,true)
@@ -11320,11 +11256,7 @@ UE.plugins['enterkey'] = function() {
 
                     start = domUtils.findParentByTagName(range.startContainer, ['ol','ul','p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6','blockquote','caption'], true);
 
-<<<<<<< HEAD
                     //opera下执行formatblock会在table的场景下有留言，回车在opera原生支持很好，所以暂时在opera去掉调用这个原生的command
-=======
-                    //opera下执行formatblock会在table的场景下有问题，回车在opera原生支持很好，所以暂时在opera去掉调用这个原生的command
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                     //trace:2431
                     if (!start && !browser.opera) {
 
@@ -11405,11 +11337,7 @@ UE.plugins['enterkey'] = function() {
     });
 };
 /*
-<<<<<<< HEAD
  *   处理特殊键的兼容性留言
-=======
- *   处理特殊键的兼容性问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
  */
 UE.plugins['keystrokes'] = function() {
     var me = this;
@@ -11468,11 +11396,7 @@ UE.plugins['keystrokes'] = function() {
                 return;
             }
             var start,end;
-<<<<<<< HEAD
             //避免按两次删除才能生效的留言
-=======
-            //避免按两次删除才能生效的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             if(rng.collapsed && rng.inFillChar()){
                 start = rng.startContainer;
 
@@ -11486,11 +11410,7 @@ UE.plugins['keystrokes'] = function() {
                 }
             }
 
-<<<<<<< HEAD
             //解决选中control元素不能删除的留言
-=======
-            //解决选中control元素不能删除的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             if (start = rng.getClosedNode()) {
                 me.fireEvent('saveScene');
                 rng.setStartBefore(start);
@@ -11631,17 +11551,10 @@ UE.plugins['keystrokes'] = function() {
 
     })
 };///import core
-<<<<<<< HEAD
 ///commands 修复chrome下图片不能点击的留言
 ///commandsName  FixImgClick
 ///commandsTitle  修复chrome下图片不能点击的留言
 //修复chrome下图片不能点击的留言
-=======
-///commands 修复chrome下图片不能点击的问题
-///commandsName  FixImgClick
-///commandsTitle  修复chrome下图片不能点击的问题
-//修复chrome下图片不能点击的问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 //todo 可以改大小
 UE.plugins['fiximgclick'] = function() {
     var me = this;
@@ -12602,11 +12515,7 @@ UE.plugins['pasteplain'] = function(){
 
             if (leftTopCell.colSpan == this.colsNum && leftTopCell.rowSpan != 1) {
                 var rowIndex = leftTopCell.parentNode.rowIndex;
-<<<<<<< HEAD
                 //解决IE下的表格操作留言
-=======
-                //解决IE下的表格操作问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                 if( this.table.deleteRow ) {
                     for (var i = rowIndex+ 1, curIndex=rowIndex+ 1, len=leftTopCell.rowSpan; i < len; i++) {
                         this.table.deleteRow(curIndex);
@@ -15250,11 +15159,7 @@ UE.plugins['table'] = function () {
 
         if (evt.button == 2)return;
         var me = this;
-<<<<<<< HEAD
         //清除表格上原生跨选留言
-=======
-        //清除表格上原生跨选问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
         var range = me.selection.getRange(),
             start = domUtils.findParentByTagName(range.startContainer, 'table', true),
             end = domUtils.findParentByTagName(range.endContainer, 'table', true);
@@ -19458,11 +19363,7 @@ baidu.editor.ui = {};(function (){
     for (var p in dialogBtns) {
         (function (type, vals) {
             for (var i = 0, ci; ci = vals[i++];) {
-<<<<<<< HEAD
                 //todo opera下存在留言
-=======
-                //todo opera下存在问题
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                 if (browser.opera && ci === "searchreplace") {
                     continue;
                 }

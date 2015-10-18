@@ -13,11 +13,7 @@
             <div class="login-body">
                 <div class="login-main pr">
                     <form action="<?php echo U('login');?>" method="post" class="login-form">
-<<<<<<< HEAD
                         <h3 class="welcome"><i class="login-logo"></i>安徽省政府办事平台</h3>
-=======
-                        <h3 class="welcome"><i class="login-logo"></i>OneThink管理平台</h3>
->>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
                         <div id="itemBox" class="item-box">
                             <div class="item">
                                 <i class="icon-login-user"></i>
