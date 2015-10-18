@@ -12,7 +12,11 @@ use Think\Model;
  */
 class AskModel extends Model{
 	/**
+<<<<<<< HEAD
 	 * 提交留言
+=======
+	 * 提交问题
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 	 * @author guth 
 	 */
 	public function save_ask($field = false){
@@ -20,7 +24,11 @@ class AskModel extends Model{
 	}
 
 	/**
+<<<<<<< HEAD
 	 * 留言验证
+=======
+	 * 问题验证
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 	 * @author guth 
 	 */
 	public function check_ask($data)

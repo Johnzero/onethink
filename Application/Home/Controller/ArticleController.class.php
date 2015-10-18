@@ -112,7 +112,11 @@ class ArticleController extends HomeController {
 	}
 	
 	
+<<<<<<< HEAD
 	/* 提交留言页面 guth 20150922 */
+=======
+	/* 提交问题页面 guth 20150922 */
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 	public function ask(){
 		/* 分类信息 */
 		//$category = $this->category();guth 分类判断，不清楚干嘛的
@@ -153,7 +157,11 @@ class ArticleController extends HomeController {
 		$this->display($tmpl);
 	}
 	
+<<<<<<< HEAD
 	//2015-10-10 留言列表
+=======
+	//2015-10-10 问题列表
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 	public function ask_list()
 	{
 		$maps  =  array();
@@ -184,7 +192,11 @@ class ArticleController extends HomeController {
 		$this->display($tmpl);
 	}
 	
+<<<<<<< HEAD
 	//2015-10-10 留言详情
+=======
+	//2015-10-10 问题详情
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 	public function ask_detail()
 	{
 		$id = I('get.id');
@@ -261,7 +273,11 @@ class ArticleController extends HomeController {
 		{
 			$result = array();
 			$result['error'] = true;
+<<<<<<< HEAD
 			$result['msg'] = '只有结束的留言才允许打分';
+=======
+			$result['msg'] = '只有结束的问题才允许打分';
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 			$this->ajaxReturn ( $result );
 			exit();
 		}

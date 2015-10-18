@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo ($meta_title); ?></title>
+<<<<<<< HEAD
     <!-- <script>document.write('<script src="http://192.168.6.80:8080/livereload.js?snipver=1"></' + 'script>')</script> -->
+=======
+    <script>document.write('<script src="http://192.168.6.80:8080/livereload.js?snipver=1"></' + 'script>')</script>
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
     <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css" media="all">
@@ -25,7 +29,11 @@
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
+<<<<<<< HEAD
         <span class="logo" style="background:none;color:white;font-size:22px;">办事平台</span>
+=======
+        <span class="logo"></span>
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
         <!-- /Logo -->
 
         <!-- 主导航 -->
@@ -101,7 +109,11 @@
         <div class="search-form fr cf">
             <div class="sleft">
                 <input type="text" name="title" class="search-input" value="<?php echo I('title');?>" placeholder="请输入菜单名称">
+<<<<<<< HEAD
                 <a class="sch-btn" href="javascript:;" id="search" url="/admin.php?s=/Menu/index/pid/135.html"><i class="btn-search"></i></a>
+=======
+                <a class="sch-btn" href="javascript:;" id="search" url="/admin.php?s=/Menu/index.html"><i class="btn-search"></i></a>
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
             </div>
         </div>
     </div>

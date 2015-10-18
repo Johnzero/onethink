@@ -1064,7 +1064,11 @@ baidu.sio._createScriptTag = function(scr, url, charset){
 };
 
 /**
+<<<<<<< HEAD
  * 删除script的属性，再删除script标签，以解决修复内存泄漏的留言
+=======
+ * 删除script的属性，再删除script标签，以解决修复内存泄漏的问题
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
  * 
  * @param {HTMLElement} src script节点
  */

@@ -999,7 +999,11 @@ div.edui-box {
     background-color: white;
 }
 
+<<<<<<< HEAD
 /* 解决嵌套导致的图标留言 */
+=======
+/* 解决嵌套导致的图标问题 */
+>>>>>>> c5aa0e95e0b7d49fc0922542f984bcc79da0b41c
 .edui-default .edui-for-insertorderedlist .edui-popup-body .edui-icon,
 .edui-default .edui-for-lineheight .edui-popup-body .edui-icon,
 .edui-default .edui-for-rowspacingtop .edui-popup-body .edui-icon,
