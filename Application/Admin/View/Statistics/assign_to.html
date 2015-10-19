@@ -1,0 +1,36 @@
+<extend name="Public/base"/>
+
+<block name="style">
+<link rel="stylesheet" type="text/css" href="__CSS__/table.css" media="all">
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>留言留言：{$title}</h2>
+    </div>
+    <form method="post" class="form-horizontal">
+
+        <div class="form-item">
+            <label class="item-label">指派下级单位：</label>
+            <div class="controls">
+                <select name="pid">
+                    <option value="" <?php if (!$uid) { ?> selected <?php } ?>>请选择下级单位</option>
+                    <volist name="yjdw" id="vo">
+                        <option value="{$vo.uid}" <eq name="uid" value="$vo.uid"> selected</eq> >{$vo.nickname}</option>
+                    </volist>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="form-horizontal">确定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+
+    </form>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        highlight_subnav('{:U('User/index')}');
+    </script>
+</block>

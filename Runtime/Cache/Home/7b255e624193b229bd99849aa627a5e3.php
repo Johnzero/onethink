@@ -91,7 +91,7 @@
         
         
 	<div class="main-title">
-        <h2>留言问题：<?php echo ($title); ?></h2>
+        <h2>留言留言：<?php echo ($title); ?></h2>
     </div>
 
         <div class="form-item">

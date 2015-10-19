@@ -247,10 +247,6 @@ function int_to_string(&$data,$map=array('status'=>array(1=>'正常',-1=>'删除
     return $data;
 }
 
-/**
- * 动态扩展左侧菜单,base.html里用到
- * @author 朱亚杰 <zhuyajie@topthink.net>
- */
 function extra_menu($extra_menu,&$base_menu){
     foreach ($extra_menu as $key=>$group){
         if( isset($base_menu['child'][$key]) ){

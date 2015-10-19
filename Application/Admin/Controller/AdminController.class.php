@@ -231,10 +231,7 @@ class AdminController extends Controller {
         }
     }
 
-    /**
-     * 获取控制器菜单数组,二级菜单元素位于一级菜单的'_child'元素中
-     * @author 朱亚杰  <xcoolcc@gmail.com>
-     */
+
     final public function getMenus($controller=CONTROLLER_NAME){
         $menus  =   session('ADMIN_MENU_LIST.'.$controller);
         if(empty($menus)){

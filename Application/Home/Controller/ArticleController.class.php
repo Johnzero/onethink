@@ -216,20 +216,20 @@ class ArticleController extends HomeController {
 		
 		
 		$num = rand(0000,9999);
-		M("Message_num")->query("INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('".$tel."','".$num."','".time()."')");
-
 		$re = message($tel,$num);
 		
 		if($re['res_code']==1)
 		{
 			$result = array();
 			$result['error'] = true;
-			$result['msg'] = '发送失败，请稍后再试！';
+			$result['msg'] = $re['res_message'];
 			$this->ajaxReturn ( $result );
 			exit();
 		}
 		else
 		{
+			M("Message_num")->execute("INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('".$tel."','".$num."','".time()."')");
+			
 			$result = array();
 			$result['error'] = false;
 			$result['msg'] = '短信已发送，请注意查收！';
@@ -251,6 +251,18 @@ class ArticleController extends HomeController {
 			$result = array();
 			$result['error'] = true;
 			$result['msg'] = '信息不完善！';
+			$this->ajaxReturn ( $result );
+			exit();
+		}
+		
+		//校验验证码
+		//ticket
+		$Message_num_info = M("Message_num")->where(array("num"=>$num,"tel"=>$tel))->find();
+		if(empty($Message_num_info) || (time()-150)>$Message_num_info['lastupdate'])
+		{
+			$result = array();
+			$result['error'] = true;
+			$result['msg'] = '验证码无效';
 			$this->ajaxReturn ( $result );
 			exit();
 		}

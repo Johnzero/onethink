@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo ($meta_title); ?></title>
-    <script>document.write('<script src="http://192.168.6.80:8080/livereload.js?snipver=1"></' + 'script>')</script>
     <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css" media="all">
@@ -18,6 +17,9 @@
     <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
+    
+    <script type="text/javascript" src="http://192.168.6.80:8080/livereload.js?snipver=1"></script>
+
     <!--<![endif]-->
     
 </head>
@@ -25,7 +27,7 @@
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
-        <span class="logo"></span>
+        <span class="logo" style="background:none;color:white;font-size:22px;">办事平台</span>
         <!-- /Logo -->
 
         <!-- 主导航 -->
@@ -89,7 +91,7 @@
 
             
     <div class="main-title">
-        <h2>留言问题：<?php echo ($title); ?></h2>
+        <h2>留言留言：<?php echo ($title); ?></h2>
     </div>
     <form method="post" class="form-horizontal">
         <?php if ($group_id == 1) { ?>

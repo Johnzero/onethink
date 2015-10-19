@@ -1033,7 +1033,14 @@ function message($acceptor_tel,$num) {
 	$send_url = "http://api.189.cn/v2/emp/templateSms/sendSms";
 
 	$template_id = "91548517";
-	$template_param = '{"param1":"3","param2":"$num","param3":"2"}';
+	
+	$template_param_array = array();
+	$template_param_array['param1'] = "3";
+	$template_param_array['param2'] = "$num";
+	$template_param_array['param3'] = "2";
+	
+	$template_param = json_encode($template_param_array);
+
 	$timestamp = urlencode(date('Y-m-d H:i:s'));
 	$send2 = 'acceptor_tel='.$acceptor_tel.'&template_id='.$template_id.'&template_param='.$template_param.'&app_id='.$app_id.'&timestamp='.$timestamp.'&access_token='.$access_token;    
 	$re = curl_post($send_url, $send2);
@@ -1052,6 +1059,12 @@ function curl_post($url='', $postdata=''){
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
 	$data = curl_exec($ch);
+	
+	$status = curl_getinfo($ch,CURLINFO_HTTP_CODE); var_dump($status);
+     
+	curl_close($ch); 
+
+		 
 	curl_close($ch);
 	return $data;
 }

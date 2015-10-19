@@ -10,7 +10,6 @@ use Think\Model;
 
 class AskModel extends Model {
 
-
     public function getTree($id = 0, $field = true,$maps = array()){
         $list = $this->where($maps)->field($field)->order('id')->select();
         return $list;
