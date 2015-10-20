@@ -2060,3 +2060,1349 @@ INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
 SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
 SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
 
+[ 2015-10-19T17:49:53+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1068 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1068 行.
+
+[ 2015-10-19T17:54:18+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0150s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:54:27+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.009000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1068 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1068 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0130s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('1385609487','8150','1445248467') [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:55:09+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T17:55:17+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0090s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:55:28+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.009001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007001s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:55:35+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:55:39+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0130s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:55:49+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.005000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0040s ]
+
+[ 2015-10-19T17:56:21+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','4229','1445248581') [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:57:07+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:57:16+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+
+[ 2015-10-19T17:57:45+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:58:07+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0180s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','2728','1445248687') [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:58:34+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:58:38+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','6175','1445248718') [ RunTime:0.0010s ]
+
+[ 2015-10-19T17:58:49+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T17:59:01+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0110s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:59:06+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0170s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','1816','1445248746') [ RunTime:0.0010s ]
+
+[ 2015-10-19T17:59:11+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:59:15+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','5628','1445248755') [ RunTime:0.0000s ]
+
+[ 2015-10-19T17:59:20+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T17:59:31+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:00:11+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:00:24+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+NOTIC: [8] Undefined variable: num D:\onethink\Application\Home\Controller\ArticleController.class.php 第 260 行.
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = null AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:00:30+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0160s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:00:38+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+NOTIC: [8] Undefined variable: num D:\onethink\Application\Home\Controller\ArticleController.class.php 第 260 行.
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = null AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:00:58+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:01:11+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0070s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+NOTIC: [8] Undefined variable: num D:\onethink\Application\Home\Controller\ArticleController.class.php 第 260 行.
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = null AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:01:23+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0130s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:01:32+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0070s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '5628' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:01:43+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0130s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:01:51+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '5628' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:01:56+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','3771','1445248916') [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:02:12+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '3771' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:02:38+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '3771' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:03:21+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '3771' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:03:27+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '3771' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:03:41+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '3771' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:06:04+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '3771' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:06:08+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','8309','1445249168') [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:06:20+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '8309' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:07:55+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2015-10-19T18:08:09+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:08:17+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','4704','1445249297') [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:08:29+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0090s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '4704' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:09:12+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0140s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:09:37+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '4704' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:10:37+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0140s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:11:07+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:11:11+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:11:41+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:11:46+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 0 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:11:52+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:12:01+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 0 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:13:35+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:13:39+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:13:45+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13856090487','9273','1445249625') [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:14:03+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0070s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '9273' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_score` [ RunTime:0.0220s ]
+SQL: SELECT * FROM `ot_score` WHERE `ask_id` = 120 LIMIT 1   [ RunTime:0.0000s ]
+SQL: INSERT INTO `ot_score` (`ask_id`,`scores`,`lastupdate`) VALUES ('120','100','1445249643') [ RunTime:0.0000s ]
+ERR: SQLSTATE[HY000]: General error
+
+[ 2015-10-19T18:14:25+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:14:36+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '9273' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_score` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_score` WHERE `ask_id` = 120 LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `ot_score` SET `scores`='100',`lastupdate`='1445249676' WHERE `ask_id` = '120' [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:14:38+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '9273' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_score` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_score` WHERE `ask_id` = 120 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `ot_score` SET `scores`='100',`lastupdate`='1445249678' WHERE `ask_id` = '120' [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:14:39+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0070s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '9273' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_score` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_score` WHERE `ask_id` = 120 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `ot_score` SET `scores`='100',`lastupdate`='1445249679' WHERE `ask_id` = '120' [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:14:41+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '9273' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_score` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_score` WHERE `ask_id` = 120 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `ot_score` SET `scores`='100',`lastupdate`='1445249681' WHERE `ask_id` = '120' [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:14:42+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '9273' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_score` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_score` WHERE `ask_id` = 120 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `ot_score` SET `scores`='100',`lastupdate`='1445249682' WHERE `ask_id` = '120' [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:14:44+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0090s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '9273' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_score` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_score` WHERE `ask_id` = 120 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `ot_score` SET `scores`='100',`lastupdate`='1445249684' WHERE `ask_id` = '120' [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:14:45+08:00 ] 192.168.6.172 /Article/ask_detail_score
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0070s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_message_num` WHERE `num` = '9273' AND `tel` = '13856090487' ORDER BY id desc LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_score` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_score` WHERE `ask_id` = 120 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `ot_score` SET `scores`='100',`lastupdate`='1445249685' WHERE `ask_id` = '120' [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:15:39+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0160s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13956070164','5113','1445249739') [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:16:57+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:17:05+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13856090487' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:17:22+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:17:34+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0170s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13956070164','626','1445249854') [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:20:19+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.009001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0210s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:20:27+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0260s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13956070164','5979','1445250027') [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:21:56+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0150s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:23:03+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0110s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13956070164','6667','1445250183') [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:23:13+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0130s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:23:16+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0090s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0170s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13956070164','8649','1445250196') [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:25:37+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:26:18+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0090s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:26:53+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0030s ]
+
+[ 2015-10-19T18:26:56+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0140s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0020s ]
+
+[ 2015-10-19T18:27:25+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0140s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:27:36+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0120s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:27:47+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0070s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13956070164','9344','1445250467') [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:27:47+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.009000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:27:51+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0090s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13956070164','108','1445250471') [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:28:03+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0110s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:28:06+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.006001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0160s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:28:11+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.006001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1067 行.
+SQL: SHOW COLUMNS FROM `ot_message_num` [ RunTime:0.0080s ]
+SQL: INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('13956070164','5602','1445250491') [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:28:17+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0100s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:28:35+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:28:38+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.005000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.006001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0110s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:28:44+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1066 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1066 行.
+
+[ 2015-10-19T18:29:00+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0110s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:29:08+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0070s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:29:12+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0070s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1066 行.
+
+[ 2015-10-19T18:29:26+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0130s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:29:39+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.008000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0090s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0010s ]
+
+[ 2015-10-19T18:30:19+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.005000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0110s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:31:37+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+
+[ 2015-10-19T18:31:44+08:00 ] 192.168.6.172 /Article/get_message
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.007001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0080s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ot_ask` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ot_ask` WHERE `id` = 120 AND `tel` = '13956070164' AND `status` = 5 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] curl_close(): 41 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1066 行.
+NOTIC: [2] curl_close(): 42 is not a valid cURL handle resource D:\onethink\Application\Common\Common\function.php 第 1066 行.
+
+[ 2015-10-19T18:31:55+08:00 ] 192.168.6.172 /Article/ask_detail/id/120.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ot_config` [ RunTime:0.0160s ]
+SQL: SELECT `type`,`name`,`value` FROM `ot_config` WHERE `status` = 1  [ RunTime:0.0000s ]
+

@@ -56,6 +56,8 @@ class AskController extends AdminController {
         $thcb_count = M('Ask')->where($maps)->count();
         $_SESSION["menu_nums"]["退回重办"] = $thcb_count;
 
+        $xbwt_count = M("Assist")->where(array("pid"=>UID,"reply"=>array('EXP','IS NULL')))->count();
+        $_SESSION["menu_nums"]["协办问题"] = $xbwt_count;
     }
 	
     /* 全部留言 */
@@ -360,7 +362,7 @@ class AskController extends AdminController {
 
     }
 
-    // 退回
+    // 退回动作
     public function call_back() {
 
         $id = I('post.aid');
@@ -780,6 +782,89 @@ class AskController extends AdminController {
         }
     }
 
+    //协办问题
+    public function assist() {
+
+        $total = M("Assist")->order("create_time DESC")->where(array("pid"=>UID))->count();
+
+        $request    =   (array)I('request.');
+        $total      =   $total? $total : 1 ;
+        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
+        $page       =   new \Think\Page($total, $listRows, $request);
+        $p          =   $page->show();
+        $this->assign('_page', $p? $p: '');
+
+        Cookie('__forward__',$_SERVER['REQUEST_URI']);
+
+        $lists = M("Assist")->order("create_time DESC")->where(array("pid"=>UID))->limit($page->firstRow . ',' . $page->listRows)->select();
+
+        foreach ($lists as $key => $value) {
+            $ask = M("Ask")->where(array("id"=>$value["aid"]))->find();
+            $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
+            $lists[$key]["ask"] = $ask;
+            $lists[$key]["member"] = $member;
+        }
+
+        $this->assign('lists', $lists);
+
+        $this->meta_title = '协办留言';
+        $this->display();
+
+    }
+
+    // 请求协办
+    public function call_assist() {
+        $id = I('get.id');
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
+
+        $ask = M("Ask")->where(array("id"=>$id))->find();
+        if ( !in_array($ask["uid"],$this->uid_array) ) {
+            $this->error("出现错误！");
+        }
+        $this->assign($ask);
+
+        if ( IS_POST ) {
+            
+            $pid = I('post.pid');
+            if ( !$pid ) {
+                $this->error("请选择协办单位！");
+            }
+            $explain = I('post.explain');
+            if ( !$explain ) {
+                $this->error("请填写协办原因！");
+            }
+            
+            $assist = M('Assist')->where(array("aid"=>$id,"pid"=>$pid))->find();
+            if (!empty($assist)) {
+                $this->error("已发过协办邀请！请勿重复发布");
+            }
+            M('Assist')->add(array("aid"=>$id,"pid"=>$pid,"uid"=>UID,"explain"=>$explain,"create_time"=>time()));
+
+            $member = M("Member")->where(array("uid"=>UID))->find();
+            $pmember = M("Member")->where(array("uid"=>$pid))->find();
+
+            $process = array();
+            $process["uid"] = $pid;
+            $process["aid"] = $id;
+            $process["status"] = $ask["status"];
+            $process["create_time"] = time();
+            $process["create_uid"] = UID;
+            $process["info"] = $member["nickname"]." 请求 ".$pmember["nickname"]." 协办该问题！";
+            M("Process")->add($process);
+
+            $this->success("处理成功！",U('Ask/processing'));
+        }
+
+        $xbdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>array('in','3,4')))->select();
+        $this->assign('xbdw', $xbdw);
+
+        $this->display();
+    }
+
+
+
     public function add(){
         //获取左边菜单
         $this->getMenu();
@@ -860,10 +945,6 @@ class AskController extends AdminController {
         $this->display();
     }
 
-    /**
-     * 更新一条数据
-     * @author huajie <banhuajie@163.com>
-     */
     public function update(){
         $document   =   D('Document');
         $res = $document->update();

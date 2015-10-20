@@ -213,6 +213,7 @@
                     <?php endforeach ?>
                 </div>
             </div>
+            <?php if ($reply[0]["remarks"]) { ?>
             <div class="form-item">
                 <label class="item-label">备注</label>
                 <div class="controls">
@@ -228,6 +229,7 @@
                     </label>
                 </div>
             </div>
+            <?php } ?>
         </div>
         <?php } ?>
     </form>

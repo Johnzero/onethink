@@ -109,54 +109,28 @@
     <div class="main-title">
         <h2>网友留言：<?php echo ($title); ?></h2>
     </div>
-    <form method="post" class="form-horizontal">
-        <?php if ($group_id == 1) { ?>
+    <form method="post" class="form-horizontal" style="width:40%;">
         <div class="form-item">
-            <label class="item-label">留言用户</label>
+            <label class="item-label">请求协办单位</label>
             <div class="controls">
-                <input type="text" class="text input-large" value="<?php echo ($name); ?>" readonly="readonly">
-            </div>
-        </div>
-        <?php } ?>
-
-        <div class="form-item">
-            <label class="item-label">留言内容</label>
-            <div class="controls">
-                <label class="textarea input-large">
-                    <textarea readonly="readonly"><?php echo ($content); ?></textarea>
-                </label>
-            </div>
-        </div>
-
-        <div class="form-item">
-            <label class="item-label">受理单位</label>
-            <div class="controls">
-                <select name="pid" disabled="disabled">
-                    <?php if(is_array($yjdw)): $i = 0; $__LIST__ = $yjdw;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["uid"]); ?>" <?php if(($$vo["uid"]) == $uid): ?>selected<?php endif; ?> ><?php echo ($vo["nickname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                <select name="pid">
+                    <option value="">请选择协办单位！</option>
+                    <?php if(is_array($xbdw)): $i = 0; $__LIST__ = $xbdw;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["uid"]); ?>"><?php echo ($vo["nickname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
                 </select>
             </div>
         </div>
 
         <div class="form-item">
-            <label class="item-label">处理方式</label>
-            <div class="controls">
-                <label><input name="status" type="radio" value="1" /> 审核通过 </label> 
-                <label><input name="status" type="radio" value="10" /> 未通过 </label> 
-                
-            </div>
-        </div>
-
-        <div class="form-item" id="info" style="display: none;">
-            <label class="item-label">未通过原因</label>
+            <label class="item-label">协办原因</label>
             <div class="controls">
                 <label class="textarea input-large">
-                    <textarea name="info"></textarea>
+                    <textarea name="explain"></textarea>
                 </label>
             </div>
         </div>
        
         <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确定</button>
+            <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="form-horizontal" title="协办">确定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
 
@@ -255,17 +229,7 @@
     </script>
     
     <script type="text/javascript">
-        //导航高亮
         highlight_subnav('<?php echo U('User/index');?>');
-        $(document).ready(function () {
-            $("input[name=status]").click( function () {
-                if ( $(this).val() == 10 ) {
-                    $("#info").show();
-                }else {
-                    $("#info").hide();
-                }
-            })
-        })
     </script>
 
 </body>

@@ -106,61 +106,150 @@
             
 
             
-    <div class="main-title">
-        <h2>网友留言：<?php echo ($title); ?></h2>
+	<!-- 标题 -->
+	<div class="main-title">
+		<h2>
+		<?php echo ($meta_title); ?>
+		</h2>
+	</div>
+
+	<!-- 按钮工具栏 -->
+	<div class="cf">
+		<div class="fl">
+
+		 	<button class="btn ajax-post" target-form="ids" url="<?php echo U("Ask/setStatus",array("status"=>1));?>">审核通过</button>
+
+			<!-- <button class="btn ajax-post" target-form="ids" url="<?php echo U("Ask/setStatus",array("status"=>1));?>">启 用</button>
+			<button class="btn ajax-post" target-form="ids" url="<?php echo U("Ask/setStatus",array("status"=>0));?>">禁 用</button>
+			<button class="btn ajax-post confirm" target-form="ids" url="<?php echo U("Ask/setStatus",array("status"=>-1));?>">删 除</button> -->
+			
+		</div>
+
+		<!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			<div class="sleft">
+				<div class="drop-down">
+					<span id="sch-sort-txt" class="sort-txt" data="<?php echo ($status); ?>"><?php if(get_status_title($status) == ''): ?>所有<?php else: echo get_status_title($status); endif; ?></span>
+					<i class="arrow arrow-down"></i>
+					<ul id="sub-sch-menu" class="nav-list hidden">
+						<li><a href="javascript:;" value="">所有</a></li>
+						<?php if((ACTION_NAME) == "index"): $_result=C('STATUS');if(is_array($_result)): $i = 0; $__LIST__ = $_result;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$type): $mod = ($i % 2 );++$i;?><li><a href="javascript:;" value="<?php echo ($key); ?>"><?php echo ($type); ?></a></li><?php endforeach; endif; else: echo "" ;endif; endif; ?>
+					</ul>
+				</div>
+				<input type="text" name="title" class="search-input" value="<?php echo I('title');?>" placeholder="请输入标题文档">
+				<a class="sch-btn" href="javascript:;" id="search" url="<?php echo U('Ask/index',false);?>"><i class="btn-search"></i></a>
+			</div>
+            <div class="btn-group-click adv-sch-pannel fl">
+                <button class="btn">高 级<i class="btn-arrowdown"></i></button>
+                <div class="dropdown cf">
+                	<div class="row">
+                		<label>留言时间：</label>
+                		<input type="text" id="time-start" name="time-start" class="text input-2x" value="<?php echo I('time-start');?>" placeholder="起始时间" /> -                		
+                        <div class="input-append date" id="datetimepicker"  style="display:inline-block">
+                            <input type="text" id="time-end" name="time-end" class="text input-2x" value="<?php echo I('time-end');?>" placeholder="结束时间" />
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
+                	</div>
+                </div>
+            </div>
+		</div>
+	</div>
+
+
+	<!-- 数据表格 -->
+    <div class="data-table">
+		<table>
+    <thead>
+        <tr>
+			<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+			<th>编号</th>
+			<th class="text-left">标题</th>
+			<th>邀请协办单位</th>
+			<th>留言日期</th>
+			<th>办理情况</th>	
+			<?php if (ACTION_NAME == "done") {?>
+			<th>办理完成</th>
+			<?php } ?>
+			<th>办理天数</th>
+			<?php if (ACTION_NAME != "all" && ACTION_NAME != "index") {?>
+			<th>操作</th>
+			<?php } ?>
+		</tr>
+    </thead>
+   	<tbody>
+   		<?php if (!empty($lists)) { ?>
+		<?php if(is_array($lists)): $i = 0; $__LIST__ = $lists;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+	        <td><input class="ids" type="checkbox" name="ids[]" value="<?php echo ($vo['id']); ?>"/></td>
+			<td><?php echo ($vo["id"]); ?></td>
+			<td style="text-align: left;">
+				<i class="fa fa-question-circle"></i>&nbsp;&nbsp;
+				<a href="<?php echo U('Ask/detail?id='.$vo['ask']['id']);?>" title="查看"><?php echo ($vo['ask']['title']); ?></a>
+			</td>
+			<td>
+				<span>
+				<?php echo ($vo['member']['nickname']?$vo['member']['nickname']:'未知'); ?>&nbsp;&nbsp;
+				</span>
+			</td>
+			<td><span><?php echo (time_format($vo["create_time"])); ?></span></td>
+			<td>
+				<?php $types = C('STATUS'); ?>
+				<?php echo ($types[$vo['ask']['status']]); ?>
+			</td>
+	        <td>
+				<?php if ($vo['ask']['finish_time']) { $diff_day = round(abs($vo['ask']['finish_time']-$vo['ask']['create_time'])/86400); }else { $diff_day = round(abs(time()-$vo['ask']['create_time'])/86400); } if ( $diff_day < 1 ) { $diff_day = 1; } ?>
+				<span <?php if(($diff_day) > "5"): ?>class="red"<?php endif; ?>><?php echo ($diff_day); ?> 天</span>
+	        </td>
+	        <td>
+				<a href="<?php echo U('Ask/sp',array('id'=>$vo['id']));?>">协助办理</a>
+	        </td>
+		</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+		<?php } else { ?>
+			<tr>
+				<td colspan="10" class="text-center"> 暂时还没有内容! </td>
+			</tr>
+		<?php } ?>
+	</tbody>
+
+    </table> 
+
+	</div>
+
+	<!-- 分页 -->
+    <div class="page">
+        <?php echo ($_page); ?>
     </div>
-    <form method="post" class="form-horizontal">
-        <?php if ($group_id == 1) { ?>
-        <div class="form-item">
-            <label class="item-label">留言用户</label>
-            <div class="controls">
-                <input type="text" class="text input-large" value="<?php echo ($name); ?>" readonly="readonly">
-            </div>
-        </div>
-        <?php } ?>
 
-        <div class="form-item">
-            <label class="item-label">留言内容</label>
-            <div class="controls">
-                <label class="textarea input-large">
-                    <textarea readonly="readonly"><?php echo ($content); ?></textarea>
-                </label>
-            </div>
-        </div>
+    <div class="modal call_back">
+	    <form method="post" class="call_back_form" action="<?php echo U('Ask/call_back');?>">
+	        <div style="width: auto; padding: 0;" class="modal-dialog">
+	            <input name="aid" value="" type="hidden" />
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button aria-hidden="true" data-dismiss="modal" class="close close-dialog" type="button">
+	                        x
+	                    </button>
+	                    <h4 class="modal-title">
+	                        退回重办原因
+	                    </h4>
+	                </div>
+	                <div class="modal-body">
+	                    <textarea name="call_back_info">请输入内容！</textarea>
+	                </div>
+	                <div class="modal-footer">
+	                    <button href="<?php echo U('Ask/call_back?&id='.$vo['id']);?>" class="btn btn-primary ajax-post confirm"
+	                    target-form="call_back_form" type="button">
+	                        退回
+	                    </button>
+	                    <button class="btn btn-default close-dialog" type="button">
+	                        取消
+	                    </button>
+	                </div>
+	            </div>
+	        </div>
+	    </form>
+	</div>
+</div>
 
-        <div class="form-item">
-            <label class="item-label">受理单位</label>
-            <div class="controls">
-                <select name="pid" disabled="disabled">
-                    <?php if(is_array($yjdw)): $i = 0; $__LIST__ = $yjdw;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["uid"]); ?>" <?php if(($$vo["uid"]) == $uid): ?>selected<?php endif; ?> ><?php echo ($vo["nickname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-item">
-            <label class="item-label">处理方式</label>
-            <div class="controls">
-                <label><input name="status" type="radio" value="1" /> 审核通过 </label> 
-                <label><input name="status" type="radio" value="10" /> 未通过 </label> 
-                
-            </div>
-        </div>
-
-        <div class="form-item" id="info" style="display: none;">
-            <label class="item-label">未通过原因</label>
-            <div class="controls">
-                <label class="textarea input-large">
-                    <textarea name="info"></textarea>
-                </label>
-            </div>
-        </div>
-       
-        <div class="form-item">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确定</button>
-            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-        </div>
-
-    </form>
 
         </div>
         <div class="cont-ft">
@@ -254,19 +343,95 @@
         }();
     </script>
     
-    <script type="text/javascript">
-        //导航高亮
-        highlight_subnav('<?php echo U('User/index');?>');
-        $(document).ready(function () {
-            $("input[name=status]").click( function () {
-                if ( $(this).val() == 10 ) {
-                    $("#info").show();
-                }else {
-                    $("#info").hide();
-                }
-            })
-        })
-    </script>
+<link href="/Public/static/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<?php if(C('COLOR_STYLE')=='blue_color') echo '<link href="/Public/static/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">'; ?>
+<link href="/Public/static/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/Public/static/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Public/static/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+		var status = $("#sch-sort-txt").attr("data");
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+		if(status != ''){
+			query = 'status=' + status + "&" + query;
+        }
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+
+	$(".call_back_btn").click(function () {
+		var aid = $(this).data("aid");
+		$("input[name='aid']").val(aid);
+		$(".call_back").show();
+	})
+	$("textarea[name='call_back_info']").click(function () {
+		if ($(this).val() == "请输入内容！") {
+			$(this).val('');
+		}
+	});
+
+	$(".close-dialog").click(function () {
+		$(".call_back").hide();
+	})
+
+	/* 状态搜索子菜单 */
+	$(".search-form").find(".drop-down").hover(function(){
+		$("#sub-sch-menu").removeClass("hidden");
+	},function(){
+		$("#sub-sch-menu").addClass("hidden");
+	});
+	$("#sub-sch-menu li").find("a").each(function(){
+		$(this).click(function(){
+			var text = $(this).text();
+			$("#sch-sort-txt").text(text).attr("data",$(this).attr("value"));
+			$("#sub-sch-menu").addClass("hidden");
+		})
+	});
+
+    //回车自动提交
+    $('.search-form').find('input').keyup(function(event){
+        if(event.keyCode===13){
+            $("#search").click();
+        }
+    });
+
+    $('#time-start').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+	    minView:2,
+	    autoclose:true
+    });
+
+    $('#datetimepicker').datetimepicker({
+       format: 'yyyy-mm-dd',
+        language:"zh-CN",
+        minView:2,
+        autoclose:true,
+        pickerPosition:'bottom-left'
+    });
+    var getstatus = '';
+    <?php if ( $_GET['status'] ) { ?>
+	var getstatus = <?php echo ($_GET['status']); ?>;
+	<?php } ?>
+	if (getstatus) {
+		$("#sub-sch-menu li").find("a").each(function(){
+			var valuestatus = $(this).attr("value");
+			if ( getstatus == valuestatus ) {
+				$(this).click();
+			}
+		})
+	}
+})
+</script>
 
 </body>
 </html>

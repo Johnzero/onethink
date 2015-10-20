@@ -67,7 +67,7 @@
 			<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
 			<th>编号</th>
 			<th class="text-left">标题</th>
-			<th>受理单位</th>
+			<th>邀请协办单位</th>
 			<th>留言日期</th>
 			<th>办理情况</th>	
 			<?php if (ACTION_NAME == "done") {?>
@@ -83,48 +83,28 @@
    		<?php if (!empty($lists)) { ?>
 		<volist name="lists" id="vo">
 		<tr>
-	        <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
-			<td>{$vo.id}</td>
-			<td style="text-align: left;"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;<a href="{:U('Ask/detail?id='.$vo['id'])}" title="查看">{$vo.title}</a></td>
+	        <td><input class="ids" type="checkbox" name="ids[]" value="{$vo['id']}"/></td>
+			<td>{$vo["id"]}</td>
+			<td style="text-align: left;">
+				<i class="fa fa-question-circle"></i>&nbsp;&nbsp;
+				<a href="{:U('Ask/detail?id='.$vo['ask']['id'])}" title="查看">{$vo['ask']['title']}</a>
+			</td>
 			<td>
 				<span>
 				{$vo['member']['nickname']?$vo['member']['nickname']:'未知'}&nbsp;&nbsp;
-				
-				<?php if ( $group_id == 1 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
-					<a href="{:U('Ask/change?id='.$vo['id'])}" title="更改"><i class="fa fa-reply-all"></i></a>
-				<?php }else if ( $group_id == 3 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
-					<a href="{:U('Ask/adopt?id='.$vo['id'])}" class="ajax-get confirm" title="认领" target-form="form-horizontal"><i class="fa fa-reply-all"></i></a>
-				<?php } ?>
-				
-				<?php if ( $group_id == 3 && $vo['status'] == 1 && $vo['uid'] == UID) { ?>
-					<a href="{:U('Ask/assign_to?id='.$vo['id'])}" title="指派" target-form="form-horizontal"><i class="fa fa-reply-all"></i></a>
-				<?php } ?>
-
-				<?php if ( ($group_id == 3 || $group_id == 1) && $vo['status'] == 1 && $vo['uid'] != UID) { ?>
-					<a href="" title="督办" target-form="form-horizontal"><i class="fa fa-bell-o"></i></a>
-				<?php } ?>
-
 				</span>
 			</td>
 			<td><span>{$vo.create_time|time_format}</span></td>
 			<td>
 				<php>$types = C('STATUS');</php>
-				{$types[$vo['status']]}
+				{$types[$vo['ask']['status']]}
 			</td>
-			
-	        <?php if (ACTION_NAME == "done") { ?>
-	        <td>
-				<?php if ($vo['finish_time']) { ?>
-				<span>{$vo.finish_time|time_format}</span>
-				<?php } ?>
-			</td>
-			<?php } ?>
 	        <td>
 				<php>
-					if ($vo['finish_time']) {
-						$diff_day = round(abs($vo['finish_time']-$vo['create_time'])/86400);
+					if ($vo['ask']['finish_time']) {
+						$diff_day = round(abs($vo['ask']['finish_time']-$vo['ask']['create_time'])/86400);
 					}else {
-						$diff_day = round(abs(time()-$vo['create_time'])/86400);
+						$diff_day = round(abs(time()-$vo['ask']['create_time'])/86400);
 					}
 					if ( $diff_day < 1 ) {
 						$diff_day = 1;
@@ -132,45 +112,9 @@
 				</php>
 				<span <gt name="diff_day" value="5">class="red"</gt>>{$diff_day} 天</span>
 	        </td>
-	        <?php if (ACTION_NAME != "all" && ACTION_NAME != "index") { ?>
 	        <td>
-				<?php if ( $vo['status'] != 10 ) { ?>
-				
-					<?php if ( $vo['status'] == 0 ) { ?>
-						<a href="{:U('Ask/sp',array('id'=>$vo['id']))}">审核</a>
-					<?php } ?>
-
-					<!-- <a href="{:U('Ask/edit?cate_id='.$vo['category_id'].'&id='.$vo['id'])}">编辑</a>
-					
-					<a href="{:U('Ask/setStatus?ids='.$vo['id'].'&status='.abs(1-$vo['status']))}" class="ajax-get">{$vo.status|show_status_op}</a> -->
-
-					<?php if ( $vo['status'] == 1 && $vo['uid'] == UID ) { ?>
-						<a href="{:U('Ask/reply?&id='.$vo['id'])}">办理</a>
-						|
-						<a href="{:U('Ask/call_assist?&id='.$vo['id'])}">请求协办</a>
-					<?php } ?>
-
-					<?php if ( ($group_id == 3 || $group_id == 1) && $vo['status'] == 1 && $vo['uid'] != UID) { ?>
-						<a href="" title="督办" target-form="form-horizontal">督办</a>
-					<?php } ?>
-
-					<?php if ( $group_id == 3  && $vo['status'] == 4 ) { ?>
-						<a href="{:U('Ask/answer?&id='.$vo['id'])}" title="回复网友">回复网友</a>
-						|
-						<a href="javascript:void(0);" data-aid="{$vo['id']}" title="退回重办" class="call_back_btn">退回重办</a>
-					<?php } ?>
-
-					<?php if ( $vo['status'] == 60 && $vo['uid'] == UID ) { ?>
-						<a href="{:U('Ask/re_do?&id='.$vo['id'])}">重办</a>
-					<?php } ?>
-
-					<!-- <a href="{:U('Ask/setStatus?status=-1&ids='.$vo['id'])}" class="confirm ajax-get">删除</a> -->
-
-				<?php } else { ?>
-					<a href="{:U('Ask/detail?id='.$vo['id'])}">查看</a>
-				<?php } ?>
+				<a href="{:U('Ask/sp',array('id'=>$vo['id']))}">协助办理</a>
 	        </td>
-	        <?php } ?>
 		</tr>
 		</volist>
 		<?php } else { ?>

@@ -234,7 +234,8 @@
 					type : 'POST',
 					url : '/Article/get_message',
 					data : {
-						tel : tel
+						tel : tel,
+						ask_id : <?php echo ($id); ?>
 					},
 					success : function (response , status , xhr) {
 						if(response.error==true || response.error==false)

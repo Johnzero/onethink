@@ -213,9 +213,23 @@ class ArticleController extends HomeController {
 	public function get_message()
 	{
 		$tel = I('post.tel');
+		$ask_id = I('post.ask_id');
 		
 		
-		$num = rand(0000,9999);
+		$ask = M("Ask")->where(array("id"=>$ask_id,"tel"=>$tel,"status"=>5))->find();//校验信息和状态进行打分
+
+		if(empty($ask))
+		{
+			$result = array();
+			$result['error'] = true;
+			$result['msg'] = '只有结束的留言才允许打分';
+			$this->ajaxReturn ( $result );
+			exit();
+		}
+		
+		
+		
+		$num = rand(1111,9999);
 		$re = message($tel,$num);
 		
 		if($re['res_code']==1)
@@ -257,7 +271,7 @@ class ArticleController extends HomeController {
 		
 		//校验验证码
 		//ticket
-		$Message_num_info = M("Message_num")->where(array("num"=>$num,"tel"=>$tel))->find();
+		$Message_num_info = M("Message_num")->where(array("num"=>$ticket,"tel"=>$tel))->order('id desc')->find();
 		if(empty($Message_num_info) || (time()-150)>$Message_num_info['lastupdate'])
 		{
 			$result = array();
@@ -268,7 +282,7 @@ class ArticleController extends HomeController {
 		}
 		
 		$ask = M("Ask")->where(array("id"=>$ask_id,"tel"=>$tel,"status"=>5))->find();//校验信息和状态进行打分
-		
+
 		if(empty($ask))
 		{
 			$result = array();
@@ -281,9 +295,9 @@ class ArticleController extends HomeController {
 		
 		$ask_score = M("Score")->where(array("ask_id"=>$ask_id))->find();
 		if ( empty($ask_score) ) {
-			M("Score")->query("INSERT INTO `ot_score` (`ask_id`,`scores`,`lastupdate`) VALUES ('".$ask_id."','".$scores."','".time()."')");
+			M("Score")->execute("INSERT INTO `ot_score` (`ask_id`,`scores`,`lastupdate`) VALUES ('".$ask_id."','".$scores."','".time()."')");
 		}else {
-			M("Score")->query("UPDATE `ot_score` SET `scores`='".$scores."',`lastupdate`='".time()."' WHERE `ask_id` = '".$ask_id."'");
+			M("Score")->execute("UPDATE `ot_score` SET `scores`='".$scores."',`lastupdate`='".time()."' WHERE `ask_id` = '".$ask_id."'");
 		}
 		$result = array();
 		$result['error'] = false;

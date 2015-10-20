@@ -1,8 +1,12 @@
 <extend name="Public/base"/>
 
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
 <block name="body">
     <div class="main-title">
-        <h2>留言留言：{$title}</h2>
+        <h2>网友留言：{$title}</h2>
     </div>
     <form method="post" class="form-horizontal">
         <?php if ($group_id == 1) { ?>

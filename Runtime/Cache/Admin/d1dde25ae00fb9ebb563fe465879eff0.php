@@ -233,6 +233,8 @@
 
 					<?php if ( $vo['status'] == 1 && $vo['uid'] == UID ) { ?>
 						<a href="<?php echo U('Ask/reply?&id='.$vo['id']);?>">办理</a>
+						|
+						<a href="<?php echo U('Ask/call_assist?&id='.$vo['id']);?>">请求协办</a>
 					<?php } ?>
 
 					<?php if ( ($group_id == 3 || $group_id == 1) && $vo['status'] == 1 && $vo['uid'] != UID) { ?>

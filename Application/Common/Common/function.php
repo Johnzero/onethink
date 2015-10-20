@@ -1022,18 +1022,26 @@ function message($acceptor_tel,$num) {
 	$app_secret = 'dc8c6295816f885d34e594a5c79b0556';// 应用的密钥
 	$grant_type='client_credentials'; //Client Credentials授权模式
 	$access_token_url = 'https://oauth.api.189.cn/emp/oauth2/v2/access_token';// 获取access_token的URL
-	$token_url = 'http://api.189.cn/v2/dm/randcode/token';// 获取token的URL
+	$token_url = 'http://api.189.cn/v3/dm/randcode/token';// 获取token的URL
 
 
 	$send = 'app_id='.$app_id.'&app_secret='.$app_secret.'&grant_type='.$grant_type;    
-	$access_token = curl_post("https://oauth.api.189.cn/emp/oauth2/v2/access_token", $send);
+	echo $access_token = curl_post("https://oauth.api.189.cn/emp/oauth2/v2/access_token", $send);
 	$access_token = json_decode($access_token,true); 
 	$access_token = $access_token["access_token"];
-
+	
+	if(!empty($access_token))
+	{
+		file_put_contents('./access_token.txt',$access_token);
+	}
+	else
+	{
+		$access_token=file_get_contents('./access_token.txt');
+	}
+echo $access_token;
 	$send_url = "http://api.189.cn/v2/emp/templateSms/sendSms";
 
 	$template_id = "91548517";
-	
 	$template_param_array = array();
 	$template_param_array['param1'] = "3";
 	$template_param_array['param2'] = "$num";
@@ -1043,9 +1051,9 @@ function message($acceptor_tel,$num) {
 
 	$timestamp = urlencode(date('Y-m-d H:i:s'));
 	$send2 = 'acceptor_tel='.$acceptor_tel.'&template_id='.$template_id.'&template_param='.$template_param.'&app_id='.$app_id.'&timestamp='.$timestamp.'&access_token='.$access_token;    
-	$re = curl_post($send_url, $send2);
+	echo $re = curl_post($send_url, $send2);
 
-	$re = json_decode($re,true); 
+	$re = json_decode($re,true);
 	
 	return $re ; 
 }
@@ -1059,11 +1067,8 @@ function curl_post($url='', $postdata=''){
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
 	$data = curl_exec($ch);
-	
-	$status = curl_getinfo($ch,CURLINFO_HTTP_CODE); var_dump($status);
-     
-	curl_close($ch); 
 
+	curl_close($ch); 
 		 
 	curl_close($ch);
 	return $data;
