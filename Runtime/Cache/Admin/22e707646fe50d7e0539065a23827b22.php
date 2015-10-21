@@ -201,7 +201,7 @@
 				<span <?php if(($diff_day) > "5"): ?>class="red"<?php endif; ?>><?php echo ($diff_day); ?> 天</span>
 	        </td>
 	        <td>
-				<a href="<?php echo U('Ask/sp',array('id'=>$vo['id']));?>">协助办理</a>
+				<a href="<?php echo U('Ask/do_assist',array('id'=>$vo['id']));?>">协助办理</a>
 	        </td>
 		</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 		<?php } else { ?>

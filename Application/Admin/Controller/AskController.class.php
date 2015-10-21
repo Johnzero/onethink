@@ -863,6 +863,57 @@ class AskController extends AdminController {
         $this->display();
     }
 
+    //协助办理
+    public function do_assist() {
+        $id = I('get.id');
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
+        $assist = M("Assist")->where(array("id"=>$id))->find();
+        // $ask = M("Ask")->where(array("id"=>$id))->find();
+        // if ( !in_array($ask["uid"],$this->uid_array) ) {
+        //     $this->error("出现错误！");
+        // }
+        // $this->assign($ask);
+
+        if ( IS_POST ) {
+            
+            $pid = I('post.pid');
+            if ( !$pid ) {
+                $this->error("请选择协办单位！");
+            }
+            $explain = I('post.explain');
+            if ( !$explain ) {
+                $this->error("请填写协办原因！");
+            }
+            
+            $assist = M('Assist')->where(array("aid"=>$id,"pid"=>$pid))->find();
+            if (!empty($assist)) {
+                $this->error("已发过协办邀请！请勿重复发布");
+            }
+            M('Assist')->add(array("aid"=>$id,"pid"=>$pid,"uid"=>UID,"explain"=>$explain,"create_time"=>time()));
+
+            $member = M("Member")->where(array("uid"=>UID))->find();
+            $pmember = M("Member")->where(array("uid"=>$pid))->find();
+
+            $process = array();
+            $process["uid"] = $pid;
+            $process["aid"] = $id;
+            $process["status"] = $ask["status"];
+            $process["create_time"] = time();
+            $process["create_uid"] = UID;
+            $process["info"] = $member["nickname"]." 请求 ".$pmember["nickname"]." 协办该问题！";
+            M("Process")->add($process);
+
+            $this->success("处理成功！",U('Ask/processing'));
+        }
+
+        $xbdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>array('in','3,4')))->select();
+        $this->assign('xbdw', $xbdw);
+
+        $this->display();
+    }
+
 
 
     public function add(){

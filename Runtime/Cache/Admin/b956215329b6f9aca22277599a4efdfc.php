@@ -17,8 +17,9 @@
     <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
-    
+    <?php if ($_SERVER['SERVER_NAME'] != "vchat.anhuinews.com") { ?>
     <script type="text/javascript" src="http://192.168.6.80:8080/livereload.js?snipver=1"></script>
+    <?php } ?>
 
     <!--<![endif]-->
     
@@ -103,7 +104,7 @@
         <div class="search-form fr cf">
             <div class="sleft">
                 <input type="text" name="title" class="search-input" value="<?php echo I('title');?>" placeholder="请输入菜单名称">
-                <a class="sch-btn" href="javascript:;" id="search" url="/admin.php?s=/Menu/index.html"><i class="btn-search"></i></a>
+                <a class="sch-btn" href="javascript:;" id="search" url="/admin.php?s=/Menu/index/pid/135.html"><i class="btn-search"></i></a>
             </div>
         </div>
     </div>
