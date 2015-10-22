@@ -17,8 +17,9 @@
     <!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
-    
+    <?php if ($_SERVER['SERVER_NAME'] != "vchat.anhuinews.com") { ?>
     <script type="text/javascript" src="http://192.168.6.80:8080/livereload.js?snipver=1"></script>
+    <?php } ?>
 
     <!--<![endif]-->
     
@@ -151,6 +152,22 @@
                     </select>
                 </div>
             </div>
+            <?php if (!empty($assist)) { ?>
+            <?php foreach ($assist as $key => $value): ?>
+                <div class="form-item">
+                    <label class="item-label">[<?php echo ($value['member']['nickname']); ?>] 协办单位意见</label>
+                    <div class="controls">
+                        <label class="textarea input-large">
+                            <?php if ($value["reply"]) { ?>
+                            <?php echo ($value["reply"]); ?>
+                            <?php } else { ?>
+                                暂未回复！
+                            <?php } ?>
+                        </label>
+                    </div>
+                </div>
+            <?php endforeach ?>
+            <?php } ?>
         </div>
         <?php if(!empty($reply)) { ?>
         <div class="form-right">

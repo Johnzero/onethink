@@ -28,7 +28,7 @@
 							'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '|',
 							'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
 							'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
-							'table', 'hr', 'emoticons', 'map',  'pagebreak', 'anchor', 'link', 'unlink', '|', 'about'
+							'table', 'hr', 'emoticons','anchor', 'link', 'unlink', 
 						],
 						extraFileUploadParams: {
 							session_id : '<?php echo session_id();?>'

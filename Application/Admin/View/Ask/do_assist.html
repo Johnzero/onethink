@@ -23,67 +23,45 @@
         <h2>{$meta_title}</h2>
     </div>
     <form method="post" class="form-horizontal reply-form">
+        
+        <div class="form-item">
+            <label class="item-label">协办说明：</label>
+            <div class="controls">
+                <label class="textarea input-large">
+                    <span>{$assist.explain}</span>
+                </label>
+            </div>
+        </div>
 
         <div class="form-item">
-            <label class="item-label">办理情况</label>
+            <label class="item-label">协办意见</label>
             <div class="controls">
                 <label class="textarea input-large">
-                    <textarea name="explain">
-                        <?php if ( trim($reply['explain']) ) { ?>
-                           {$reply.explain}
-                        <?php } else { ?>
-                            {:C('DF_MB')}
+                    <textarea name="reply">
+                        <?php if ( trim($assist['reply']) ) { ?>
+                           {$assist.reply}
                         <?php } ?>
                     </textarea>
-                    {:hook('adminArticleEdit', array('name'=>'explain'))}
+                    {:hook('adminArticleEdit', array('name'=>'reply'))}
                 </label>
             </div>
         </div>
-		<div class="form-item">
-            <label class="item-label">网上答复口径</label>
-            <div class="controls">
-                <label class="textarea input-large">
-                    <textarea name="reply_content">
-                        <?php if ( trim($reply['reply_content']) ) { ?>
-                            {$reply.reply_content}
-                        <?php } else { ?>
-                            {:C('DF_MB')}
-                        <?php } ?>
-                    </textarea>
-                    {:hook('adminArticleEdit', array('name'=>'reply_content'))}
-                </label>
-            </div>
-        </div>
-
         <div class="form-item">
             <label class="item-label">经办人</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="transactor" value="{$reply.transactor}">
+                <input type="text" class="text input-large" name="jbr" value="{$assist.jbr}">
             </div>
         </div>
 
         <div class="form-item">
             <label class="item-label">联系方式</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="transactor_tel" value="{$reply.transactor_tel}">
+                <input type="text" class="text input-large" name="jbr_tel" value="{$assist.jbr_tel}">
             </div>
         </div>
 
         <div class="form-item">
-            <label class="item-label">备注</label>
-            <div class="controls">
-                <label class="textarea input-large">
-                    <textarea name="remarks">{$reply.remarks}</textarea>
-                </label>
-            </div>
-        </div>
-
-        <div class="form-item">
-            <?php if ( ACTION_NAME == 'answer' ) { ?>
-                <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="reply-form" title="发 布">发 布</button>
-            <?php }else { ?>
-                <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="reply-form" title="回 复">回 复</button>
-            <?php } ?>
+            <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="reply-form" title="回 复">回 复</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
 
@@ -92,14 +70,18 @@
         <div class="form-item">
             <label class="item-label">留言用户</label>
             <div class="controls">
-                <input type="text" class="text input-large" value="{$name}" readonly="readonly">
+                <label class="textarea input-large">
+                    {$name}
+                </label>
             </div>
         </div>
 
         <div class="form-item">
             <label class="item-label">联系方式</label>
             <div class="controls">
-                <input type="text" class="text input-large" value="{$tel}" readonly="readonly">
+                <label class="textarea input-large">
+                    {$tel}
+                </label>
             </div>
         </div>
 
@@ -107,7 +89,7 @@
             <label class="item-label">留言内容</label>
             <div class="controls">
                 <label class="textarea input-large">
-                    <textarea readonly="readonly">{$content}</textarea>
+                    {$content}
                 </label>
             </div>
         </div>

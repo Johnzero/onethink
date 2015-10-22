@@ -54,6 +54,22 @@
                     </select>
                 </div>
             </div>
+            <?php if (!empty($assist)) { ?>
+            <?php foreach ($assist as $key => $value): ?>
+                <div class="form-item">
+                    <label class="item-label">[{$value['member']['nickname']}] 协办单位意见</label>
+                    <div class="controls">
+                        <label class="textarea input-large">
+                            <?php if ($value["reply"]) { ?>
+                            {$value["reply"]}
+                            <?php } else { ?>
+                                暂未回复！
+                            <?php } ?>
+                        </label>
+                    </div>
+                </div>
+            <?php endforeach ?>
+            <?php } ?>
         </div>
         <?php if(!empty($reply)) { ?>
         <div class="form-right">

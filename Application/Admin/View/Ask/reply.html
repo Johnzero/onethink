@@ -92,14 +92,18 @@
         <div class="form-item">
             <label class="item-label">留言用户</label>
             <div class="controls">
-                <input type="text" class="text input-large" value="{$name}" readonly="readonly">
+                <label class="textarea input-large">
+                    {$name}
+                </label>
             </div>
         </div>
 
         <div class="form-item">
             <label class="item-label">联系方式</label>
             <div class="controls">
-                <input type="text" class="text input-large" value="{$tel}" readonly="readonly">
+                <label class="textarea input-large">
+                    {$tel}
+                </label>
             </div>
         </div>
 
@@ -107,7 +111,7 @@
             <label class="item-label">留言内容</label>
             <div class="controls">
                 <label class="textarea input-large">
-                    <textarea readonly="readonly">{$content}</textarea>
+                    {$content}
                 </label>
             </div>
         </div>

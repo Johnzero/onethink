@@ -526,9 +526,20 @@ class AskController extends AdminController {
         if ( !$id ) {
             $this->error("出现错误！");
         }
-        
+
+        $assist = M("Assist")->where(array("aid"=>$id))->select();
+        $uid_array = $this->uid_array;
+        if (!empty($assist)) {
+            foreach ($assist as $key => $value) {
+                $member = M("Member")->where(array("uid"=>$value["pid"]))->find();
+                $uid_array[] = $value["pid"];
+                $assist[$key]["member"] = $member;
+            }
+        }
+        $this->assign("assist",$assist);
+
         $ask = M("Ask")->where(array("id"=>$id))->find();
-        if ( !in_array($ask["uid"],$this->uid_array) ) {
+        if ( !in_array($ask["uid"],$uid_array) && !in_array(UID,$uid_array)) {
             $this->error("出现错误！");
         }
 
@@ -870,46 +881,47 @@ class AskController extends AdminController {
             $this->error("出现错误！");
         }
         $assist = M("Assist")->where(array("id"=>$id))->find();
-        // $ask = M("Ask")->where(array("id"=>$id))->find();
-        // if ( !in_array($ask["uid"],$this->uid_array) ) {
-        //     $this->error("出现错误！");
-        // }
-        // $this->assign($ask);
+        $ask = M("Ask")->where(array("id"=>$assist["aid"]))->find();
+        if ( $assist["pid"] != UID ) {
+            $this->error("出现错误！");
+        }
+        $this->assign('assist', $assist);
+        $this->assign($ask);
 
         if ( IS_POST ) {
             
-            $pid = I('post.pid');
-            if ( !$pid ) {
-                $this->error("请选择协办单位！");
+            $reply = I('post.reply');
+            if ( !$reply ) {
+                $this->error("请填写协办处理意见！");
             }
-            $explain = I('post.explain');
-            if ( !$explain ) {
-                $this->error("请填写协办原因！");
-            }
-            
-            $assist = M('Assist')->where(array("aid"=>$id,"pid"=>$pid))->find();
-            if (!empty($assist)) {
-                $this->error("已发过协办邀请！请勿重复发布");
-            }
-            M('Assist')->add(array("aid"=>$id,"pid"=>$pid,"uid"=>UID,"explain"=>$explain,"create_time"=>time()));
 
+            $jbr = I('post.jbr');
+            if ( !$jbr ) {
+                $this->error("请填写经办人姓名！");
+            }
+
+            $jbr = I('post.jbr_tel');
+            if ( !$jbr ) {
+                $this->error("请填写经办人联系方式！");
+            }
+            $_POST["update_time"] = time();
+            
             $member = M("Member")->where(array("uid"=>UID))->find();
-            $pmember = M("Member")->where(array("uid"=>$pid))->find();
 
             $process = array();
-            $process["uid"] = $pid;
-            $process["aid"] = $id;
+            $process["uid"] = UID;
+            $process["aid"] = $ask["id"];
             $process["status"] = $ask["status"];
             $process["create_time"] = time();
             $process["create_uid"] = UID;
-            $process["info"] = $member["nickname"]." 请求 ".$pmember["nickname"]." 协办该问题！";
+            $process["info"] = $member["nickname"].": 回复协办意见！";
             M("Process")->add($process);
 
-            $this->success("处理成功！",U('Ask/processing'));
+            M("Assist")->where(array("id"=>$id))->save($_POST);
+            $this->success("处理成功！",U('Ask/assist'));
         }
 
-        $xbdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>array('in','3,4')))->select();
-        $this->assign('xbdw', $xbdw);
+        $this->meta_title = '协助办理：'.$ask['name'];
 
         $this->display();
     }

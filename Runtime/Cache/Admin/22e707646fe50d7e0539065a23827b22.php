@@ -168,13 +168,8 @@
 			<th>邀请协办单位</th>
 			<th>留言日期</th>
 			<th>办理情况</th>	
-			<?php if (ACTION_NAME == "done") {?>
-			<th>办理完成</th>
-			<?php } ?>
 			<th>办理天数</th>
-			<?php if (ACTION_NAME != "all" && ACTION_NAME != "index") {?>
 			<th>操作</th>
-			<?php } ?>
 		</tr>
     </thead>
    	<tbody>
@@ -193,15 +188,20 @@
 			</td>
 			<td><span><?php echo (time_format($vo["create_time"])); ?></span></td>
 			<td>
-				<?php $types = C('STATUS'); ?>
-				<?php echo ($types[$vo['ask']['status']]); ?>
+				<?php if (!$vo["reply"]) { ?>
+					待办理
+				<?php } else { ?>
+					已协办
+				<?php } ?>		
 			</td>
 	        <td>
-				<?php if ($vo['ask']['finish_time']) { $diff_day = round(abs($vo['ask']['finish_time']-$vo['ask']['create_time'])/86400); }else { $diff_day = round(abs(time()-$vo['ask']['create_time'])/86400); } if ( $diff_day < 1 ) { $diff_day = 1; } ?>
+				<?php if ($vo['update_time']) { $diff_day = round(abs($vo['update_time']-$vo['create_time'])/86400); }else { $diff_day = round(abs(time()-$vo['create_time'])/86400); } if ( $diff_day < 1 ) { $diff_day = 1; } ?>
 				<span <?php if(($diff_day) > "5"): ?>class="red"<?php endif; ?>><?php echo ($diff_day); ?> 天</span>
 	        </td>
 	        <td>
-				<a href="<?php echo U('Ask/do_assist',array('id'=>$vo['id']));?>">协助办理</a>
+	        	<?php if (!$vo["reply"]) { ?>
+					<a href="<?php echo U('Ask/do_assist',array('id'=>$vo['id']));?>">协助办理</a>
+				<?php } ?>		
 	        </td>
 		</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 		<?php } else { ?>
