@@ -215,7 +215,6 @@ class ArticleController extends HomeController {
 		$tel = I('post.tel');
 		$ask_id = I('post.ask_id');
 		
-		
 		$ask = M("Ask")->where(array("id"=>$ask_id,"tel"=>$tel,"status"=>5))->find();//校验信息和状态进行打分
 
 		if(empty($ask))
@@ -224,7 +223,6 @@ class ArticleController extends HomeController {
 			$result['error'] = true;
 			$result['msg'] = '只有结束的留言才允许打分';
 			$this->ajaxReturn ( $result );
-			exit();
 		}
 		
 		
@@ -238,7 +236,6 @@ class ArticleController extends HomeController {
 			$result['error'] = true;
 			$result['msg'] = $re['res_message'];
 			$this->ajaxReturn ( $result );
-			exit();
 		}
 		else
 		{
@@ -248,7 +245,6 @@ class ArticleController extends HomeController {
 			$result['error'] = false;
 			$result['msg'] = '短信已发送，请注意查收！';
 			$this->ajaxReturn ( $result );
-			exit();
 		}
 	}
 	
@@ -266,7 +262,6 @@ class ArticleController extends HomeController {
 			$result['error'] = true;
 			$result['msg'] = '信息不完善！';
 			$this->ajaxReturn ( $result );
-			exit();
 		}
 		
 		//校验验证码
@@ -278,7 +273,6 @@ class ArticleController extends HomeController {
 			$result['error'] = true;
 			$result['msg'] = '验证码无效';
 			$this->ajaxReturn ( $result );
-			exit();
 		}
 		
 		$ask = M("Ask")->where(array("id"=>$ask_id,"tel"=>$tel,"status"=>5))->find();//校验信息和状态进行打分
@@ -289,7 +283,6 @@ class ArticleController extends HomeController {
 			$result['error'] = true;
 			$result['msg'] = '只有结束的留言才允许打分';
 			$this->ajaxReturn ( $result );
-			exit();
 		}
 		
 		
@@ -299,10 +292,10 @@ class ArticleController extends HomeController {
 		}else {
 			M("Score")->execute("UPDATE `ot_score` SET `scores`='".$scores."',`lastupdate`='".time()."' WHERE `ask_id` = '".$ask_id."'");
 		}
+
 		$result = array();
 		$result['error'] = false;
 		$result['msg'] = '打分成功';
-		$this->ajaxReturn ( $result );
-		exit();
+		$this->ajaxReturn( $result );
 	}
 }
