@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2015-10-22 16:54:35
+Date: 2015-10-23 16:38:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `ot_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=162 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=163 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ot_action_log
@@ -228,6 +228,7 @@ INSERT INTO `ot_action_log` VALUES ('158', '10', '1', '0', 'Menu', '155', '操�
 INSERT INTO `ot_action_log` VALUES ('159', '1', '2', '0', 'member', '2', '合肥市在2015-10-21登录了后台', '1', '1445393528');
 INSERT INTO `ot_action_log` VALUES ('160', '1', '9', '0', 'member', '9', '巢湖市在2015-10-21登录了后台', '1', '1445393540');
 INSERT INTO `ot_action_log` VALUES ('161', '1', '2', '-1062730068', 'member', '2', '合肥市在2015-10-22登录了后台', '1', '1445498960');
+INSERT INTO `ot_action_log` VALUES ('162', '1', '2', '0', 'member', '2', '合肥市在2015-10-23登录了后台', '1', '1445585711');
 
 -- ----------------------------
 -- Table structure for ot_addons
@@ -1144,7 +1145,7 @@ CREATE TABLE `ot_member` (
 -- Records of ot_member
 -- ----------------------------
 INSERT INTO `ot_member` VALUES ('1', null, 'admin', '0', '0000-00-00', '', '110', '38', '0', '1442801047', '0', '1445393162', '1', null, null);
-INSERT INTO `ot_member` VALUES ('2', null, '合肥市', '0', '0000-00-00', '', '70', '45', '0', '0', '3232237228', '1445498960', '1', '123', '2147483647');
+INSERT INTO `ot_member` VALUES ('2', null, '合肥市', '0', '0000-00-00', '', '80', '46', '0', '0', '0', '1445585711', '1', '123', '2147483647');
 INSERT INTO `ot_member` VALUES ('3', '2', '肥东县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('4', '2', '肥西县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
 INSERT INTO `ot_member` VALUES ('8', '2', '庐江县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
@@ -1593,7 +1594,7 @@ CREATE TABLE `ot_ucenter_member` (
 -- Records of ot_ucenter_member
 -- ----------------------------
 INSERT INTO `ot_ucenter_member` VALUES ('1', 'admin', 'dba1f2b355020ca960aab274c992cf73', 'wangsong1233276@sina.com', '', '1442801047', '0', '1445393162', '0', '1442801047', '1');
-INSERT INTO `ot_ucenter_member` VALUES ('2', '合肥市', '15f61c11ca0ba54277f3841ba11053ee', 'h@zf.com', '', '1443057312', '0', '1445498960', '3232237228', '1443057312', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('2', '合肥市', '15f61c11ca0ba54277f3841ba11053ee', 'h@zf.com', '', '1443057312', '0', '1445585711', '0', '1443057312', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('3', '肥东县', '15f61c11ca0ba54277f3841ba11053ee', 'fd@123.com', '', '1442890436', '0', '0', '0', '1442890436', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('4', '肥西县', '15f61c11ca0ba54277f3841ba11053ee', 'fx@1.com', '', '1442913624', '0', '0', '0', '1442913624', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('5', 'dfasdfa', '15f61c11ca0ba54277f3841ba11053ee', 'asdf@fsf.com', '', '1442913687', '0', '0', '0', '1442913687', '1');
