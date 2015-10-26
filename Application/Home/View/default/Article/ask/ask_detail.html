@@ -100,6 +100,10 @@
 				<option value="0">不满意</option>
 			</select>
 			
+
+			不满意原因：<input type="text" id="uinfo" class="text input-large" name="uinfo">
+
+
 			<button id='type_button' class="btn btn-return" onclick="set_score();return false;">打分</button>
         </div>
        
@@ -186,7 +190,8 @@
 				var tel = $('#tel').val();
 				var ticket = $('#ticket').val();
 				var score = $('#score').val();
-				
+				var uinfo = $('#uinfo').val();
+
 				if(tel=="")
 				{
 					alert("请输入电话号码!");return false;
@@ -208,6 +213,8 @@
 					data : {
 						tel : tel,
 						ticket : ticket,
+						ticket : ticket,
+						uinfo : uinfo,
 						score : score,
 						ask_id : {$id}
 					},

@@ -35,7 +35,8 @@ class AskModel extends Model{
 		$ask_info['sfz'] = addslashes($data['sfz']);
 		$ask_info['email'] = addslashes($data['email']);
 		$ask_info['content'] = addslashes($data['content']);
-		$ask_info['uid'] = (int)($data['uid']);
+		$ask_info['uid'] = $data['uid'];
+		
 		
 		if(empty($ask_info['name']))
 		{
@@ -71,7 +72,6 @@ class AskModel extends Model{
 		$ask_info['create_time'] = time();
 		
 		$return_array['data'] = $ask_info;
-		
 		
 		return $return_array;
 	}
