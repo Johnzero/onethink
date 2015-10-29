@@ -1,290 +1,236 @@
-/** 
- * 描述：重置页面元素，设置布局样式及公共模块
- * 作用范围：公共
- */
-
-html,body {
-	font: 14px/1.5 "microsoft yahei", Helvetica, Tahoma, Arial, "Microsoft jhengHei", sans-serif;
-	color:#404040;
-	background-color:#fff;
+﻿body {
+    font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: url("../images/bg.jpg") no-repeat;
+    background-position:top;
 }
-body,p,pre,blockquote,
-h1,h2,h3,h4,h5,h6,			
-dl,dt,dd,ul,ol,li,			
-form,fieldset,legend,select,
-input,textarea,button,		
-table,caption,tr,th,td {
-	margin:0;
-	padding:0;
-}
-ol,ul {
-	list-style:none;
-}
-fieldset,img {
-	border:0 none;
-}
-img {
-	max-width: 100%;
-}
-a {
-	color: #666;
-	text-decoration:none;
-}
-a:hover{
-	text-decoration:underline;
-}
-input,button,textarea,select,option {
-	font-family:inherit;
-	font-size:100%;	
-	outline: 0;
-}
-textarea {
-	overflow: auto;
-	resize: none;
+.innerblock ul {
+    margin-top: 20px;
+    border-bottom: 2px solid #626262;
 }
 
-/* 布局样式 */
-.cf,.nav {
-	*zoom: 1;
-}
-.cf:before, .cf:after,
-.nav:before, .nav:after,
-.media:before, .media:after,
-.form-item:before,.form-item:after {
-	display: table;
-	content: "";
-}
-.cf:after,
-.nav:after,
-.media:after,
-.form-item:after {
-	clear: both;
-}
-.cf,.nav,.media,
-.form-item {
-	*zoom: 1;
-}
-.fl {
-	float: left;
-}
-.fr {
-	float: right;
-}
-.wrapper {
-	margin-left: auto;
-	margin-right: auto;
-	width: 1000px;
-}
-.cont-container {
-	float: left;
-	width: 720px;
-}
-.side-container {
-	float: right;
-	width: 270px;
-}
-.columns .hd {
-	padding: 0 15px;
-	height: 45px;
-	line-height: 45px;
-	font-size: 16px;
-	color: #333;
-	border-bottom: 1px solid #ebebeb;
-}
-.columns .bd {
-	padding: 10px;
-}
-
-/* 公共独立类名 */
-.hidden {
-	display: none!important;
-}
-.block {
-	display: block;
-}
-.mod {
-	margin-bottom: 10px;
-	border: 1px solid #ebebeb;
-}
-.pillar {
-	display: inline-block;
-	width: 0;
-	height: 100%;
-	vertical-align: middle;
-}
-.ellipsis,
-.ellipsis li {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-/* 导航列表 */
-.nav li {
-	float: left;
-}
-.nav-list {
-	float: none;
-}
-.nav li a,
-.nav li a:hover,
-.nav-list li a,
-.nav-list li a:hover {
-	display: block;
-	text-decoration: none;
-}
-
-/* 表单样式 */
-.text,.textarea {
-    padding: 4px 6px;
-    font-size: 14px;
-    color: #34495E;
-    vertical-align: middle;
-    border: 1px solid #ebebeb;
- 	border-radius: 2px;
- 	background-color: #fff;
-}
-.text {
-	height: 20px;
-    line-height: 20px;
-}
-.textarea {
-	display: block;
-}
-.textarea textarea {
-	width: 100%;
-	border: 0 none;
-}
-select {
-	padding: 2px;
-	height: 27px;
-	line-height: 27px;
-	font-size: 14px;
-	border: 1px solid #ebebeb;
-}
-.radio,.checkbox {
-	display: inline-block;
-	font-size: 14px;
-	min-height: 20px;
-	line-height: 20px;
-	vertical-align: middle;
-}
-.radio input,
-.checkbox input {
-	float: left;
-	margin: 4px 4px 0 0;
-	*margin: 0 2px 0 0;
-}
-.radio + .radio,
-.checkbox + .checkbox {
-	margin-left: 15px;
-}
-.must {
-	margin: 0 4px;
-	color: #f00;
-}
-
-/* 横向多列表单 */
-.form-horizontal .form-item {
-	margin-bottom: 10px;
-}
-.form-horizontal .controls {
-	min-height: 28px;
-	overflow: hidden;
-	*zoom: 1;
-}
-.form-horizontal .item-label {
-	float: left;
-	margin-right: 25px;
-	width: 80px;
-	height: 28px;
-	line-height: 28px;
-	text-align: right;
-}
-.form-horizontal .text {
-	width: 220px;
-}
-
-/* 按钮 */
-.btn {
+.innerblock ul li {
     display: inline-block;
-    margin: 0 0 5px;
-    padding: 6px 16px;
-    line-height: 22px;
-    font-size: 16px;
-    color: #FFFFFF;
+    height: 30px;
+    color: #535353;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    *display: inline;
+    *zoom: 1;
+}
+
+.innerblock ul li:hover,
+.innerblock ul li a:hover {
+    background: #626262;
+    color: white;
     cursor: pointer;
-    text-align: center;
-    vertical-align: middle;
-    border: 0 none;
-    border-radius: 2px 2px 2px 2px;
-	background-color: #348fd4;
-    transition: opacity 0.2s ease-in-out 0s;
-}
-.btn:hover {
-	text-decoration: none;
-	background-color: #2f81bf;
-}
-.btn-small {
-	padding: 3px 12px;
-	font-size: 14px;
-}
-.btn-mini {
-	padding: 1px 8px;
-	font-size: 14px;
 }
 
-/* 左右两列的媒体结构 */
-.media {
-	margin-bottom: 15px;
-}
-.media .media-avatar,
-.media .media-side {
-	float: left;
-	margin-right: 15px;
-}
-.media .media-avatar,
-.media .media-avatar img {
-	width: 52px;
-	height: 52px;
-	border-radius: 50%;
-}
-.media .media-avatar img,
-.media .media-side img {
-	display: block;
-}
-.media .media-body {
-	overflow: hidden;
-	line-height: 1.8;
-	word-break: break-all;
+.active {
+    background: #626262;
+    color: #fff;
+    color: white !important;
 }
 
-/* 实心小三角 */
-.arrow {
-	display: inline-block;
-	width: 0;
-	height: 0;
-	line-height: 0;
-	vertical-align: middle;
-	border: 4px dashed transparent;
+.jumbotron {
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+    background: #378503;
+    background: -moz-linear-gradient(45deg, #1F221F 0%, #0CA818 100%);
+    background: -webkit-linear-gradient(45deg, #1F221F 0%, #0CA818 100%);
+    background: -o-linear-gradient(45deg, #1F221F 0%, #0CA818 100%);
+    background: -ms-linear-gradient(45deg, #1F221F 0%, #0CA818 100%);
+    background: linear-gradient(45deg, #1F221F 0%, #0CA818 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1F221F', endColorstr='#0CA818', GradientType=1);
+    -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
+    -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
+    box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
 }
-.arrow-down {
-	border-top-style: solid;
-	border-top-color: #000;
-	border-bottom-width: 0;
+
+.onethink.pagination {
+    margin: 20px 0;
 }
-.arrow-up {
-	border-bottom-style: solid;
-	border-bottom-color: #000;
-	border-top-width: 0;
+
+.onethink.pagination div {
+    display: inline-block;
+    *display: inline;
+    margin-bottom: 0;
+    margin-left: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    *zoom: 1;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-.arrow-left {
-	border-right-style: solid;
-	border-right-color: #000;
-	border-left-width: 0;
+
+.onethink.pagination div > a {
+    display: inline;
 }
-.arrow-right {
-	border-left-style: solid;
-	border-left-color: #000;
-	border-right-width: 0;
+
+.onethink.pagination div >  a,
+.onethink.pagination div >  span {
+    float: left;
+    padding: 4px 12px;
+    line-height: 20px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-left-width: 0;
+}
+
+.onethink.pagination div > .current {
+    background-color: #f5f5f5;
+    color: #999999;
+    cursor: default;
+}
+
+.onethink.pagination div >:first-child {
+    border-left-width: 1px;
+    -webkit-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-topleft: 4px;
+}
+
+.onethink.pagination div >:last-child {
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+}
+
+/* page.class.php 分页类 bootstrap样式 */
+.onethink.pagination-large div >  a,
+.onethink.pagination-large div >  span {
+    padding: 11px 19px;
+    font-size: 17.5px;
+}
+
+.onethink.pagination-large div >:first-child {
+    -webkit-border-bottom-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    -webkit-border-top-left-radius: 6px;
+    border-top-left-radius: 6px;
+    -moz-border-radius-bottomleft: 6px;
+    -moz-border-radius-topleft: 6px;
+}
+
+.onethink.pagination-large div >:last-child {
+    -webkit-border-top-right-radius: 6px;
+    border-top-right-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    -moz-border-radius-topright: 6px;
+    -moz-border-radius-bottomright: 6px;
+}
+
+.onethink.pagination-mini div > li:first-child {
+    -webkit-border-bottom-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    -webkit-border-top-left-radius: 3px;
+    border-top-left-radius: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    -moz-border-radius-topleft: 3px;
+}
+
+.onethink.pagination-mini div >:last-child {
+    -webkit-border-top-right-radius: 3px;
+    border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+}
+
+.onethink.pagination-small div >  a,
+.onethink.pagination-small div >  span {
+    padding: 2px 10px;
+    font-size: 11.9px;
+}
+
+.onethink.pagination-mini div > a,
+.onethink.pagination-mini div > span {
+    padding: 0 6px;
+    font-size: 10.5px;
+}
+
+.onethink.add-topic {
+    padding: 30px 0;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+}
+
+.onethink .form-horizontal .controls {
+    margin-left: 70px;
+}
+
+.onethink .form-horizontal .control-label {
+    width: 50px;
+    padding-top: 0;
+}
+
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.top-nav {
+    height: 30px;
+    background-color: #f6f6f6;
+    background: url("../images/top_bg.jpg") repeat-x;
+    box-shadow: 0 1px 2px rgba(0,0,0,.25),0 -1px 0 rgba(0,0,0,.1) inset;
+    font-size: 12px;
+    font-family: "宋体","Arial Narrow",HELVETICA;
+}
+.nav-link {
+    height: 30px;
+    line-height: 30px;
+    color: #D44444;
+}
+.nav-link a {
+    color: #434343;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.topDate {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 20px;
+    float: left;
+    color: #959595;
+}
+.logo {
+    margin-left: 60px;
+}
+.header {
+    margin-top: 55px;
+}
+.search {
+    margin-top: 30px;
+}
+.search  input.text {
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    padding: 5px;
+}
+.submit {
+    width: 90px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    background-image: url("../images/search.png");
+    background-repeat:  no-repeat;
+    background-position: center;
+    border-radius: 2px;
+    vertical-align: top;
 }
