@@ -1,11 +1,56 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<include file="Public/head"/>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<title>{:C('WEB_SITE_TITLE')}</title>
+
+		<script>document.write('<script src="http://192.168.6.80:8080/livereload.js?snipver=1"></' + 'script>')</script>
+
+		<link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.css">
+		<link href="__CSS__/base.css" rel="stylesheet">
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="__STATIC__/bootstrap/js/html5shiv.js"></script>
+		<![endif]-->
+		<block name="style"></block>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+		<![endif]-->
+		<!--[if gte IE 9]><!-->
+		<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+		<!--<![endif]-->
+		<script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+		<!-- 页面header钩子，一般用于加载插件CSS文件和代码 -->
+		{:hook('pageHeader')}
 	</head>
 	<body>
-		
-		<include file="Public/header"/>
+		<div class="top-nav">
+		    <div class="container">
+		        <div class="nav-link navbar-left">
+		            <a href="" target="_blank">中国政府网</a>
+		            |
+		            <a href="" target="_blank">安徽省政府网</a>
+		            |
+		            <a href="" target="_blank">安徽省人大</a>
+		            |
+		            <a href="" target="_blank">安徽省政协</a>
+		        </div>
+		        <div class="topDate">
+		            <php>$days = array('星期天','星期一','星期二','星期三','星期四','星期五','星期六');$today = date('w');</php>
+		            <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
+		        </div>
+		        <div class="nav-link navbar-right">
+		            <a href="" target="_blank">微信公众号</a>
+		            |
+		            <a href="" target="_blank">微博</a>
+		            |
+		            <a href="" target="_blank">分享</a>
+		        </div>
+		    </div>
+		</div>
 		<div class="container">
 			<div class="header clearfix">
 				<div class="logo pull-left">
@@ -19,6 +64,15 @@
 					</form>
 				</div>
 			</div>
+			<nav class="nav">
+				<ul>
+					<li><a href="" class="m01">首页</a></li>	
+					<li><a href="" class="m02">政务信息公开</a></li>	
+					<li><a href="" class="m03">微信微博大厅</a></li>	
+					<li><a href="" class="m04">回应社会关切</a></li>	
+					<li><a href="" class="m05">监督评价公开</a></li>	
+				</ul>
+			</nav>
 			<!-- <div class="jumbotron">
 				<h1>Jumbotron heading</h1>
 				<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
@@ -45,14 +99,20 @@
 			<footer class="footer">
 				<p>© Company 2014</p>
 			</footer> -->
-			<!-- 头部 -->
-			<!-- /头部 -->
-			
 			<!-- 主体 -->
 			<include file="Public/body"/>
 			<!-- /主体 -->
 			<!-- 底部 -->
-			<include file="Public/footer"/>
+		    <footer class="footer">
+		      <div class="container">
+		          <!-- <p> 本站由 <strong><a href="" target="_blank">安徽新媒体集团</a></strong> 设计开发</p> -->
+		      </div>
+		    </footer>
+			<include file="Public/var"/>
+			<block name="script"></block> 
+			<div class="hidden">
+				<block name="hidden"></block>
+			</div>
 			<!-- /底部 -->
 		</div>
 	</body>
