@@ -7,7 +7,7 @@
                  btn:true,
                  focus:true,
                  title:true,
-                 auto:true				 
+                 auto:true			 
             }        
             var options = $.extend(defaults, options);   
             return this.each(function(){
@@ -16,8 +16,18 @@
                 var $this = $(this);				
                 var $li = $this.find("li");
                 var li_count = $li.length;
+
 				$this.css({position:'relative',overflow:'hidden',width:$li.find("img").width(),height:$li.find("img").height()});
-				$this.find("li").css({position:'absolute',left:0,top:0}).hide();
+                if (o.width) {
+                    $this.css({width:o.width});
+                    $li.find("img").css({width:o.width});
+                }
+                if (o.height) {
+                    $this.css({height:o.height});
+                    $li.find("img").css({height:o.height});
+                }
+
+                $this.find("li").css({position:'absolute',left:0,top:0}).hide();
 			    $li.first().show();
 			    $this.append('<div class="yx-rotaion-btn"><span class="left_btn"><\/span><span class="right_btn"></span><\/div>');
 				if(!o.btn) $(".yx-rotaion-btn").css({visibility:'hidden'});
@@ -29,22 +39,23 @@
                 $title.text($li.first().find("img").attr("alt"));	
 				$title.attr("href",$li.first().find("a").attr("href"));				
 				
-               // 输出焦点按钮
-               for(i=1;i<=li_count;i++){
+                // 输出焦点按钮
+                for(i=1;i<=li_count;i++){
                  $focus.append('<span>'+i+'</span>');
-               }
+                }
                // 兼容IE6透明图片   
                if($.browser.msie && $.browser.version == "6.0" ){
                   $btn.add($focus.children("span")).css({backgroundImage:'url(statics/ico.gif)'});
                }		
                var $f = $focus.children("span");
                $f.first().addClass("hover");
-               // 鼠标覆盖左右按钮设置透明度
+
                $btn.hover(function(){
-	              $(this).addClass("hover");
+	               $(this).addClass("hover");
                },function(){
-	              $(this).removeClass("hover");
+	               $(this).removeClass("hover");
                });
+               
 			   //鼠标覆盖元素，清除计时器
                $btn.add($li).add($f).hover(function(){
                 if(t) clearInterval(t);
