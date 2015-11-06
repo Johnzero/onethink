@@ -209,12 +209,13 @@ body {
     margin-left: 5px;
 }
 .topDate {
-    width: 150px;
+    width: 180px;
     height: 35px;
     line-height: 35px;
     margin-left: 20px;
-    float: left;
+    float: right;
     color: #959595;
+    text-align: right;
 }
 .logo {
     margin-left: 60px;
@@ -495,15 +496,9 @@ body {
 .btn:hover {
     opacity: 0.8;
 }
-.green.btn-shadow {
-    color: #fff;
-    background: #78d332;
-    background-image: url("../images/wx.png");
-}
 .blue.btn-shadow {
     color: #fff;
     background: #67c4eb;
-    background-image: url("../images/myd.png");
 }
 .orange.btn-shadow {
     color: #fff;
@@ -595,7 +590,7 @@ body {
     width: 100%;
     text-align:left;
     font-size: 14px;
-    margin-left: 20px;
+    padding-left: 20px;
     height: 90px;
     overflow: hidden;
 }
@@ -619,4 +614,78 @@ body {
 }
 .footer p {
     text-align: center;
+}
+.navigation {
+    height: 33px;
+    width: 100%;
+    color: #7d7d7d;
+    line-height: 33px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: left;
+    border: 1px solid #e3e6ed;
+    background-image: url("../images/navbg.jpg");
+    background-repeat: repeat-x;
+}
+.navigation a {
+    color: #7d7d7d;
+}
+.section {
+    width: 100%;
+    padding: 30px;
+    border: 1px solid #e1e1e1;
+    border-top: none;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.1);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,.1);
+    box-shadow: 0 0 5px rgba(0,0,0,.1);
+}
+.questionForm {
+    width: 600px;
+    margin:0 auto;
+}
+.danger {
+    color: #d43f3a;
+}
+.tip {
+    margin:0 auto;
+    width: 100%;
+    text-align: center;
+    color: #666;
+    font-family: "Arial","SimSun";
+}
+.questionForm .form-control {
+    border-radius: 2px;
+}
+.questionForm textarea.form-control {
+    height: 100px;
+}
+.btn-submit {
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+}
+.level1 {
+    width: 49%;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+}
+.level2 {
+    width: 49%;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    visibility: hidden;
+}
+.select2-container .select2-selection--single {
+    height: 35px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 35px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 35px !important;
+}
+.questionForm .btn-submit {
+    margin-top: 20px;
 }

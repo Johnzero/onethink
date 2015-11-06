@@ -228,7 +228,7 @@ class UserController extends AdminController {
             $User   =   new UserApi;
             $uid    =   $User->register($username, $password, $email);
             if(0 < $uid){ //注册成功
-                $user = array('pid'=>$_POST["pid"],'uid' => $uid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel);
+                $user = array('pid'=>$_POST["pid"],'uid' => $uid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel,'type'=>$_POST['type']);
                 if(!M('Member')->add($user)){
                     $this->error('用户添加失败！');
                 } else {

@@ -59,8 +59,8 @@
 }
 .checkbox, .radio {
 	display: inline-block;
-	height: 20px;
-	line-height: 20px;
+	height: 12px;
+	line-height: 12px;
 }
 .checkbox input,
 .radio input {

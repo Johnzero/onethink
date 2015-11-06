@@ -1,0 +1,155 @@
+<extend name="Base/common"/>
+<block name="header">
+    <!-- <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h2>源自相同起点，演绎不同精彩！</h2>
+            <p class="lead"></p>
+        </div>
+    </header> -->
+</block>
+
+<block name="style">
+    <link href="__CSS__/yx_rotaion.css" rel="stylesheet">
+    <link href="__CSS__/flexslider.css" rel="stylesheet">
+    <link href="__CSS__/select2.min.css" rel="stylesheet">
+</block>
+
+<block name="script">
+    <script src="__JS__/jquery-migrate-1.2.1.js"></script>
+    <script src="__JS__/jquery.yx_rotaion.js"></script>
+    <script src="__JS__/jquery.flexslider-min.js"></script>
+    <script src="__JS__/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".yx-rotaion").yx_rotaion({auto:true,height:"330px",width:"720px"});
+            $("#menuLink li a").hover(function() {
+                $("#menuLink li a").removeClass("active");
+                $(this).addClass("active");
+                $(".menuContent").removeClass("active");
+                $("#"+$(this).data("link")).addClass("active");
+            });
+            $('#wxweibo').flexslider({       
+                slideshow:true,
+                slideshowSpeed: 3000, 
+                animation: "slide",
+                direction:"horizontal",
+                easing:"swing",
+                controlNav: false,
+                directionNav:true
+            });
+            $('#rank').flexslider({       
+                slideshow:true,
+                slideshowSpeed: 4000, 
+                animation: "slide",
+                direction:"horizontal",
+                easing:"swing",
+                controlNav: false,
+                directionNav:true
+            });
+            $('.select-box').select2();
+            $('.level1 select').change(function(){ 
+                var id = $(this).children('option:selected').val();
+                $.post("{:U('Ask/getSubclass')}", { id: id },function(data){
+                    if (data) {
+                        $(".level2").css("visibility","inherit");
+                        $('.level2 select').select2();
+                        $(".level2 select").empty();
+                        $(".level2 select").append(data);
+                    }else {
+                        $(".level2").css("visibility","hidden");
+                        $(".level2 select").empty();
+                    }
+                });
+            });
+        })
+    </script>
+</block> 
+
+<block name="body">
+    <div class="main-colum" style="height:1055px;">
+        <div class="navigation">
+            当前位置：<a href="/" target="_blank">首页</a>&nbsp;>&nbsp;<a href="{:U('Ask/question')}" target="_blank">我要留言</a>
+            <div class="topDate">
+                <php>$days = array('星期天','星期一','星期二','星期三','星期四','星期五','星期六');$today = date('w');</php>
+                <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
+            </div>
+        </div>
+        <div class="section">
+            <div class="tip"><span class="danger">*</span> 代表必填项目，为便于我们联系调查，请如实填写个人资料。</div>
+            <div class="clearfix">&nbsp;</div>
+            <form method="POST" action="{:U('Ask/submit')}" enctype="multipart/form-data" class="questionForm">
+                <div class="form-group">
+                    <label><span class="danger">*</span>姓名</label>
+                    <input class="form-control" name="name" type="text" placeholder="姓名">
+                </div>
+                <div class="form-group">
+                    <label><span class="danger">*</span>联系方式</label>
+                    <input class="form-control" name="tel" type="text" placeholder="您的手机号码">
+                </div>
+                <div class="form-group">
+                    <label><span class="danger">*</span>身份证</label>
+                    <input class="form-control" name="sfz" type="text" placeholder="证件号码，用于以后查找您的留言">
+                </div>
+                <div class="form-group">
+                    <label><span class="danger">*</span>地址</label>
+                    <input class="form-control" name="address" type="text" placeholder="您的详细地址">
+                </div>
+                <div class="clearfix">&nbsp;</div>
+                <div class="form-group">
+                    <label><span class="danger">*</span>标题</label>
+                    <input class="form-control" name="title" type="text" placeholder="标题">
+                </div>
+
+                <div class="form-group level1">
+                    <label>受理单位(选填)</label>
+                    <select class="form-control select-box">
+                        <option selected="selected">请选择</option>
+                        <option value="1">省直单位</option>
+                        <option value="2">地市</option>
+                    </select>
+                </div>
+                <div class="form-group level2">
+                    <select class="form-control select-box" name="uid">
+                        <option selected="selected">请选择</option>
+                        <volist name="yjdw" id="vo">
+                            <option value="{$vo.uid}">{$vo.nickname}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>是否公开</label>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="public" value="1" checked="checked">是&nbsp;&nbsp;
+                        </label>
+                        <label>
+                            <input type="radio" name="public" value="2">否
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label><span class="danger">*</span>内容</label>
+                    <textarea class="form-control" name='content' type="text" placeholder="留言内容"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">附件</label>
+                    <input type="file">
+                    <p class="help-block">
+                    文件尺寸：小于 500 kb <br>
+                    可用扩展名：jpg,bmp,gif,png,jpeg,doc</p>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="rule" type="checkbox" value="1" checked="">&nbsp;&nbsp;我已经阅读 <a class="danger" href="#" target="_blank" "">发信管理条例</a>
+                    </label>
+                </div>
+                
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-shadow blue btn-submit">确认无误，提交</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</block>

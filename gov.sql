@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2015-10-30 15:58:35
+Date: 2015-11-06 17:55:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -65,7 +65,7 @@ CREATE TABLE `ot_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=177 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=181 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ot_action_log
@@ -243,6 +243,10 @@ INSERT INTO `ot_action_log` VALUES ('173', '10', '1', '0', 'Menu', '124', '操�
 INSERT INTO `ot_action_log` VALUES ('174', '1', '2', '0', 'member', '2', '合肥市在2015-10-26登录了后台', '1', '1445846214');
 INSERT INTO `ot_action_log` VALUES ('175', '10', '1', '0', 'Menu', '124', '操作url：/admin.php?s=/Menu/edit.html', '1', '1445846253');
 INSERT INTO `ot_action_log` VALUES ('176', '1', '2', '0', 'member', '2', '合肥市在2015-10-26登录了后台', '1', '1445846343');
+INSERT INTO `ot_action_log` VALUES ('177', '1', '1', '0', 'member', '1', 'admin在2015-11-05登录了后台', '1', '1446693288');
+INSERT INTO `ot_action_log` VALUES ('178', '1', '2', '-1062730066', 'member', '2', '合肥市在2015-11-05登录了后台', '1', '1446693412');
+INSERT INTO `ot_action_log` VALUES ('179', '1', '2', '-1062730066', 'member', '2', '合肥市在2015-11-05登录了后台', '1', '1446693932');
+INSERT INTO `ot_action_log` VALUES ('180', '1', '1', '-1062730066', 'member', '1', 'admin在2015-11-05登录了后台', '1', '1446709341');
 
 -- ----------------------------
 -- Table structure for ot_addons
@@ -1170,30 +1174,31 @@ CREATE TABLE `ot_member` (
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '会员状态',
   `contact` varchar(255) DEFAULT NULL,
   `tel` int(11) DEFAULT NULL,
+  `type` int(3) DEFAULT NULL,
   PRIMARY KEY (`uid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 -- ----------------------------
 -- Records of ot_member
 -- ----------------------------
-INSERT INTO `ot_member` VALUES ('1', null, 'admin', '0', '0000-00-00', '', '120', '39', '0', '1442801047', '0', '1445820702', '1', null, null);
-INSERT INTO `ot_member` VALUES ('2', null, '合肥市', '0', '0000-00-00', '', '90', '52', '0', '0', '0', '1445846343', '1', '123', '2147483647');
-INSERT INTO `ot_member` VALUES ('3', '2', '肥东县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('4', '2', '肥西县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('8', '2', '庐江县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('7', '2', '长丰县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('9', '2', '巢湖市', '0', '0000-00-00', '', '50', '11', '0', '0', '0', '1445828481', '1', null, null);
-INSERT INTO `ot_member` VALUES ('10', '2', '瑶海区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('11', '2', '庐阳区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('12', '2', '蜀山区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('13', '2', '包河区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', '12311', '12312313');
-INSERT INTO `ot_member` VALUES ('14', null, '省发改委', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('15', null, '省教育厅', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('16', null, '省科技厅', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('17', null, '省经济和信息化委', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('18', null, '国家统计局安徽调查总队', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null);
-INSERT INTO `ot_member` VALUES ('20', '0', '编辑', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', 'asdfa', '0');
+INSERT INTO `ot_member` VALUES ('1', null, 'admin', '0', '0000-00-00', '', '130', '41', '0', '1442801047', '3232237230', '1446709341', '1', null, null, null);
+INSERT INTO `ot_member` VALUES ('2', null, '合肥市', '0', '0000-00-00', '', '100', '54', '0', '0', '3232237230', '1446693932', '1', '123', '2147483647', '2');
+INSERT INTO `ot_member` VALUES ('3', '2', '肥东县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '3');
+INSERT INTO `ot_member` VALUES ('4', '2', '肥西县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '3');
+INSERT INTO `ot_member` VALUES ('8', '2', '庐江县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '3');
+INSERT INTO `ot_member` VALUES ('7', '2', '长丰县', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '3');
+INSERT INTO `ot_member` VALUES ('9', '2', '巢湖市', '0', '0000-00-00', '', '50', '11', '0', '0', '0', '1445828481', '1', null, null, '3');
+INSERT INTO `ot_member` VALUES ('10', '2', '瑶海区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '3');
+INSERT INTO `ot_member` VALUES ('11', '2', '庐阳区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '3');
+INSERT INTO `ot_member` VALUES ('12', '2', '蜀山区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '3');
+INSERT INTO `ot_member` VALUES ('13', '2', '包河区', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', '12311', '12312313', '3');
+INSERT INTO `ot_member` VALUES ('14', null, '省发改委', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '1');
+INSERT INTO `ot_member` VALUES ('15', null, '省教育厅', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '1');
+INSERT INTO `ot_member` VALUES ('16', null, '省科技厅', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '1');
+INSERT INTO `ot_member` VALUES ('17', null, '省经济和信息化委', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '1');
+INSERT INTO `ot_member` VALUES ('18', null, '国家统计局安徽调查总队', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', null, null, '1');
+INSERT INTO `ot_member` VALUES ('20', '0', '编辑', '0', '0000-00-00', '', '0', '0', '0', '0', '0', '0', '1', 'asdfa', '0', '4');
 
 -- ----------------------------
 -- Table structure for ot_menu
@@ -1632,13 +1637,13 @@ CREATE TABLE `ot_ucenter_member` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of ot_ucenter_member
 -- ----------------------------
-INSERT INTO `ot_ucenter_member` VALUES ('1', 'admin', 'dba1f2b355020ca960aab274c992cf73', 'wangsong1233276@sina.com', '', '1442801047', '0', '1445820702', '0', '1442801047', '1');
-INSERT INTO `ot_ucenter_member` VALUES ('2', '合肥市', '15f61c11ca0ba54277f3841ba11053ee', 'h@zf.com', '', '1443057312', '0', '1445846343', '0', '1443057312', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('1', 'admin', 'dba1f2b355020ca960aab274c992cf73', 'wangsong1233276@sina.com', '', '1442801047', '0', '1446709341', '3232237230', '1442801047', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('2', '合肥市', '15f61c11ca0ba54277f3841ba11053ee', 'h@zf.com', '', '1443057312', '0', '1446693932', '3232237230', '1443057312', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('3', '肥东县', '15f61c11ca0ba54277f3841ba11053ee', 'fd@123.com', '', '1442890436', '0', '0', '0', '1442890436', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('4', '肥西县', '15f61c11ca0ba54277f3841ba11053ee', 'fx@1.com', '', '1442913624', '0', '0', '0', '1442913624', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('5', 'dfasdfa', '15f61c11ca0ba54277f3841ba11053ee', 'asdf@fsf.com', '', '1442913687', '0', '0', '0', '1442913687', '1');
@@ -1658,6 +1663,9 @@ INSERT INTO `ot_ucenter_member` VALUES ('18', '国家统计局安徽调查总队
 INSERT INTO `ot_ucenter_member` VALUES ('19', '法法师', '15f61c11ca0ba54277f3841ba11053ee', 'leibiya110@sina.com', '', '1442996889', '0', '0', '0', '1442996889', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('20', '编辑', '15f61c11ca0ba54277f3841ba11053ee', 'leisbiya110@sina.com', '', '1443432685', '0', '0', '0', '1443432685', '1');
 INSERT INTO `ot_ucenter_member` VALUES ('21', '其他', '15f61c11ca0ba54277f3841ba11053ee', 'leisbiyca110@sina.com', '', '1443433285', '0', '0', '0', '1443433285', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('22', '123123', '15f61c11ca0ba54277f3841ba11053ee', 'wangsoasdfngc1233276@sina.com', '', '1446778603', '0', '0', '0', '1446778603', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('23', 'ssss', '15f61c11ca0ba54277f3841ba11053ee', 'wangsongcc1233276@sina.comcss', '', '1446778663', '0', '0', '0', '1446778663', '1');
+INSERT INTO `ot_ucenter_member` VALUES ('24', '123123123', '15f61c11ca0ba54277f3841ba11053ee', 'wangsongccccccc1233276@sina.comc', '', '1446778698', '0', '0', '0', '1446778698', '1');
 
 -- ----------------------------
 -- Table structure for ot_ucenter_setting

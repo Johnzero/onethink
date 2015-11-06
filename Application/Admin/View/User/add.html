@@ -61,6 +61,20 @@
                 <input type="text" class="text input-large" name="tel" value="{$data.tel}">
             </div>
         </div>
+
+        <div class="form-item">
+            <label class="item-label">类型</label>
+            <div class="controls">
+                <input type="radio" class="radio" name="type" value="1" <eq name="data.type" value="1"> checked="checked"</eq> >省直
+
+                <input type="radio" class="radio" name="type" value="2" <eq name="data.type" value="2"> checked="checked"</eq>>地市
+
+                <input type="radio" class="radio" name="type" value="3" <eq name="data.type" value="3"> checked="checked"</eq> >二级单位
+
+                <input type="radio" class="radio" name="type" value="4" <eq name="data.type" value="4"> checked="checked"</eq> >其他
+            </div>
+        </div>
+
         <div class="form-item">
             <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>

@@ -1,0 +1,253 @@
+<extend name="Base/common"/>
+
+<block name="style">
+<link rel="stylesheet" type="text/css" href="/Public/Admin/css/table.css" media="all">
+</block>
+
+<block name="body">
+	<div class="main-title">
+        <h2>留言留言：{$title}</h2>
+    </div>
+
+        <div class="form-item">
+            <label class="item-label">留言用户</label>
+            <div class="controls">
+                <input type="text" class="text input-large" value="{$name}" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">留言内容</label>
+            <div class="controls">
+                <label class="textarea input-large">
+                    <textarea readonly="readonly">{$content}</textarea>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">受理单位</label>
+            <div class="controls">
+                <select name="pid" disabled="disabled">
+                    <volist name="yjdw" id="vo">
+                        <option value="{$vo.uid}" <eq name="$vo.uid" value="$uid"> selected</eq> >{$vo.nickname}</option>
+                    </volist>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">办理流程</label>
+            <div class="controls">
+                <table class="table-fill">
+                    <thead>
+                        <tr>
+                            <th class="text-left">
+                                状态
+                            </th>
+                            <th class="text-left">
+                                处理人
+                            </th>
+                            <th class="text-left">
+                                意见
+                            </th>
+                            <th class="text-left">
+                                处理时间
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                        <foreach name="process" item="vo">
+                            <tr>
+                                <td class="text-left">
+                                    <php>$types = C('STATUS');</php>
+                                    {$types[$vo['status']]}
+                                </td>
+                                <td class="text-left">
+                                    {$vo['member']['nickname']}
+                                </td>
+                                <td class="text-left">
+                                    <?php if (!$vo["info"]) { ?>
+                                        更改状态
+                                    <?php }else { ?>
+                                        {$vo.info}
+                                    <?php } ?>
+                                    
+                                </td>
+                                <td class="text-left">
+                                    {$vo.create_time|time_format}
+                                </td>
+                            </tr>
+                        </foreach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+		
+		<div class="form-item">
+			<input type="button" id="message_button" value="免费获取验证码"/>
+		</div>
+		
+		<div class="form-item">
+            <label class="item-label">打分</label>
+                
+			电话号码：
+			<input type="text" id="tel" class="text input-large" value="">
+			验证码：
+			<input type="text" id="ticket" class="text input-large" value="">
+			
+			<select name="pid" id="score">
+				<option value="100" selected>满意</option>
+				<option value="0">不满意</option>
+			</select>
+			
+
+			不满意原因：<input type="text" id="uinfo" class="text input-large" name="uinfo">
+
+
+			<button id='type_button' class="btn btn-return" onclick="set_score();return false;">打分</button>
+        </div>
+       
+        <div class="form-item">
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+		<script type="text/javascript">
+		
+		
+		var wait=60;
+		function time(o) {
+			if (wait == 0) {
+				o.removeAttribute("disabled");           
+				o.value="免费获取验证码";
+				wait = 60;
+			} else {
+				if(wait==60)
+				{
+					var tel = $('#tel').val();
+					if(tel=="")
+					{
+						alert("请输入电话号码!");return false;
+					}
+				
+					get_message();
+				}
+				
+				o.setAttribute("disabled", true);
+				o.value="重新发送(" + wait + ")";
+				
+				wait--;
+				setTimeout(function() {
+					time(o)
+				},
+				1000)
+			}
+		}
+		document.getElementById("message_button").onclick=function(){time(this);}
+				
+				
+				
+				
+			function get_message(){
+				var tel = $('#tel').val();
+				if(tel=="")
+				{
+					alert("请输入电话号码!");return false;
+				}
+				
+				$.ajax({
+					type : 'POST',
+					url : '/Article/get_message',
+					data : {
+						tel : tel,
+						ask_id : {$id}
+					},
+					success : function (response , status , xhr) {
+						if(response.error==true || response.error==false)
+						{
+							alert(response.msg);
+							if(response.error==false){
+								//window.location.reload();
+							}
+							return false;
+						}
+						else
+						{
+							alert("系统繁忙，请稍候再试");
+							return false;
+						}
+					},
+					beforeSend : function(){
+						$('#message_button').hide();
+					},
+					complete : function(){
+						$('#message_button').show();
+					}
+				});
+				
+			}
+		
+			//get_message
+			function set_score(){
+				var tel = $('#tel').val();
+				var ticket = $('#ticket').val();
+				var score = $('#score').val();
+				var uinfo = $('#uinfo').val();
+
+				if(tel=="")
+				{
+					alert("请输入电话号码!");return false;
+				}
+				
+				if(ticket=="")
+				{
+					alert("请输入验证码!");return false;
+				}
+				
+				if(score=="")
+				{
+					alert("请选择分数!");return false;
+				}
+				
+				$.ajax({
+					type : 'POST',
+					url : '/Article/ask_detail_score',
+					data : {
+						tel : tel,
+						ticket : ticket,
+						ticket : ticket,
+						uinfo : uinfo,
+						score : score,
+						ask_id : {$id}
+					},
+					success : function (response , status , xhr) {
+						if(response.error==true || response.error==false)
+						{
+							alert(response.msg);
+							if(response.error==false){
+								//window.location.reload();
+							}
+							return false;
+						}
+						else
+						{
+							alert("系统繁忙，请稍候再试");
+							return false;
+						}
+					},
+					beforeSend : function(){
+						$('#type_button').hide();
+					},
+					complete : function(){
+						$('#type_button').show();
+					}
+				});
+			}
+			
+			
+			
+			$(function () { 
+				$('#btn').click(function () {
+				
+				})
+			});
+		</script>
+</block>
