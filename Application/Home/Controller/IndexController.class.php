@@ -19,4 +19,10 @@ class IndexController extends HomeController {
         $this->display();
     }
 
+    public function respond_to_society() {
+
+
+        $this->display();
+    }
+
 }
