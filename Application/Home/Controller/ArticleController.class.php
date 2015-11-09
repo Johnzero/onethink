@@ -35,6 +35,16 @@ class ArticleController extends HomeController {
 
 		/* 获取当前分类列表 */
 		$Document = D('Document');
+
+        $ahyw = $Document->order("create_time DESC")->limit(10)->lists(40);
+        $this->assign('ahyw',$ahyw);
+
+        $zcdt = $Document->order("create_time DESC")->limit(10)->lists(41);
+        $this->assign('zcdt',$zcdt);
+
+        $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
+        $this->assign('jhzx',$jhzx);
+        
 		$list = $Document->page($p, $category['list_row'])->lists($category['id']);
 		if(false === $list){
 			$this->error('获取列表数据失败！');
@@ -52,6 +62,18 @@ class ArticleController extends HomeController {
 		if(!($id && is_numeric($id))){
 			$this->error('文档ID错误！');
 		}
+
+		$Document = D('Document');
+
+        $ahyw = $Document->order("create_time DESC")->limit(10)->lists(40);
+        $this->assign('ahyw',$ahyw);
+
+        $zcdt = $Document->order("create_time DESC")->limit(10)->lists(41);
+        $this->assign('zcdt',$zcdt);
+
+        $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
+        $this->assign('jhzx',$jhzx);
+
 
 		/* 页码检测 */
 		$p = intval($p);

@@ -1,13 +1,4 @@
 <extend name="Base/common"/>
-<block name="header">
-    <!-- <header class="jumbotron subhead" id="overview">
-        <div class="container">
-            <h2>源自相同起点，演绎不同精彩！</h2>
-            <p class="lead"></p>
-        </div>
-    </header> -->
-</block>
-
 <block name="style">
     <link href="__CSS__/select2.min.css" rel="stylesheet">
 </block>
@@ -38,7 +29,7 @@
 <block name="body">
     <div class="main-colum" style="height:1055px;">
         <div class="navigation">
-            当前位置：<a href="/" target="_blank">首页</a>&nbsp;>&nbsp;<a href="{:U('Ask/question')}" target="_blank">我要留言</a>
+            当前位置：<a href="/" target="_blank">首页</a>&nbsp;>&nbsp;<a>我要留言</a>
             <div class="topDate">
                 <php>$days = array('星期天','星期一','星期二','星期三','星期四','星期五','星期六');$today = date('w');</php>
                 <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>

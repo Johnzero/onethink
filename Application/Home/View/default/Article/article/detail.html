@@ -1,33 +1,78 @@
 <extend name="Base/common"/>
-
-<block name="header">
-    <header class="jumbotron subhead" id="overview">
-		<div class="container">
-			<h2>{$info.title}</h2>
-			<p>
-				<span  class="pull-left">
-					<span class="author">{$info.uid|get_username}</span>
-					<span> 发表于 {$info.create_time|date='Y-m-d H:i',###}</span>
-				</span>
-				<span class="pull-right">
-					<article:prev name="prev" info="info">
-                        <a href="{:U('?id='.$prev['id'])}">上一篇</a>
-                    </article:prev>
-                    <article:next name="next" info="info">
-                        <a href="{:U('?id='.$next['id'])}">下一篇</a>
-                    </article:next>
-				</span>
-			</p>
-		</div>
-	</header>
-</block>
-
 <block name="body">
-    <div class="span9 main-content">
-        <!-- Contents
-        ================================================== -->
-        <section id="contents">{$info.content}</section>
-        <hr/>
-        {:hook('documentDetailAfter',$info)}
+    <div class="main-colum">
+        <div class="navigation">
+            当前位置：<a href="/" target="_blank">首页</a>&nbsp;>&nbsp;<a href="{:U('Article/lists',array('category'=>$category['id']))}" target="_blank">{$category.title}</a>&nbsp;>&nbsp;<span>{$info.title}</span>
+            <div class="topDate">
+                <php>$days = array('星期天','星期一','星期二','星期三','星期四','星期五','星期六');$today = date('w');</php>
+                <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
+            </div>
+        </div>
+        <div class="section article-box">
+        	<h1>{$info.title}</h1>
+        	<div class="article-infobox">
+				<!-- <span>来源：<a>TechWeb </a></span> -->
+				<span>分类：<a href="{:U('Article/lists',array('category'=>$category['id']))}" target="_blank">{$category.title}</a> </span>
+				<span>时间：<a>{$info.create_time|time_format}</a> </span>
+				<span>阅读：<a>{$info.view}</a> 次 </span>
+			</div>
+        	<hr/>
+			<div class="font9blue">
+				【<b>字体：<a href="javascript:fontZoom(20)"><font style="color:rgb(188, 0, 0)">大</font></a>&nbsp;<a href="javascript:fontZoom(16)"><font style="color:rgb(188, 0, 0)">中</font></a>&nbsp;<a href="javascript:fontZoom(12)"><font style="color:rgb(188, 0, 0)">小</font></a></b>】【<b>视力保护：</b><a href="javascript:divbgColor('#ffffff')" style="color:#ffffff;font-size: 20px">■</a> 
+            	<a href="javascript:divbgColor('#F6F6F6')" style="color:#F6F6F6;font-size: 20px">■</a> 
+            	<a href="javascript:divbgColor('#CCCCCC')" style="color:#CCCCCC;font-size: 20px">■</a> 
+            	<a href="javascript:divbgColor('#E7FAEC')" style="color:#E7FAEC;font-size: 20px">■</a> 
+            	<a href="javascript:divbgColor('#AFE3A8')" style="color:#AFE3A8;font-size: 20px">■</a> 
+            	<a href="javascript:divbgColor('#FFFFE1')" style="color:#FFFFE1;font-size: 20px">■</a> 
+            	<a href="javascript:divbgColor('#DFCCD8')" style="color:#DFCCD8;font-size: 20px">■</a> 】
+            </div>
+			<div id="article_content">
+        		{$info.content|htmlspecialchars_decode}
+				<div class="clearfix"></div>
+			</div>
+			<!-- <?php if ($page) { ?>
+			<div class="pagination text-center">
+				<ul>
+					{$page}
+				</ul>
+			</div>
+			<?php } ?> -->
+            {:hook('documentDetailAfter',$info)}
+            <div class="bdsharebuttonbox bdshare-button-style0-16" style="float:right;"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a><a href="#" class="bds_ty" data-cmd="ty" title="分享到天涯社区"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+			<div class="clearfix"></div>
+			<hr/>
+        </div>
     </div>
+</block>
+<block name="script">
+	<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			window._bd_share_config={"common":{"bdSnsKey":{},"bdDesc":'{$post_excerpt}',"bdText":"{$post_title}","bdMini":"2","bdMiniList":false,"bdPic":location.origin+"/data/upload/post/{$smeta.thumb}","bdStyle":"0","bdSize":"22"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+			if ($.cookie('color')) {
+		  		document.getElementsByClassName('article-box')[0].style.backgroundColor = $.cookie('color');
+				$("#article_content").find("*").css("backgroundColor",$.cookie('color'));
+			}
+			if ($.cookie('font')) {
+		  		$("#article_content").find("*").css("font-size",$.cookie('font')+'px');
+	  			$("#article_content").find("*").css("lineHeight",$.cookie('font')*2+'px');
+			}
+	  		$("#article_content").find("*").css("max-width",$("#article_content").width()+'px');
+	  		$("#article_content a").attr('target', '_blank');
+		});
+		function fontZoom(size){
+			$.cookie('font',size);
+			$("#article_content").css("font-size",size+'px');
+	  		$("#article_content").css("lineHeight",size*2+'px');
+	  		$("#article_content").find("*").css("font-size",size+'px');
+	  		$("#article_content").find("*").css("lineHeight",size*2+'px');
+		};
+		function divbgColor(clo){
+			$.cookie('color',clo);
+		  	document.getElementsByClassName('article-box')[0].style.backgroundColor = clo;
+	  		$("#article_content").find("*").css("backgroundColor",clo);
+		};
+	</script>
 </block>

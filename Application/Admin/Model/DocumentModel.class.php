@@ -87,7 +87,6 @@ class DocumentModel extends Model{
             $this->error = $res['info'];
             return false;
         }
-
         /* 获取数据对象 */
         $data = $this->token(false)->create($data);
         if(empty($data)){

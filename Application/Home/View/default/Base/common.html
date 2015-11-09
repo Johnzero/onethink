@@ -7,7 +7,7 @@
 
 		<title>{:C('WEB_SITE_TITLE')}</title>
 
-		<!--<script>document.write('<script src="http://192.168.6.80:8080/livereload.js?snipver=1"></' + 'script>')</script>-->
+		<script>document.write('<script src="http://192.168.6.80:8080/livereload.js?snipver=1"></' + 'script>')</script>
 
 		<link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.css">
 		<link href="__CSS__/base.css" rel="stylesheet">
@@ -62,10 +62,10 @@
 			<nav class="nav">
 				<ul>
 					<li><a href="/" class="m01">首页</a></li>	
-					<li><a href="" class="m02">政务信息公开</a></li>	
-					<li><a href="" class="m03">微信微博大厅</a></li>	
+					<li><a href="{:U('Index/government_information')}" class="m02">政务信息公开</a></li>	
+					<li><a href="{:U('Index/weixin_weibo')}" class="m03">微信微博大厅</a></li>	
 					<li><a href="{:U('Index/respond_to_society')}" class="m04">回应社会关切</a></li>	
-					<li><a href="" class="m05">监督评价公开</a></li>	
+					<li><a href="{:U('Index/supervision_and_evaluation')}" class="m05">监督评价公开</a></li>	
 				</ul>
 			</nav>
 			<!-- <div class="jumbotron">
