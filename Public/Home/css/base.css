@@ -19,6 +19,7 @@ body {
 
 .top-nav .container {
     width: 95%;
+    min-width: 800px;
 }
 
 .container {

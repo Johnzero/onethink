@@ -953,50 +953,52 @@ class AskController extends AdminController {
         if ( !$id ) {
             $this->error("出现错误！");
         }
-        $assist = M("Assist")->where(array("id"=>$id))->find();
-        $ask = M("Ask")->where(array("id"=>$assist["aid"]))->find();
-        if ( $assist["pid"] != UID ) {
-            $this->error("出现错误！");
-        }
-        $this->assign('assist', $assist);
-        $this->assign($ask);
+        M("Assist")->where(array("id"=>$id))->save(array("reply"=>"已处理"));
+        $this->success("处理成功！",U('Ask/assist'));
 
-        if ( IS_POST ) {
+        // $ask = M("Ask")->where(array("id"=>$assist["aid"]))->find();
+        // if ( $assist["pid"] != UID ) {
+        //     $this->error("出现错误！");
+        // }
+        // $this->assign('assist', $assist);
+        // $this->assign($ask);
+
+        // if ( IS_POST ) {
             
-            $reply = I('post.reply');
-            if ( !$reply ) {
-                $this->error("请填写协办处理意见！");
-            }
+        //     $reply = I('post.reply');
+        //     if ( !$reply ) {
+        //         $this->error("请填写协办处理意见！");
+        //     }
 
-            $jbr = I('post.jbr');
-            if ( !$jbr ) {
-                $this->error("请填写经办人姓名！");
-            }
+        //     $jbr = I('post.jbr');
+        //     if ( !$jbr ) {
+        //         $this->error("请填写经办人姓名！");
+        //     }
 
-            $jbr = I('post.jbr_tel');
-            if ( !$jbr ) {
-                $this->error("请填写经办人联系方式！");
-            }
-            $_POST["update_time"] = time();
+        //     $jbr = I('post.jbr_tel');
+        //     if ( !$jbr ) {
+        //         $this->error("请填写经办人联系方式！");
+        //     }
+        //     $_POST["update_time"] = time();
             
-            $member = M("Member")->where(array("uid"=>UID))->find();
+        //     $member = M("Member")->where(array("uid"=>UID))->find();
 
-            $process = array();
-            $process["uid"] = UID;
-            $process["aid"] = $ask["id"];
-            $process["status"] = $ask["status"];
-            $process["create_time"] = time();
-            $process["create_uid"] = UID;
-            $process["info"] = $member["nickname"].": 回复协办意见！";
-            M("Process")->add($process);
+        //     $process = array();
+        //     $process["uid"] = UID;
+        //     $process["aid"] = $ask["id"];
+        //     $process["status"] = $ask["status"];
+        //     $process["create_time"] = time();
+        //     $process["create_uid"] = UID;
+        //     $process["info"] = $member["nickname"].": 回复协办意见！";
+        //     M("Process")->add($process);
 
-            M("Assist")->where(array("id"=>$id))->save($_POST);
-            $this->success("处理成功！",U('Ask/assist'));
-        }
+        //     M("Assist")->where(array("id"=>$id))->save($_POST);
+        //     $this->success("处理成功！",U('Ask/assist'));
+        // }
 
-        $this->meta_title = '协助办理：'.$ask['name'];
+        // $this->meta_title = '协助办理：'.$ask['name'];
 
-        $this->display();
+        // $this->display();
     }
 
 

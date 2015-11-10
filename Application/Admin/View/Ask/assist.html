@@ -16,7 +16,7 @@
 	<div class="cf">
 		<div class="fl">
 
-		 	<button class="btn ajax-post" target-form="ids" url="{:U("Ask/setStatus",array("status"=>1))}">审核通过</button>
+		 	<!-- <button class="btn ajax-post" target-form="ids" url="{:U("Ask/setStatus",array("status"=>1))}">审核通过</button> -->
 
 			<!-- <button class="btn ajax-post" target-form="ids" url="{:U("Ask/setStatus",array("status"=>1))}">启 用</button>
 			<button class="btn ajax-post" target-form="ids" url="{:U("Ask/setStatus",array("status"=>0))}">禁 用</button>
@@ -111,9 +111,10 @@
 				<span <gt name="diff_day" value="5">class="red"</gt>>{$diff_day} 天</span>
 	        </td>
 	        <td>
-	        	<?php if (!$vo["reply"]) { ?>
-					<a href="{:U('Ask/do_assist',array('id'=>$vo['id']))}">协助办理</a>
-				<?php } ?>		
+                <a href="{:U('Ask/detail?id='.$vo['id'])}">查看</a>
+                <?php if (!$vo["reply"]) { ?>
+                    <a href="javascript:void(0);" class="ajax-get" url="{:U('Ask/do_assist',array('id'=>$vo['id']))}">处理</a>
+                <?php } ?>
 	        </td>
 		</tr>
 		</volist>
