@@ -201,7 +201,7 @@ class AskController extends AdminController {
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
 
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
+        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("update_time DESC")->select();
 
         foreach ($lists as $key => $value) {
             if ($value["uid"]) {
@@ -300,7 +300,7 @@ class AskController extends AdminController {
 
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
 
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
+        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("update_time DESC")->select();
 
         foreach ($lists as $key => $value) {
             if ($value["uid"]) {
@@ -350,7 +350,7 @@ class AskController extends AdminController {
 
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
 
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
+        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("update_time DESC")->select();
 
         foreach ($lists as $key => $value) {
             if ($value["uid"]) {
@@ -376,26 +376,44 @@ class AskController extends AdminController {
 
         $ask = M("Ask")->where(array("id"=>$id))->find();
         $this->assign($ask);
-        if ( !in_array($ask["uid"],$this->uid_array) ) {
+        if ( !in_array($ask["uid"],$this->uid_array) && $this->group_id != 1 ) {
             $this->error("出现错误！");
         }
 
         $reply = M("Reply")->order("id desc")->where(array("aid"=>$id))->find();
-
         $this->assign("reply",$reply);
-        if (empty($reply)) {
-            $this->error("请先回复留言，再进行审批！");
-        }
+
         if (IS_POST) {
 
-            $_POST['explain'] = html_entity_decode($_POST['explain']);
-            $_POST['reply_content'] = html_entity_decode($_POST['reply_content']);
+            $_POST['explain'] = $_POST['explain'];
+            $_POST['reply_content'] = $_POST['reply_content'];
             $_POST['aid'] = $id;
             $_POST['create_time'] = time();
             $_POST['uid'] = UID;
 
+            if(empty($_POST['explain']))
+            {
+                $this->error("办理情况不能为空");
+            }
+            if(empty($_POST['reply_content']))
+            {
+                $this->error("答复口径不能为空");
+            }
+            if(empty($_POST['transactor']))
+            {
+                $this->error("经办人不能为空");
+            }
+            if(empty($_POST['transactor_tel']))
+            {
+                $this->error("联系电话不能为空");
+            }
+
             M("Ask")->where(array("id"=>$id))->save(array("status"=>5,"finish_time"=>time(),"update_time"=>time()));
-            M("Reply")->where(array("id"=>$reply["id"]))->save($_POST);
+            if (empty($reply)) {
+                M("Reply")->add($_POST);
+            }else {
+                M("Reply")->where(array("id"=>$reply["id"]))->save($_POST);
+            }
             
             $member = M("Member")->where(array("uid"=>UID))->find();
 
@@ -430,7 +448,7 @@ class AskController extends AdminController {
         }
 
         $ask = M("Ask")->where(array("id"=>$id))->find();
-        if ( !in_array($ask["uid"],$this->uid_array) ) {
+        if ( !in_array($ask["uid"],$this->uid_array) && $this->group_id != 1 ) {
             $this->error("出现错误！");
         }
 
@@ -485,7 +503,7 @@ class AskController extends AdminController {
 
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
 
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
+        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("update_time DESC")->select();
 
         foreach ($lists as $key => $value) {
             if ($value["uid"]) {
@@ -549,7 +567,7 @@ class AskController extends AdminController {
                         $process["status"] = 10;
                         $process["create_time"] = time();
                         $process["create_uid"] = UID;
-                        $process["info"] = "审批未通过 ".$info;
+                        $process["info"] = $info;
 
                         M("Process")->add($process);
                         $this->success("处理完成！",U('Ask/my'));
@@ -796,7 +814,6 @@ class AskController extends AdminController {
         
         $ask = M("Ask")->where(array("id"=>$id))->find();
         $reply = M("Reply")->order("id desc")->where(array("aid"=>$id))->find();
-
         $this->assign("reply",$reply);
 
         if ( !in_array($ask["uid"],$this->uid_array) ) {
