@@ -16,7 +16,7 @@
             <label class="item-label">上级</label>
             <div class="controls">
             <select name="pid">
-                <option selected> 主用户 </option>
+                <option selected value=""> 主用户 </option>
                 <volist name="parents" id="vo">
                     <option value="{$vo.uid}" <eq name="data.pid" value="$vo.uid"> selected</eq> >{$vo.nickname}</option>
                 </volist>

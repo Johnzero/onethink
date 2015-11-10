@@ -48,7 +48,6 @@ class UserController extends AdminController {
      */
     public function tree($tree = null){
         C('_SYS_GET_CATEGORY_TREE_') || $this->_empty();
-       // dump($tree);
         $this->assign('tree', $tree);
         $this->display('tree');
     }
@@ -227,8 +226,12 @@ class UserController extends AdminController {
             /* 调用注册接口注册用户 */
             $User   =   new UserApi;
             $uid    =   $User->register($username, $password, $email);
-            if(0 < $uid){ //注册成功
-                $user = array('pid'=>$_POST["pid"],'uid' => $uid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel,'type'=>$_POST['type']);
+            if(0 < $uid){
+                if ($_POST['pid']) {
+                    $user = array('pid'=>$_POST["pid"],'uid' => $uid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel,'type'=>$_POST['type']);
+                }else {
+                    $user = array('uid' => $uid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel,'type'=>$_POST['type']);
+                }
                 if(!M('Member')->add($user)){
                     $this->error('用户添加失败！');
                 } else {

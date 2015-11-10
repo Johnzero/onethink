@@ -16,8 +16,7 @@
 	<div class="cf">
 		<div class="fl">
 
-		 	<button class="btn ajax-post" target-form="ids" url="{:U("Ask/setStatus",array("status"=>1))}">审核通过</button>
-
+		 	<!-- <button class="btn ajax-post" target-form="ids" url="{:U("Ask/setStatus",array("status"=>1))}">审批通过</button> -->
 			<!-- <button class="btn ajax-post" target-form="ids" url="{:U("Ask/setStatus",array("status"=>1))}">启 用</button>
 			<button class="btn ajax-post" target-form="ids" url="{:U("Ask/setStatus",array("status"=>0))}">禁 用</button>
 			<button class="btn ajax-post confirm" target-form="ids" url="{:U("Ask/setStatus",array("status"=>-1))}">删 除</button> -->
@@ -91,7 +90,7 @@
 				{$vo['member']['nickname']?$vo['member']['nickname']:'未知'}&nbsp;&nbsp;
 				
 				<?php if ( $group_id == 1 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
-					<a href="{:U('Ask/change?id='.$vo['id'])}" title="更改"><i class="fa fa-reply-all"></i></a>
+					<a href="{:U('Ask/change?id='.$vo['id'])}" title="指派"><i class="fa fa-reply-all"></i></a>
 				<?php }else if ( $group_id == 3 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
 					<a href="{:U('Ask/adopt?id='.$vo['id'])}" class="ajax-get confirm" title="认领" target-form="form-horizontal"><i class="fa fa-reply-all"></i></a>
 				<?php } ?>
@@ -108,8 +107,13 @@
 			</td>
 			<td><span>{$vo.create_time|time_format}</span></td>
 			<td>
+
 				<php>$types = C('STATUS');</php>
-				{$types[$vo['status']]}
+					<?php if ( is_null ($vo['uid']) ) { ?>
+						待认领
+					<?php }else{ ?>
+						{$types[$vo['status']]}
+					<?php } ?>
 			</td>
 			
 	        <?php if (ACTION_NAME == "done") { ?>
@@ -137,7 +141,7 @@
 				<?php if ( $vo['status'] != 10 ) { ?>
 				
 					<?php if ( $vo['status'] == 0 ) { ?>
-						<a href="{:U('Ask/sp',array('id'=>$vo['id']))}">审核</a>
+						<a href="{:U('Ask/sp',array('id'=>$vo['id']))}">审批办理</a>
 					<?php } ?>
 
 					<!-- <a href="{:U('Ask/edit?cate_id='.$vo['category_id'].'&id='.$vo['id'])}">编辑</a>

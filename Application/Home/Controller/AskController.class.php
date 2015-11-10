@@ -32,6 +32,7 @@ class AskController extends HomeController {
 			if ( !I("post.uid") ) {
 				unset($_POST['uid']);
 			}
+
 			$return = $ask->add($_POST);
 
 			if($return)

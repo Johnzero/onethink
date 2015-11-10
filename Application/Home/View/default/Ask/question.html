@@ -5,6 +5,8 @@
 
 <block name="script">
     <script src="__JS__/select2.min.js"></script>
+    <script src="__JS__/validator.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('.select-box').select2();
@@ -38,27 +40,27 @@
         <div class="section">
             <div class="tip"><span class="danger">*</span> 代表必填项目，为便于我们联系调查，请如实填写个人资料。</div>
             <div class="clearfix">&nbsp;</div>
-            <form method="POST" action="{:U('Ask/submit')}" enctype="multipart/form-data" class="questionForm">
+            <form method="POST" action="{:U('Ask/submit')}" enctype="multipart/form-data" class="questionForm" onsubmit="return validator(this);">
                 <div class="form-group">
                     <label><span class="danger">*</span>姓名</label>
-                    <input class="form-control" name="name" type="text" placeholder="姓名">
+                    <input class="form-control" name="name" type="text" placeholder="姓名" tip="请输入您的中文姓名">
                 </div>
                 <div class="form-group">
                     <label><span class="danger">*</span>联系方式</label>
-                    <input class="form-control" name="tel" type="text" placeholder="您的手机号码">
+                    <input class="form-control" name="tel" type="text" placeholder="您的手机号码"  tip="请输入正确的手机号码">
                 </div>
                 <div class="form-group">
                     <label><span class="danger">*</span>身份证</label>
-                    <input class="form-control" name="sfz" type="text" placeholder="证件号码，用于以后查找您的留言">
+                    <input class="form-control" name="sfz" type="text" placeholder="证件号码，用于以后查找您的留言" tip="请输入正确的证件号">
                 </div>
                 <div class="form-group">
                     <label><span class="danger">*</span>地址</label>
-                    <input class="form-control" name="address" type="text" placeholder="您的详细地址">
+                    <input class="form-control" name="address" type="text" placeholder="您的地址" tip="请输入您的地址">
                 </div>
                 <div class="clearfix">&nbsp;</div>
                 <div class="form-group">
                     <label><span class="danger">*</span>标题</label>
-                    <input class="form-control" name="title" type="text" placeholder="标题">
+                    <input class="form-control" name="title" type="text" placeholder="标题"  tip="请输入留言标题">
                 </div>
 
                 <div class="form-group level1">
@@ -71,7 +73,7 @@
                 </div>
                 <div class="form-group level2">
                     <select class="form-control select-box" name="uid">
-                        <option selected="selected">请选择</option>
+                        <option selected="selected" value="">请选择</option>
                         <volist name="yjdw" id="vo">
                             <option value="{$vo.uid}">{$vo.nickname}</option>
                         </volist>
@@ -91,7 +93,7 @@
                 
                 <div class="form-group">
                     <label><span class="danger">*</span>内容</label>
-                    <textarea class="form-control" name='content' type="text" placeholder="留言内容"></textarea>
+                    <textarea class="form-control" name='content' type="text" placeholder="留言内容" tip="请输入留言内容"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">附件</label>
@@ -102,7 +104,7 @@
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input name="rule" type="checkbox" value="1" checked="">&nbsp;&nbsp;我已经阅读 <a class="danger" href="#" target="_blank" "">发信管理条例</a>
+                        <input name="rule" type="checkbox" value="1" checked="">&nbsp;&nbsp;我已经阅读 <a class="danger" href="#" target="_blank" "">留言管理条例</a>
                     </label>
                 </div>
                 

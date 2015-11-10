@@ -42,7 +42,7 @@ class AskController extends AdminController {
 
         $maps['status'] = array("eq",0);
         $dsh_count = M('Ask')->where($maps)->count();
-        $_SESSION["menu_nums"]["待审核"] = $dsh_count;
+        $_SESSION["menu_nums"]["待审批"] = $dsh_count;
 
         $maps['status']    =   array("eq",1);
         $blz_count = M('Ask')->where($maps)->count();
@@ -58,6 +58,11 @@ class AskController extends AdminController {
 
         $xbwt_count = M("Assist")->where(array("pid"=>UID,"reply"=>array('EXP','IS NULL')))->count();
         $_SESSION["menu_nums"]["协办问题"] = $xbwt_count;
+
+        $maps  =  array();
+        $maps['status']    =   array("eq",10);
+        $unpass_count = M('Ask')->where($maps)->count();
+        $_SESSION["menu_nums"]["审批未通过"] = $unpass_count;
     }
 	
     /* 全部留言 */
@@ -162,7 +167,57 @@ class AskController extends AdminController {
         $this->display("index");
     }
 
-    /* 我的待审核 */
+    /* 审批未通过 */
+    public function unpass(){
+
+        $title  =   I('title');
+        $status = I('status');
+        $maps  =  array();
+        $maps['status'] = 10;
+
+        if ( $title ) {
+            if(is_numeric($title)){
+                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
+            }else{
+                $maps['title']    =   array('like', '%'.(string)$title.'%');
+            }
+        }
+
+        if ( isset($_GET['time-start']) ) {
+            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
+        }
+        if ( isset($_GET['time-end']) ) {
+            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
+        }
+
+        $total = M('Ask')->where($maps)->count();
+
+        $request    =   (array)I('request.');
+        $total      =   $total? $total : 1 ;
+        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
+        $page       =   new \Think\Page($total, $listRows, $request);
+        $p          =   $page->show();
+        $this->assign('_page', $p? $p: '');
+        // 记录当前列表页的cookie
+        Cookie('__forward__',$_SERVER['REQUEST_URI']);
+
+        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
+
+        foreach ($lists as $key => $value) {
+            if ($value["uid"]) {
+                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
+                if (!empty($member)) {
+                    $lists[$key]["member"] = $member;
+                }
+            }
+        }
+        $this->assign('lists', $lists);
+
+        $this->meta_title = '审批未通过的留言';
+        $this->display("index");
+    }
+
+    /* 我的待审批 */
     public function my(){
         
         $title       =   I('title');
@@ -208,7 +263,7 @@ class AskController extends AdminController {
         }
         $this->assign('lists', $lists);
 
-        $this->meta_title = '待审核的留言';
+        $this->meta_title = '待审批的留言';
         $this->display("index");
     }
 
@@ -329,7 +384,7 @@ class AskController extends AdminController {
 
         $this->assign("reply",$reply);
         if (empty($reply)) {
-            $this->error("请先回复留言，再进行审核！");
+            $this->error("请先回复留言，再进行审批！");
         }
         if (IS_POST) {
 
@@ -458,7 +513,7 @@ class AskController extends AdminController {
             $status = I('post.status');
             $info = I('post.info');
             if (!$status) {
-                $this->error("请选择审批意见！");
+                $this->error("请选择处理方式！");
             }else {
                 
                 $ask = M("Ask")->where(array("id"=>$id))->find();
@@ -467,13 +522,14 @@ class AskController extends AdminController {
                     if ( !empty($ask) ) {
 
                         M("Ask")->where(array("id"=>$id))->save(array("status"=>1,"update_time"=>time()));
+
                         $process = array();
                         $process["uid"] = $ask["uid"];
                         $process["aid"] = $id;
                         $process["status"] = 1;
                         $process["create_time"] = time();
                         $process["create_uid"] = UID;
-                        $process["info"] = "审核通过";
+                        $process["info"] = "审批通过";
 
                         M("Process")->add($process);
                         $this->success("审批成功！",U('Ask/my'));
@@ -493,7 +549,7 @@ class AskController extends AdminController {
                         $process["status"] = 10;
                         $process["create_time"] = time();
                         $process["create_uid"] = UID;
-                        $process["info"] = "审核未通过 ".$info;
+                        $process["info"] = "审批未通过 ".$info;
 
                         M("Process")->add($process);
                         $this->success("处理完成！",U('Ask/my'));
@@ -712,13 +768,13 @@ class AskController extends AdminController {
             $this->error("该留言已指派受理单位！");
         }else {
 
-            M("Ask")->where(array("id"=>$id))->save(array("uid"=>UID,"update_time"=>time(),"status"=>1));
+            M("Ask")->where(array("id"=>$id))->save(array("uid"=>UID,"update_time"=>time(),"status"=>0));
             $member = M("Member")->where(array("uid"=>UID))->find();
 
             $process = array();
             $process["uid"] = UID;
             $process["aid"] = $id;
-            $process["status"] = 1;
+            $process["status"] = 0;
             $process["create_time"] = time();
             $process["create_uid"] = UID;
             $process["info"] = $member['nickname']." 认领了该留言";

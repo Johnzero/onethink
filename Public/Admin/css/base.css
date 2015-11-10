@@ -41,7 +41,7 @@ input,button,textarea,select,option {
 }
 textarea {
 	overflow: auto;
-	resize: none;
+	resize: vertical;
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner {
