@@ -138,8 +138,13 @@ class ArticleController extends AdminController {
         $this->assign('show_recycle', IS_ROOT || $this->checkRule('Admin/article/recycle'));
         //获取草稿箱权限
         $this->assign('show_draftbox', C('OPEN_DRAFTBOX'));
-        //获取审核列表权限
-        $this->assign('show_examine', IS_ROOT || $this->checkRule('Admin/article/examine'));
+
+        $this->group_id = $_SESSION["onethink_admin"]["user_auth"]["group_id"];
+        if ( is_administrator($uid) ) {
+            $this->group_id = 1;
+        }
+        $this->assign('groupId', $this->group_id);
+
     }
 
     /**
@@ -341,64 +346,11 @@ class ArticleController extends AdminController {
         return parent::setStatus('Document');
     }
 	
-	public function jiaoyan()
-	{
-        //获取左边菜单
-        $this->getMenu();
-
-        $id     =   I('get.id','');
-        if(empty($id)){
-            $this->error('参数不能为空！');
-        }
-
-        // 获取详细数据 
-        $Document = D('Document');
-        $data = $Document->detail($id);
-        if(!$data){
-            $this->error($Document->getError());
-        }
-
-        if($data['pid']){
-            // 获取上级文档
-            $article        =   $Document->field('id,title,type')->find($data['pid']);
-            $this->assign('article',$article);
-        }
-        // 获取当前的模型信息
-        $model    =   get_document_model($data['model_id']);
-
-        $this->assign('data', $data);
-        $this->assign('model_id', $data['model_id']);
-        $this->assign('model',      $model);
-
-        //获取表单字段排序
-        $fields = get_model_attribute($model['id']);
-        $this->assign('fields',     $fields);
-
-
-        //获取当前分类的文档类型
-        $this->assign('type_list', get_type_bycate($data['category_id']));
-
-        $this->meta_title   =   '校验文档';
-        $this->display();
-	}
-	
-	/**
-     * 更新一条数据
-     * @author huajie <banhuajie@163.com>
-     */
     public function jiaoyan_update(){
-
-		$id = (int)$_POST['id'];
-		if($id)
-		{
-			M("Document")->where(array("id"=>$id))->save(array("bianji_status"=>1));
-			$document   =   D('Document');
-			$res = $document->update();
-			if(!$res){
-				$this->error($document->getError());
-			}else{
-				$this->success($res['id']?'校验成功':'新增成功', Cookie('__forward__'));
-			}
+        if ( I('ids') ) {
+            $doc_id  =  (array)I('ids');
+			D("Document")->where(array('id'=>array('in',$doc_id)))->save(array("bianji_status"=>1));
+			$this->success( '校验成功', U("Article/examine_bj"));
 		}
 		else
 		{
@@ -406,10 +358,6 @@ class ArticleController extends AdminController {
 		}
     }
 
-    /**
-     * 文档新增页面初始化
-     * @author huajie <banhuajie@163.com>
-     */
     public function add(){
         //获取左边菜单
         $this->getMenu();
@@ -469,6 +417,9 @@ class ArticleController extends AdminController {
         if(!$data){
             $this->error($Document->getError());
         }
+        if ( $this->group_id != 1 && $data['bianji_status'] == 1 ) {
+             $this->error("已经过编辑审核，不能重复编辑！");
+        }
 
         if($data['pid']){
             // 获取上级文档
@@ -508,24 +459,16 @@ class ArticleController extends AdminController {
         }
     }
 
-    /**
-     * 待审核列表
-     */
-    public function examine(){
-        //获取左边菜单
+    // 待编辑
+    public function examine_bj(){
+
         $this->getMenu();
 
         $map['status']  =   2;
-        if ( !IS_ROOT ) {
-            $cate_auth  =   AuthGroupModel::getAuthCategories(UID);
-            if($cate_auth){
-                $map['category_id']    =   array('IN',$cate_auth);
-            }else{
-                $map['category_id']    =   -1;
-            }
-        }
+        $map['bianji_status']  =   0;
+
         $list = $this->lists(M('Document'),$map,'update_time desc');
-        //处理列表数据
+
         if(is_array($list)){
             foreach ($list as $k=>&$v){
                 $v['username']      =   get_nickname($v['uid']);
@@ -533,14 +476,29 @@ class ArticleController extends AdminController {
         }
 
         $this->assign('list', $list);
-        $this->meta_title       =   '待审核';
+        $this->meta_title = '待编辑审核';
+        $this->display("examine");
+    }
+
+    public function examine(){
+
+        $this->getMenu();
+        $map['status']  =   2;
+        $map['bianji_status']  =   1;
+
+        $list = $this->lists(M('Document'),$map,'update_time desc');
+
+        if(is_array($list)){
+            foreach ($list as $k=>&$v){
+                $v['username']      =   get_nickname($v['uid']);
+            }
+        }
+
+        $this->assign('list', $list);
+        $this->meta_title  =   '待审核发布';
         $this->display();
     }
 
-    /**
-     * 回收站列表
-     * @author huajie <banhuajie@163.com>
-     */
     public function recycle(){
         //获取左边菜单
         $this->getMenu();

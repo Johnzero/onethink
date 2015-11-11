@@ -22,7 +22,7 @@
         var that = this;
         if ( $(this).hasClass('confirm') ) {
             if ($(this).attr("title")) {
-                if(!confirm("确认要执行 " +$(this).attr("title")+ ' 操作吗?')){
+                if(!confirm($(this).attr("title"))){
                     return false;
                 }
             }else {
@@ -82,8 +82,14 @@
             	return false;
             }else if ( form.get(0).nodeName=='FORM' ){
                 if ( $(this).hasClass('confirm') ) {
-                    if(!confirm('确认要执行该操作吗?')){
-                        return false;
+                    if ($(this).attr("title")) {
+                        if(!confirm($(this).attr("title"))){
+                            return false;
+                        }
+                    }else {
+                        if(!confirm('确认要执行该操作吗?')){
+                            return false;
+                        }
                     }
                 }
                 if($(this).attr('url') !== undefined){
@@ -99,15 +105,27 @@
                     }
                 })
                 if ( nead_confirm && $(this).hasClass('confirm') ) {
-                    if(!confirm('确认要执行该操作吗?')){
-                        return false;
+                    if ($(this).attr("title")) {
+                        if(!confirm($(this).attr("title"))){
+                            return false;
+                        }
+                    }else {
+                        if(!confirm('确认要执行该操作吗?')){
+                            return false;
+                        }
                     }
                 }
                 query = form.serialize();
             }else{
                 if ( $(this).hasClass('confirm') ) {
-                    if(!confirm('确认要执行该操作吗?')){
-                        return false;
+                    if ($(this).attr("title")) {
+                        if(!confirm($(this).attr("title"))){
+                            return false;
+                        }
+                    }else {
+                        if(!confirm('确认要执行该操作吗?')){
+                            return false;
+                        }
                     }
                 }
                 query = form.find('input,select,textarea').serialize();

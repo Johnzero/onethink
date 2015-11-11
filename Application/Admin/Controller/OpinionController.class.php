@@ -5,876 +5,22 @@ use Admin\Model\AuthGroupModel;
 use Think\Page;
 
 class OpinionController extends AdminController {
-    
-    public function _initialize(){
-        
-        parent:: _initialize();
 
-        $this->getMenu();
-        $this->group_id = $_SESSION["onethink_admin"]["user_auth"]["group_id"];
-        if ( is_administrator($uid) ) {
-            $this->group_id = 1;
-        }
-        $this->assign('group_id', $this->group_id);
+    /* 保存允许访问的公共方法 */
+    static protected $allow = array( 'draftbox','mydocument');
 
-        // if (in_array(ACTION_NAME,array("index","my","all","processing"))) {
-        //     layout('Ask/base');
-        // }
-
-        //菜单后数量
-        $maps  =  array();
-        $maps['uid'] = array('EXP','IS NULL');
-        $wrl_count = M('Ask')->where($maps)->count();
-        $_SESSION["menu_nums"]["未认领"] = $wrl_count;
-
-        $maps  =  array();
-
-        $children = M("Member")->where(array("pid"=>UID))->select();
-        $uid_array = array();
-        $uid_array[] = UID;
-
-        if (!empty($children)) {
-            foreach ($children as $key => $value) {
-                $uid_array[] = $value["uid"];
-            }
-        }
-        $maps['uid']    =   array("in",implode(",",$uid_array));
-        $this->uid_array = $uid_array;
-
-        $maps['status'] = array("eq",0);
-        $dsh_count = M('Ask')->where($maps)->count();
-        $_SESSION["menu_nums"]["待审核"] = $dsh_count;
-
-        $maps['status']    =   array("eq",1);
-        $blz_count = M('Ask')->where($maps)->count();
-        $_SESSION["menu_nums"]["办理中"] = $blz_count;
-
-        $maps['status'] = array('in','4');
-        $ydf_count = M('Ask')->where($maps)->count();
-        $_SESSION["menu_nums"]["已回复"] = $ydf_count;
-
-        $maps['status'] = array("eq",60);
-        $thcb_count = M('Ask')->where($maps)->count();
-        $_SESSION["menu_nums"]["退回重办"] = $thcb_count;
-
-    }
-	
-    /* 全部留言 */
-    public function index(){
-        
-        $title  = I('title');
-        $status = I('status');
-        $maps  =  array();
-        if ( $title ) {
-            if(is_numeric($title)){
-                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
-            }else{
-                $maps['title']    =   array('like', '%'.(string)$title.'%');
-            }
-        }
-
-        if ( isset($_GET['time-start']) ) {
-            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
-        }
-        if ( isset($_GET['time-end']) ) {
-            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
-        }
-
-        if ( is_numeric($status) ) {
-            $maps['status']    =   array("eq",$status);
-        }
-
-        $total = M('Ask')->where($maps)->count();
-
-        $request    =   (array)I('request.');
-        $total      =   $total? $total : 1 ;
-        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
-        $page       =   new \Think\Page($total, $listRows, $request);
-        $p          =   $page->show();
-        $this->assign('_page', $p? $p: '');
-        // 记录当前列表页的cookie
-        Cookie('__forward__',$_SERVER['REQUEST_URI']);
-
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
-
-        foreach ($lists as $key => $value) {
-            if ($value["uid"]) {
-                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
-                if (!empty($member)) {
-                    $lists[$key]["member"] = $member;
-                }
-            }
-        }
-        $this->assign('lists', $lists);
-
-        $this->meta_title = '全部留言';
-        $this->display();
-    }
-
-    /* 全部待认领留言 */
-    public function all(){
-
-        $title  =   I('title');
-        $status = I('status');
-        $maps  =  array();
-        $maps['uid'] = array('EXP','IS NULL');
-
-        if ( $title ) {
-            if(is_numeric($title)){
-                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
-            }else{
-                $maps['title']    =   array('like', '%'.(string)$title.'%');
-            }
-        }
-
-        if ( isset($_GET['time-start']) ) {
-            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
-        }
-        if ( isset($_GET['time-end']) ) {
-            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
-        }
-
-        $total = M('Ask')->where($maps)->count();
-
-        $request    =   (array)I('request.');
-        $total      =   $total? $total : 1 ;
-        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
-        $page       =   new \Think\Page($total, $listRows, $request);
-        $p          =   $page->show();
-        $this->assign('_page', $p? $p: '');
-        // 记录当前列表页的cookie
-        Cookie('__forward__',$_SERVER['REQUEST_URI']);
-
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
-
-        foreach ($lists as $key => $value) {
-            if ($value["uid"]) {
-                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
-                if (!empty($member)) {
-                    $lists[$key]["member"] = $member;
-                }
-            }
-        }
-        $this->assign('lists', $lists);
-
-        $this->meta_title = '全部留言';
-        $this->display("index");
-    }
-
-    /* 我的待审核 */
-    public function my(){
-        
-        $title       =   I('title');
-        $maps  =  array();
-        $maps['status']    =   array("eq",0);
-        $maps['uid']    =   array("eq",UID);
-
-        if ( $title ) {
-            if(is_numeric($title)){
-                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
-            }else{
-                $maps['title']    =   array('like', '%'.(string)$title.'%');
-            }
-        }
-
-        if ( isset($_GET['time-start']) ) {
-            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
-        }
-        if ( isset($_GET['time-end']) ) {
-            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
-        }
-
-        $total = M('Ask')->where($maps)->count();
-
-        $request    =   (array)I('request.');
-        $total      =   $total? $total : 1 ;
-        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
-        $page       =   new \Think\Page($total, $listRows, $request);
-        $p          =   $page->show();
-        $this->assign('_page', $p? $p: '');
-
-        Cookie('__forward__',$_SERVER['REQUEST_URI']);
-
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
-
-        foreach ($lists as $key => $value) {
-            if ($value["uid"]) {
-                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
-                if (!empty($member)) {
-                    $lists[$key]["member"] = $member;
-                }
-            }
-        }
-        $this->assign('lists', $lists);
-
-        $this->meta_title = '待审核的留言';
-        $this->display("index");
-    }
-
-    /* 办理中 */
-    public function processing(){
-        
-        $title =   I('title');
-        $maps  =  array();
-        $maps['status']    =   array("eq",1);
-        $maps['uid']    =   array("in",implode(",",$this->uid_array));
-        if ( $title ) {
-            if(is_numeric($title)){
-                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
-            }else{
-                $maps['title']    =   array('like', '%'.(string)$title.'%');
-            }
-        }
-
-        if ( isset($_GET['time-start']) ) {
-            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
-        }
-        if ( isset($_GET['time-end']) ) {
-            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
-        }
-
-        $total = M('Ask')->where($maps)->count();
-
-        $request    =   (array)I('request.');
-        $total      =   $total? $total : 1 ;
-        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
-        $page       =   new \Think\Page($total, $listRows, $request);
-        $p          =   $page->show();
-        $this->assign('_page', $p? $p: '');
-
-        Cookie('__forward__',$_SERVER['REQUEST_URI']);
-
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
-
-        foreach ($lists as $key => $value) {
-            if ($value["uid"]) {
-                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
-                if (!empty($member)) {
-                    $lists[$key]["member"] = $member;
-                }
-            }
-        }
-        $this->assign('lists', $lists);
-
-        $this->meta_title = '办理中的留言';
-        $this->display("index");
-    }
-
-    /* 已答复 */
-    public function done(){
-        
-        $title =   I('title');
-        $maps  =  array();
-        $maps['status'] = array('in','4,5');
-        $maps['uid']    =   array("in",implode(",",$this->uid_array));
-
-        if ( $title ) {
-            if(is_numeric($title)){
-                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
-            }else{
-                $maps['title']    =   array('like', '%'.(string)$title.'%');
-            }
-        }
-
-        if ( isset($_GET['time-start']) ) {
-            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
-        }
-        if ( isset($_GET['time-end']) ) {
-            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
-        }
-
-        $total = M('Ask')->where($maps)->count();
-
-        $request    =   (array)I('request.');
-        $total      =   $total? $total : 1 ;
-        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
-        $page       =   new \Think\Page($total, $listRows, $request);
-        $p          =   $page->show();
-        $this->assign('_page', $p? $p: '');
-
-        Cookie('__forward__',$_SERVER['REQUEST_URI']);
-
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
-
-        foreach ($lists as $key => $value) {
-            if ($value["uid"]) {
-                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
-                if (!empty($member)) {
-                    $lists[$key]["member"] = $member;
-                }
-            }
-        }
-        $this->assign('lists', $lists);
-
-        $this->meta_title = '待办理留言';
-        $this->display("index");
-    }
-
-    // 回复网友
-    public function answer() {
-
-        $id = I('get.id');
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-        $this->assign($ask);
-        if ( !in_array($ask["uid"],$this->uid_array) ) {
-            $this->error("出现错误！");
-        }
-
-        $reply = M("Reply")->order("id desc")->where(array("aid"=>$id))->find();
-
-        $this->assign("reply",$reply);
-        if (empty($reply)) {
-            $this->error("请先回复留言，再进行审核！");
-        }
-        if (IS_POST) {
-
-            $_POST['explain'] = html_entity_decode($_POST['explain']);
-            $_POST['reply_content'] = html_entity_decode($_POST['reply_content']);
-            $_POST['aid'] = $id;
-            $_POST['create_time'] = time();
-            $_POST['uid'] = UID;
-
-            M("Ask")->where(array("id"=>$id))->save(array("status"=>5,"finish_time"=>time(),"update_time"=>time()));
-            M("Reply")->where(array("id"=>$reply["id"]))->save($_POST);
-            
-            $member = M("Member")->where(array("uid"=>UID))->find();
-
-            $process = array();
-            $process["uid"] = $ask["uid"];
-            $process["aid"] = $id;
-            $process["status"] = 5;
-            $process["create_time"] = time();
-            $process["create_uid"] = UID;
-            $process["info"] = $member["nickname"]." 发布留言到网站";
-            M("Process")->add($process);
-
-            $this->success("回复网友成功！",U('Ask/done'));
-
-        }
-
-        $this->meta_title = '留言：'.$ask['name'];
-        $this->display("reply");
-
-    }
-
-    // 退回
-    public function call_back() {
-
-        $id = I('post.aid');
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-        $info = I('post.call_back_info');
-        if ( !$info ) {
-            $this->error("退回重办原因不能为空！");
-        }
-
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-        if ( !in_array($ask["uid"],$this->uid_array) ) {
-            $this->error("出现错误！");
-        }
-
-        M("Ask")->where(array("id"=>$id))->save(array("status"=>60,"finish_time"=>'',"update_time"=>time() ));
-        
-        $member = M("Member")->where(array("uid"=>UID))->find();
-
-        $process = array();
-        $process["uid"] = $ask["uid"];
-        $process["aid"] = $id;
-        $process["status"] = 60;
-        $process["create_time"] = time();
-        $process["create_uid"] = UID;
-        $process["info"] = $member["nickname"].": ".$info;
-        M("Process")->add($process);
-
-        $this->success('已退回！');
-
-    }
-
-    /* 退回 */
-    public function unsatisfied(){
-        
-        $title       =   I('title');
-        $maps  =  array();
-        $maps['status'] = array('eq', 60);
-        $maps['uid']    =   array("eq",UID);
-
-        if ( $title ) {
-            if(is_numeric($title)){
-                $maps['id|title']=   array(intval($title),array('like','%'.$title.'%'),'_multi'=>true);
-            }else{
-                $maps['title']    =   array('like', '%'.(string)$title.'%');
-            }
-        }
-
-        if ( isset($_GET['time-start']) ) {
-            $maps['create_time'][] = array('egt',strtotime(I('time-start')));
-        }
-        if ( isset($_GET['time-end']) ) {
-            $maps['create_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
-        }
-
-        $total = M('Ask')->where($maps)->count();
-
-        $request    =   (array)I('request.');
-        $total      =   $total? $total : 1 ;
-        $listRows   =   C('LIST_ROWS') > 0 ? C('LIST_ROWS') : 10;
-        $page       =   new \Think\Page($total, $listRows, $request);
-        $p          =   $page->show();
-        $this->assign('_page', $p? $p: '');
-
-        Cookie('__forward__',$_SERVER['REQUEST_URI']);
-
-        $lists = M('Ask')->where($maps)->limit($page->firstRow . ',' . $page->listRows)->order("id DESC")->select();
-
-        foreach ($lists as $key => $value) {
-            if ($value["uid"]) {
-                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
-                if (!empty($member)) {
-                    $lists[$key]["member"] = $member;
-                }
-            }
-        }
-        $this->assign('lists', $lists);
-
-        $this->meta_title = '退回重办的留言';
-        $this->display("index");
-    }
-
-
-    /* 审批 */
-    public function sp() {
-        $id = I('get.id');
-
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-        if (IS_POST) {
-            $status = I('post.status');
-            $info = I('post.info');
-            if (!$status) {
-                $this->error("请选择审批意见！");
-            }else {
-                
-                $ask = M("Ask")->where(array("id"=>$id))->find();
-
-                if ( $status == 1 ) {
-                    if ( !empty($ask) ) {
-
-                        M("Ask")->where(array("id"=>$id))->save(array("status"=>1,"update_time"=>time()));
-                        $process = array();
-                        $process["uid"] = $ask["uid"];
-                        $process["aid"] = $id;
-                        $process["status"] = 1;
-                        $process["create_time"] = time();
-                        $process["create_uid"] = UID;
-                        $process["info"] = "审核通过";
-
-                        M("Process")->add($process);
-                        $this->success("审批成功！",U('Ask/my'));
-
-                    }else {
-                        $this->error("出现错误！");
-                    }
-                }else {
-                    if( !$info ) {
-                        $this->error("请填写未通过原因！");
-                    }else{
-
-                        M("Ask")->where(array("id"=>$id))->save(array("status"=>10,"update_time"=>time()));
-                        $process = array();
-                        $process["uid"] = $ask["uid"];
-                        $process["aid"] = $id;
-                        $process["status"] = 10;
-                        $process["create_time"] = time();
-                        $process["create_uid"] = UID;
-                        $process["info"] = "审核未通过 ".$info;
-
-                        M("Process")->add($process);
-                        $this->success("处理完成！",U('Ask/my'));
-
-                    }
-                } 
-
-            }
-
-            exit;
-        }
-
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-
-        if ($ask['status'] != 0) {
-            $this->error("该留言已经审批过！");
-        }
-
-        $this->assign($ask);
-
-        $yjdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3))->select();
-        $this->assign('yjdw', $yjdw);
-
-        $this->display();
-    }
-
-    /* 流程明细 */
-    public function detail() {
-        $id = I('get.id');
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-        
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-        if ( !in_array($ask["uid"],$this->uid_array) ) {
-            $this->error("出现错误！");
-        }
-
-        $this->assign($ask);
-
-        $reply = M("Reply")->order("id DESC")->where(array("aid"=>$id))->select();
-        $this->assign("reply",$reply);
-
-        $yjdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3))->select();
-        $this->assign('yjdw', $yjdw);
-        $process = M("Process")->where(array("aid"=>$id))->order('create_time ASC')->select();
-        foreach ($process as $key => $value) {
-            $member = M("Member")->where(array("uid"=>$value["create_uid"]))->find();
-            if (!empty($member)) {
-                $process[$key]["member"] = $member;
-            }
-        }
-        $this->assign('process', $process);
-
-        $this->display();
-    }
-
-    /* 留言答复 */
-    public function reply(){
-
-        $id = I('get.id');
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-        
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-        if ( !in_array($ask["uid"],$this->uid_array) ) {
-            $this->error("出现错误！");
-        }
-        $this->assign($ask);
-        
-        if(IS_POST){
-
-            $_POST['explain'] = $_POST['explain'];
-            $_POST['reply_content'] = $_POST['reply_content'];
-            $_POST['aid'] = $id;
-            $_POST['create_time'] = time();
-            $_POST['uid'] = UID;
-
-            if(empty($_POST['explain']))
-            {
-                $this->error("办理情况不能为空");
-            }
-
-            if(empty($_POST['reply_content']))
-            {
-                $this->error("答复口径不能为空");
-            }
-
-            if(empty($_POST['transactor']))
-            {
-                $this->error("经办人不能为空");
-            }
-
-            if(empty($_POST['transactor_tel']))
-            {
-                $this->error("联系电话不能为空");
-            }
-            
-            
-            M("Reply")->add($_POST);
-            M("Ask")->where(array("id"=>$_POST['aid']))->save(array("status"=>4,"update_time"=>time()));
-            $process = array();
-            $process["uid"] = $ask["uid"];
-            $process["aid"] = $_POST['aid'];
-            $process["status"] = 4;
-            $process["create_time"] = time();
-            $process["create_uid"] = UID;
-            $process["info"] = "回复成功";
-            M("Process")->add($process);
-            $this->success("答复成功！",U('Ask/processing'));
-            
-        } else {
-            $this->meta_title = '回复：'.$ask['name'];
-            $this->display();
-        }
-    }
-
-    /* 更改受理单位 */
-    public function change() {
-        $id = I('get.id');
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-        $this->assign($ask);
-        if (IS_POST) {
-            $pid = I('post.pid');
-            if ( !$pid ) {
-                $this->error("请选择受理单位");
-            }else {
-                M("Ask")->where(array("id"=>$id))->save(array("uid"=>$pid));
-
-                $pmember = M("Member")->where(array("uid"=>$pid))->find();
-                $process = array();
-                $process["uid"] = $pid;
-                $process["aid"] = $id;
-                $process["status"] = 0;
-                $process["create_time"] = time();
-                $process["create_uid"] = UID;
-                $process["info"] = "将留言指派到 ".$pmember['nickname'];
-
-                M("Process")->add($process);
-
-                $this->success("处理成功！",U('Ask/index'));
-
-            }
-
-        }
-        $yjdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3))->select();
-        $this->assign('yjdw', $yjdw);
-        $this->display();
-    }
-
-    // 指派
-    public function assign_to() {
-        $id = I('get.id');
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-        $this->assign($ask);
-        if (IS_POST) {
-            $pid = I('post.pid');
-            if ( !$pid ) {
-                $this->error("请选择指派单位");
-            }else {
-                M("Ask")->where(array("id"=>$id))->save(array("uid"=>$pid,"update_time"=>time()));
-
-                $member = M("Member")->where(array("uid"=>$pid))->find();
-                $old_member = M("Member")->where(array("uid"=>$ask["uid"]))->find();
-
-                $process = array();
-                $process["uid"] = $pid;
-                $process["aid"] = $id;
-                $process["status"] = 1;
-                $process["create_time"] = time();
-                $process["create_uid"] = UID;
-                $process["info"] = $old_member['nickname']." 将留言指派到 ".$member['nickname'];
-
-                M("Process")->add($process);
-
-                $this->success("指派留言成功！",U('Ask/processing'));
-
-            }
-
-        }
-        $yjdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("B.pid"=>UID))->select();
-        $this->assign('yjdw', $yjdw);
-        $this->display();
-    }
-
-    // 认领
-    public function adopt() {
-
-        $id = I('get.id');
-
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-
-        if ($ask['uid']) {
-            $this->error("该留言已指派受理单位！");
-        }else {
-
-            M("Ask")->where(array("id"=>$id))->save(array("uid"=>UID,"update_time"=>time(),"status"=>1));
-            $member = M("Member")->where(array("uid"=>UID))->find();
-
-            $process = array();
-            $process["uid"] = UID;
-            $process["aid"] = $id;
-            $process["status"] = 1;
-            $process["create_time"] = time();
-            $process["create_uid"] = UID;
-            $process["info"] = $member['nickname']." 认领了该留言";
-
-            M("Process")->add($process);
-            
-            $this->success("认领成功！");
-        }
-
-    }
-
-    //重办
-    public function re_do(){
-
-        $id = I('get.id');
-        if ( !$id ) {
-            $this->error("出现错误！");
-        }
-        
-        $ask = M("Ask")->where(array("id"=>$id))->find();
-        $reply = M("Reply")->order("id desc")->where(array("aid"=>$id))->find();
-
-        $this->assign("reply",$reply);
-
-        if ( !in_array($ask["uid"],$this->uid_array) ) {
-            $this->error("出现错误！");
-        }
-        $this->assign($ask);
-        
-        if(IS_POST){
-
-            $_POST['explain'] = $_POST['explain'];
-            $_POST['reply_content'] = $_POST['reply_content'];
-            $_POST['aid'] = $id;
-            $_POST['create_time'] = time();
-            $_POST['uid'] = UID;
-
-            if(empty($_POST['explain']))
-            {
-                $this->error("办理情况不能为空");
-            }
-
-            if(empty($_POST['reply_content']))
-            {
-                $this->error("答复口径不能为空");
-            }
-
-            if(empty($_POST['transactor']))
-            {
-                $this->error("经办人不能为空");
-            }
-
-            if(empty($_POST['transactor_tel']))
-            {
-                $this->error("联系电话不能为空");
-            }
-            
-            M("Reply")->add($_POST);
-            M("Ask")->where(array("id"=>$_POST['aid']))->save(array("status"=>4,"update_time"=>time()));
-            $process = array();
-            $process["uid"] = $ask["uid"];
-            $process["aid"] = $_POST['aid'];
-            $process["status"] = 4;
-            $process["create_time"] = time();
-            $process["create_uid"] = UID;
-            $process["info"] = "重新办理成功";
-            M("Process")->add($process);
-            $this->success("重新办理成功！",U('Ask/unsatisfied'));
-        } else {
-            $this->meta_title = '重新办理：'.$ask['name'];
-            $this->display("reply");
-        }
-    }
-
-    public function add(){
-        //获取左边菜单
-        $this->getMenu();
-
-        $cate_id    =   I('get.cate_id',0);
-        $model_id   =   I('get.model_id',0);
-		$group_id	=	I('get.group_id','');
-
-        empty($cate_id) && $this->error('参数不能为空！');
-        empty($model_id) && $this->error('该分类未绑定模型！');
-
-        //检查该分类是否允许发布
-        $allow_publish = check_category($cate_id);
-        !$allow_publish && $this->error('该分类不允许发布内容！');
-
-        // 获取当前的模型信息
-        $model    =   get_document_model($model_id);
-
-        //处理结果
-        $info['pid']            =   $_GET['pid']?$_GET['pid']:0;
-        $info['model_id']       =   $model_id;
-        $info['category_id']    =   $cate_id;
-		$info['group_id']		=	$group_id;
-
-        if($info['pid']){
-            // 获取上级文档
-            $article            =   M('Document')->field('id,title,type')->find($info['pid']);
-            $this->assign('article',$article);
-        }
-
-        //获取表单字段排序
-        $fields = get_model_attribute($model['id']);
-        $this->assign('info',       $info);
-        $this->assign('fields',     $fields);
-        $this->assign('type_list',  get_type_bycate($cate_id));
-        $this->assign('model',      $model);
-        $this->meta_title = '新增'.$model['title'];
-        $this->display();
-    }
-
-    public function edit(){
-        //获取左边菜单
-        $this->getMenu();
-
-        $id     =   I('get.id','');
-        if(empty($id)){
-            $this->error('参数不能为空！');
-        }
-
-        // 获取详细数据 
-        $Document = D('Document');
-        $data = $Document->detail($id);
-        if(!$data){
-            $this->error($Document->getError());
-        }
-
-        if($data['pid']){
-            // 获取上级文档
-            $article        =   $Document->field('id,title,type')->find($data['pid']);
-            $this->assign('article',$article);
-        }
-        // 获取当前的模型信息
-        $model    =   get_document_model($data['model_id']);
-
-        $this->assign('data', $data);
-        $this->assign('model_id', $data['model_id']);
-        $this->assign('model',      $model);
-
-        //获取表单字段排序
-        $fields = get_model_attribute($model['id']);
-        $this->assign('fields',     $fields);
-
-
-        //获取当前分类的文档类型
-        $this->assign('type_list', get_type_bycate($data['category_id']));
-
-        $this->meta_title   =   '编辑文档';
-        $this->display();
-    }
+    private $cate_id        =   null; //文档分类id
 
     /**
-     * 更新一条数据
-     * @author huajie <banhuajie@163.com>
+     * 检测需要动态判断的文档类目有关的权限
+     *
+     * @return boolean|null
+     *      返回true则表示当前访问有权限
+     *      返回false则表示当前访问无权限
+     *      返回null，则会进入checkRule根据节点授权判断权限
+     *
+     * @author 朱亚杰  <xcoolcc@gmail.com>
      */
-    public function update(){
-        $document   =   D('Document');
-        $res = $document->update();
-        if(!$res){
-            $this->error($document->getError());
-        }else{
-            $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
-        }
-    }
-
     protected function checkDynamic(){
         $cates = AuthGroupModel::getAuthCategories(UID);
         switch(strtolower(ACTION_NAME)){
@@ -905,6 +51,10 @@ class OpinionController extends AdminController {
         }
     }
 
+    /**
+     * 显示左边菜单，进行权限控制
+     * @author huajie <banhuajie@163.com>
+     */
     protected function getMenu(){
         //获取动态分类
         $cate_auth  =   AuthGroupModel::getAuthCategories(UID); //获取当前用户所有的内容权限节点
@@ -982,4 +132,739 @@ class OpinionController extends AdminController {
         $this->assign('show_examine', IS_ROOT || $this->checkRule('Admin/article/examine'));
     }
 
+    /**
+     * 分类文档列表页
+     * @param integer $cate_id 分类id
+     * @param integer $model_id 模型id
+     * @param integer $position 推荐标志
+     * @param integer $group_id 分组id
+     */
+    public function index($cate_id = null, $model_id = null, $position = null,$group_id=null){
+        //获取左边菜单
+        $this->getMenu();
+
+        if($cate_id===null){
+            $cate_id = $this->cate_id;
+        }
+        if(!empty($cate_id)){
+            $pid = I('pid',0);
+            // 获取列表绑定的模型
+            if ($pid == 0) {
+                $models     =   get_category($cate_id, 'model');
+                // 获取分组定义
+                $groups     =   get_category($cate_id, 'groups');
+                if($groups){
+                    $groups =   parse_field_attr($groups);
+                }
+            }else{ // 子文档列表
+                $models     =   get_category($cate_id, 'model_sub');
+            }
+            if(is_null($model_id) && !is_numeric($models)){
+                // 绑定多个模型 取基础模型的列表定义
+                $model = M('Model')->getByName('document');
+            }else{
+                $model_id   =   $model_id ? : $models;
+                //获取模型信息
+                $model = M('Model')->getById($model_id);
+                if (empty($model['list_grid'])) {
+                    $model['list_grid'] = M('Model')->getFieldByName('document','list_grid');
+                }                
+            }
+            $this->assign('model', explode(',', $models));
+        }else{
+            // 获取基础模型信息
+            $model = M('Model')->getByName('document');
+            $model_id   =   null;
+            $cate_id    =   0;
+            $this->assign('model', null);
+        }
+
+        //解析列表规则
+        $fields =   array();
+        $grids  =   preg_split('/[;\r\n]+/s', trim($model['list_grid']));
+        foreach ($grids as &$value) {
+            // 字段:标题:链接
+            $val      = explode(':', $value);
+            // 支持多个字段显示
+            $field   = explode(',', $val[0]);
+            $value    = array('field' => $field, 'title' => $val[1]);
+            if(isset($val[2])){
+                // 链接信息
+                $value['href']  =   $val[2];
+                // 搜索链接信息中的字段信息
+                preg_replace_callback('/\[([a-z_]+)\]/', function($match) use(&$fields){$fields[]=$match[1];}, $value['href']);
+            }
+            if(strpos($val[1],'|')){
+                // 显示格式定义
+                list($value['title'],$value['format'])    =   explode('|',$val[1]);
+            }
+            foreach($field as $val){
+                $array  =   explode('|',$val);
+                $fields[] = $array[0];
+            }
+        }
+
+        // 文档模型列表始终要获取的数据字段 用于其他用途
+        $fields[] = 'category_id';
+        $fields[] = 'model_id';
+        $fields[] = 'pid';
+        // 过滤重复字段信息
+        $fields =   array_unique($fields);
+        // 列表查询
+        $list   =   $this->getDocumentList($cate_id,$model_id,$position,$fields,$group_id);
+        // 列表显示处理
+        $list   =   $this->parseDocumentList($list,$model_id);
+       
+        $this->assign('model_id',$model_id);
+        $this->assign('group_id',$group_id);
+        $this->assign('position',$position);
+        $this->assign('groups', $groups);
+        $this->assign('list',   $list);
+        $this->assign('list_grids', $grids);
+        $this->assign('model_list', $model);
+        // 记录当前列表页的cookie
+        Cookie('__forward__',$_SERVER['REQUEST_URI']);
+        $this->display();
+    }
+
+    /**
+     * 默认文档列表方法
+     * @param integer $cate_id 分类id
+     * @param integer $model_id 模型id
+     * @param integer $position 推荐标志
+     * @param mixed $field 字段列表
+     * @param integer $group_id 分组id
+     */
+    protected function getDocumentList($cate_id=0,$model_id=null,$position=null,$field=true,$group_id=null){
+        /* 查询条件初始化 */
+        $map = array();
+        if(isset($_GET['title'])){
+            $map['title']  = array('like', '%'.(string)I('title').'%');
+        }
+        if(isset($_GET['status'])){
+            $map['status'] = I('status');
+            $status = $map['status'];
+        }else{
+            $status = null;
+            $map['status'] = array('in', '0,1,2');
+        }
+        if ( isset($_GET['time-start']) ) {
+            $map['update_time'][] = array('egt',strtotime(I('time-start')));
+        }
+        if ( isset($_GET['time-end']) ) {
+            $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
+        }
+        if ( isset($_GET['nickname']) ) {
+            $map['uid'] = M('Member')->where(array('nickname'=>I('nickname')))->getField('uid');
+        }
+
+        // 构建列表数据
+        $Document = M('Document');
+
+        if($cate_id){
+            $map['category_id'] =   $cate_id;
+        }
+        $map['pid']         =   I('pid',0);
+        if($map['pid']){ // 子文档列表忽略分类
+            unset($map['category_id']);
+        }
+        $Document->alias('DOCUMENT');
+        if(!is_null($model_id)){
+            $map['model_id']    =   $model_id;
+            if(is_array($field) && array_diff($Document->getDbFields(),$field)){
+                $modelName  =   M('Model')->getFieldById($model_id,'name');
+                $Document->join('__DOCUMENT_'.strtoupper($modelName).'__ '.$modelName.' ON DOCUMENT.id='.$modelName.'.id');
+                $key = array_search('id',$field);
+                if(false  !== $key){
+                    unset($field[$key]);
+                    $field[] = 'DOCUMENT.id';
+                }
+            }            
+        }
+        if(!is_null($position)){
+            $map[] = "position & {$position} = {$position}";
+        }
+        if(!is_null($group_id)){
+            $map['group_id']    =   $group_id;
+        }
+        
+        if(UID>1)//guth 非管理员只能查看，编辑自己的文章
+        {
+            $map['uid'] = UID;
+        }
+        
+        $list = $this->lists($Document,$map,'level DESC,DOCUMENT.id DESC',$field);
+
+        if($map['pid']){
+            // 获取上级文档
+            $article    =   $Document->field('id,title,type')->find($map['pid']);
+            $this->assign('article',$article);
+        }
+        //检查该分类是否允许发布内容
+        $allow_publish  =   get_category($cate_id, 'allow_publish');
+
+        $this->assign('status', $status);
+        $this->assign('allow',  $allow_publish);
+        $this->assign('pid',    $map['pid']);
+
+        $this->meta_title = '文档列表';
+        return $list;
+    }
+
+    /**
+     * 设置一条或者多条数据的状态
+     * @author huajie <banhuajie@163.com>
+     */
+    public function setStatus($model='Document'){
+        if($_GET["status"]==1)//guth 审核前必须要校验编辑
+        {
+            $id = (int)$_GET['ids'];
+            $Document_indo = M("Document")->where(array("id"=>$id))->find();
+            
+            if($Document_indo['bianji_status'] != 1)
+            {
+                $s =  json_encode(array('status'=>1,"info"=>""));
+                $this->error("编辑还未校验");
+            }
+        }
+    
+        return parent::setStatus('Document');
+    }
+    
+    public function jiaoyan()
+    {
+        //获取左边菜单
+        $this->getMenu();
+
+        $id     =   I('get.id','');
+        if(empty($id)){
+            $this->error('参数不能为空！');
+        }
+
+        // 获取详细数据 
+        $Document = D('Document');
+        $data = $Document->detail($id);
+        if(!$data){
+            $this->error($Document->getError());
+        }
+
+        if($data['pid']){
+            // 获取上级文档
+            $article        =   $Document->field('id,title,type')->find($data['pid']);
+            $this->assign('article',$article);
+        }
+        // 获取当前的模型信息
+        $model    =   get_document_model($data['model_id']);
+
+        $this->assign('data', $data);
+        $this->assign('model_id', $data['model_id']);
+        $this->assign('model',      $model);
+
+        //获取表单字段排序
+        $fields = get_model_attribute($model['id']);
+        $this->assign('fields',     $fields);
+
+
+        //获取当前分类的文档类型
+        $this->assign('type_list', get_type_bycate($data['category_id']));
+
+        $this->meta_title   =   '校验文档';
+        $this->display();
+    }
+    
+    /**
+     * 更新一条数据
+     * @author huajie <banhuajie@163.com>
+     */
+    public function jiaoyan_update(){
+
+        $id = (int)$_POST['id'];
+        if($id)
+        {
+            M("Document")->where(array("id"=>$id))->save(array("bianji_status"=>1));
+            $document   =   D('Document');
+            $res = $document->update();
+            if(!$res){
+                $this->error($document->getError());
+            }else{
+                $this->success($res['id']?'校验成功':'新增成功', Cookie('__forward__'));
+            }
+        }
+        else
+        {
+            $this->error("校验失败");
+        }
+    }
+
+    /**
+     * 文档新增页面初始化
+     * @author huajie <banhuajie@163.com>
+     */
+    public function add(){
+        //获取左边菜单
+        $this->getMenu();
+
+        $cate_id    =   I('get.cate_id',0);
+        $model_id   =   I('get.model_id',0);
+        $group_id   =   I('get.group_id','');
+
+        empty($cate_id) && $this->error('参数不能为空！');
+        empty($model_id) && $this->error('该分类未绑定模型！');
+
+        //检查该分类是否允许发布
+        $allow_publish = check_category($cate_id);
+        !$allow_publish && $this->error('该分类不允许发布内容！');
+
+        // 获取当前的模型信息
+        $model    =   get_document_model($model_id);
+
+        //处理结果
+        $info['pid']            =   $_GET['pid']?$_GET['pid']:0;
+        $info['model_id']       =   $model_id;
+        $info['category_id']    =   $cate_id;
+        $info['group_id']       =   $group_id;
+
+        if($info['pid']){
+            // 获取上级文档
+            $article            =   M('Document')->field('id,title,type')->find($info['pid']);
+            $this->assign('article',$article);
+        }
+
+        //获取表单字段排序
+        $fields = get_model_attribute($model['id']);
+        $this->assign('info',       $info);
+        $this->assign('fields',     $fields);
+        $this->assign('type_list',  get_type_bycate($cate_id));
+        $this->assign('model',      $model);
+        $this->meta_title = '新增'.$model['title'];
+        $this->display();
+    }
+
+    /**
+     * 文档编辑页面初始化
+     * @author huajie <banhuajie@163.com>
+     */
+    public function edit(){
+        //获取左边菜单
+        $this->getMenu();
+
+        $id     =   I('get.id','');
+        if(empty($id)){
+            $this->error('参数不能为空！');
+        }
+
+        // 获取详细数据 
+        $Document = D('Document');
+        $data = $Document->detail($id);
+        if(!$data){
+            $this->error($Document->getError());
+        }
+
+        if($data['pid']){
+            // 获取上级文档
+            $article        =   $Document->field('id,title,type')->find($data['pid']);
+            $this->assign('article',$article);
+        }
+        // 获取当前的模型信息
+        $model    =   get_document_model($data['model_id']);
+
+        $this->assign('data', $data);
+        $this->assign('model_id', $data['model_id']);
+        $this->assign('model',      $model);
+
+        //获取表单字段排序
+        $fields = get_model_attribute($model['id']);
+        $this->assign('fields',     $fields);
+
+
+        //获取当前分类的文档类型
+        $this->assign('type_list', get_type_bycate($data['category_id']));
+
+        $this->meta_title   =   '编辑文档';
+        $this->display();
+    }
+
+    /**
+     * 更新一条数据
+     * @author huajie <banhuajie@163.com>
+     */
+    public function update(){
+        $document   =   D('Document');
+        $res = $document->update();
+        if(!$res){
+            $this->error($document->getError());
+        }else{
+            $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
+        }
+    }
+
+    /**
+     * 待审核列表
+     */
+    public function examine(){
+        //获取左边菜单
+        $this->getMenu();
+
+        $map['status']  =   2;
+        if ( !IS_ROOT ) {
+            $cate_auth  =   AuthGroupModel::getAuthCategories(UID);
+            if($cate_auth){
+                $map['category_id']    =   array('IN',$cate_auth);
+            }else{
+                $map['category_id']    =   -1;
+            }
+        }
+        $list = $this->lists(M('Document'),$map,'update_time desc');
+        //处理列表数据
+        if(is_array($list)){
+            foreach ($list as $k=>&$v){
+                $v['username']      =   get_nickname($v['uid']);
+            }
+        }
+
+        $this->assign('list', $list);
+        $this->meta_title       =   '待审核';
+        $this->display();
+    }
+
+    /**
+     * 回收站列表
+     * @author huajie <banhuajie@163.com>
+     */
+    public function recycle(){
+        //获取左边菜单
+        $this->getMenu();
+
+        $map['status']  =   -1;
+        if ( !IS_ROOT ) {
+            $cate_auth  =   AuthGroupModel::getAuthCategories(UID);
+            if($cate_auth){
+                $map['category_id']    =   array('IN',$cate_auth);
+            }else{
+                $map['category_id']    =   -1;
+            }
+        }
+        $list = $this->lists(M('Document'),$map,'update_time desc');
+
+        //处理列表数据
+        if(is_array($list)){
+            foreach ($list as $k=>&$v){
+                $v['username']      =   get_nickname($v['uid']);
+            }
+        }
+
+        $this->assign('list', $list);
+        $this->meta_title       =   '回收站';
+        $this->display();
+    }
+
+    /**
+     * 写文章时自动保存至草稿箱
+     * @author huajie <banhuajie@163.com>
+     */
+    public function autoSave(){
+        $res = D('Document')->autoSave();
+        if($res !== false){
+            $return['data']     =   $res;
+            $return['info']     =   '保存草稿成功';
+            $return['status']   =   1;
+            $this->ajaxReturn($return);
+        }else{
+            $this->error('保存草稿失败：'.D('Document')->getError());
+        }
+    }
+
+    /**
+     * 草稿箱
+     * @author huajie <banhuajie@163.com>
+     */
+    public function draftBox(){
+        //获取左边菜单
+        $this->getMenu();
+
+        $Document   =   D('Document');
+        $map        =   array('status'=>3,'uid'=>UID);
+        $list       =   $this->lists($Document,$map);
+        //获取状态文字
+        //int_to_string($list);
+
+        $this->assign('list', $list);
+        $this->meta_title = '草稿箱';
+        $this->display();
+    }
+
+    /**
+     * 我的文档
+     * @author huajie <banhuajie@163.com>
+     */
+    public function mydocument($status = null, $title = null){
+        //获取左边菜单
+        $this->getMenu();
+
+        $Document   =   D('Document');
+        /* 查询条件初始化 */
+        $map['uid'] = UID;
+        if(isset($title)){
+            $map['title']   =   array('like', '%'.$title.'%');
+        }
+        if(isset($status)){
+            $map['status']  =   $status;
+        }else{
+            $map['status']  =   array('in', '0,1,2');
+        }
+        if ( isset($_GET['time-start']) ) {
+            $map['update_time'][] = array('egt',strtotime(I('time-start')));
+        }
+        if ( isset($_GET['time-end']) ) {
+            $map['update_time'][] = array('elt',24*60*60 + strtotime(I('time-end')));
+        }
+        //只查询pid为0的文章
+        $map['pid'] = 0;
+        $list = $this->lists($Document,$map,'update_time desc');
+        $list = $this->parseDocumentList($list,1);
+
+        // 记录当前列表页的cookie
+        Cookie('__forward__',$_SERVER['REQUEST_URI']);
+        $this->assign('status', $status);
+        $this->assign('list', $list);
+        $this->meta_title = '我的文档';
+        $this->display();
+    }
+
+    /**
+     * 还原被删除的数据
+     * @author huajie <banhuajie@163.com>
+     */
+    public function permit(){
+        /*参数过滤*/
+        $ids = I('param.ids');
+        if(empty($ids)){
+            $this->error('请选择要操作的数据');
+        }
+
+        /*拼接参数并修改状态*/
+        $Model  =   'Document';
+        $map    =   array();
+        if(is_array($ids)){
+            $map['id'] = array('in', $ids);
+        }elseif (is_numeric($ids)){
+            $map['id'] = $ids;
+        }
+        $this->restore($Model,$map);
+    }
+
+    /**
+     * 清空回收站
+     * @author huajie <banhuajie@163.com>
+     */
+    public function clear(){
+        $res = D('Document')->remove();
+        if($res !== false){
+            $this->success('清空回收站成功！');
+        }else{
+            $this->error('清空回收站失败！');
+        }
+    }
+
+    /**
+     * 移动文档
+     * @author huajie <banhuajie@163.com>
+     */
+    public function move() {
+        if(empty($_POST['ids'])) {
+            $this->error('请选择要移动的文档！');
+        }
+        session('moveArticle', $_POST['ids']);
+        session('copyArticle', null);
+        $this->success('请选择要移动到的分类！');
+    }
+
+    /**
+     * 拷贝文档
+     * @author huajie <banhuajie@163.com>
+     */
+    public function copy() {
+        if(empty($_POST['ids'])) {
+            $this->error('请选择要复制的文档！');
+        }
+        session('copyArticle', $_POST['ids']);
+        session('moveArticle', null);
+        $this->success('请选择要复制到的分类！');
+    }
+
+    /**
+     * 粘贴文档
+     * @author huajie <banhuajie@163.com>
+     */
+    public function paste() {
+        $moveList = session('moveArticle');
+        $copyList = session('copyArticle');
+        if(empty($moveList) && empty($copyList)) {
+            $this->error('没有选择文档！');
+        }
+        if(!isset($_POST['cate_id'])) {
+            $this->error('请选择要粘贴到的分类！');
+        }
+        $cate_id = I('post.cate_id');   //当前分类
+        $pid = I('post.pid', 0);        //当前父类数据id
+
+        //检查所选择的数据是否符合粘贴要求
+        $check = $this->checkPaste(empty($moveList) ? $copyList : $moveList, $cate_id, $pid);
+        if(!$check['status']){
+            $this->error($check['info']);
+        }
+
+        if(!empty($moveList)) {// 移动    TODO:检查name重复
+            foreach ($moveList as $key=>$value){
+                $Model              =   M('Document');
+                $map['id']          =   $value;
+                $data['category_id']=   $cate_id;
+                $data['pid']        =   $pid;
+                //获取root
+                if($pid == 0){
+                    $data['root'] = 0;
+                }else{
+                    $p_root = $Model->getFieldById($pid, 'root');
+                    $data['root'] = $p_root == 0 ? $pid : $p_root;
+                }
+                $res = $Model->where($map)->save($data);
+            }
+            session('moveArticle', null);
+            if(false !== $res){
+                $this->success('文档移动成功！');
+            }else{
+                $this->error('文档移动失败！');
+            }
+        }elseif(!empty($copyList)){ // 复制
+            foreach ($copyList as $key=>$value){
+                $Model  =   M('Document');
+                $data   =   $Model->find($value);
+                unset($data['id']);
+                unset($data['name']);
+                $data['category_id']    =   $cate_id;
+                $data['pid']            =   $pid;
+                $data['create_time']    =   NOW_TIME;
+                $data['update_time']    =   NOW_TIME;
+                //获取root
+                if($pid == 0){
+                    $data['root'] = 0;
+                }else{
+                    $p_root = $Model->getFieldById($pid, 'root');
+                    $data['root'] = $p_root == 0 ? $pid : $p_root;
+                }
+
+                $result   =  $Model->add($data);
+                if($result){
+                    $logic      =   logic($data['model_id']);
+                    $data       =   $logic->detail($value); //获取指定ID的扩展数据
+                    $data['id'] =   $result;
+                    $res        =   $logic->add($data);
+                }
+            }
+            session('copyArticle', null);
+            if($res){
+                $this->success('文档复制成功！');
+            }else{
+                $this->error('文档复制失败！');
+            }
+        }
+    }
+
+    /**
+     * 检查数据是否符合粘贴的要求
+     * @author huajie <banhuajie@163.com>
+     */
+    protected function checkPaste($list, $cate_id, $pid){
+        $return     =   array('status'=>1);
+        $Document   =   D('Document');
+
+        // 检查支持的文档模型
+        if($pid){
+            $modelList =   M('Category')->getFieldById($cate_id,'model_sub');   // 当前分类支持的文档模型
+        }else{
+            $modelList =   M('Category')->getFieldById($cate_id,'model');   // 当前分类支持的文档模型
+        }
+        
+        foreach ($list as $key => $value){
+            //不能将自己粘贴为自己的子内容
+            if($value == $pid){
+                $return['status'] = 0;
+                $return['info'] = '不能将编号为 '.$value.' 的数据粘贴为他的子内容！';
+                return $return;
+            }
+            // 移动文档的所属文档模型
+            $modelType  =   $Document->getFieldById($value,'model_id');
+            if(!in_array($modelType,explode(',',$modelList))) {
+                $return['status'] = 0;
+                $return['info'] = '当前分类的文档模型不支持编号为 '.$value.' 的数据！';
+                return $return;
+            }
+        }
+
+        // 检查支持的文档类型和层级规则
+        $typeList =   M('Category')->getFieldById($cate_id,'type'); // 当前分类支持的文档模型
+        foreach ($list as $key=>$value){
+            // 移动文档的所属文档模型
+            $modelType  =   $Document->getFieldById($value,'type');
+            if(!in_array($modelType,explode(',',$typeList))) {
+                $return['status'] = 0;
+                $return['info'] = '当前分类的文档类型不支持编号为 '.$value.' 的数据！';
+                return $return;
+            }
+            $res = $Document->checkDocumentType($modelType, $pid);
+            if(!$res['status']){
+                $return['status'] = 0;
+                $return['info'] = $res['info'].'。错误数据编号：'.$value;
+                return $return;
+            }
+        }
+
+        return $return;
+    }
+
+    /**
+     * 文档排序
+     * @author huajie <banhuajie@163.com>
+     */
+    public function sort(){
+        if(IS_GET){
+            //获取左边菜单
+            $this->getMenu();
+
+            $ids        =   I('get.ids');
+            $cate_id    =   I('get.cate_id');
+            $pid        =   I('get.pid');
+
+            //获取排序的数据
+            $map['status'] = array('gt',-1);
+            if(!empty($ids)){
+                $map['id'] = array('in',$ids);
+            }else{
+                if($cate_id !== ''){
+                    $map['category_id'] = $cate_id;
+                }
+                if($pid !== ''){
+                    $map['pid'] = $pid;
+                }
+            }
+            $list = M('Document')->where($map)->field('id,title')->order('level DESC,id DESC')->select();
+
+            $this->assign('list', $list);
+            $this->meta_title = '文档排序';
+            $this->display();
+        }elseif (IS_POST){
+            $ids = I('post.ids');
+            $ids = array_reverse(explode(',', $ids));
+            foreach ($ids as $key=>$value){
+                $res = M('Document')->where(array('id'=>$value))->setField('level', $key+1);
+            }
+            if($res !== false){
+                $this->success('排序成功！');
+            }else{
+                $this->error('排序失败！');
+            }
+        }else{
+            $this->error('非法请求！');
+        }
+    }
 }

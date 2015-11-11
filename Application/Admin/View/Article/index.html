@@ -24,16 +24,19 @@
 		</notempty>
 		]
 		<eq name="allow" value="0">（该分类不允许发布内容）</eq>
-		<if condition="count($model) gt 1">[ 模型：<empty name="model_id"><strong>全部</strong><else/><a href="{:U('index',array('pid'=>$pid,'cate_id'=>$cate_id))}">全部</a></empty>
+
+		<!-- <if condition="count($model) gt 1">[ 模型：<empty name="model_id"><strong>全部</strong><else/><a href="{:U('index',array('pid'=>$pid,'cate_id'=>$cate_id))}">全部</a></empty>
 			<volist name="model" id="vo">
 			<neq name="model_id" value="$vo"><a href="{:U('index',array('pid'=>$pid,'cate_id'=>$cate_id,'model_id'=>$vo))}">{$vo|get_document_model='title'}</a><else/><strong>{$vo|get_document_model='title'}</strong></neq>&nbsp;
 			</volist>
-		]</if>
-		<notempty name="groups">[ 分组：<empty name="group_id"><strong>全部</strong><else/><a href="{:U('index',array('pid'=>$pid,'cate_id'=>$cate_id))}">全部</a></empty>
+		]</if> -->
+
+		<!-- <notempty name="groups">[ 分组：<empty name="group_id"><strong>全部</strong><else/><a href="{:U('index',array('pid'=>$pid,'cate_id'=>$cate_id))}">全部</a></empty>
 			<foreach name="groups" item="vo">
 			<neq name="group_id" value="$key"><a href="{:U('index',array('pid'=>$pid,'cate_id'=>$cate_id,'model_id'=>$model_id,'group_id'=>$key))}">{$vo}</a><else/><strong>{$vo}</strong></neq>&nbsp;
 			</foreach>
-		]</notempty>
+		]</notempty> -->
+		
 		</h2>
 	</div>
 

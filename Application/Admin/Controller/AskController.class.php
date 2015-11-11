@@ -10,12 +10,6 @@ class AskController extends AdminController {
         
         parent:: _initialize();
 
-        $this->group_id = $_SESSION["onethink_admin"]["user_auth"]["group_id"];
-        if ( is_administrator($uid) ) {
-            $this->group_id = 1;
-        }
-        $this->assign('group_id', $this->group_id);
-
         // if (in_array(ACTION_NAME,array("index","my","all","processing"))) {
         //     layout('Ask/base');
         // }

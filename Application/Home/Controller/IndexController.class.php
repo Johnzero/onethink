@@ -9,11 +9,10 @@ class IndexController extends HomeController {
     public function index(){
 
         $category = D('Category')->getTree();
-        $lists    = D('Document')->lists(null);
-
         $this->assign('category',$category);
+
+        $lists = D('Document')->order("create_time DESC")->limit(5)->where(array("hot"=>1,'status' => 1))->select();
         $this->assign('lists',$lists);
-        $this->assign('page',D('Document')->page);
 
         $this->display();
     }

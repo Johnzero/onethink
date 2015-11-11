@@ -217,13 +217,13 @@ class AdminController extends Controller {
         $map['id'] = array('in',$ids);
         switch ($status){
             case -1 :
-                $this->delete($Model, $map, array('success'=>'删除成功','error'=>'删除失败'));
+                $this->delete($Model, $map, array('success'=>'删除成功','error'=>'出现错误'));
                 break;
             case 0  :
-                $this->forbid($Model, $map, array('success'=>'禁用成功','error'=>'禁用失败'));
+                $this->forbid($Model, $map, array('success'=>'禁用成功','error'=>'出现错误'));
                 break;
             case 1  :
-                $this->resume($Model, $map, array('success'=>'启用成功','error'=>'启用失败'));
+                $this->resume($Model, $map, array('success'=>'成功','error'=>'出现错误'));
                 break;
             default :
                 $this->error('参数错误');

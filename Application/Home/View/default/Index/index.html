@@ -71,35 +71,16 @@
 
         <div class="right_list news">
             <ul>
+                <volist name="lists" id="vo">
                 <li>
                     <div class="txt">
-                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
+                        <a href="{:U('Article/detail',array('id'=>$vo['id']))}" target="_blank">{$vo.title}&nbsp;&nbsp;({$vo.create_time|date='m-d',###})</a>
                     </div>
+                    <lt name="i" value="5">
                     <div class="line"></div>
+                    </lt>
                 </li>
-                <li>
-                    <div class="txt">
-                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
-                    </div>
-                    <div class="line"></div>
-                </li>
-                <li>
-                    <div class="txt">
-                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
-                    </div>
-                    <div class="line"></div>
-                </li>
-                <li>
-                    <div class="txt">
-                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
-                    </div>
-                    <div class="line"></div>
-                </li>
-                <li>
-                    <div class="txt">
-                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
-                    </div>
-                </li>
+                </volist>
             </ul>
         </div>
     </div>
