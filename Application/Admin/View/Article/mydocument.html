@@ -92,6 +92,9 @@
 				<!-- <a href="{:U('Article/setStatus?ids='.$vo['id'].'&status='.abs(1-$vo['status']))}" class="ajax-get">{$vo.status|show_status_op}</a> -->
 				
 				<a href="{:U('Article/setStatus?status=-1&ids='.$vo['id'])}" class="confirm ajax-get">删除</a>
+            
+                <a href="/Article/detail/id/{$vo['id']}.html" target="_blank">查看</a>
+
                 </td>
 		</tr>
 		</volist>

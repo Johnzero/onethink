@@ -835,4 +835,9 @@ class ArticleController extends AdminController {
             $this->error('非法请求！');
         }
     }
+
+    public function detail() {
+        $id = I('get.id');
+        header("Location:/Article/detail/id/{$id}.html");
+    }
 }

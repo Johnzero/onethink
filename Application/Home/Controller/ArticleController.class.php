@@ -35,15 +35,6 @@ class ArticleController extends HomeController {
 
 		/* 获取当前分类列表 */
 		$Document = D('Document');
-
-        $ahyw = $Document->order("create_time DESC")->limit(10)->lists(40);
-        $this->assign('ahyw',$ahyw);
-
-        $zcdt = $Document->order("create_time DESC")->limit(10)->lists(41);
-        $this->assign('zcdt',$zcdt);
-
-        $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
-        $this->assign('jhzx',$jhzx);
         
 		$list = $Document->page($p, $category['list_row'])->lists($category['id']);
 		if(false === $list){
@@ -56,6 +47,28 @@ class ArticleController extends HomeController {
 		$this->display($category['template_lists']);
 	}
 
+	public function search(){
+		
+		var_dump($_POST);
+		
+		$Document = D('Document');
+
+		/* 页码检测 */
+		$p = intval($p);
+		$p = empty($p) ? 1 : $p;
+
+		/* 获取详细信息 */
+		$Document = D('Document');
+		$info = $Document->detail($id);
+		if(!$info){
+			$this->error($Document->getError());
+		}
+
+		$this->assign('info', $info);
+		$this->assign('page', $p); //页码
+		$this->display();
+	}
+
 	/* 文档模型详情页 */
 	public function detail($id = 0, $p = 1){
 		/* 标识正确性检测 */
@@ -64,16 +77,6 @@ class ArticleController extends HomeController {
 		}
 
 		$Document = D('Document');
-
-        $ahyw = $Document->order("create_time DESC")->limit(10)->lists(40);
-        $this->assign('ahyw',$ahyw);
-
-        $zcdt = $Document->order("create_time DESC")->limit(10)->lists(41);
-        $this->assign('zcdt',$zcdt);
-
-        $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
-        $this->assign('jhzx',$jhzx);
-
 
 		/* 页码检测 */
 		$p = intval($p);
