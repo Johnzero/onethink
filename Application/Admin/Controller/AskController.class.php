@@ -10,10 +10,6 @@ class AskController extends AdminController {
         
         parent:: _initialize();
 
-        // if (in_array(ACTION_NAME,array("index","my","all","processing"))) {
-        //     layout('Ask/base');
-        // }
-
         //菜单后数量
         $maps  =  array();
         $maps['uid'] = array('EXP','IS NULL');
