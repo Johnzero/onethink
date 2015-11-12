@@ -1,0 +1,60 @@
+<extend name="Public/base"/>
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+<block name="style">
+<link rel="stylesheet" type="text/css" href="__CSS__/table.css" media="all">
+<style type="text/css">
+    .show-detail {
+        width: 50%;
+        float: right;
+    }
+</style>
+
+</block>
+
+<block name="body">
+    <div class="main-title">
+        <h2>{$meta_title}</h2>
+    </div>
+    <form method="post" class="reply-form">
+		
+		<div class="form-item">
+            <label class="item-label">标题</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="title" value="{$opinion_info.title}">
+            </div>
+        </div>
+		
+        <div class="form-item">
+            <label class="item-label">内容</label>
+            <div class="controls">
+                <label class="textarea input-large">
+                    <textarea name="content">
+                        <?php if ( trim($opinion_info['content']) ) { ?>
+                           {$opinion_info.content}
+                        <?php } else { ?>
+                        <?php } ?>
+                    </textarea>
+                    {:hook('adminArticleEdit', array('name'=>'content'))}
+                </label>
+            </div>
+        </div>
+
+		<input type="hidden" class="text input-large" name="id" value="{$opinion_info.id}">
+		
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post confirm" id="submit" type="submit" target-form="reply-form" title="确认修改?">修 改</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('User/index')}');
+    </script>
+</block>
