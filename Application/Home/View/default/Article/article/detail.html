@@ -2,9 +2,8 @@
 <block name="body">
     <div class="main-colum">
         <div class="navigation">
-            当前位置：<a href="/" target="_blank">首页</a>&nbsp;>&nbsp;<a href="{:U('Article/lists',array('category'=>$category['id']))}" target="_blank">{$category.title}</a>&nbsp;>&nbsp;<span>{$info.title}</span>
+            当前位置：<a href="/" target="_blank">首页</a>&nbsp;>&nbsp;<a href="{:U('Article/lists',array('category'=>$category['id']))}">{$category.title}</a>&nbsp;>&nbsp;<span>{$info.title}</span>
             <div class="topDate">
-                <php>$days = array('星期天','星期一','星期二','星期三','星期四','星期五','星期六');$today = date('w');</php>
                 <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
             </div>
         </div>
@@ -16,7 +15,6 @@
 				<span>时间：<a>{$info.create_time|time_format}</a> </span>
 				<span>阅读：<a>{$info.view}</a> 次 </span>
 			</div>
-        	<hr/>
 			<div class="font9blue">
 				【<b>字体：<a href="javascript:fontZoom(20)"><font style="color:rgb(188, 0, 0)">大</font></a>&nbsp;<a href="javascript:fontZoom(16)"><font style="color:rgb(188, 0, 0)">中</font></a>&nbsp;<a href="javascript:fontZoom(12)"><font style="color:rgb(188, 0, 0)">小</font></a></b>】【<b>视力保护：</b><a href="javascript:divbgColor('#ffffff')" style="color:#ffffff;font-size: 20px">■</a> 
             	<a href="javascript:divbgColor('#F6F6F6')" style="color:#F6F6F6;font-size: 20px">■</a> 
@@ -26,6 +24,7 @@
             	<a href="javascript:divbgColor('#FFFFE1')" style="color:#FFFFE1;font-size: 20px">■</a> 
             	<a href="javascript:divbgColor('#DFCCD8')" style="color:#DFCCD8;font-size: 20px">■</a> 】
             </div>
+        	<hr/>
 			<div id="article_content">
         		{$info.content|htmlspecialchars_decode}
 				<div class="clearfix"></div>

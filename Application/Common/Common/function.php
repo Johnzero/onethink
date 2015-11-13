@@ -1,26 +1,8 @@
 <?php
-// +----------------------------------------------------------------------
-// | OneThink [ WE CAN DO IT JUST THINK IT ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
-// +----------------------------------------------------------------------
 
-// OneThink常量定义
 const ONETHINK_VERSION    = '1.1.141212';
 const ONETHINK_ADDON_PATH = './Addons/';
 
-/**
- * 系统公共库文件
- * 主要定义系统公共函数库
- */
-
-/**
- * 检测用户是否登录
- * @return integer 0-未登录，大于0-当前登录用户ID
- * @author 麦当苗儿 <zuojiazi@vip.qq.com>
- */
 function is_login(){
     $user = session('user_auth');
     if (empty($user)) {
@@ -1072,4 +1054,20 @@ function curl_post($url='', $postdata=''){
 		 
 	curl_close($ch);
 	return $data;
+}
+
+function get_slider($id){
+    $sliders = D("Document")->order("id DESC")->limit(5)->lists($id);
+    if (!empty($sliders)) {
+        foreach ($sliders as $key => $value) {
+            if (trim($value["content"]) || $value["link_id"] == 0) {
+                $href = U('Article/detail',array('id'=>$value['id']));
+            }else {
+                $href = U('Article/detail',array('id'=>$value["link_id"]));
+            }
+            $sliders[$key]["href"] = $href;
+        }
+    }
+
+    return $sliders;
 }

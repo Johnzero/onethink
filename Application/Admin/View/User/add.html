@@ -1,6 +1,12 @@
 <extend name="Public/base"/>
-
 <block name="body">
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+
+    <div id="top-alert" class="fixed alert alert-error" style="display: none;">
+        <button class="close fixed" style="margin-top: 4px;">×</button>
+        <div class="alert-content">这是内容</div>
+    </div>
+
     <div class="main-title">
         <h2>{$meta_title}</h2>
     </div>
@@ -74,6 +80,97 @@
                 <input type="radio" class="radio" name="type" value="4" <eq name="data.type" value="4"> checked="checked"</eq> >其他
             </div>
         </div>
+
+        <hr/>
+
+        <div class="form-item">
+            <label class="item-label">官方名称</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="name" value="{$data.name}">
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">官方链接</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="home_link" value="{$data.home_link}">
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">微博链接</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="weibo_link" value="{$data.weibo_link}">
+            </div>
+        </div>
+
+        <div class="form-item">
+            <label class="item-label">微博二维码</label>
+            <div class="controls">
+                <input class="upload_file" type="file" id="upload_picture_1" data-id="1">
+                <input type="hidden" name="weibo" class="upload_picture_1" value="{$data.weibo}"/>
+                <div class="upload-img-box">
+                    <notempty name="data.weibo">
+                    <div class="upload-pre-item">
+                        <img src="{$data.weibo}"  ondblclick="removePicture1(this)"/>
+                    </div>
+                    </notempty>
+                </div>
+            </div>
+           
+        </div>
+
+
+        <div class="form-item">
+            <label class="item-label">微信二维码</label>
+            <div class="controls">
+                <input class="upload_file" type="file" id="upload_picture_2" data-id="2">
+                <input type="hidden" name="weixin" class="upload_picture_2" value="{$data.weixin}"/>
+                <div class="upload-img-box">
+                    <notempty name="data.weixin">
+                    <div class="upload-pre-item">
+                        <img src="{$data.weixin}"  ondblclick="removePicture2(this)"/>
+                    </div>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+
+         <script type="text/javascript">
+            $(".upload_file").each(function() {
+                $(this).uploadify({
+                    "height"          : 30,
+                    "swf"             : "__STATIC__/uploadify/uploadify.swf",
+                    "fileObjName"     : "download",
+                    "buttonText"      : "上传图片",
+                    "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+                    "width"           : 120,
+                    'removeTimeout'   : 1,
+                    'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+                    'onUploadSuccess' : function (file, data){
+                        var data = $.parseJSON(data);
+                        var src = '';
+
+                        if(data.status){
+                            src = data.url || '' + data.path
+                            $("."+this.button.parent().attr("id")).val(src);
+                            $("."+this.button.parent().attr("id")).parent().find('.upload-img-box').html(
+                                '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                            );
+                        } else {
+                            updateAlert(data.info);
+                            setTimeout(function(){
+                                $('#top-alert').find('button').click();
+                                $(that).removeClass('disabled').prop('disabled',false);
+                            },1500);
+                        }
+                    },
+                    'onFallback' : function() {
+                        alert('未检测到兼容版本的Flash.');
+                    }
+               });
+            });
+        </script>
 
         <div class="form-item">
             <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>

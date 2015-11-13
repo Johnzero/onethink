@@ -1,21 +1,15 @@
 <extend name="Base/common"/>
-<block name="header">
-    <!-- <header class="jumbotron subhead" id="overview">
-        <div class="container">
-            <h2>源自相同起点，演绎不同精彩！</h2>
-            <p class="lead"></p>
-        </div>
-    </header> -->
-</block>
-
 <block name="style">
     <link href="__CSS__/yx_rotaion.css" rel="stylesheet">
     <link href="__CSS__/flexslider.css" rel="stylesheet">
+    <link href="__CSS__/reveal.css" rel="stylesheet">
 </block> 
 <block name="script">
     <script src="__JS__/jquery-migrate-1.2.1.js"></script>
     <script src="__JS__/jquery.yx_rotaion.js"></script>
     <script src="__JS__/jquery.flexslider-min.js"></script>
+    <script src="__JS__/jquery.reveal.js"></script>
+
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -44,27 +38,26 @@
                 controlNav: false,
                 directionNav:true
             });
+            $(".showBox li a").hover(function () {
+                $(this).parent().append("asdf");
+            })
+
         })
     </script>
 </block> 
-<block name="side">
-<!-- 左侧 nav
-================================================== -->
-    <!-- <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav">
-            {:W('Category/lists', array(1, true))}
-        </ul>
-    </div> -->
-</block>
-
 <block name="body">
     <div class="main-colum">
         <div class="slider">
             <div class="yx-rotaion">
+                <php>
+                    $sliders = get_slider(43);
+                </php>
                 <ul class="rotaion_list">
-                    <li><a href=""><img src="__IMG__/slider_01.jpg" alt="李克强与默克尔互赠了啥礼物"></a></li>
-                    <li><a href=""><img src="__IMG__/slider_02.jpg" alt="阜南：机声隆隆忙秋种"></a></li>
-                    <li><a href=""><img src="__IMG__/slider_03.jpg" alt="黄梅调电影《长相知》安庆首映 新秀演员惊艳亮相"></a></li>
+                    <volist name="sliders" id="vo">
+                        <li>
+                            <a href="{$vo.href}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
+                        </li>
+                    </volist>
                 </ul>
             </div>
         </div>
@@ -72,19 +65,20 @@
         <div class="right_list news">
             <ul>
                 <volist name="lists" id="vo">
-                <li>
-                    <div class="txt">
-                        <a href="{:U('Article/detail',array('id'=>$vo['id']))}" target="_blank">{$vo.title}&nbsp;&nbsp;({$vo.create_time|date='m-d',###})</a>
-                    </div>
-                    <lt name="i" value="5">
-                    <div class="line"></div>
-                    </lt>
-                </li>
+                    <li>
+                        <div class="txt">
+                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}" target="_blank">{$vo.title}</a>&nbsp;&nbsp;({$vo.create_time|date='m-d',###})
+                        </div>
+                        <lt name="i" value="5">
+                        <div class="line"></div>
+                        </lt>
+                    </li>
                 </volist>
             </ul>
         </div>
     </div>
     <div class="contents">
+
         <div class="content_left">
             <div class="leftAreaContent">
                 <div class="tabmenu">
@@ -181,35 +175,28 @@
             <div class="rightAreaContent">
                 <div class="tabmenu">
                     <ul>
-                        <li><a href="" target="_blank" class="active">各市人民政府</a></li>
+                        <li><a class="active">各市人民政府</a></li>
                     </ul>
-                    <a href="" class="more">更多</a>
+                    <a href="javascript:void(0);" class="more" data-reveal-id="rmzf">更多</a>
                 </div>
-                <div class="cityContent">
+                <div class="cityContent showBox">
                     <ul>
-                        <li><a>合肥市人民政府</a></li>
-                        <li><a>淮南市人民政府</a></li>
-                        <li><a>阜阳市人民政府</a></li>
-                        <li><a>六安市人民政府</a></li>
-                        <li><a>马鞍山市人民政府</a></li>
-                        <li><a>铜陵市人民政府</a></li>
+                        <volist name="zf" id="vo" offset="0" length="10">
+                            <li><a href="javascript:void(0);" data-id="{$vo.id}">{$vo.nickname}</a></li>
+                        </volist>
                     </ul>
                 </div>
                 <div class="tabmenu">
                     <ul>
-                        <li><a href="" target="_blank" class="active">省直厅局</a></li>
+                        <li><a class="active">省直厅局</a></li>
                     </ul>
-                    <a href="" class="more">更多</a>
+                    <a href="javascript:void(0);" class="more" data-reveal-id="sztj">更多</a>
                 </div>
-                <div class="cityContent">
+                <div class="cityContent showBox">
                     <ul>
-                        <li><a>安徽发布</a></li>
-                        <li><a>安徽公安在线</a></li>
-                        <li><a>江淮气象</a></li>
-                        <li><a>安徽检察</a></li>
-                        <li><a>安徽高速</a></li>
-                        <li><a>安徽公安交警在线</a></li>
-                        <li><a>安徽禁毒在线</a></li>
+                        <volist name="sz" id="vo" offset="0" length="7">
+                            <li><a href="javascript:void(0);" data-id="{$vo.id}">{$vo.nickname}</a></li>
+                        </volist>
                     </ul>
                 </div>
             </div>
@@ -324,7 +311,23 @@
                     <dt><a href="">武警查获仿真枪</a></dt>
                 </dl>
             </div>
-        </div>
+        </div>     
+    </div>
+    <div class="reveal-modal float-box showBox"  id="rmzf">
+        <ul>
+            <volist name="zf" id="vo">
+                <li><a href="javascript:void(0);" data-id="{$vo.id}">{$vo.nickname}</a></li>
+            </volist>
+        </ul>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+    <div class="reveal-modal float-box showBox"  id="sztj">
+        <ul>
+            <volist name="sz" id="vo">
+                <li><a href="javascript:void(0);" data-id="{$vo.id}">{$vo.nickname}</a></li>
+            </volist>
+        </ul>
+        <a class="close-reveal-modal">&#215;</a>
     </div>
 
     <!-- <div class="span9">

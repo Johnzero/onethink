@@ -16,10 +16,6 @@ use User\Api\UserApi;
  */
 class UserController extends AdminController {
 
-    /**
-     * 用户管理首页
-     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
-     */
     public function index(){
         $nickname       =   trim(I('nickname'));
         $maps  =  array();
@@ -226,18 +222,20 @@ class UserController extends AdminController {
             /* 调用注册接口注册用户 */
             $User   =   new UserApi;
             $uid    =   $User->register($username, $password, $email);
+
             if(0 < $uid){
+
+                $user = array('uid' => $uid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel,'type'=>$_POST['type'],'name'=>$_POST['name'],'home_link'=>$_POST['home_link'],'weibo_link'=>$_POST['weibo_link'],'weibo'=>$_POST['weibo'],'weixin'=>$_POST['weixin']);
                 if ($_POST['pid']) {
-                    $user = array('pid'=>$_POST["pid"],'uid' => $uid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel,'type'=>$_POST['type']);
-                }else {
-                    $user = array('uid' => $uid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel,'type'=>$_POST['type']);
+                    $user['pid'] = $_POST["pid"];
                 }
+
                 if(!M('Member')->add($user)){
                     $this->error('用户添加失败！');
                 } else {
                     $this->success('用户添加成功！',U('index'));
                 }
-            } else { //注册失败，显示错误信息
+            } else { 
                 $this->error($this->showRegError($uid));
             }
         } else {
@@ -291,7 +289,12 @@ class UserController extends AdminController {
             }
 
             if($rt){ 
-                $user_array = array('pid'=>$pid,'nickname' => $username, 'status' => 1,'contact'=>$contact,'tel'=>$tel);
+
+                $user_array = array('pid'=>$pid, 'nickname' => $username, 'status' => 1, 'contact'=>$contact, 'tel'=>$tel,'type'=>$_POST['type'],'name'=>$_POST['name'],'home_link'=>$_POST['home_link'],'weibo_link'=>$_POST['weibo_link'],'weibo'=>$_POST['weibo'],'weixin'=>$_POST['weixin']);
+                if ($_POST['pid']) {
+                    $user['pid'] = $_POST["pid"];
+                }
+                
                 M('Member')->where(array('uid'=>$id))->save($user_array);
                 $this->success('用户编辑成功！',U('index'));
             } else { 
@@ -299,7 +302,7 @@ class UserController extends AdminController {
             }
 
         } else {
-            $parents = M("Member")->where(array("uid"=>array("neq","1"),"pid"=>array("eq",0)))->select();
+            $parents = M("Member")->where(array("uid"=>array("neq","1"),"pid"=>array("EXP","IS NULL")))->select();
             $this->assign('parents', $parents);
             $this->display("add");
         }

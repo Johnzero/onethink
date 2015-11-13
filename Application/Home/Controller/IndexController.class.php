@@ -14,6 +14,13 @@ class IndexController extends HomeController {
         $lists = D('Document')->order("create_time DESC")->limit(5)->where(array("hot"=>1,'status' => 1))->select();
         $this->assign('lists',$lists);
 
+        $zf = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3,"B.type"=>2))->select();
+        $this->assign('zf',$zf);
+
+        $sz = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3,"B.type"=>1))->select();
+        $this->assign('sz',$sz);
+
+
         $this->display();
     }
 

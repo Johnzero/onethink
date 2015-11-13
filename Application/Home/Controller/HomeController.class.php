@@ -23,13 +23,18 @@ class HomeController extends Controller {
 
 
     protected function _initialize(){
-        /* 读取站点配置 */
+
         $config = api('Config/lists');
         C($config); //添加配置
 
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');
         }
+        $days = array('星期天','星期一','星期二','星期三','星期四','星期五','星期六');
+        $today = date('w');
+        $this->assign('days',$days);
+        $this->assign('today',$today);
+
     }
 
 	/* 用户登录检测 */

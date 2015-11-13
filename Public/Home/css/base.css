@@ -12,7 +12,7 @@ img {
 }
 
 body {
-    font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "SimSun","Arial Narrow",HELVETICA;
     background: url("../images/bg.jpg") no-repeat;
     background-position: top;
 }
@@ -73,6 +73,12 @@ body {
 .onethink.pagination {
     margin: 20px 0;
 }
+.onethink.pagination-left {
+    float: left;
+}
+.onethink.pagination-right {
+    float: right;
+}
 
 .onethink.pagination div {
     display: inline-block;
@@ -128,11 +134,10 @@ body {
     -moz-border-radius-bottomright: 4px;
 }
 
-/* page.class.php 分页类 bootstrap样式 */
 .onethink.pagination-large div >  a,
 .onethink.pagination-large div >  span {
-    padding: 11px 19px;
-    font-size: 17.5px;
+    padding: 6px 16px;
+    font-size: 14px;
 }
 
 .onethink.pagination-large div >:first-child {
@@ -246,11 +251,11 @@ body {
     margin-top: 30px;
 }
 
-.search  input.text {
+.search input.text {
     width: 250px;
     height: 37px;
     line-height: 37px;
-    padding: 5px;
+    padding-left: 5px;
 }
 
 .search .submit {
@@ -263,7 +268,7 @@ body {
     background-position: center;
     border-radius: 2px;
     vertical-align: top;
-    margin-left: -4px;
+    margin-left: -7px;
 }
 
 .nav {
@@ -286,13 +291,14 @@ body {
 
 .nav li a {
     display: block;
-    width: 100%;
+    width: 200px;
+    height: 35px;
     color: #d64c04;
-    font-size: 18px;
+    font-size: 0px;
     background-repeat: no-repeat;
-    padding-left: 60px;
-    padding-right: 40px;
-    background-position: 28px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-position: 10px;
 }
 
 .nav li a:hover {
@@ -303,10 +309,11 @@ body {
     border-bottom-left-radius: 0;
     text-decoration: none;
     background-repeat: no-repeat;
-    background-position: 28px;
+    background-position: 10px;
 }
 
 .nav li a.m01 {
+    width: 130px;
     background-image: url("../images/home.png");
 }
 
@@ -316,7 +323,6 @@ body {
 
 .nav li a.m02 {
     background-image: url("../images/fb.png");
-    background-position: 20px 6px;
 }
 
 .nav li a.m02:hover {
@@ -393,7 +399,7 @@ body {
 }
 
 .news ul li .line {
-    border-bottom: 1px #a0a0a0 dotted;
+    border-bottom: 1px #BFBFBF dotted;
     height: 0;
     line-height: 0;
     font-size: 0;
@@ -407,6 +413,7 @@ body {
 .contents {
     width: 100%;
     margin-top: 15px;
+    position: relative;
 }
 
 .content_left {
@@ -454,6 +461,7 @@ body {
     font-size: 16px;
     padding-left: 20px;
     padding-right: 20px;
+    font-family: "microsoft yahei";
 }
 
 .tabmenu ul li a:hover,
@@ -494,6 +502,7 @@ body {
     overflow: hidden;
     margin-top: 10px;
     font-size: 12px;
+    line-height: 22px;
 }
 
 .menuContent ul li {
@@ -503,6 +512,7 @@ body {
     overflow: hidden;
     margin-bottom: 10px;
     font-size: 12px;
+    line-height: 22px;
 }
 
 .rightAreaContent {
@@ -519,15 +529,14 @@ body {
     padding-right: 20px;
 }
 
-.cityContent ul {
-}
-
 .cityContent li {
     display: inline-block;
     margin-bottom: 10px;
     font-size: 12px;
     *display: inline;
     *zoom: 1;
+    margin-right: 15px;
+    position: relative;
 }
 
 .tabmenu .more {
@@ -584,6 +593,8 @@ body {
     position: absolute;
     top: 5px;
     left: 120px;
+    font-size: 12px;
+    color: #8A8A8A;
 }
 
 .lyDetail span {
@@ -592,6 +603,7 @@ body {
 
 .lyTable table thead {
     border: 1px solid #fce6d7;
+    font-size: 12px;
 }
 
 .lyTable table thead tr {
@@ -652,7 +664,7 @@ body {
     width: 180px;
     height: 36px;
     line-height: 36px;
-    padding: 5px;
+    padding-left: 5px;
 }
 
 .content_right .submit {
@@ -665,7 +677,7 @@ body {
     background-position: center;
     border-radius: 2px;
     vertical-align: top;
-    margin-left: -4px;
+    margin-left: -7px;
 }
 
 .keyword dl {
@@ -689,6 +701,7 @@ body {
     width: 100%;
     border-top: solid 3px #da5705;
     padding: 15px 0;
+    font-size: 12px;
 }
 
 .dzjg {
@@ -715,6 +728,7 @@ body {
     border: 1px solid #e3e6ed;
     background-image: url("../images/navbg.jpg");
     background-repeat: repeat-x;
+    font-size: 12px;
 }
 
 .navigation a {
@@ -857,6 +871,7 @@ b.orange {
     font-size: 16px;
     position: relative;
     margin:0;
+    font-family: "Microsoft YaHei";
 }
 
 .lyxd h3 span {
@@ -866,6 +881,20 @@ b.orange {
     background-color: #f9863e;
     margin-right: 10px;
 }
+
+.lyxd li span {
+    float: none;
+    color: #999999;
+    font-size: 12px;
+    width: 80px;
+    text-align: center;
+    display: block;
+    line-height: 35px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
 
 .lyxd h3 .more {
     position: absolute;
@@ -897,6 +926,7 @@ b.orange {
     font-size: 14px;
     background: url(../images/list.png) no-repeat 0 16px;
     padding-left: 18px;
+    position: relative;
 }
 
 .lyxd li:hover {
@@ -984,19 +1014,22 @@ p{
     margin-top: 15px !important;
 }
 .article-box>h1 {
-    font-size: 1.4em;
+    font-size: 26px;
     margin: 0;
     padding: 0;
     margin-bottom: .5em;
     padding-bottom: .5em;
+    text-align: center;
 }
 .article-box {
     background: #fff;
     width: 100%;
+    font-family: "SimSun","Arial Narrow",HELVETICA;
 }
 .article-infobox {
     font-size: 12px;
     color: #666;
+    text-align: center;
 }
 .article-infobox a {
     color: #d64c04;
@@ -1006,4 +1039,88 @@ p{
 }
 .article-list .dt {
     margin-top: 0;
+}
+.article-list li {
+    font-size: 16px;
+}
+.section.article-list {
+    padding-bottom: 0;
+}
+.fb li {
+    background: url("../images/kuan.png");
+    background-size: 100% 100%;
+    color: #626262 !important;
+    font-size: 14px !important;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.float-box {
+    width: 555px;
+    height: 350px;
+    padding: 30px;
+    padding-bottom: 10px;
+    background: none;
+    /*border-radius: 10px;*/
+    /*border: 2px solid #3B7EA1;*/
+    /*background-image: linear-gradient(bottom, #3B7EA1 0%, #295369 100%);
+    background-image: -o-linear-gradient(bottom, #3B7EA1 0%, #295369 100%);
+    background-image: -moz-linear-gradient(bottom, #3B7EA1 0%, #295369 100%);
+    background-image: -webkit-linear-gradient(bottom, #3B7EA1 0%, #295369 100%);
+    background-image: -ms-linear-gradient(bottom, #3B7EA1 0%, #295369 100%);
+    background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #3B7EA1), color-stop(1, #295369) );
+    -webkit-box-shadow: 0 1px 0 #94E700 inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 0 #94E700 inset, 0 1px 2px rgba(0, 0, 0, 0.5);*/
+/*    box-shadow: 0 1px 0 #94E700 inset, 0 1px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 1px rgba(0, 0, 0, 0.2);*/
+    z-index: 9999;
+}
+.float-box ul {
+    text-align:justify;
+    margin:0;
+    margin-top: 40px;
+
+}
+.float-box ul:after {
+    content:"";
+     height:0;
+     width:100%;
+     display:inline-block;
+     overflow:hidden;
+}
+.float-box li {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: top;
+    letter-spacing: normal;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+}
+.float-box li a:hover{
+    text-decoration: none;
+}
+#rmzf {
+    background-image: url("../images/ds.png");
+    background-size: 100% 100%;
+}
+#sztj {
+    width: 845px;
+    height: 540px;
+    background-image: url("../images/sz.png");
+    background-size: 100% 100%;
+    margin-left: -420px;
+    top:100px;
+}
+#sztj ul {
+    margin-top: 70px;
+}
+#sztj li {
+    height: 40px;
+    line-height: 40px;
 }

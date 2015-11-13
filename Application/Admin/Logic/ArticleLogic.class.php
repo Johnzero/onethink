@@ -14,7 +14,7 @@ namespace Admin\Logic;
 class ArticleLogic extends BaseLogic{
     /* 自动验证规则 */
     protected $_validate = array(
-        array('content', 'getContent', '内容不能为空！', self::MUST_VALIDATE , 'callback', self::MODEL_BOTH),
+        // array('content', 'getContent', '内容不能为空！', self::MUST_VALIDATE , 'callback', self::MODEL_BOTH),
     );
 
     /**
@@ -25,11 +25,13 @@ class ArticleLogic extends BaseLogic{
     protected function getContent(){
         $type = I('post.type');
         $content = I('post.content');
-        if($type > 1){//主题和段落必须有内容
+        if($type > 1){
+            //主题和段落必须有内容
             if(empty($content)){
                 return false;
             }
-        }else{  //目录没内容则生成空字符串
+        }else{  
+            //目录没内容则生成空字符串
             if(empty($content)){
                 $_POST['content'] = ' ';
             }

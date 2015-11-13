@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>安徽省政府手机站</title>
+	<link rel="stylesheet" type="text/css" href="./Font-Awesome-3.2.1/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./style/css.css">
+	<link rel="stylesheet" type="text/css" href="style/swiper.min.css">
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+</head>
+<body>
+	<div id="all">
+		<div class="nav">
+			<div class="nav-bg">
+				<img src="images/nav-bg.png"  width="100%">
+			</div>
+			<div class="nav-content">
+				<ul>
+					<li>首页</li>
+					<li>政务信息发布</li>
+					<li>微信微博大厅</li>
+					<li>回应社会关切</li>
+					<li style="background-image: none;">监督评价公开</li>
+				</ul>
+			</div>
+		</div>
+	<div class="swiper-container" style="width:100%;">
+			<div class="swiper-wrapper" style='width:100%'>
+				
+				<div class="swiper-slide"><a href="">
+					<img src="images/lunbo-bg.jpg" width="100%">
+				</a>
+				</div>
+				<div class="swiper-slide"><a href="">
+					<img src="images/lunbo-bg.jpg" width="100%">
+				</a>
+				</div>
+
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+
+		<!-- Initialize Swiper -->
+		<script>
+		
+		$(window).load(function() {
+			var swiper = new Swiper('.swiper-container', {
+				pagination: '.swiper-pagination',
+				paginationClickable: true,
+				spaceBetween: 30,
+				centeredSlides: true,
+				autoplay:2500,
+				speed:300,
+				autoplayDisableOnInteraction: false
+			});
+			
+			$(function(){
+				var height = $('.swiper-slide img:eq(0)').height();
+				if(height<=0){height=320;}
+				$('.swiper-wrapper').css('height', height);
+			})
+		})
+		
+		</script>
+		<div class="search">
+			<input type="text" placeholder="畜牧局长全部被查"style="width:100%; height:50px;">
+			<div class="cha"><img src="images/search-bg.png" height="40" width="40"></div>
+		</div>
+		<div class="content">
+			<div class="tou">
+				<ul>
+					<li>新文化运动百年纪念展将在安徽省博老馆展出<span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>全年过去一大半任务还差一大截政府下整改令<span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>12月1日起 安徽省每季公布重大税收违法案件 <span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>安徽省台办高效处理纠纷 台商:真的很感谢 <span>56&nbsp;<i class="icon-comment"></i></span> </li>
+					<li style="border-bottom:none;">安徽省推进公共资源交易改革 消除权力寻租空间<span>56&nbsp;<i class="icon-comment"></i></span></li>
+				</ul>
+			</div>
+			<div class="tou">
+				<h1>政府要闻</h1>
+				<ul>
+					<li>新文化运动百年纪念展将在安徽省博老馆展出<span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>全年过去一大半任务还差一大截政府下整改令<span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>12月1日起 安徽省每季公布重大税收违法案件 <span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>安徽省台办高效处理纠纷 台商:真的很感谢 <span>56&nbsp;<i class="icon-comment"></i></span> </li>
+					<li>安徽省推进公共资源交易改革 消除权力寻租空间<span>56&nbsp;<i class="icon-comment"></i></span></li>
+				</ul>
+				<a href="#"><p>进入安徽要闻></p></a>
+			</div>
+			<div class="tou">
+				<h1>政策动态</h1>
+				<ul>
+					<li>新文化运动百年纪念展将在安徽省博老馆展出<span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>全年过去一大半任务还差一大截政府下整改令<span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>12月1日起 安徽省每季公布重大税收违法案件 <span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>安徽省台办高效处理纠纷 台商:真的很感谢 <span>56&nbsp;<i class="icon-comment"></i></span> </li>
+					<li>安徽省推进公共资源交易改革 消除权力寻租空间<span>56&nbsp;<i class="icon-comment"></i></span></li>
+				</ul>
+				<a href="#"><p>进入政策动态></p></a>
+			</div>
+			<div class="tou">
+				<h1>江淮资讯</h1>
+				<ul>
+					<li>新文化运动百年纪念展将在安徽省博老馆展出<span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>全年过去一大半任务还差一大截政府下整改令<span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>12月1日起 安徽省每季公布重大税收违法案件 <span>56&nbsp;<i class="icon-comment"></i></span></li>
+					<li>安徽省台办高效处理纠纷 台商:真的很感谢 <span>56&nbsp;<i class="icon-comment"></i></span> </li>
+					<li>安徽省推进公共资源交易改革 消除权力寻租空间<span>56&nbsp;<i class="icon-comment"></i></span></li>
+				</ul>
+				<a href="#"><p>进入江淮资讯></p></a>
+			</div>	
+			<a href="#" style="text-decoration: none;">
+				<div class="top" align="center">
+					<i class="icon-arrow-up"></i>
+					<p>回到顶部</p>
+				</div>
+			</a>
+			<div style="padding:10px 0; background-color: #f59c0a; color:white; height:30px; line-height: 30px; text-align: center; margin-top:15px;">安徽省人民政府</div>	
+		</div>
+	</div>
+	
+</body>
+</html>

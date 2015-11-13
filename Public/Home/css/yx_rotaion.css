@@ -5,7 +5,7 @@
 .yx-rotation-focus span,.yx-rotaion-btn span{background:url(ico.png) no-repeat;display:block;}
 .yx-rotation-focus{height:40px;line-height:40px;right:20px;bottom:0;z-index:2}
 .yx-rotation-focus span{width:12px;height:12px;line-height:12px;float:left;margin-left:5px;position:relative;top:14px;cursor:pointer;background-position:-24px -126px;text-indent:-9999px}
-.yx-rotaion-btn{width:100%;height:41px;top:50%;margin-top:-20px;}
+.yx-rotaion-btn{width:100%;height:0px;top:50%;margin-top:-20px;}
 .yx-rotaion-btn span{width:41px;height:41px;cursor:pointer;filter:alpha(opacity=30);-moz-opacity:0.3;-khtml-opacity:0.3;opacity:0.3;position:relative}
 .yx-rotaion-btn .left_btn{background-position:-2px -2px;float:left;left:10px}
 .yx-rotaion-btn .right_btn{background-position:-2px -49px;float:right;right:10px}
