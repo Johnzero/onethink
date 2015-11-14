@@ -1071,3 +1071,9 @@ function get_slider($id){
 
     return $sliders;
 }
+
+function set_theme(){
+    // $theme_name = C('DEFAULT_THEME');
+    $theme_name = "Mobile";
+    C('DEFAULT_THEME', $theme_name);
+}

@@ -20,7 +20,8 @@ class IndexController extends HomeController {
         $sz = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3,"B.type"=>1))->select();
         $this->assign('sz',$sz);
 
-
+        $all = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->field("B.uid,B.name,B.home_link,B.weibo,B.weibo_link,B.weixin")->where(array("A.group_id"=>3,"B.type"=>array('in','1,2')))->select();
+        $this->assign('data_ewm',json_encode($all));
         $this->display();
     }
 

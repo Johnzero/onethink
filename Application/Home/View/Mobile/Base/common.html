@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>{:C('WEB_SITE_TITLE')}</title>
+		<link href="__CSS__/mobile.css" rel="stylesheet">
+		<block name="style"></block>
+		<script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+	</head>
+	<body>
+		<div class="top-nav">
+		    <div class="container">
+		        <div class="nav-link navbar-left">
+		            <a href="http://www.gov.cn/" target="_blank">中国政府网</a>
+		            |
+		            <a href="http://www.ah.gov.cn/" target="_blank">安徽省政府网</a>
+		            |
+		            <a href="http://www.ahrd.gov.cn/" target="_blank">安徽省人大</a>
+		            |
+		            <a href="http://www.ahzx.gov.cn/" target="_blank">安徽省政协</a>
+		        </div>
+		        <div class="nav-link navbar-right">
+		            <a href="" target="_blank">微信公众号</a>
+		            |
+		            <a href="" target="_blank">微博</a>
+		            |
+		            <a href="" target="_blank">分享</a>
+		        </div>
+		    </div>
+		</div>
+
+		<div class="container">
+			<div class="nav">
+		        <div class="nav-bg">
+		            <img src="__IMG__/nav-bg.png"  width="100%">
+		        </div>
+		        <div class="nav-content">
+		            <ul>
+		                <li>首页</li>
+		                <li>政务信息发布</li>
+		                <li>微信微博大厅</li>
+		                <li>回应社会关切</li>
+		                <li style="background-image: none;">监督评价公开</li>
+		            </ul>
+		        </div>
+		    </div>
+			<!-- 主体 -->
+			<include file="Public/body"/>
+			<!-- /主体 -->
+		</div>
+
+		<!-- 底部 -->
+	    <footer class="footer">
+	      	<div class="container">
+				<div class="dzjg">
+					<a href="">
+						<img src="__IMG__/red.png">
+					</a>
+				</div>
+	          	<p>主办单位：安徽省人民政府办公厅 承办单位：安徽省人民政府网站<br/>协办单位：安徽新媒体集团</p>
+	          	<p>皖ICP备05003657号 | 网站编辑信箱 | 网站使用帮助 | 网站地图 | 联系方式：0551-62603315</p>
+	      	</div>
+	    </footer>
+		<include file="Public/var"/>
+		<block name="script"></block> 
+		<div class="hidden">
+			<block name="hidden"></block>
+		</div>
+		<!-- /底部 -->
+	</body>
+</html>

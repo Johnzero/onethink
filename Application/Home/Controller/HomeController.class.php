@@ -23,6 +23,8 @@ class HomeController extends Controller {
 
 
     protected function _initialize(){
+        
+        set_theme();
 
         $config = api('Config/lists');
         C($config); //添加配置

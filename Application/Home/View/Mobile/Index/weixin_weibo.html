@@ -1,0 +1,99 @@
+<extend name="Base/common"/>
+<block name="style">
+    <link href="__CSS__/yx_rotaion.css" rel="stylesheet">
+</block>
+<block name="script">
+    <script src="__JS__/jquery-migrate-1.2.1.js"></script>
+    <script src="__JS__/jquery.yx_rotaion.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".yx-rotaion").yx_rotaion({auto:true,height:"290px",width:"620px"});
+        });
+    </script>
+</block>
+<block name="body">
+    <div class="main-colum sae">
+        <div class="navigation">
+            当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<span>微信微博</span>
+            <div class="topDate">
+                <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
+            </div>
+        </div>
+        <div class="section">
+            <div class="yx-rotaion">
+                <php>
+                    $sliders = get_slider(45);
+                </php>
+                <ul class="rotaion_list">
+                    <volist name="sliders" id="vo">
+                        <li>
+                            <a href="{$vo.href}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="dt">
+                <div class="tabmenu">
+                    <ul>
+                        <li><a class="active">厅局</a></li>
+                    </ul>
+                </div>
+                <ol class="fb">
+                    <li>安徽发布</li>
+                    <li>安徽公安在线</li>
+                    <li>江淮气象</li>
+                    <li>安徽检察</li>
+                    <li>安徽高速</li>
+                    <li>安徽公安交警在线</li>
+                    <li>安徽禁毒在线</li>
+                    <li>安徽发布</li>
+                    <li>安徽公安在线</li>
+                    <li>江淮气象</li>
+                    <li>安徽检察</li>
+                    <li>安徽高速</li>
+                    <li>安徽公安交警在线</li>
+                    <li>安徽禁毒在线</li>
+                    <li>安徽发布</li>
+                    <li>安徽公安在线</li>
+                    <li>江淮气象</li>
+                    <li>安徽检察</li>
+                    <li>安徽高速</li>
+                    <li>安徽公安交警在线</li>
+                    <li>安徽禁毒在线</li>
+                </ol>
+            </div>
+
+            <div class="dt">
+                <div class="tabmenu">
+                    <ul>
+                        <li><a class="active">各市</a></li>
+                    </ul>
+                </div>
+                <ol class="fb">
+                    <li>安徽发布</li>
+                    <li>安徽公安在线</li>
+                    <li>江淮气象</li>
+                    <li>安徽检察</li>
+                    <li>安徽高速</li>
+                    <li>安徽公安交警在线</li>
+                    <li>安徽禁毒在线</li>
+                    <li>安徽发布</li>
+                    <li>安徽公安在线</li>
+                    <li>江淮气象</li>
+                    <li>安徽检察</li>
+                    <li>安徽高速</li>
+                    <li>安徽公安交警在线</li>
+                    <li>安徽禁毒在线</li>
+                    <li>安徽发布</li>
+                    <li>安徽公安在线</li>
+                    <li>江淮气象</li>
+                    <li>安徽检察</li>
+                    <li>安徽高速</li>
+                    <li>安徽公安交警在线</li>
+                    <li>安徽禁毒在线</li>
+                </ol>
+            </div>
+        </div>
+        <include file="Base/side_weixinweibo"/>
+    </div>
+</block>

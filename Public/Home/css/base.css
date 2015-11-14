@@ -387,16 +387,20 @@ body {
 }
 
 .news ul li .txt {
-    width: 240px;
+    width: 250px;
     height: 36px;
     overflow: hidden;
     margin: 0 auto;
     margin-top: 12px;
 }
+.news ul li .txt span {
+    margin-left: 10px;
+}
 
 .news ul li a {
     color: black;
 }
+
 
 .news ul li .line {
     border-bottom: 1px #BFBFBF dotted;
@@ -531,12 +535,15 @@ body {
 
 .cityContent li {
     display: inline-block;
-    margin-bottom: 10px;
     font-size: 12px;
     *display: inline;
     *zoom: 1;
     margin-right: 15px;
     position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+    line-height: 30px;
 }
 
 .tabmenu .more {
@@ -1123,4 +1130,49 @@ p{
 #sztj li {
     height: 40px;
     line-height: 40px;
+}
+
+.link-info {
+    display: none;
+    position: absolute;
+    z-index: 99999;
+    width: 290px;
+    height: 220px;
+    border: solid 1px #78d232;
+    background-color: #FFF9D4;
+    padding: 4px;
+    border-radius: 5px;
+}
+.link-info em {
+    background: url(../images/bt_arrow.png) no-repeat scroll;
+    width: 15px;
+    height: 14px;
+    position: absolute;
+    z-index: 9;
+    top: 219px;
+    left: 42%;
+}
+.link-info h1 {
+    width: 100%;
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    margin-bottom: 0;
+}
+.link-info ul {
+    width: 100%;
+    padding: 20px;
+    text-align: center
+}
+.link-info li {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: top;
+}
+.link-info img {
+    width: 100px;
+    height: 100px;
+    vertical-align: top;
 }

@@ -2,37 +2,95 @@
 <block name="style">
     <link href="__CSS__/yx_rotaion.css" rel="stylesheet">
     <link href="__CSS__/flexslider.css" rel="stylesheet">
-    <link href="__CSS__/reveal.css" rel="stylesheet">
-</block>  
+</block> 
+<block name="script">
+    <script src="__JS__/jquery-migrate-1.2.1.js"></script>
+    <script src="__JS__/jquery.yx_rotaion.js"></script>
+    <script src="__JS__/jquery.flexslider-min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".yx-rotaion").yx_rotaion({auto:true,height:"330px",width:"720px"});
+            $("#menuLink li a").hover(function() {
+                $("#menuLink li a").removeClass("active");
+                $(this).addClass("active");
+                $(".menuContent").removeClass("active");
+                $("#"+$(this).data("link")).addClass("active");
+            });
+            $('#wxweibo').flexslider({       
+                slideshow:true,
+                slideshowSpeed: 3000, 
+                animation: "slide",
+                direction:"horizontal",
+                easing:"swing",
+                controlNav: false,
+                directionNav:true
+            });
+            $('#rank').flexslider({       
+                slideshow:true,
+                slideshowSpeed: 4000, 
+                animation: "slide",
+                direction:"horizontal",
+                easing:"swing",
+                controlNav: false,
+                directionNav:true
+            });
+        })
+    </script>
+</block> 
+<block name="side">
+<!-- 左侧 nav
+================================================== -->
+    <!-- <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+            {:W('Category/lists', array(1, true))}
+        </ul>
+    </div> -->
+</block>
+
 <block name="body">
     <div class="main-colum">
         <div class="slider">
             <div class="yx-rotaion">
-                <php>
-                    $sliders = get_slider(43);
-                </php>
                 <ul class="rotaion_list">
-                    <volist name="sliders" id="vo">
-                        <li>
-                            <a href="{$vo.href}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
-                        </li>
-                    </volist>
+                    <li><a href=""><img src="__IMG__/slider_01.jpg" alt="李克强与默克尔互赠了啥礼物"></a></li>
+                    <li><a href=""><img src="__IMG__/slider_02.jpg" alt="阜南：机声隆隆忙秋种"></a></li>
+                    <li><a href=""><img src="__IMG__/slider_03.jpg" alt="黄梅调电影《长相知》安庆首映 新秀演员惊艳亮相"></a></li>
                 </ul>
             </div>
         </div>
 
         <div class="right_list news">
             <ul>
-                <volist name="lists" id="vo">
-                    <li>
-                        <div class="txt">
-                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
-                        </div>
-                        <lt name="i" value="5">
-                        <div class="line"></div>
-                        </lt>
-                    </li>
-                </volist>
+                <li>
+                    <div class="txt">
+                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
+                    </div>
+                    <div class="line"></div>
+                </li>
+                <li>
+                    <div class="txt">
+                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
+                    </div>
+                    <div class="line"></div>
+                </li>
+                <li>
+                    <div class="txt">
+                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
+                    </div>
+                    <div class="line"></div>
+                </li>
+                <li>
+                    <div class="txt">
+                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
+                    </div>
+                    <div class="line"></div>
+                </li>
+                <li>
+                    <div class="txt">
+                        <a href="">中共中央总书记、国家主席、中央军委主席习近平在人民大会堂亲切会见纪念活动各工作机构负责同志和工作人员、演职人员、受阅部队官兵代</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -133,28 +191,35 @@
             <div class="rightAreaContent">
                 <div class="tabmenu">
                     <ul>
-                        <li><a class="active">各市人民政府</a></li>
+                        <li><a href="" target="_blank" class="active">各市人民政务</a></li>
                     </ul>
-                    <a href="javascript:void(0);" class="more" data-reveal-id="rmzf">更多</a>
+                    <a href="" class="more">更多</a>
                 </div>
-                <div class="cityContent showBox">
+                <div class="cityContent">
                     <ul>
-                        <volist name="zf" id="vo" offset="0" length="8">
-                            <li><a href="javascript:void(0);" data-id="{$vo.uid}">{$vo.nickname}</a></li>
-                        </volist>
+                        <li><a>合肥市人民政府</a></li>
+                        <li><a>淮南市人民政府</a></li>
+                        <li><a>阜阳市人民政府</a></li>
+                        <li><a>六安市人民政府</a></li>
+                        <li><a>马鞍山市人民政府</a></li>
+                        <li><a>铜陵市人民政府</a></li>
                     </ul>
                 </div>
                 <div class="tabmenu">
                     <ul>
-                        <li><a class="active">省直厅局</a></li>
+                        <li><a href="" target="_blank" class="active">省直厅局</a></li>
                     </ul>
-                    <a href="javascript:void(0);" class="more" data-reveal-id="sztj">更多</a>
+                    <a href="" class="more">更多</a>
                 </div>
-                <div class="cityContent showBox">
+                <div class="cityContent">
                     <ul>
-                        <volist name="sz" id="vo" offset="0" length="5">
-                            <li><a href="javascript:void(0);" data-id="{$vo.uid}">{$vo.nickname}</a></li>
-                        </volist>
+                        <li><a>安徽发布</a></li>
+                        <li><a>安徽公安在线</a></li>
+                        <li><a>江淮气象</a></li>
+                        <li><a>安徽检察</a></li>
+                        <li><a>安徽高速</a></li>
+                        <li><a>安徽公安交警在线</a></li>
+                        <li><a>安徽禁毒在线</a></li>
                     </ul>
                 </div>
             </div>
@@ -233,16 +298,16 @@
                 <div id="rank" class="flexslider">
                     <ul class="slides">
                         <li>
-                            <a class="btn btn-shadow blue" href="{:U('Index/supervision_and_evaluation')}" target="_blank"><img src="__IMG__/myd.png"></a>
+                            <a class="btn btn-shadow blue" href="" target="_blank"><img src="__IMG__/myd.png"></a>
                         </li>
                         <li>
-                            <a class="btn btn-shadow blue" href="{:U('Index/supervision_and_evaluation')}" target="_blank">
+                            <a class="btn btn-shadow blue" href="" target="_blank">
                                 <img src="__IMG__/hfl.png">
                             </a>
                         </li>
                     </ul>
                 </div>
-                <a href="{:U('Ask/question')}" target="_blank" class="btn btn-shadow orange">我要提问</a>
+                <a class="btn btn-shadow orange">微信微博发布</a>
             </div>
             <div class="cx">
                 <form method="post" action="" target="_blank">
@@ -269,40 +334,9 @@
                     <dt><a href="">武警查获仿真枪</a></dt>
                 </dl>
             </div>
-        </div>     
+        </div>
     </div>
-    <div class="reveal-modal float-box showBox"  id="rmzf">
-        <ul>
-            <volist name="zf" id="vo">
-                <li><a href="javascript:void(0);" data-id="{$vo.uid}">{$vo.nickname}</a></li>
-            </volist>
-        </ul>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-    <div class="reveal-modal float-box showBox"  id="sztj">
-        <ul>
-            <volist name="sz" id="vo">
-                <li><a href="javascript:void(0);" data-id="{$vo.uid}">{$vo.nickname}</a></li>
-            </volist>
-        </ul>
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
-    <div class="link-info">
-        <em></em>
-        <h1>合肥市</h1>
-        <ul>
-            <li class="weibo">
-                <a href="" target="_blank"><img src=""></a>
-                <br>
-                <span>官方微博</span>
-            </li>
-            <li class="weixin">
-                <img src="">
-                <br>
-                <span>官方微信<br>（手机扫一扫）</span>
-            </li>
-        </ul>
-    </div>
+
     <!-- <div class="span9">
         <section id="contents">
             <article:list name="article" category="1" child="true">
@@ -325,78 +359,4 @@
 
         </section>
     </div> -->
-</block>
-<block name="script">
-    <script src="__JS__/jquery-migrate-1.2.1.js"></script>
-    <script src="__JS__/jquery.yx_rotaion.js"></script>
-    <script src="__JS__/jquery.flexslider-min.js"></script>
-    <script src="__JS__/jquery.reveal.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".yx-rotaion").yx_rotaion({auto:true,height:"330px",width:"720px"});
-            $("#menuLink li a").hover(function() {
-                $("#menuLink li a").removeClass("active");
-                $(this).addClass("active");
-                $(".menuContent").removeClass("active");
-                $("#"+$(this).data("link")).addClass("active");
-            });
-            $('#wxweibo').flexslider({       
-                slideshow:true,
-                slideshowSpeed: 3000, 
-                animation: "slide",
-                direction:"horizontal",
-                easing:"swing",
-                controlNav: false,
-                directionNav:true
-            });
-            $('#rank').flexslider({       
-                slideshow:true,
-                slideshowSpeed: 4000, 
-                animation: "slide",
-                direction:"horizontal",
-                easing:"swing",
-                controlNav: false,
-                directionNav:true
-            });
-            $(".showBox li").mouseenter(function () {
-                var top = $(this).offset().top;
-                var left = $(this).offset().left;
-                var width = $(this).width();
-                var data = eval(Think.DATA);
-                var id = $(this).find("a").data("id");
-                var this_attr = '';
-                for (var i = 0; i <= data.length - 1; i++) {
-                    if (data[i]["uid"] == id) {
-                        this_attr = data[i];
-                    }
-                }
-                if (this_attr) {
-                    $(".link-info h1").text(this_attr.name);
-                    $(".link-info .weixin img").attr("src",this_attr.weixin);
-                    $(".link-info .weibo img").attr("src",this_attr.weibo);
-                    $(".link-info .weibo a").attr("href",this_attr.weibo_link);
-                    $(".link-info").show();
-                    $(".link-info").css("top",top-220+"px");
-                    $(".link-info").css("left",left+width/2-120+"px");
-                }
-            })
-            $(".showBox li").mouseleave(function () {
-                $(".link-info").hide();
-                $(".link-info h1").text("");
-                $(".link-info .weixin img").attr("src","");
-                $(".link-info .weibo img").attr("src","");
-                $(".link-info .weibo a").attr("href","");
-            })
-            $(".link-info").mouseenter(function () {
-                $(this).show();
-            })
-            $(".link-info").mouseleave(function () {
-                $(this).hide();
-                $(".link-info h1").text("");
-                $(".link-info .weixin img").attr("src","");
-                $(".link-info .weibo img").attr("src","");
-                $(".link-info .weibo a").attr("href","");
-            })
-        })
-    </script>
 </block>
