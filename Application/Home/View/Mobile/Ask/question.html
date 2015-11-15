@@ -1,9 +1,11 @@
 <extend name="Base/common"/>
 <block name="style">
+    <link rel="stylesheet" href="__STATIC__/bootstrap/css/bootstrap.css">
     <link href="__CSS__/select2.min.css" rel="stylesheet">
 </block>
 
 <block name="script">
+    <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
     <script src="__JS__/select2.min.js"></script>
     <script src="__JS__/validator.js"></script>
 
@@ -30,12 +32,6 @@
 
 <block name="body">
     <div class="main-colum" style="height:1055px;">
-        <div class="navigation">
-            当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<a>我要留言</a>
-            <div class="topDate">
-                <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
-            </div>
-        </div>
         <div class="section">
             <div class="tip"><span class="danger">*</span> 代表必填项目，为便于我们联系调查，请如实填写个人资料。</div>
             <div class="clearfix">&nbsp;</div>

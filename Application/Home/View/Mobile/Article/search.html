@@ -1,0 +1,40 @@
+<extend name="Base/common"/>
+<block name="body">
+    <div class="main-colum sae">
+        <div class="navigation">
+            当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<a>搜索 '{$keyword}' 结果：共 {$count} 条</a>
+            <div class="topDate">
+                <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
+            </div>
+        </div>
+        <div class="section article-list">
+        	<div class="dt">
+                <div class="tabmenu">
+                    <ul>
+                        <li><a class="active">关键词：{$keyword}</a></li>
+                    </ul>
+                </div>
+                <div class="lyxd">
+                    <notempty name="list">
+                        <ul>
+                            <volist name="list" id="data">
+                                <li><a href="{:U('Article/detail?id='.$data['id'])}">{$data.title}</a></li>
+                            </volist>
+                        </ul>
+                    <else/>
+                        <span>
+                            抱歉，没有找到相关结果。建议：
+                            1. 请您检查输入是否错误
+                            2. 请您尝试简化输入词
+                            3. 请您尝试用相似词或常见词
+                        </span>
+                    </notempty>
+                </div>
+            </div>
+            <div class="onethink pagination pagination-right pagination-large">
+                {$page}
+            </div>
+        </div>
+        <include file="Base/side_government_information"/>
+    </div>
+</block>

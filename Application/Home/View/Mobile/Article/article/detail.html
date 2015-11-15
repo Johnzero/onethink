@@ -1,0 +1,56 @@
+<extend name="Base/common"/>
+<block name="body">
+    <div class="main-colum">
+        <div class="section article-box" style="padding:20px;">
+        	<h1>{$info.title}</h1>
+        	<hr/>
+			<div id="article_content"  style="padding-top:20px;">
+        		{$info.content|htmlspecialchars_decode}
+				<div class="clearfix"></div>
+			</div>
+			<!-- <?php if ($page) { ?>
+			<div class="pagination text-center">
+				<ul>
+					{$page}
+				</ul>
+			</div>
+			<?php } ?> -->
+            {:hook('documentDetailAfter',$info)}
+            <div class="bdsharebuttonbox bdshare-button-style0-16" style="float:right;"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a><a href="#" class="bds_ty" data-cmd="ty" title="分享到天涯社区"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+			<div class="clearfix"></div>
+			<hr/>
+        </div>
+    </div>
+</block>
+<block name="script">
+	<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+
+			window._bd_share_config={"common":{"bdSnsKey":{},"bdDesc":'{$post_excerpt}',"bdText":"{$post_title}","bdMini":"2","bdMiniList":false,"bdPic":location.origin+"/data/upload/post/{$smeta.thumb}","bdStyle":"0","bdSize":"22"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+			if ($.cookie('color')) {
+		  		document.getElementsByClassName('article-box')[0].style.backgroundColor = $.cookie('color');
+				$("#article_content").find("*").css("backgroundColor",$.cookie('color'));
+			}
+			if ($.cookie('font')) {
+		  		$("#article_content").find("*").css("font-size",$.cookie('font')+'px');
+	  			$("#article_content").find("*").css("lineHeight",$.cookie('font')*2+'px');
+			}
+	  		$("#article_content").find("*").css("max-width",$("#article_content").width()+'px');
+	  		$("#article_content a").attr('target', '_blank');
+		});
+		function fontZoom(size){
+			$.cookie('font',size);
+			$("#article_content").css("font-size",size+'px');
+	  		$("#article_content").css("lineHeight",size*2+'px');
+	  		$("#article_content").find("*").css("font-size",size+'px');
+	  		$("#article_content").find("*").css("lineHeight",size*2+'px');
+		};
+		function divbgColor(clo){
+			$.cookie('color',clo);
+		  	document.getElementsByClassName('article-box')[0].style.backgroundColor = clo;
+	  		$("#article_content").find("*").css("backgroundColor",clo);
+		};
+	</script>
+</block>

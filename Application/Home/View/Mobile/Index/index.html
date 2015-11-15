@@ -1,73 +1,109 @@
 <extend name="Base/common"/>
 <block name="body">
-    <div class="swiper-container" style="width:100%;">
-        <div class="swiper-wrapper" style='width:100%'>
-            <div class="swiper-slide"><a href="">
-                <img src="__IMG__/lunbo-bg.jpg" width="100%">
-            </a>
-            </div>
-            <div class="swiper-slide"><a href="">
-                <img src="__IMG__/lunbo-bg.jpg" width="100%">
-            </a>
-            </div>
+    <php>
+        $sliders = get_slider(43);
+    </php>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <volist name="sliders" id="vo">
+                <div class="swiper-slide">
+                    <a href="{$vo.href}" title="{$vo.title}"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
+                </div>
+            </volist>
         </div>
         <div class="swiper-pagination"></div>
     </div>
     <div class="search">
-        <input type="text" placeholder="畜牧局长全部被查"style="width:100%; height:50px;">
-        <div class="cha"><img src="__IMG__/search-bg.png" height="40" width="40"></div>
+
+        <form method="GET" action="{:U('Article/search')}">
+            <input type="hidden" name="host" value="<?php echo $_SERVER['HTTP_HOST'];?>">
+            <input class="text" class="form-control" name="keyword" type="text" placeholder="请输入关键词">
+            <input class="submit btn btn-warning" type="submit" value="">
+        </form>
     </div>
     <div class="content">
         <div class="tou">
+            <h1>新闻头条</h1>
             <ul>
-                <li>新文化运动百年纪念展将在安徽省博老馆展出<span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>全年过去一大半任务还差一大截政府下整改令<span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>12月1日起 安徽省每季公布重大税收违法案件 <span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>安徽省台办高效处理纠纷 台商:真的很感谢 <span>56&nbsp;<i class="icon-comment"></i></span> </li>
-                <li style="border-bottom:none;">安徽省推进公共资源交易改革 消除权力寻租空间<span>56&nbsp;<i class="icon-comment"></i></span></li>
+                <volist name="lists" id="vo">
+                    <li>
+                        <div class="txt">
+                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                        </div>
+                    </li>
+                </volist>
             </ul>
+            <a href="{:U('Article/lists',array('category'=>40))}"><p>进入新闻头条></p></a>
         </div>
+        <?php  
+            $Document = D('Document');
+            $ahyw = $Document->order("create_time DESC")->limit(10)->lists(40);
+            $zcdt = $Document->order("create_time DESC")->limit(10)->lists(41);
+            $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
+        ?>
         <div class="tou">
-            <h1>政府要闻</h1>
+            <h1>安徽要闻</h1>
             <ul>
-                <li>新文化运动百年纪念展将在安徽省博老馆展出<span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>全年过去一大半任务还差一大截政府下整改令<span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>12月1日起 安徽省每季公布重大税收违法案件 <span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>安徽省台办高效处理纠纷 台商:真的很感谢 <span>56&nbsp;<i class="icon-comment"></i></span> </li>
-                <li>安徽省推进公共资源交易改革 消除权力寻租空间<span>56&nbsp;<i class="icon-comment"></i></span></li>
+                <volist name="ahyw" id="vo">
+                    <li>
+                        <div class="txt">
+                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                        </div>
+                    </li>
+                </volist>
             </ul>
-            <a href="#"><p>进入安徽要闻></p></a>
+            <a href="{:U('Article/lists',array('category'=>40))}"><p>进入安徽要闻></p></a>
         </div>
         <div class="tou">
             <h1>政策动态</h1>
             <ul>
-                <li>新文化运动百年纪念展将在安徽省博老馆展出<span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>全年过去一大半任务还差一大截政府下整改令<span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>12月1日起 安徽省每季公布重大税收违法案件 <span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>安徽省台办高效处理纠纷 台商:真的很感谢 <span>56&nbsp;<i class="icon-comment"></i></span> </li>
-                <li>安徽省推进公共资源交易改革 消除权力寻租空间<span>56&nbsp;<i class="icon-comment"></i></span></li>
+                <volist name="zcdt" id="article" offset="0" length="10">
+                    <li><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></li>
+                </volist>
             </ul>
-            <a href="#"><p>进入政策动态></p></a>
+            <a href="{:U('Article/lists',array('category'=>41))}"><p>进入政策动态></p></a>
         </div>
         <div class="tou">
             <h1>江淮资讯</h1>
             <ul>
-                <li>新文化运动百年纪念展将在安徽省博老馆展出<span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>全年过去一大半任务还差一大截政府下整改令<span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>12月1日起 安徽省每季公布重大税收违法案件 <span>56&nbsp;<i class="icon-comment"></i></span></li>
-                <li>安徽省台办高效处理纠纷 台商:真的很感谢 <span>56&nbsp;<i class="icon-comment"></i></span> </li>
-                <li>安徽省推进公共资源交易改革 消除权力寻租空间<span>56&nbsp;<i class="icon-comment"></i></span></li>
+                <volist name="jhzx" id="article" offset="0" length="10">
+                    <li><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></li>
+                </volist>
             </ul>
-            <a href="#"><p>进入江淮资讯></p></a>
+            <a href="{:U('Article/lists',array('category'=>42))}"><p>进入江淮资讯></p></a>
         </div>  
-        <a href="#" style="text-decoration: none;">
+        <a href="#">
             <div class="top" align="center">
                 <i class="icon-arrow-up"></i>
                 <p>回到顶部</p>
             </div>
         </a>
-        <div style="padding:10px 0; background-color: #f59c0a; color:white; height:30px; line-height: 30px; text-align: center; margin-top:15px;">安徽省人民政府</div> 
+        <div class="subtitle">安徽省人民政府</div> 
     </div>
+    <div class="am-navbar am-cf am-navbar-default am-navbar-top kn-toolsbar am-no-layout">
+        <ul class="am-cf sm-block-grid-4">
+            <li class="am-navbar-item">
+                <a href="{:U('Ask/question')}">
+                    我要留言
+                </a>
+            </li>
+            <li class="am-navbar-item weibo">
+                <a>
+                    <img src="http://ysp.www.gov.cn/52011eeb721c5f42dee83bf7ea9f6cc6/wechat.png">
+                </a>
+            </li>
+            <li class="am-navbar-item am-navbar-qrcode" data-am-navbar-qrcode="http://www.gov.cn/foot/site1/20140218/73631392695683299.jpg">
+                <a>
+                    <img src="http://ysp.www.gov.cn/52011eeb721c5f42dee83bf7ea9f6cc6/wechat.png">
+                </a>
+            </li>
+            <li class="am-navbar-item am-navbar-share" data-am-navbar-share="">
+                <a href="">
+                </a>
+            </li>
+        </ul>
+    </div>
+
 </block>
 <block name="style">
     <link rel="stylesheet" type="text/css" href="__CSS__/swiper.min.css">
@@ -85,7 +121,6 @@
                 speed:300,
                 autoplayDisableOnInteraction: false
             });
-            
             $(function(){
                 var height = $('.swiper-slide img:eq(0)').height();
                 if(height<=0){height=320;}

@@ -998,6 +998,8 @@ b.orange {
 #article_content img{
     text-align:center;
     max-width:100%;
+    width: 100% !important;
+    height: auto !important;
 }
 #article_content {
     word-wrap: break-word;

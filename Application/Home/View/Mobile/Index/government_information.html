@@ -12,79 +12,54 @@
     </script>
 </block>
 <block name="body">
-    <div class="main-colum sae">
-        <div class="navigation">
-            当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<span>微信微博</span>
-            <div class="topDate">
-                <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
-            </div>
-        </div>
-        <div class="section">
-            <div class="yx-rotaion">
-                <php>
-                    $sliders = get_slider(44);
-                </php>
-                <ul class="rotaion_list">
-                    <volist name="sliders" id="vo">
-                        <li>
-                            <a href="{$vo.href}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
-                        </li>
-                    </volist>
+    <div id="all">
+        <div class="content">
+            <div class="news">
+                <h1>满意度排行榜</h1>
+                <ul class="square">
+                    <li>政务信息公开及更新情况</li>
+                    <li>工作人员依法行政的意识</li>
+                    <li>新闻媒体曝光问题等查处办理</li>
+                    <li>工作人员依法行政的意识</li>
+                    <li>政务信息公开及更新情况</li>
                 </ul>
             </div>
-            <div class="dt">
-                <div class="tabmenu">
-                    <ul>
-                        <li><a class="active">厅局</a></li>
-                    </ul>
-                    <a href="" class="more">更多>></a>
-                </div>
-                <div class="lyxd">
-                    <ul>
-                        <volist name="news" id="article" offset="0" length="5">
-                            <li>
-                                <a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a><span>{$article.create_time|time_format}</span>
-                            </li>
-                        </volist>      
-                    </ul>
-                </div>
-            </div>
-            <div class="dt">
-                <div class="tabmenu">
-                    <ul>
-                        <li><a class="active">各市</a></li>
-                    </ul>
-                    <a href="" class="more">更多>></a>
-                </div>
-                <div class="lyxd">
-                    <ul>
-                        <volist name="news" id="article" offset="0" length="5">
-                            <li>
-                                <a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a><span>{$article.create_time|time_format}</span>
-                            </li>
-                        </volist>      
-                    </ul>
-                </div>
-            </div>
-            <div class="dt">
-                <div class="tabmenu">
-                    <ul>
-                        <li><a class="active">县区</a></li>
-                    </ul>
-                    <a href="" class="more">更多>></a>
-                </div>
-                <div class="lyxd">
-                    <ul>
-                        <volist name="news" id="article" offset="0" length="5">
-                            <li>
-                                <a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a><span>{$article.create_time|time_format}</span>
-                            </li>
-                        </volist>      
-                    </ul>
-                </div>
-            </div>
-
         </div>
-        <include file="Base/side_government_information"/>
+        <div class="content">
+            <div class="news">
+                <h1>微博排行榜</h1>
+                <ul class="square">
+                    <li>政务信息公开及更新情况</li>
+                    <li>工作人员依法行政的意识</li>
+                    <li>新闻媒体曝光问题等查处办理</li>
+                    <li>工作人员依法行政的意识</li>
+                    <li>政务信息公开及更新情况</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="news">
+                <h1>微信度排行榜</h1>
+                <ul class="square">
+                    <li>政务信息公开及更新情况</li>
+                    <li>工作人员依法行政的意识</li>
+                    <li>新闻媒体曝光问题等查处办理</li>
+                    <li>工作人员依法行政的意识</li>
+                    <li>政务信息公开及更新情况</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="news">
+                <h1>问政简报</h1>
+                <ul class="square">
+                    <li>政务信息公开及更新情况</li>
+                    <li>工作人员依法行政的意识</li>
+                    <li>新闻媒体曝光问题等查处办理</li>
+                    <li>工作人员依法行政的意识</li>
+                    <li>政务信息公开及更新情况</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </block>

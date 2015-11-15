@@ -1073,7 +1073,15 @@ function get_slider($id){
 }
 
 function set_theme(){
-    // $theme_name = C('DEFAULT_THEME');
-    $theme_name = "Mobile";
+    vendor("Mobile_Detect");
+    $detect = new \Mobile_Detect;
+    if ($detect->isMobile()) {
+        $theme_name = "Mobile";
+    }else {
+        $theme_name = C('DEFAULT_THEME');
+    }
+
     C('DEFAULT_THEME', $theme_name);
 }
+
+
