@@ -8,13 +8,13 @@
             <volist name="sliders" id="vo">
                 <div class="swiper-slide">
                     <a href="{$vo.href}" title="{$vo.title}"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
+                    <h2>{$vo.title}</h2>
                 </div>
             </volist>
         </div>
         <div class="swiper-pagination"></div>
     </div>
     <div class="search">
-
         <form method="GET" action="{:U('Article/search')}">
             <input type="hidden" name="host" value="<?php echo $_SERVER['HTTP_HOST'];?>">
             <input class="text" class="form-control" name="keyword" type="text" placeholder="请输入关键词">
