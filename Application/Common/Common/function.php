@@ -1080,7 +1080,6 @@ function set_theme(){
     }else {
         $theme_name = C('DEFAULT_THEME');
     }
-
     C('DEFAULT_THEME', $theme_name);
 }
 
