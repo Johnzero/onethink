@@ -53,6 +53,13 @@ class AskController extends AdminController {
         $maps['status']    =   array("eq",10);
         $unpass_count = M('Ask')->where($maps)->count();
         $_SESSION["menu_nums"]["审批未通过"] = $unpass_count;
+
+        $this->group_id = $_SESSION["onethink_admin"]["user_auth"]["group_id"];
+        if ( is_administrator($uid) ) {
+            $this->group_id = 1;
+        }
+        $this->assign('group_id', $this->group_id);
+        
     }
 	
     /* 全部留言 */

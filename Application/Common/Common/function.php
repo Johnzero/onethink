@@ -1000,44 +1000,71 @@ function check_category_model($info){
 }
 
 function message($acceptor_tel,$num) {
-	$app_id = '396862540000039669';// 应用ID
-	$app_secret = 'dc8c6295816f885d34e594a5c79b0556';// 应用的密钥
-	$grant_type='client_credentials'; //Client Credentials授权模式
-	$access_token_url = 'https://oauth.api.189.cn/emp/oauth2/v2/access_token';// 获取access_token的URL
-	$token_url = 'http://api.189.cn/v3/dm/randcode/token';// 获取token的URL
+	/*
+		$app_id = '396862540000039669';// 应用ID
+		$app_secret = 'dc8c6295816f885d34e594a5c79b0556';// 应用的密钥
+		$grant_type='client_credentials'; //Client Credentials授权模式
+		$access_token_url = 'https://oauth.api.189.cn/emp/oauth2/v2/access_token';// 获取access_token的URL
+		$token_url = 'http://api.189.cn/v3/dm/randcode/token';// 获取token的URL
 
 
-	$send = 'app_id='.$app_id.'&app_secret='.$app_secret.'&grant_type='.$grant_type;    
-	echo $access_token = curl_post("https://oauth.api.189.cn/emp/oauth2/v2/access_token", $send);
-	$access_token = json_decode($access_token,true); 
-	$access_token = $access_token["access_token"];
-	
-	if(!empty($access_token))
+		$send = 'app_id='.$app_id.'&app_secret='.$app_secret.'&grant_type='.$grant_type;    
+		echo $access_token = curl_post("https://oauth.api.189.cn/emp/oauth2/v2/access_token", $send);
+		$access_token = json_decode($access_token,true); 
+		$access_token = $access_token["access_token"];
+		
+		if(!empty($access_token))
+		{
+			file_put_contents('./access_token.txt',$access_token);
+		}
+		else
+		{
+			$access_token=file_get_contents('./access_token.txt');
+		}
+	echo $access_token;
+
+		$send_url = "http://api.189.cn/v2/emp/templateSms/sendSms";
+
+		$template_id = "91548517";
+		$template_param_array = array();
+		$template_param_array['param1'] = "3";
+		$template_param_array['param2'] = "$num";
+		$template_param_array['param3'] = "2";
+		
+		$template_param = json_encode($template_param_array);
+
+		$timestamp = urlencode(date('Y-m-d H:i:s'));
+		$send2 = 'acceptor_tel='.$acceptor_tel.'&template_id='.$template_id.'&template_param='.$template_param.'&app_id='.$app_id.'&timestamp='.$timestamp.'&access_token='.$access_token;    
+		echo $re = curl_post($send_url, $send2);
+
+		$re = json_decode($re,true);
+		
+		return $re ; 
+	*/
+
+	/*接口密码是：da052c3fa0c65724
+
+	企业帐号：AHHF1295391     用户帐号：admin
+	*/
+
+	//
+	$send_url = "http://access.xx95.net:8886/Connect_Service.asmx/SendSms";
+	$str = 'epid=AHHF1295391&User_Name=admin&password=da052c3fa0c65724&phone='.$acceptor_tel.'&content='.$num.'';
+
+
+	$re = curl_post($send_url, $str);
+
+	$re = simplexml_load_string($re);
+
+	$res['res_code'] = 1;
+	$res['res_message'] = '发送失败，请稍后再试';
+	if($re[0]=='00')
 	{
-		file_put_contents('./access_token.txt',$access_token);
+		$res['res_code'] = 0;//成功
 	}
-	else
-	{
-		$access_token=file_get_contents('./access_token.txt');
-	}
-echo $access_token;
-	$send_url = "http://api.189.cn/v2/emp/templateSms/sendSms";
 
-	$template_id = "91548517";
-	$template_param_array = array();
-	$template_param_array['param1'] = "3";
-	$template_param_array['param2'] = "$num";
-	$template_param_array['param3'] = "2";
+	return $res; 
 	
-	$template_param = json_encode($template_param_array);
-
-	$timestamp = urlencode(date('Y-m-d H:i:s'));
-	$send2 = 'acceptor_tel='.$acceptor_tel.'&template_id='.$template_id.'&template_param='.$template_param.'&app_id='.$app_id.'&timestamp='.$timestamp.'&access_token='.$access_token;    
-	echo $re = curl_post($send_url, $send2);
-
-	$re = json_decode($re,true);
-	
-	return $re ; 
 }
 
 function curl_post($url='', $postdata=''){
@@ -1063,7 +1090,7 @@ function get_slider($id){
             if (trim($value["content"]) || $value["link_id"] == 0) {
                 $href = U('Article/detail',array('id'=>$value['id']));
             }else {
-                $href = U('Article/detail',array('id'=>$value["link_id"]));
+                $href = $value["link_id"];
             }
             $sliders[$key]["href"] = $href;
         }

@@ -39,7 +39,7 @@
                     <notempty name="ask">
                         <volist name="ask" id="vo">
                             <tr align="center">
-                                <td class="black12">WEB{$vo.id}</td>
+                                <td class="black12">WEB {$vo.id}</td>
                                 <td><a href="">{$vo.title|msubstr=0,18,'utf-8',false}</a></td>
                                 <td class="black12">{$vo.create_time|time_format}</td>
                                 <td class="black12">
@@ -65,6 +65,9 @@
                     </notempty>
                     </tbody>
                 </table>
+                <div class="onethink pagination pagination-right pagination-large">
+                    {$page}
+                </div>
             </div>
             
         </div>

@@ -1,0 +1,37 @@
+*{
+	margin:0;
+	padding:0;
+	list-style: none;
+	text-decoration: none;
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+.content{
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	position: relative;
+	overflow: hidden;
+
+}
+.content a{
+	color:#e7901f;
+}
+.content img{
+	width:80%;
+	border-radius: 50%;
+	
+}
+.content ul{
+	position: absolute;
+	top:10%;
+	overflow: hidden;
+}
+.content ul li{
+	overflow: hidden;
+	width:29%;
+	margin:6% 2%;
+	float:left;
+	text-align: center;
+	overflow: hidden;
+}

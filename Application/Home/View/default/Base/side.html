@@ -3,14 +3,14 @@
         <a href="/Ask/question.html" target="_blank" class="btn btn-shadow orange">我要提问</a>
     </div>
     <div class="cx">
-        <form method="post" action="" target="_blank">
+        <form method="POST" action="{:U('Ask/search')}" target="_blank">
             <input type="hidden" name="host" value="localhost">
-            <input class="text" name="keyword" type="text" placeholder="请输入关键词">
+            <input class="text" name="keyword" type="text" placeholder="请输入预留身份证号查询">
             <input class="submit btn btn-warning" type="submit" value="">
         </form>
     </div>
     <div class="searchQues">
-        <form method="post" action="" target="_blank">
+        <form method="GET" action="{:U('Index/respond_to_society')}" target="_blank">
             <input type="hidden" name="host" value="localhost">
             <input class="text" name="keyword" type="text" placeholder="请输入关键词">
             <input class="submit btn btn-warning" type="submit" value="">
@@ -18,15 +18,10 @@
     </div>
     <div class="keyword">
         <dl>
-            <dt><a href="">男子救女友后失恋</a></dt>
-            <dt><a href="">网曝周杰遭追债</a></dt>
-            <dt><a href="">浣熊敲门讨食</a></dt>
-            <dt><a href="">太阳鱼</a></dt>
-            <dt><a href="">千股涨停</a></dt>
-            <dt><a href="">流浪汉洗头</a></dt>
-            <dt><a href="">武警查获仿真枪</a></dt>
-            <dt><a href="">武警查获仿真枪</a></dt>
-            <dt><a href="">武警查获仿真枪</a></dt>
+            <php> $hotkeys = explode(";",C('HOTKEY'));</php>
+            <volist name="hotkeys" id="vo">
+                <dt><a href="{:U('Index/respond_to_society',array('keyword'=>$vo) )}">{$vo}</a></dt>
+            </volist>
         </dl>
     </div>
     <?php if ( ACTION_NAME == 'respond_to_society' ) { ?>

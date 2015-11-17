@@ -1,0 +1,47 @@
+<extend name="Base/common"/>
+<block name="style">
+    <style type="text/css">
+    #wait {
+        font-size:46px;
+    }
+    .footer {
+        display: none;
+    }
+    .nav {
+        display: none;
+    }
+    </style>
+</block>
+<block name="body">
+    <div class="system-message">
+        <h1>温馨提示</h1>
+        <img src="__IMG__/wait.gif" height="160">
+        <p class="success"><?php echo($error); ?></p>
+        <p class="detail"></p>
+        <p class="jump">
+        <b id="wait"><?php echo($waitSecond); ?></b> 秒后页面将自动跳转
+        </p>
+        <div style="text-align: center;">
+            <a class="btn btn-info" id="href" id="btn-now" href="<?php echo($jumpUrl); ?>">立即跳转</a> 
+            <button class="btn btn-warning" id="btn-stop" type="button" onclick="stop()">停止跳转</button> 
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        (function(){
+            var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+            var interval = setInterval(function(){
+                var time = --wait.innerHTML;
+                if(time <= 0) {
+                    $("#href").click();
+                    location.href = href;
+                    clearInterval(interval);
+                };
+             }, 1000);
+            window.stop = function (){
+                clearInterval(interval);
+            }
+         })();
+    </script>
+</block>

@@ -238,7 +238,6 @@ class ArticleController extends HomeController {
 		}
 		
 		
-		
 		$num = rand(1111,9999);
 		$re = message($tel,$num);
 		
@@ -286,14 +285,16 @@ class ArticleController extends HomeController {
 		}
 		
 		//校验验证码 ticket
-		// $Message_num_info = M("Message_num")->where(array("num"=>$ticket,"tel"=>$tel))->order('id desc')->find();
-		// if(empty($Message_num_info) || (time()-150)>$Message_num_info['lastupdate'])
-		// {
-		// 	$result = array();
-		// 	$result['error'] = true;
-		// 	$result['msg'] = '验证码无效';
-		// 	$this->ajaxReturn ( $result );
-		// }
+		$Message_num_info = M("Message_num")->where(array("num"=>$ticket,"tel"=>$tel,'status'=>0))->order('id desc')->find();
+		if(empty($Message_num_info) || (time()-150)>$Message_num_info['lastupdate'])
+		{
+			$result = array();
+		 	$result['error'] = true;
+		 	$result['msg'] = '验证码无效';
+		 	$this->ajaxReturn ( $result );
+		}
+		
+		$Message_num_info = M("Message_num")->where(array("num"=>$ticket,"tel"=>$tel,'status'=>0))->save(array('status'=>1));
 		
 		$ask = M("Ask")->where(array("id"=>$ask_id,"tel"=>$tel,"status"=>5))->find();
 

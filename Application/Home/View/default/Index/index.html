@@ -41,92 +41,99 @@
             <div class="leftAreaContent">
                 <div class="tabmenu">
                     <ul id="menuLink">
-                        <li><a href="guowuyuan/lkq.htm" target="_blank" class="active" data-link="wjd">微焦点</a></li>
-
-                        <li><a href="guowuyuan/" target="_blank" data-link="wft">微访谈</a></li>
-
-                        <li><a href="xinwen/xw_bmxw.htm" target="_blank" data-link="whd">微活动</a></li>
+                        <li><a href="{:U('Article/lists?category=48')}" target="_blank" class="active" data-link="wjd">微焦点</a></li>
+                        <li><a href="{:U('Article/lists?category=49')}" target="_blank" data-link="wft">微访谈</a></li>
+                        <li><a href="{:U('Article/lists?category=50')}" target="_blank" data-link="whd">微活动</a></li>
                     </ul>
                 </div>
                 <div id="wjd" class="menuContent active">
                     <div class="j-hotspotPic">
-                        <a href="" target="_blank">
-                            <img src="http://www.gov.cn/site1/20151031/18231446299803702.jpg">
-                        </a>
+                        <volist name="wjd" id="vo" offset="0" length="1">
+                            <a href="{$vo.link_id}" target="_blank">
+                                <table width="100%" height="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <img src="{$vo['cover_id']|get_cover='path'}" alt="{$vo.title}" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </volist>
                     </div>
                     <ol>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
+                        <volist name="wjd" id="vo" offset="1" length="3">
+                            <li>
+                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                            </li>
+                        </volist>
                     </ol>
                     <div class="clearfix"></div>
                     <ul>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
+                        <volist name="wjd" id="vo" offset="4" length="6">
+                            <li>
+                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                            </li>
+                        </volist>
                     </ul>
                 </div>
                 <div id="wft" class="menuContent">
                     <div class="j-hotspotPic">
-                        <a href="" target="_blank">
-                            <img src="http://www.gov.cn/site1/20151028/65181446011496743.jpg">
-                        </a>
+                        <volist name="wft" id="vo" offset="0" length="1">
+                            <a href="{$vo.link_id}" target="_blank">
+                                <table width="100%" height="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <img src="{$vo['cover_id']|get_cover='path'}" alt="{$vo.title}" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </volist>
                     </div>
                     <ol>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
+                        <volist name="wft" id="vo" offset="1" length="3">
+                            <li>
+                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                            </li>
+                        </volist>
                     </ol>
                     <div class="clearfix"></div>
                     <ul>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
+                        <volist name="wft" id="vo" offset="4" length="6">
+                            <li>
+                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                            </li>
+                        </volist>
                     </ul>
                 </div>
                 <div id="whd" class="menuContent">
                     <div class="j-hotspotPic">
-                        <a href="" target="_blank">
-                            <img src="http://img1.gtimg.com/14/1416/141625/14162507_small.jpg">
-                        </a>
+                        <volist name="whd" id="vo" offset="0" length="1">
+                            <a href="{$vo.link_id}" target="_blank">
+                                <table width="100%" height="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <img src="{$vo['cover_id']|get_cover='path'}" alt="{$vo.title}" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </volist>
                     </div>
                     <ol>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
+                        <volist name="whd" id="vo" offset="1" length="3">
+                            <li>
+                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                            </li>
+                        </volist>
                     </ol>
                     <div class="clearfix"></div>
                     <ul>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
-                        <li>
-                            <a href="guowuyuan/2015-11/03/content_2959742.htm" target="_blank">纪念邹韬奋同志诞辰120周年座谈会在京举行</a><span>(11-03)</span>
-                        </li>
+                        <volist name="whd" id="vo" offset="4" length="6">
+                            <li>
+                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                            </li>
+                        </volist>
                     </ul>
                 </div>
             </div>
@@ -162,12 +169,12 @@
             <div class="lyTable">
                 <div class="tabmenu">
                     <ul>
-                        <li><a href="" target="_blank" class="active">最新留言</a></li>
+                        <li><a href="{:U('Index/respond_to_society')}" target="_blank" class="active">最新留言</a></li>
                     </ul>
                     <div class="lyDetail">
-                        <span>留言总数：<font class="blue">10000</font></span>
-                        <span>受理总数：<font class="blue">80</font> 件</span>
-                        <span>今日受理：<font class="blue">10</font> 件</span>
+                        <span>留言总数：<font class="blue">{$ly_count}</font></span>
+                        <span>受理总数：<font class="blue">{$sl_count}</font> 件</span>
+                        <span>今日受理：<font class="blue">{$td_count}</font> 件</span>
                     </div>
                 </div>
                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
@@ -182,36 +189,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr align="center">
-                          <td class="black12">WEB271</td>
-                          <td><a href="">达州至安康高速铁路</a></td>
-                          <td class="black12">2015-11-01</td>
-                          <td class="black12">2015-11-01</td>
-                          <td>达州</td>
-                          <td class="orange">待办理</td>
-                        </tr>
-                        <tr align="center">
-                          <td class="black12">WEB271</td>
-                          <td><a href="">达州至安康高速铁路</a></td>
-                          <td class="black12">2015-11-01</td>
-                          <td class="black12">2015-11-01</td>
-                          <td>达州</td>
-                          <td class="orange">待办理</td>
-                        </tr><tr align="center">
-                          <td class="black12">WEB271</td>
-                          <td><a href="">达州至安康高速铁路</a></td>
-                          <td class="black12">2015-11-01</td>
-                          <td class="black12">2015-11-01</td>
-                          <td>达州</td>
-                          <td class="orange">待办理</td>
-                        </tr><tr align="center">
-                          <td class="black12">WEB271</td>
-                          <td><a href="">达州至安康高速铁路</a></td>
-                          <td class="black12">2015-11-01</td>
-                          <td class="black12">2015-11-01</td>
-                          <td>达州</td>
-                          <td class="orange">待办理</td>
-                        </tr>
+                        <volist name="ask" id="vo">
+                            <tr align="center">
+                                <td class="black12">WEB{$vo.id}</td>
+                                <td><a href="">{$vo.title|msubstr=0,18,'utf-8',false}</a></td>
+                                <td class="black12">{$vo.create_time|time_format}</td>
+                                <td class="black12">
+                                    <?php if ($vo['finish_time']) { ?>
+                                        {$vo.finish_time|time_format}
+                                    <?php } ?>
+                                </td>
+                                <td>{$vo.nickname}</td>
+                                <td class="orange">
+                                    <php>$types = C('STATUS');</php>
+                                    <?php if ( is_null ($vo['uid']) ) { ?>
+                                        待办理
+                                    <?php }else{ ?>
+                                        {$types[$vo['status']]}
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                        </volist>
                     </tbody>
                 </table>
             </div>
@@ -221,10 +219,10 @@
                 <div id="wxweibo" class="flexslider">
                     <ul class="slides">
                         <li>
-                            <a class="btn btn-shadow green" href="" target="_blank"><img src="__IMG__/wx.png"></a>
+                            <a class="btn btn-shadow green" href="{:U('Index/weixin_weibo')}" target="_blank"><img src="__IMG__/wx.png"></a>
                         </li>
                         <li>
-                            <a class="btn btn-shadow green" href="" target="_blank">
+                            <a class="btn btn-shadow green" href="{:U('Index/weixin_weibo')}" target="_blank">
                                 <img src="__IMG__/weibo.png">
                             </a>
                         </li>
@@ -245,14 +243,14 @@
                 <a href="{:U('Ask/question')}" target="_blank" class="btn btn-shadow orange">我要提问</a>
             </div>
             <div class="cx">
-                <form method="post" action="" target="_blank">
+                <form method="POST" action="{:U('Ask/search')}" target="_blank">
                     <input type="hidden" name="host" value="localhost">
-                    <input class="text" name="keyword" type="text" placeholder="请输入关键词">
+                    <input class="text" name="keyword" type="text" placeholder="请输入预留身份证号查询">
                     <input class="submit btn btn-warning" type="submit" value="">
                 </form>
             </div>
             <div class="searchQues">
-                <form method="post" action="" target="_blank">
+                <form method="GET" action="{:U('Index/respond_to_society')}" target="_blank">
                     <input type="hidden" name="host" value="localhost">
                     <input class="text" name="keyword" type="text" placeholder="请输入关键词">
                     <input class="submit btn btn-warning" type="submit" value="">
@@ -260,13 +258,10 @@
             </div>
             <div class="keyword">
                 <dl>
-                    <dt><a href="">男子救女友后失恋</a></dt>
-                    <dt><a href="">网曝周杰遭追债</a></dt>
-                    <dt><a href="">浣熊敲门讨食</a></dt>
-                    <dt><a href="">太阳鱼</a></dt>
-                    <dt><a href="">千股涨停</a></dt>
-                    <dt><a href="">流浪汉洗头</a></dt>
-                    <dt><a href="">武警查获仿真枪</a></dt>
+                    <php> $hotkeys = explode(";",C('HOTKEY'));</php>
+                    <volist name="hotkeys" id="vo">
+                        <dt><a href="{:U('Index/respond_to_society',array('keyword'=>$vo) )}">{$vo}</a></dt>
+                    </volist>
                 </dl>
             </div>
         </div>     
@@ -364,28 +359,26 @@
                 var width = $(this).width();
                 var data = eval(Think.DATA);
                 var id = $(this).find("a").data("id");
-                var this_attr = '';
-                for (var i = 0; i <= data.length - 1; i++) {
-                    if (data[i]["uid"] == id) {
-                        this_attr = data[i];
+                if (id) {
+                    var this_attr = '';
+                    for (var i = 0; i <= data.length - 1; i++) {
+                        if (data[i]["uid"] == id) {
+                            this_attr = data[i];
+                        }
                     }
-                }
-                if (this_attr) {
-                    $(".link-info h1").text(this_attr.name);
-                    $(".link-info .weixin img").attr("src",this_attr.weixin);
-                    $(".link-info .weibo img").attr("src",this_attr.weibo);
-                    $(".link-info .weibo a").attr("href",this_attr.weibo_link);
-                    $(".link-info").show();
-                    $(".link-info").css("top",top-220+"px");
-                    $(".link-info").css("left",left+width/2-120+"px");
+                    if (this_attr) {
+                        $(".link-info h1").text(this_attr.name);
+                        $(".link-info .weixin img").attr("src",this_attr.weixin);
+                        $(".link-info .weibo img").attr("src",this_attr.weibo);
+                        $(".link-info .weibo a").attr("href",this_attr.weibo_link);
+                        $(".link-info").show();
+                        $(".link-info").css("top",top-220+"px");
+                        $(".link-info").css("left",left+width/2-120+"px");
+                    }
                 }
             })
             $(".showBox li").mouseleave(function () {
                 $(".link-info").hide();
-                $(".link-info h1").text("");
-                $(".link-info .weixin img").attr("src","");
-                $(".link-info .weibo img").attr("src","");
-                $(".link-info .weibo a").attr("href","");
             })
             $(".link-info").mouseenter(function () {
                 $(this).show();

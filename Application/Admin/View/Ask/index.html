@@ -109,11 +109,11 @@
 			<td><span>{$vo.create_time|time_format}</span></td>
 			<td>
 				<php>$types = C('STATUS');</php>
-					<?php if ( is_null ($vo['uid']) ) { ?>
-						待认领
-					<?php }else{ ?>
-						{$types[$vo['status']]}
-					<?php } ?>
+				<?php if ( is_null ($vo['uid']) ) { ?>
+					待认领
+				<?php }else{ ?>
+					{$types[$vo['status']]}
+				<?php } ?>
 			</td>
 			
 	        <?php if (ACTION_NAME == "done") { ?>

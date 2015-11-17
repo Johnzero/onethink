@@ -49,10 +49,18 @@
                                 </label>
                             </case>
                             <case value="date">
+								<?php if ($data[$field['name']] > 0) { ?>
                                 <input type="text" name="{$field.name}" class="text date" value="{$data[$field['name']]|date='Y-m-d',###}" placeholder="请选择日期" />
+                                <?php } else { ?>
+                                <input type="text" name="{$field.name}" class="text date" value="0" placeholder="请选择日期" />
+                                <?php } ?>
                             </case>
                             <case value="datetime">
+                           		<?php if ($data[$field['name']] > 0) { ?>
                                 <input type="text" name="{$field.name}" class="text time" value="{$data[$field['name']]|time_format}" placeholder="请选择时间" />
+                                <?php } else { ?>
+                                <input type="text" name="{$field.name}" class="text time" value="0" placeholder="请选择时间" />
+                                <?php } ?>
                             </case>
                             <case value="bool">
                                 <select name="{$field.name}">

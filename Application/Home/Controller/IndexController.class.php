@@ -22,12 +22,55 @@ class IndexController extends HomeController {
 
         $all = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->field("B.uid,B.name,B.home_link,B.weibo,B.weibo_link,B.weixin")->where(array("A.group_id"=>3,"B.type"=>array('in','1,2')))->select();
         $this->assign('data_ewm',json_encode($all));
+
+        $wjd = D('Document')->limit(6)->lists(48,$order='level DESC');
+        $wft = D('Document')->limit(6)->lists(49,$order='level DESC');
+        $whd = D('Document')->limit(6)->lists(50,$order='level DESC');
+
+        $this->assign('wjd', $wjd);
+        $this->assign('wft', $wft);
+        $this->assign('whd', $whd);
+
+        $this->assign('category', $category);
+        $this->assign('list', $list);
+
+
+        $ly_count = M("Ask")->count();
+        $this->assign('ly_count', $ly_count + 1055);
+
+        $sl_count = M("Ask")->where('status <> 10')->count();
+        $this->assign('sl_count', $sl_count + 1055);
+
+        $today = strtotime(date("Y-m-d 00:00:00"));
+        $td_count = M("Ask")->where('create_time > '.$today)->count();
+        $this->assign('td_count', $td_count);
+
+        $ask = M("Ask")->limit(5)->order("finish_time DESC,create_time DESC")->where('status <> 0 AND status IS NOT NULL AND public = 1 ')->select();
+        foreach ($ask as $key => $value) {
+            $thisM = M("Member")->where(array("uid"=>$value['uid']))->find();
+            $ask[$key]['nickname'] = $thisM['nickname'];
+        }
+        $this->assign('ask', $ask);
+
         $this->display();
     }
 
     public function respond_to_society() {
-    	$lists = M("ask")->order("create_time DESC")->limit(20)->select();
-        $this->assign('lists',$lists);
+
+        $keyword = I("get.keyword");
+        $where = 'status <> 0 AND status IS NOT NULL AND public = 1 ';
+
+        if ($keyword) {
+            $where = $where."AND title LIKE '%{$keyword}%' ";
+        }
+    	$ask = M("Ask")->limit(20)->order("finish_time DESC,create_time DESC")->where($where)->select();
+        foreach ($ask as $key => $value) {
+            $thisM = M("Member")->where(array("uid"=>$value['uid']))->find();
+            $ask[$key]['nickname'] = $thisM['nickname'];
+        }
+        $this->assign('ask', $ask);
+        $this->assign('keyword', $keyword);
+
         $this->display();
     }
 
@@ -68,4 +111,5 @@ class IndexController extends HomeController {
 
         $this->display();
     }
+
 }
