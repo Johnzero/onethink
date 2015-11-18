@@ -134,9 +134,77 @@
 		                        </tr>
 		                    </tbody>
 		                </table>
+
+						<?php if ($show) { ?>
+
+		                <table width="800" border="0" cellspacing="0" cellpadding="0">
+		                    <tbody>
+		                        <tr>
+		                            <td height="30" background="__IMG__/hr.gif">
+		                                &nbsp;
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <td>
+		                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		                                    <tbody>
+		                                    	<tr>
+		                                            <td height="40" class="black14">
+		                                                <strong>
+		                                                    打分
+		                                                </strong>
+		                                                <select id="score">
+															<option value="100" selected>满意</option>
+															<option value="50">一般</option>
+															<option value="0">不满意</option>
+														</select>
+		                                                <button onclick="set_score();return false;">打分</button>
+		                                            </td>
+		                                        </tr>
+		                                    </tbody>
+		                                </table>
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <td height="40">
+		                                &nbsp;
+		                            </td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+
+		                <?php } ?>
 		            </td>
 		        </tr>
 		    </tbody>
 		</table>
 	</div>
+</block>
+<block name="script">
+	<script type="text/javascript">
+		function set_score(){
+
+			var score = $('#score').val();
+			
+			$.ajax({
+				type : 'POST',
+				url : "{:U('Ask/score',array('id'=>$_GET['id']))}",
+				data : {
+					score : score
+				},
+				success : function (response , status , xhr) {
+					if(response.error==true || response.error==false)
+					{
+						alert(response.msg);
+						return false;
+					}
+					else
+					{
+						alert("系统繁忙，请稍候再试");
+						return false;
+					}
+				}
+			});
+		}
+	</script>
 </block>

@@ -105,6 +105,10 @@ class AskController extends HomeController {
         }
         
         $ask = M("Ask")->where(array("id"=>$id))->find();
+        if ($ask["sfz"] == $_SESSION["keyword"]) {
+            $this->assign('show',1);
+        }
+
         $member = M("Member")->where(array("uid"=>$ask['uid']))->find();
         $this->assign("member",$member);
         $this->assign($ask);
@@ -148,6 +152,29 @@ class AskController extends HomeController {
             $result['msg'] = '请输入您的手机号！';
             $this->ajaxReturn ( $result );
         }
+    }
+
+
+    public function score() {
+
+        $id = I("get.id");
+        $score = (int) I("post.score");
+
+        $result = array();
+
+        if (!id) {
+            $result['error'] = true;
+            $result['msg'] = '出现错误！请稍后重试！';
+            $this->ajaxReturn ( $result );
+        }
+
+        $ask_score = M("Score")->where(array("ask_id"=>$ask_id))->find();
+        M("Score")->add(array("aid"=>$id,"score"=>$score,"update_time"=>time()));
+        
+        $result['error'] = false;
+        $result['msg'] = '打分成功！';
+        $this->ajaxReturn ( $result );
+
     }
 
 }
