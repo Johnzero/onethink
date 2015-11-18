@@ -40,7 +40,7 @@
                         <volist name="ask" id="vo">
                             <tr align="center">
                                 <td class="black12">WEB{$vo.id}</td>
-                                <td><a href="">{$vo.title|msubstr=0,18,'utf-8',false}</a></td>
+                                <td><a href="{:U('Ask/detail',array('id'=>$vo['id']))}">{$vo.title|msubstr=0,18,'utf-8',false}</a></td>
                                 <td class="black12">{$vo.create_time|time_format}</td>
                                 <td class="black12">
                                     <?php if ($vo['finish_time']) { ?>

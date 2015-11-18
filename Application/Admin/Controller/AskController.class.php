@@ -730,6 +730,19 @@ class AskController extends AdminController {
         $this->display();
     }
 
+    /* 显示 */
+    public function show() {
+        $id = I('get.id');
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
+        $ask = M("Ask")->where(array("id"=>$id))->find();
+        if (!empty($ask)) {
+            M("Ask")->where(array("id"=>$id))->save(array("public"=>2));
+        }
+        $this->success("处理成功！",U('Ask/index'));
+    }
+
     // 指派
     public function assign_to() {
         $id = I('get.id');
@@ -1117,6 +1130,32 @@ class AskController extends AdminController {
             return true;//有权限
         }else{
             return false;//无权限
+        }
+    }
+
+    // 督办
+    public function message () {
+        $id = I('get.id');
+        if(empty($id)){
+            $this->error('参数不能为空！');
+        }
+
+        $ask = M("Ask")->where('id = '.$id)->find();
+        if (!empty($ask)) {
+            $member = M("Member")->where(array('uid'=>$ask["uid"]))->find();
+            $tel = $member["tel"];            
+            if ($tel) {
+                $content = "办事平台提醒您：您有一个网友留言（".$ask["title"]."）尚未处理，请及时登录后台回复网友！ ".date('y-m-d h:i',time());
+                $re = message($tel,$content);
+                if ($re['res_code'] != 0) {
+                    $content = "办事平台提醒您：您有一个网友留言尚未处理，请及时登录后台回复网友！ ".date('y-m-d h:i',time());
+                    message($tel,$content);
+                }
+                $this->success('已发提醒短信');
+            }else {
+                $this->error('联系人号码为空！');
+            }
+            
         }
     }
 

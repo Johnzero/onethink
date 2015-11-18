@@ -1,0 +1,142 @@
+<extend name="Base/common"/>
+<block name="body">
+	<div class="main-colum">
+	    <div class="navigation">
+	        当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<span>留言：{$title}</span>
+	        <div class="topDate">
+	            <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
+	        </div>
+	    </div>
+		<table class="section" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+		    <tbody>
+		        <tr>
+		            <td align="center" valign="top">
+		                <table width="800" border="0" cellspacing="0" cellpadding="0">
+		                    <tbody>
+		                        <tr>
+		                            <td height="30">
+		                                &nbsp;
+		                            </td>
+		                        </tr>
+		                        <tr>
+		                            <td>
+		                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		                                    <tbody>
+		                                        <tr>
+		                                            <td width="80" height="40" align="left" class="black12">
+		                                                网友姓名：
+		                                            </td>
+		                                            <td width="320" align="left" class="black14">
+		                                                {$name}
+		                                            </td>
+		                                            <td width="80" align="left" class="black12">
+		                                                留言时间：
+		                                            </td>
+		                                            <td width="320" align="left" class="black14">
+                                    					{$create_time|time_format}
+		                                            </td>
+		                                        </tr>
+		                                        <tr>
+		                                            <td align="left" class="black12">
+		                                                受理部门：
+		                                            </td>
+		                                            <td align="left" class="black14">
+		                                                <notempty name="member">
+		                                                	{$member['nickname']}
+														<else/>
+															未受理
+		                                                </notempty>
+		                                            </td>
+		                                        </tr>
+		                                    </tbody>
+		                                </table>
+		                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		                                    <tbody>
+		                                        <tr>
+		                                            <td width="80" height="40" align="left" class="black12">
+		                                                信件标题：
+		                                            </td>
+		                                            <td width="720" align="left" class="black14">
+		                                                <strong>
+		                                                    {$title}
+		                                                </strong>
+		                                            </td>
+		                                        </tr>
+		                                        <tr>
+		                                            <td height="40" align="left" class="black12">
+		                                                内容：
+		                                            </td>
+		                                            <td align="left" class="black14">
+		                                                {$content}
+		                                            </td>
+		                                        </tr>
+		                                        <tr>
+		                                            <td height="40" align="left" class="black12">
+		                                                附件：
+		                                            </td>
+		                                            <td align="left" class="black14">
+		                                                无
+		                                            </td>
+		                                        </tr>
+		                                    </tbody>
+		                                </table>
+		                            </td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+		                <table width="800" border="0" cellspacing="0" cellpadding="0">
+		                    <tbody>
+		                        <tr>
+		                            <td height="30" background="__IMG__/hr.gif">
+		                                &nbsp;
+		                            </td>
+		                        </tr>
+		                        <tr>
+	           						<notempty name="reply">
+			                            <td>
+			                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			                                    <tbody>
+			                                        <tr align="left">
+			                                            <td height="40" class="red14">
+			                                                回复 (共 <php>echo count($reply);</php> 条回复)
+			                                            </td>
+			                                        </tr>
+			                                        <?php foreach ($reply as $key => $value): ?>
+			                                        <tr>
+			                                            <td height="40" class="black14">
+			                                                <strong>
+			                                                    {$value.nickname}
+			                                                </strong>
+			                                                <span class="black12">
+			                                                    &nbsp;&nbsp;{$value.create_time|time_format}
+			                                                </span>
+			                                            </td>
+			                                        </tr>
+			                                        <tr>
+			                                            <td class="black14">
+			                                                {$value.explain}
+			                                            </td>
+			                                        </tr>
+			                                    	<?php endforeach ?>
+			                                    </tbody>
+			                                </table>
+			                            </td>
+									<else/>
+										<tr>
+				                            <td colspan="10" class="text-center"> 暂时还没有回复内容! </td>
+				                        </tr>
+			                        </notempty>
+		                        </tr>
+		                        <tr>
+		                            <td height="40">
+		                                &nbsp;
+		                            </td>
+		                        </tr>
+		                    </tbody>
+		                </table>
+		            </td>
+		        </tr>
+		    </tbody>
+		</table>
+	</div>
+</block>

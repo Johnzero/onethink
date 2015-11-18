@@ -29,11 +29,11 @@
         <h3>
             <span></span>留言选登
             <hr/>
-            <a href="" class="more">更多>></a>
+            <a href="{:U('Index/respond_to_society')}" class="more">更多>></a>
         </h3>
         <ul>
-            <volist name="lists" id="vo" offset="0" length="10">
-                <li><a href="{:U('Article/ask_detail?id='.$vo['id'])}">{$vo.title}</a></li>
+            <volist name="lyxd" id="vo" offset="0" length="10">
+                <li><a href="{:U('Ask/detail?id='.$vo['id'])}">{$vo.title}</a></li>
             </volist>
         </ul>
     </div>

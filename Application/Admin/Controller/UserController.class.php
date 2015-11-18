@@ -294,9 +294,10 @@ class UserController extends AdminController {
                 if ($_POST['pid']) {
                     $user['pid'] = $_POST["pid"];
                 }
-                
-                M('Member')->where(array('uid'=>$id))->save($user_array);
+
+                D('Member')->where(array('uid'=>$id))->save($user_array);
                 $this->success('用户编辑成功！',U('index'));
+                
             } else { 
                 $this->error($this->showRegError($uid));
             }

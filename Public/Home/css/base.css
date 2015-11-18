@@ -758,6 +758,7 @@ body {
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .1);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .1);
     box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+    margin-bottom: 40px;
 }
 
 .questionForm {
@@ -1264,4 +1265,19 @@ p {
     line-height: 20px;
     margin-top: 12px;
     display: none
+}
+
+/* ####  红色14号字##### */
+.red14{line-height:24px;   font-size: 14px;  color: #aa0000;   text-decoration: none;}
+.red14 a{ line-height:24px;  font-size: 14px;  color: #aa0000;  text-decoration: none;}
+.red14 a:hover,.red14 a:active {    font-size: 14px;  color:#aa0000;  text-decoration: none;}
+.black14 {
+    text-align: left;
+    padding: 10px;
+    padding-left: 0;
+    margin-left: 10px;
+    line-height: 26px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
 }

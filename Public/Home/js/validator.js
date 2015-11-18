@@ -48,6 +48,10 @@ function validator(o) {
 		return tip(o.content);
 	}
 
+	if (!o.yzm.value.trim()) {
+		return tip(o.yzm);
+	}
+
 	return true;
 }
 
@@ -73,3 +77,82 @@ RegExps.isChinese = /^[\u0391-\uFFE5]+$/;
 RegExps.isUrl = /^http:\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/;
 RegExps.isDate = /^\d{4}-\d{1,2}-\d{1,2}$/;
 RegExps.isTime = /^\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2}$/;
+
+$(document).ready(function () {
+    $('.select-box').select2();
+    $('.level1 select').change(function(){ 
+        var id = $(this).children('option:selected').val();
+        $.post("{:U('Ask/getSubclass')}", { id: id },function(data){
+            if (data) {
+                $(".level2").css("visibility","inherit");
+                $('.level2 select').select2();
+                $(".level2 select").empty();
+                $(".level2 select").append(data);
+            }else {
+                $(".level2").css("visibility","hidden");
+                $(".level2 select").empty();
+            }
+        });
+    });
+
+    var wait=60;
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttribute("disabled");           
+            o.text="获取短信验证码";
+            wait = 60;
+        } else {
+            if(wait==60)
+            {
+                var tel = $("input[name='tel']").val();
+                if(tel=="")
+                {
+                    alert("请输入手机号码!");
+                    tip($("input[name='tel']"));
+                    return false;
+                }
+            
+                get_message(tel);
+            }
+            
+            o.setAttribute("disabled", true);
+            o.text="重新发送(" + wait + ")";
+            wait--;
+            setTimeout(function() {
+                time(o)
+            },
+            1000)
+        }
+    }
+    function get_message(tel){
+        $.ajax({
+            type : 'POST',
+            url : "/Ask/get_message.html",
+            data : {
+                tel : tel
+            },
+            success : function (response , status , xhr) {
+                if(response.error==true || response.error==false)
+                {
+                    alert(response.msg);
+                    return false;
+                }
+                else
+                {
+                    alert("系统繁忙，请稍候再试");
+                    return false;
+                }
+            },
+            complete : function(){
+                $('#yzm').show();
+            }
+        });
+    }
+    $("#yzm").click(function () {
+        if ($("#yzm").attr("disabled")) {
+            return;
+        }else {
+            time(this);
+        }
+    })
+})

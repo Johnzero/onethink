@@ -71,6 +71,9 @@ class IndexController extends HomeController {
         $this->assign('ask', $ask);
         $this->assign('keyword', $keyword);
 
+        $lyxd = M("Ask")->limit(10)->order("finish_time DESC,create_time DESC")->where("public = 1")->select();
+        $this->assign('lyxd', $lyxd);
+
         $this->display();
     }
 
@@ -87,9 +90,14 @@ class IndexController extends HomeController {
 
     public function weixin_weibo() {
     	
-    	$Document = D('Document');
-		$news = $Document->lists(null);
-        $this->assign('news',$news);
+        $zf = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3,"B.type"=>2))->select();
+        $this->assign('zf',$zf);
+
+        $sz = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3,"B.type"=>1))->select();
+        $this->assign('sz',$sz);
+
+        $all = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->field("B.uid,B.name,B.home_link,B.weibo,B.weibo_link,B.weixin")->where(array("A.group_id"=>3,"B.type"=>array('in','1,2')))->select();
+        $this->assign('data_ewm',json_encode($all));
 
         $this->display();
     }

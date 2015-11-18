@@ -22,7 +22,7 @@
         var that = this;
         if ( $(this).hasClass('confirm') ) {
             if ($(this).attr("title")) {
-                if(!confirm($(this).attr("title"))){
+                if(!confirm( '确认要执行 '+$(this).attr("title")+' 操作吗')){
                     return false;
                 }
             }else {
@@ -83,7 +83,7 @@
             }else if ( form.get(0).nodeName=='FORM' ){
                 if ( $(this).hasClass('confirm') ) {
                     if ($(this).attr("title")) {
-                        if(!confirm($(this).attr("title"))){
+                        if(!confirm(  '确认要执行 '+$(this).attr("title")+' 操作吗' )){
                             return false;
                         }
                     }else {
@@ -106,7 +106,7 @@
                 })
                 if ( nead_confirm && $(this).hasClass('confirm') ) {
                     if ($(this).attr("title")) {
-                        if(!confirm($(this).attr("title"))){
+                        if(!confirm(  '确认要执行 '+$(this).attr("title")+' 操作吗' )){
                             return false;
                         }
                     }else {
@@ -119,7 +119,7 @@
             }else{
                 if ( $(this).hasClass('confirm') ) {
                     if ($(this).attr("title")) {
-                        if(!confirm($(this).attr("title"))){
+                        if(!confirm(  '确认要执行 '+$(this).attr("title")+' 操作吗' )){
                             return false;
                         }
                     }else {

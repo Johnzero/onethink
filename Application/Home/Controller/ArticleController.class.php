@@ -222,43 +222,6 @@ class ArticleController extends HomeController {
 		$this->display($tmpl);
 	}
 	
-	public function get_message()
-	{
-		$tel = I('post.tel');
-		$ask_id = I('post.ask_id');
-		
-		$ask = M("Ask")->where(array("id"=>$ask_id,"tel"=>$tel,"status"=>5))->find();//校验信息和状态进行打分
-
-		if(empty($ask))
-		{
-			$result = array();
-			$result['error'] = true;
-			$result['msg'] = '只有结束的留言才允许打分';
-			$this->ajaxReturn ( $result );
-		}
-		
-		
-		$num = rand(1111,9999);
-		$re = message($tel,$num);
-		
-		if($re['res_code']==1)
-		{
-			$result = array();
-			$result['error'] = true;
-			$result['msg'] = $re['res_message'];
-			$this->ajaxReturn ( $result );
-		}
-		else
-		{
-			M("Message_num")->execute("INSERT INTO `ot_message_num` (`tel`,`num`,`lastupdate`) VALUES ('".$tel."','".$num."','".time()."')");
-			
-			$result = array();
-			$result['error'] = false;
-			$result['msg'] = '短信已发送，请注意查收！';
-			$this->ajaxReturn ( $result );
-		}
-	}
-	
 	//2015-10-10 打分
 	public function ask_detail_score()
 	{

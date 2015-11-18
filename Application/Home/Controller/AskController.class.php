@@ -14,22 +14,35 @@ class AskController extends HomeController {
 
     public function submit() {
     	if ( IS_POST ) {
+
 			$ask = D('Ask');
+
 			$_POST['create_time'] = time();
 			
 			if ( !I("post.uid") ) {
 				unset($_POST['uid']);
 			}
 
+            if (!$_SESSION['code']) {
+                $this->error("请获取您的验证码！");
+            }
+
+            if ( $_SESSION['code'] != $_POST["yzm"] ) {
+                $this->error("您的验证码错误！");
+            }else {
+                unset($_POST["yzm"]);
+                $_SESSION['code'] = "";
+            }
+
 			$return = $ask->add($_POST);
 
 			if($return)
 			{
-				$this->success("保存成功！");
+				$this->success("感谢您的留言！");
 			}
 			else
 			{
-				$this->error("保存失败，请重新提交！");
+				$this->error("提交失败，请稍后再试！");
 			}
 			exit;
 		}
@@ -68,6 +81,10 @@ class AskController extends HomeController {
             $this->assign('page', $Page->show());
 
             $result = M("Ask")->where(array("sfz"=>$keyword))->limit($Page->firstRow.','.$Page->listRows)->order("id DESC")->select();
+            foreach ($result as $key => $value) {
+                $member = M("Member")->where(array("uid"=>$value["uid"]))->find();
+                $result[$key]["nickname"] = $member["nickname"];
+            }
 
             if (!empty($result)) {
                 $this->assign("ask",$result);
@@ -77,6 +94,59 @@ class AskController extends HomeController {
             }
         }else {
             $this->error("请输入您的证件号码！",U('Index/respond_to_society'));
+        }
+    }
+
+    public function detail() {
+
+        $id = I('get.id');
+        if ( !$id ) {
+            $this->error("出现错误！");
+        }
+        
+        $ask = M("Ask")->where(array("id"=>$id))->find();
+        $member = M("Member")->where(array("uid"=>$ask['uid']))->find();
+        $this->assign("member",$member);
+        $this->assign($ask);
+
+        $yjdw = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3))->select();
+        $this->assign('yjdw', $yjdw);
+
+
+        $reply = M("Reply")->alias('A')->order("A.id DESC")->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.aid"=>$id))->select();
+        $this->assign("reply",$reply);
+
+        $this->display();
+    }
+
+
+    public function get_message()
+    {
+        $tel = I('post.tel');
+        if ($tel) {
+            if ( S('code') ) {
+                $result = array();
+                $result['error'] = true;
+                $result['msg'] = "请勿重复发送验证码！";
+                $this->ajaxReturn ( $result );
+            }else {
+                $num = rand(1111,9999);
+                $_SESSION['code'] = $num;
+                S('code',$num,60);
+                $content = "网友您好：您此次的验证码为： ". $num;
+                $re = message($tel,$content);
+                if ( $re['res_code'] != 1 ) {
+                    $result = array();
+                    $result['error'] = false;
+                    $result['msg'] = '短信已发送，请注意查收！';
+                    $this->ajaxReturn ( $result );
+                }
+            }
+        }else {
+            $result = array();
+            $result['error'] = true;
+            $result['msg'] = '请输入您的手机号！';
+            $this->ajaxReturn ( $result );
         }
     }
 

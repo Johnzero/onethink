@@ -8,6 +8,43 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".yx-rotaion").yx_rotaion({auto:true,height:"290px",width:"620px"});
+            $(".fb li").mouseenter(function () {
+                var top = $(this).offset().top;
+                var left = $(this).offset().left;
+                var width = $(this).width();
+                var data = eval(Think.DATA);
+                var id = $(this).find("a").data("id");
+                if (id) {
+                    var this_attr = '';
+                    for (var i = 0; i <= data.length - 1; i++) {
+                        if (data[i]["uid"] == id) {
+                            this_attr = data[i];
+                        }
+                    }
+                    if (this_attr) {
+                        $(".link-info h1").text(this_attr.name);
+                        $(".link-info .weixin img").attr("src",this_attr.weixin);
+                        $(".link-info .weibo img").attr("src",this_attr.weibo);
+                        $(".link-info .weibo a").attr("href",this_attr.weibo_link);
+                        $(".link-info").show();
+                        $(".link-info").css("top",top-220+"px");
+                        $(".link-info").css("left",left+width/2-120+"px");
+                    }
+                }
+            })
+            $(".fb li").mouseleave(function () {
+                $(".link-info").hide();
+            })
+            $(".link-info").mouseenter(function () {
+                $(this).show();
+            })
+            $(".link-info").mouseleave(function () {
+                $(this).hide();
+                $(".link-info h1").text("");
+                $(".link-info .weixin img").attr("src","");
+                $(".link-info .weibo img").attr("src","");
+                $(".link-info .weibo a").attr("href","");
+            })
         });
     </script>
 </block>
@@ -39,27 +76,9 @@
                     </ul>
                 </div>
                 <ol class="fb">
-                    <li>安徽发布</li>
-                    <li>安徽公安在线</li>
-                    <li>江淮气象</li>
-                    <li>安徽检察</li>
-                    <li>安徽高速</li>
-                    <li>安徽公安交警在线</li>
-                    <li>安徽禁毒在线</li>
-                    <li>安徽发布</li>
-                    <li>安徽公安在线</li>
-                    <li>江淮气象</li>
-                    <li>安徽检察</li>
-                    <li>安徽高速</li>
-                    <li>安徽公安交警在线</li>
-                    <li>安徽禁毒在线</li>
-                    <li>安徽发布</li>
-                    <li>安徽公安在线</li>
-                    <li>江淮气象</li>
-                    <li>安徽检察</li>
-                    <li>安徽高速</li>
-                    <li>安徽公安交警在线</li>
-                    <li>安徽禁毒在线</li>
+                    <volist name="sz" id="vo">
+                        <li><a href="javascript:void(0);" data-id="{$vo.uid}">{$vo.nickname}</a></li>
+                    </volist>
                 </ol>
             </div>
 
@@ -70,29 +89,27 @@
                     </ul>
                 </div>
                 <ol class="fb">
-                    <li>安徽发布</li>
-                    <li>安徽公安在线</li>
-                    <li>江淮气象</li>
-                    <li>安徽检察</li>
-                    <li>安徽高速</li>
-                    <li>安徽公安交警在线</li>
-                    <li>安徽禁毒在线</li>
-                    <li>安徽发布</li>
-                    <li>安徽公安在线</li>
-                    <li>江淮气象</li>
-                    <li>安徽检察</li>
-                    <li>安徽高速</li>
-                    <li>安徽公安交警在线</li>
-                    <li>安徽禁毒在线</li>
-                    <li>安徽发布</li>
-                    <li>安徽公安在线</li>
-                    <li>江淮气象</li>
-                    <li>安徽检察</li>
-                    <li>安徽高速</li>
-                    <li>安徽公安交警在线</li>
-                    <li>安徽禁毒在线</li>
+                    <volist name="zf" id="vo">
+                        <li><a href="javascript:void(0);" data-id="{$vo.uid}">{$vo.nickname}</a></li>
+                    </volist>
                 </ol>
             </div>
+        </div>
+        <div class="link-info">
+            <em></em>
+            <h1>合肥市</h1>
+            <ul>
+                <li class="weibo">
+                    <a href="" target="_blank"><img src=""></a>
+                    <br>
+                    <span>官方微博</span>
+                </li>
+                <li class="weixin">
+                    <img src="">
+                    <br>
+                    <span>官方微信<br>（手机扫一扫）</span>
+                </li>
+            </ul>
         </div>
         <include file="Base/side_weixinweibo"/>
     </div>

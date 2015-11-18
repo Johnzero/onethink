@@ -100,8 +100,8 @@
 					<a href="{:U('Ask/assign_to?id='.$vo['id'])}" title="指派" target-form="form-horizontal"><i class="fa fa-reply-all"></i></a>
 				<?php } ?>
 
-				<?php if ( ($group_id == 3 || $group_id == 1) && $vo['status'] == 1 && $vo['uid'] != UID) { ?>
-					<a href="" title="督办" target-form="form-horizontal"><i class="fa fa-bell-o"></i></a>
+				<?php if ( ($group_id == 3 || $group_id == 1) && !empty($vo['uid']) && $vo['uid'] != UID ) { ?>
+					<a class="ajax-get confirm" href="{:U('Ask/message?id='.$vo['id'])}" title="督办" target-form="form-horizontal"><i class="fa fa-bell-o"></i></a>
 				<?php } ?>
 
 				</span>
@@ -137,10 +137,10 @@
 				<span <gt name="diff_day" value="5">class="red"</gt>>{$diff_day} 天</span>
 	        </td>
 
-			<?php if (ACTION_NAME == "index") {?>
+			<?php if (ACTION_NAME == "index") { ?>
 	        <td>
 	        	<?php if ($vo['public'] == 1) { ?>
-					<b class="red">显示</b>
+					<b class="red">显示</b> <a href="{:U('Ask/show?id='.$vo['id'])}" class="ajax-get confirm" title="禁止前台显示"><i class="fa fa-ban"></i></a>
 	        	<?php } else { ?>
 					不显示
 	        	<?php } ?>

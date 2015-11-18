@@ -1053,9 +1053,7 @@ function message($acceptor_tel,$num) {
 
 
 	$re = curl_post($send_url, $str);
-
 	$re = simplexml_load_string($re);
-
 	$res['res_code'] = 1;
 	$res['res_message'] = '发送失败，请稍后再试';
 	if($re[0]=='00')
