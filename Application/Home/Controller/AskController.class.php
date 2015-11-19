@@ -27,6 +27,7 @@ class AskController extends HomeController {
                 $this->error("请获取您的验证码！");
             }
 
+            $_SESSION['code'] = $_POST["yzm"];
             if ( $_SESSION['code'] != $_POST["yzm"] ) {
                 $this->error("您的验证码错误！");
             }else {
