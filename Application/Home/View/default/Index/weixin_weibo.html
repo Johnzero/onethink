@@ -23,9 +23,23 @@
                     }
                     if (this_attr) {
                         $(".link-info h1").text(this_attr.name);
-                        $(".link-info .weixin img").attr("src",this_attr.weixin);
-                        $(".link-info .weibo img").attr("src",this_attr.weibo);
-                        $(".link-info .weibo a").attr("href",this_attr.weibo_link);
+
+                        if (this_attr.weixin) {
+                            $(".link-info .weixin img").attr("src",this_attr.weixin);
+                            $(".link-info .weixin").show();
+                        }else {
+                            $(".link-info .weixin").hide();
+                        }
+
+
+                        if (this_attr.weibo) {
+                            $(".link-info .weibo img").attr("src",this_attr.weibo);
+                            $(".link-info .weibo a").attr("href",this_attr.weibo_link);
+                            $(".link-info .weibo").show();
+                        }else {
+                            $(".link-info .weibo").hide();
+                        }
+                        
                         $(".link-info").show();
                         $(".link-info").css("top",top-220+"px");
                         $(".link-info").css("left",left+width/2-120+"px");
@@ -51,20 +65,17 @@
 <block name="body">
     <div class="main-colum sae">
         <div class="navigation">
-            当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<span>微信微博</span>
+            当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<span>微信微博大厅</span>
             <div class="topDate">
                 <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
             </div>
         </div>
         <div class="section">
             <div class="yx-rotaion">
-                <php>
-                    $sliders = get_slider(45);
-                </php>
                 <ul class="rotaion_list">
-                    <volist name="sliders" id="vo">
+                    <volist name="slider" id="vo">
                         <li>
-                            <a href="{$vo.href}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
+                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
                         </li>
                     </volist>
                 </ul>

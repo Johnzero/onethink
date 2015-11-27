@@ -455,7 +455,7 @@ class ArticleController extends AdminController {
         if(!$res){
             $this->error($document->getError());
         }else{
-            $this->success($res['id']?'更新成功':'新增成功', Cookie('__forward__'));
+            $this->success($res['id']?'更新成功':'新增成功');
         }
     }
 

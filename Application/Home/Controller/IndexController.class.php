@@ -14,7 +14,7 @@ class IndexController extends HomeController {
         $lists = D('Document')->order("create_time DESC")->limit(5)->where(array("hot"=>1,'status' => 1))->select();
         $this->assign('lists',$lists);
 
-        $zf = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3,"B.type"=>2))->select();
+        $zf = M("Auth_group_access")->order("B.reg_time ASC")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3,"B.type"=>2))->select();
         $this->assign('zf',$zf);
 
         $sz = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->where(array("A.group_id"=>3,"B.type"=>1))->select();
@@ -23,9 +23,9 @@ class IndexController extends HomeController {
         $all = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->field("B.uid,B.name,B.home_link,B.weibo,B.weibo_link,B.weixin")->where(array("A.group_id"=>3,"B.type"=>array('in','1,2')))->select();
         $this->assign('data_ewm',json_encode($all));
 
-        $wjd = D('Document')->limit(6)->lists(48,$order='level DESC');
-        $wft = D('Document')->limit(6)->lists(49,$order='level DESC');
-        $whd = D('Document')->limit(6)->lists(50,$order='level DESC');
+        $wjd = D('Document')->limit(5)->lists(48,$order='level DESC');
+        $wft = D('Document')->limit(5)->lists(49,$order='level DESC');
+        $whd = D('Document')->limit(5)->lists(50,$order='level DESC');
 
         $this->assign('wjd', $wjd);
         $this->assign('wft', $wft);
@@ -52,6 +52,14 @@ class IndexController extends HomeController {
         }
         $this->assign('ask', $ask);
 
+        $slider = D("Document")->where("slider LIKE '%1%' AND status = 1")->order("create_time DESC")->limit(5)->select();
+        $this->assign('slider', $slider);
+
+        $question = file_get_contents("http://www.ah.gov.cn/tmp/jsonp/ajax.shtml?action=getszxx&nums=6");
+        $question = json_decode($question,true);
+        $ask = $question['data'];
+        $this->assign('ask', $ask);
+
         $this->display();
     }
 
@@ -69,6 +77,12 @@ class IndexController extends HomeController {
             $ask[$key]['nickname'] = $thisM['nickname'];
         }
         $this->assign('ask', $ask);
+
+        // $question = file_get_contents("http://www.ah.gov.cn/tmp/jsonp/ajax.shtml?action=getszxx&nums=20");
+        // $question = json_decode($question,true);
+        // $ask = $question['data'];
+        // $this->assign('ask', $ask);
+
         $this->assign('keyword', $keyword);
 
         $lyxd = M("Ask")->limit(10)->order("finish_time DESC,create_time DESC")->where("public = 1")->select();
@@ -99,23 +113,27 @@ class IndexController extends HomeController {
         $all = M("Auth_group_access")->alias('A')->join(C('DB_PREFIX').'member B ON A.uid = B.uid')->field("B.uid,B.name,B.home_link,B.weibo,B.weibo_link,B.weixin")->where(array("A.group_id"=>3,"B.type"=>array('in','1,2')))->select();
         $this->assign('data_ewm',json_encode($all));
 
+        $slider = D("Document")->where("slider LIKE '%4%' AND status = 1")->order("create_time DESC")->limit(5)->select();
+        $this->assign('slider', $slider);
+
         $this->display();
     }
 
     public function government_information() {
 
         $Document = D('Document');
-        $news = $Document->lists(null);
-        $this->assign('news',$news);
 
-        $ahyw = $Document->order("create_time DESC")->limit(10)->lists(40);
-        $this->assign('ahyw',$ahyw);
+        $list1 = $Document->position(1,$category = null, $limit=10);
+        $this->assign('list1',$list1);
 
-        $zcdt = $Document->order("create_time DESC")->limit(10)->lists(41);
-        $this->assign('zcdt',$zcdt);
+        $list2 = $Document->position(2,$category = null, $limit=10);
+        $this->assign('list2',$list2);
 
-        $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
-        $this->assign('jhzx',$jhzx);
+        $list3 = $Document->position(4,$category = null, $limit=10);
+        $this->assign('list3',$list3);
+
+        $slider = D("Document")->where("slider LIKE '%2%' AND status = 1")->order("create_time DESC")->limit(5)->select();
+        $this->assign('slider', $slider);
 
         $this->display();
     }

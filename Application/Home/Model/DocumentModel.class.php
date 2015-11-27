@@ -74,9 +74,13 @@ class DocumentModel extends Model{
         if ( !$info ) {
             $this->error = '文档不存在';
             return false;
-        }elseif(!(is_array($info)) || 1 != $info['status']){
-            $this->error = '文档被禁用或已删除！';
-            return false;
+        }elseif( !(is_array($info)) || 1 != $info['status']){
+
+            if ( $_GET['show'] != "admin" ) {
+                $this->error = '文档被禁用或已删除！';
+                return false;
+            }
+            
         }
         /* 获取模型数据 */
         $logic  = $this->logic($info['model_id']);

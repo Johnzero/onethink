@@ -8,13 +8,10 @@
     <div class="main-colum">
         <div class="slider">
             <div class="yx-rotaion">
-                <php>
-                    $sliders = get_slider(43);
-                </php>
                 <ul class="rotaion_list">
-                    <volist name="sliders" id="vo">
+                    <volist name="slider" id="vo">
                         <li>
-                            <a href="{$vo.href}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
+                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
                         </li>
                     </volist>
                 </ul>
@@ -47,29 +44,26 @@
                     </ul>
                 </div>
                 <div id="wjd" class="menuContent active">
-                    <div class="j-hotspotPic">
-                        <volist name="wjd" id="vo" offset="0" length="1">
-                            <a href="{$vo.link_id}" target="_blank">
-                                <table width="100%" height="100%">
-                                    <tr>
-                                        <td align="center">
-                                            <img src="{$vo['cover_id']|get_cover='path'}" alt="{$vo.title}" />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </a>
-                        </volist>
-                    </div>
-                    <ol>
-                        <volist name="wjd" id="vo" offset="1" length="3">
-                            <li>
-                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
-                            </li>
-                        </volist>
-                    </ol>
+                    <volist name="wjd" id="vo" offset="0" length="1">
+                        <div class="wei-focus">
+                            <div class="pull-left">
+                                <a href="{$vo.link_id}" target="_blank"><img alt="" src="{$vo['cover_id']|get_cover='path'}"></a>
+                            </div>
+                            <div class="ct pull-left">
+                                <p>
+                                    <a href="{$vo.link_id}" target="_blank">
+                                        {$vo.title}
+                                    </a>
+                                </p>
+                                <div class="tool clearfix">
+                                    <span>{$vo.description}</span>
+                                </div>
+                           </div>
+                        </div>
+                    </volist>
                     <div class="clearfix"></div>
                     <ul>
-                        <volist name="wjd" id="vo" offset="4" length="6">
+                        <volist name="wjd" id="vo" offset="1" length="5">
                             <li>
                                 <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
                             </li>
@@ -77,61 +71,49 @@
                     </ul>
                 </div>
                 <div id="wft" class="menuContent">
-                    <div class="j-hotspotPic">
-                        <volist name="wft" id="vo" offset="0" length="1">
-                            <a href="{$vo.link_id}" target="_blank">
-                                <table width="100%" height="100%">
-                                    <tr>
-                                        <td align="center">
-                                            <img src="{$vo['cover_id']|get_cover='path'}" alt="{$vo.title}" />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </a>
-                        </volist>
-                    </div>
-                    <ol>
-                        <volist name="wft" id="vo" offset="1" length="3">
-                            <li>
-                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
-                            </li>
-                        </volist>
-                    </ol>
+                    <volist name="wft" id="vo" offset="0" length="1">
+                        <div class="wei-focus">
+                            <div class="pull-left">
+                                <a href="{$vo.link_id}" target="_blank"><img alt="" src="{$vo['cover_id']|get_cover='path'}"></a>
+                            </div>
+                            <div class="ct pull-left">
+                                <p>
+                                    <a href="{$vo.link_id}" target="_blank">
+                                        {$vo.title}
+                                    </a>
+                                </p>
+                                <div class="tool clearfix">
+                                    <span>{$vo.description}</span>
+                                </div>
+                           </div>
+                        </div>
+                    </volist>
                     <div class="clearfix"></div>
                     <ul>
-                        <volist name="wft" id="vo" offset="4" length="6">
+                        <volist name="wft" id="vo" offset="1" length="5">
                             <li>
                                 <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
                             </li>
                         </volist>
                     </ul>
                 </div>
-                <div id="whd" class="menuContent">
-                    <div class="j-hotspotPic">
-                        <volist name="whd" id="vo" offset="0" length="1">
-                            <a href="{$vo.link_id}" target="_blank">
-                                <table width="100%" height="100%">
-                                    <tr>
-                                        <td align="center">
-                                            <img src="{$vo['cover_id']|get_cover='path'}" alt="{$vo.title}" />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </a>
-                        </volist>
-                    </div>
-                    <ol>
-                        <volist name="whd" id="vo" offset="1" length="3">
-                            <li>
-                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
-                            </li>
-                        </volist>
-                    </ol>
-                    <div class="clearfix"></div>
+                <div id="whd" class="menuContent wei-focus">
                     <ul>
-                        <volist name="whd" id="vo" offset="4" length="6">
-                            <li>
-                                <a href="{$vo.link_id}" target="_blank">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                        <volist name="whd" id="vo" offset="0" length="2">
+                            <li class="clearfix item">
+                                <div class="pull-left">
+                                    <a href="{$vo.link_id}" target="_blank"><img alt="" src="{$vo['cover_id']|get_cover='path'}"></a>
+                                </div>
+                                <div class="ct pull-left">
+                                    <p>
+                                        <a href="{$vo.link_id}" target="_blank">
+                                            {$vo.title}
+                                        </a>
+                                    </p>
+                                    <div class="tool clearfix">
+                                      <div class="pull-left cr666">{$vo.create_time|date='Y-m-d',###} 来自<span class="cr0388f8"> {$vo.source}</span></div><div class="pull-right"></div>
+                                    </div>
+                               </div>
                             </li>
                         </volist>
                     </ul>
@@ -144,9 +126,9 @@
                     </ul>
                     <a href="javascript:void(0);" class="more" data-reveal-id="rmzf">更多</a>
                 </div>
-                <div class="cityContent showBox">
+                <div class="cityContent showBox zf">
                     <ul>
-                        <volist name="zf" id="vo" offset="0" length="8">
+                        <volist name="zf" id="vo" offset="0">
                             <li><a href="javascript:void(0);" data-id="{$vo.uid}">{$vo.nickname}</a></li>
                         </volist>
                     </ul>
@@ -157,11 +139,12 @@
                     </ul>
                     <a href="javascript:void(0);" class="more" data-reveal-id="sztj">更多</a>
                 </div>
-                <div class="cityContent showBox">
+                <div class="cityContent showBox sz">
                     <ul>
-                        <volist name="sz" id="vo" offset="0" length="5">
+                        <volist name="sz" id="vo" offset="0" length="6">
                             <li><a href="javascript:void(0);" data-id="{$vo.uid}">{$vo.nickname}</a></li>
                         </volist>
+                        <a href="javascript:void(0);" class="more" data-reveal-id="sztj">更多</a>
                     </ul>
                 </div>
             </div>
@@ -169,12 +152,14 @@
             <div class="lyTable">
                 <div class="tabmenu">
                     <ul>
-                        <li><a href="{:U('Index/respond_to_society')}" target="_blank" class="active">最新留言</a></li>
+                        <!-- <li><a href="{:U('Index/respond_to_society')}" target="_blank" class="active">省长信箱回复选登</a></li> -->
+                        <li><a href="http://www.ah.gov.cn/Tmp/Nav_shengchangxinxiang.shtml?SS_ID=315&action=show" target="_blank" class="active">省长信箱回复选登</a></li>
                     </ul>
                     <div class="lyDetail">
-                        <span>留言总数：<font class="blue">{$ly_count}</font></span>
-                        <span>受理总数：<font class="blue">{$sl_count}</font> 件</span>
-                        <span>今日受理：<font class="blue">{$td_count}</font> 件</span>
+                        <span>留言总数：<font class="blue">1633</font></span>
+                        <!-- <span>留言总数：<font class="blue">{$ly_count}</font></span> -->
+                        <!-- <span>受理总数：<font class="blue">{$sl_count}</font> 件</span> -->
+                        <!-- <span>今日受理：<font class="blue">{$td_count}</font> 件</span> -->
                     </div>
                 </div>
                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
@@ -184,12 +169,13 @@
                             <td>信件标题<hr></td>
                             <td>提交日期<hr></td>
                             <td>办理日期<hr></td>
-                            <td>受理部门<hr></td>
+                            <td>回复部门<hr></td>
+                            <!-- <td>受理部门<hr></td> -->
                             <td>状态</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <volist name="ask" id="vo">
+                        <volist name="asks" id="vo">
                             <tr align="center">
                                 <td class="black12">WEB{$vo.id}</td>
                                 <td><a href="{:U('Ask/detail',array('id'=>$vo['id']))}">{$vo.title|msubstr=0,18,'utf-8',false}</a></td>
@@ -210,13 +196,35 @@
                                 </td>
                             </tr>
                         </volist>
+                        <volist name="ask" id="vo">
+                            <tr align="center">
+                                <td class="black12">WEB{$vo.id}</td>
+                                <td><a href="{$vo.linkurl}" target="_blank">{$vo.title|msubstr=0,18,'utf-8',false}</a></td>
+                                <td class="black12">{$vo.tjdate}</td>
+                                <td class="black12">
+                                        {$vo.hfdate}
+                                </td>
+                                <td>{$vo.hfdw}</td>
+                                <td class="orange">
+                                    已办理
+                                </td>
+                            </tr>
+                        </volist>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="content_right">
             <div class="buttons">
-                <div id="wxweibo" class="flexslider">
+                <a class="btn btn-shadow green" href="http://www.ah.gov.cn/UserData/SortHtml/1/41983620158.html" target="_blank"><img src="__IMG__/szxx.png"></a>
+
+                <a class="btn btn-shadow blue" href="http://www.ah.gov.cn/UserData/SortHtml/1/80382210159.html" target="_blank"><img src="__IMG__/tjxx.png"></a>
+
+                <a class="btn btn-shadow reo" href="http://www.ah.gov.cn/UserData/SortHtml/1/61417061160.html" target="_blank"><img src="__IMG__/gsxx.png"></a>
+
+                <a href="{:U('Ask/question')}" target="_blank" class="btn btn-shadow orange">我要提问</a>
+
+                <!-- <div id="wxweibo" class="flexslider">
                     <ul class="slides">
                         <li>
                             <a class="btn btn-shadow green" href="{:U('Index/weixin_weibo')}" target="_blank"><img src="__IMG__/wx.png"></a>
@@ -227,8 +235,8 @@
                             </a>
                         </li>
                     </ul>
-                </div>
-                <div id="rank" class="flexslider">
+                </div> -->
+                <!-- <div id="rank" class="flexslider">
                     <ul class="slides">
                         <li>
                             <a class="btn btn-shadow blue" href="{:U('Index/supervision_and_evaluation')}" target="_blank"><img src="__IMG__/myd.png"></a>
@@ -239,8 +247,8 @@
                             </a>
                         </li>
                     </ul>
-                </div>
-                <a href="{:U('Ask/question')}" target="_blank" class="btn btn-shadow orange">我要提问</a>
+                </div> -->
+                
             </div>
             <div class="cx">
                 <form method="POST" action="{:U('Ask/search')}" target="_blank">
@@ -260,7 +268,7 @@
                 <dl>
                     <php> $hotkeys = explode(";",C('HOTKEY'));</php>
                     <volist name="hotkeys" id="vo">
-                        <dt><a href="{:U('Index/respond_to_society',array('keyword'=>$vo) )}">{$vo}</a></dt>
+                        <dt><a href="{:U('Index/respond_to_society',array('keyword'=>$vo) )}" target="_blank">{$vo}</a></dt>
                     </volist>
                 </dl>
             </div>
@@ -346,9 +354,23 @@
                     }
                     if (this_attr) {
                         $(".link-info h1").text(this_attr.name);
-                        $(".link-info .weixin img").attr("src",this_attr.weixin);
-                        $(".link-info .weibo img").attr("src",this_attr.weibo);
-                        $(".link-info .weibo a").attr("href",this_attr.weibo_link);
+
+                        if (this_attr.weixin) {
+                            $(".link-info .weixin img").attr("src",this_attr.weixin);
+                            $(".link-info .weixin").show();
+                        }else {
+                            $(".link-info .weixin").hide();
+                        }
+
+
+                        if (this_attr.weibo) {
+                            $(".link-info .weibo img").attr("src",this_attr.weibo);
+                            $(".link-info .weibo a").attr("href",this_attr.weibo_link);
+                            $(".link-info .weibo").show();
+                        }else {
+                            $(".link-info .weibo").hide();
+                        }
+                        
                         $(".link-info").show();
                         $(".link-info").css("top",top-220+"px");
                         $(".link-info").css("left",left+width/2-120+"px");

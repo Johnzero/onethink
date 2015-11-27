@@ -14,20 +14,17 @@
 <block name="body">
     <div class="main-colum sae">
         <div class="navigation">
-            当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<span>微信微博</span>
+            当前位置：<a href="/">首页</a>&nbsp;>&nbsp;<span>政务信息发布</span>
             <div class="topDate">
                 <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
             </div>
         </div>
         <div class="section">
             <div class="yx-rotaion">
-                <php>
-                    $sliders = get_slider(44);
-                </php>
                 <ul class="rotaion_list">
-                    <volist name="sliders" id="vo">
+                    <volist name="slider" id="vo">
                         <li>
-                            <a href="{$vo.href}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
+                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}" title="{$vo.title}" target="_blank"><img src="{:get_cover($vo['cover_id'],$field = path)}" alt="{$vo.title}"></a>
                         </li>
                     </volist>
                 </ul>
@@ -41,7 +38,7 @@
                 </div>
                 <div class="lyxd">
                     <ul>
-                        <volist name="news" id="article" offset="0" length="5">
+                        <volist name="list1" id="article" offset="0" length="5">
                             <li>
                                 <a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a><span>{$article.create_time|time_format}</span>
                             </li>
@@ -58,7 +55,7 @@
                 </div>
                 <div class="lyxd">
                     <ul>
-                        <volist name="news" id="article" offset="0" length="5">
+                        <volist name="list2" id="article" offset="0" length="5">
                             <li>
                                 <a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a><span>{$article.create_time|time_format}</span>
                             </li>
@@ -75,7 +72,7 @@
                 </div>
                 <div class="lyxd">
                     <ul>
-                        <volist name="news" id="article" offset="0" length="5">
+                        <volist name="list3" id="article" offset="0" length="5">
                             <li>
                                 <a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a><span>{$article.create_time|time_format}</span>
                             </li>

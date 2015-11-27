@@ -16,6 +16,16 @@ body {
     background: url("../images/bg.jpg") no-repeat;
     background-position: top;
 }
+.navbar-right>a {
+    position: relative;
+}
+.navbar-right>a>img {
+    display: none;
+    width: 150px;
+    position: absolute;
+    top: 25px;
+    right: 0;
+}
 
 .top-nav .container {
     width: 95%;
@@ -436,6 +446,8 @@ body {
     width: 350px;
     position: relative;
     float: left;
+    height: 245px;
+    overflow: hid
 }
 
 .tabmenu {
@@ -532,9 +544,9 @@ body {
 
 .cityContent {
     width: 100%;
-    height: 70px;
-    padding-left: 20px;
-    padding-right: 20px;
+    height: 95px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .cityContent li {
@@ -542,10 +554,10 @@ body {
     font-size: 12px;
     *display: inline;
     *zoom: 1;
-    margin-right: 15px;
+    margin-right: 10px;
     position: relative;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 2px;
     height: 30px;
     line-height: 30px;
 }
@@ -563,6 +575,7 @@ body {
 .buttons {
     padding-left: 20px;
     text-align: center;
+    margin-bottom: 15px; 
 }
 
 .buttons .btn {
@@ -575,6 +588,16 @@ body {
     font-size: 0;
     background-position: center;
     border: 0;
+}
+.nav-link .bdsharebuttonbox  {
+    width: 50px;
+    float: left;
+    margin-top: 3px;
+    margin-left: 0px;
+}
+.bds_more {
+    background: none !important;
+    padding-left: 12px !important;
 }
 
 .btn:hover {
@@ -591,6 +614,15 @@ body {
     background: #f59c0a;
     background-image: url("../images/wyly.png");
 }
+/*?*/
+.reo.btn-shadow {
+    color: #fff;
+    background: #e9714f;
+}
+.green.btn-shadow {
+    color: #fff;
+    background: #78d332;
+}
 
 .lyTable {
     width: 100%;
@@ -603,7 +635,7 @@ body {
 .lyDetail {
     position: absolute;
     top: 5px;
-    left: 120px;
+    left: 180px;
     font-size: 12px;
     color: #8A8A8A;
 }
@@ -706,7 +738,8 @@ body {
     *zoom: 1;
     font-weight: normal;
     margin-bottom: 10px;
-    margin-right: 10px;
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
 .footer {
@@ -714,6 +747,7 @@ body {
     border-top: solid 3px #da5705;
     padding: 15px 0;
     font-size: 12px;
+    margin-bottom: 20px;
 }
 
 .footer .container {
@@ -1018,6 +1052,7 @@ b.orange {
     word-wrap: break-word;
     margin-bottom: 30px;
     margin-top: 30px;
+    line-height: 30px;
 }
 
 #layout {
@@ -1280,4 +1315,103 @@ p {
     font-size: 14px;
     color: #333;
     text-decoration: none;
+}
+#wxweibo, #rank {
+    margin-bottom: 20px;
+}
+
+.wei-focus ul {
+    list-style: none;
+}
+.wei-focus img {
+    width: 130px;
+    height: 85px;
+}
+
+.wei-focus li {
+    padding-top: 10px;
+    margin-top: 5px;
+    height: 85px !important;
+    background: none !important;
+    list-style: none;
+    padding: 0 !important;
+        margin-bottom: 20px !important;
+}
+
+.wei-focus li .ct {
+    margin-left: 10px;
+    width: 170px;
+}
+
+.wei-focus li .ct p {
+    line-height: 18px;
+    margin: 0;
+}
+
+.wei-focus li .ct p a,.wei-focus li .ct p a:hover {
+    color: #666;
+    text-decoration: none
+}
+
+.wei-focus li .ct p a strong {
+    color: #0388f8
+}
+
+.wei-focus li .ct .tool {
+}
+
+.wei-focus li .ct div.fn-right a {
+    color: #333
+}
+
+.wei-focus li .ct div.fn-right b {
+    color: #999
+}
+
+.cr0388f8 {
+    color: #e69b6a;
+}
+.more {
+    font-size: 12px;
+}
+.cityContent.sz {
+    height: 70px;
+}
+.zf {
+    height: 114px;
+}
+.zf li{
+    padding-left: 0;
+    padding-right: 10px;
+    height: 26px;
+    width: 70px;
+    text-align: center;
+}
+#wjd .wei-focus .ct{
+    font-size: 14px;
+    width: 200px;
+    margin-left: 15px;
+    font-weight: bold;
+}
+#wjd .tool span{
+    color: #666;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 50px;
+    overflow: hidden;
+}
+#wft .wei-focus .ct{
+    font-size: 14px;
+    width: 200px;
+    margin-left: 15px;
+    font-weight: bold;
+}
+#wft .tool span{
+    color: #666;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 50px;
+    overflow: hidden;
 }

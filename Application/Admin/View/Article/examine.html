@@ -41,6 +41,9 @@
 				<td><span>{$vo.create_time|time_format}</span></td>
 				<td>
 					<a href="{:U('Article/edit?cate_id='.$vo['category_id'].'&id='.$vo['id'])}">编辑</a>
+
+					<a href="/Article/detail/show/admin/id/{$vo['id']}.html" target="_blank">查看</a>
+
 					<eq name="vo.bianji_status" value="1">
 						<a href="{:U('Article/setStatus?ids='.$vo['id'].'&status=1')}" class="ajax-get">审核发布</a>
 					</eq>

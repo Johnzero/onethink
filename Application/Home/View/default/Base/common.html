@@ -33,11 +33,19 @@
                     <a href="http://www.ahzx.gov.cn/" target="_blank">安徽省政协</a>
                 </div>
                 <div class="nav-link navbar-right">
-                    <a href="" target="_blank">微信公众号</a>
+                    <div class="bdsharebuttonbox">
+                        <a href="#" class="bds_more" data-cmd="more">分享</a>
+                    </div>
                     |
-                    <a href="" target="_blank">微博</a>
+                    <a href="javascript:void(0);">
+                        微信公众号
+                        <img src="__IMG__/weixin_code.jpg">
+                    </a>
                     |
-                    <a href="" target="_blank">分享</a>
+                    <a href="javascript:void(0);">
+                        微博
+                        <img src="__IMG__/weibo_code.png">
+                    </a>
                 </div>
             </div>
         </div>
@@ -59,8 +67,11 @@
                     <li><a href="/" class="m01">首页</a></li> 
                     <li><a href="{:U('Index/government_information')}" class="m02">政务信息公开</a></li>  
                     <li><a href="{:U('Index/weixin_weibo')}" class="m03">微信微博大厅</a></li>    
-                    <li><a href="{:U('Index/respond_to_society')}" class="m04">回应社会关切</a></li>  
-                    <li><a href="{:U('Index/supervision_and_evaluation')}" class="m05">监督评价公开</a></li>  
+                    <!-- <li><a href="{:U('Index/respond_to_society')}" class="m04">回应社会关切</a></li>   -->
+
+                    <li><a href="http://www.ah.gov.cn/Tmp/Nav_shengchangxinxiang.shtml?SS_ID=315&action=show" class="m04" target="_blank">回应社会关切</a></li>  
+
+                    <!-- <li><a href="{:U('Index/supervision_and_evaluation')}" class="m05">监督评价公开</a></li>   -->
                 </ul>
             </nav>
             <!-- 主体 -->
@@ -72,16 +83,15 @@
         <footer class="footer">
             <div class="container">
                 <div class="dzjg">
-                    <a href="">
-                        <img src="__IMG__/red.png">
-                    </a>
+                    <script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript   src='http://dcs.conac.cn/js/13/000/0000/42000111/CA130000000420001110001.js' type='text/javascript'%3E%3C/script%3E"));</script>
                 </div>
-                <p>主办单位：安徽省人民政府办公厅 承办单位：安徽省人民政府网站<br/>协办单位：安徽新媒体集团</p>
-                <p>皖ICP备05003657号 | 网站编辑信箱 | 网站使用帮助 | 网站地图 | 联系方式：0551-62603315</p>
+                <p style="margin-top: 15px;">主办单位：安徽省人民政府办公厅 承办单位：安徽省人民政府网站 协办单位：安徽新媒体集团</p>
+                <p><a href="http://www.miibeian.gov.cn" target="_blank">皖ICP备05003657号</a> | <a href="http://www.ah.gov.cn/Tmp/Nav_nav.shtml?SS_ID=465" target="_blank">网站编辑信箱</a> | <a href="http://www.ah.gov.cn/UserData/SortHtml/1/18600594466.html" target="_blank">网站使用帮助</a> | <a href="http://www.ah.gov.cn/UserData/SortHtml/1/78794686400.html" target="_blank">网站地图</a> | 联系方式：0551-62603315</p>
             </div>
         </footer>
         <include file="Public/var"/>
-        <block name="script"></block> 
+        <block name="script">
+        </block> 
         <div class="hidden">
             <block name="hidden"></block>
         </div>

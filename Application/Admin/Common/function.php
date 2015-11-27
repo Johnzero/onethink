@@ -60,10 +60,10 @@ function get_list_field($data, $grid){
                 $show   =   isset($array[1])?$array[1]:$value;
                 // 替换系统特殊字符串
                 $href   =   str_replace(
-                    array('[DELETE]','[EDIT]','[LIST]','[SHOW]'),
+                    array('[DELETE]','[EDIT]','[LIST]'),
                     array('setstatus?status=-1&ids=[id]',
                     'edit?id=[id]&model=[model_id]&cate_id=[category_id]',
-                    'index?pid=[id]&model=[model_id]&cate_id=[category_id]','/Article/detail/id/[id]'),
+                    'index?pid=[id]&model=[model_id]&cate_id=[category_id]'),
                     $href);
 
                 // 替换数据变量

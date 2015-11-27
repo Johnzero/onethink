@@ -30,6 +30,7 @@ body{
     background: url(../images/bg_icon.png) no-repeat 0 -45px;
 }
 
+
 /* 主导航 */
 .main-nav {
     float: left;
@@ -117,7 +118,6 @@ body{
 .subnav {
     padding-left: 15px;
 }
-
 /* 子导航标题栏 */
 .subnav h3 {
     margin-right: 15px;

@@ -935,13 +935,20 @@ function check_document_position($pos = 0, $contain = 0){
         return false;
     }
 
-    //将两个参数进行按位与运算，不为0则表示$contain属于$pos
-    $res = $pos & $contain;
-    if($res !== 0){
-        return true;
+    $arr = str2arr($pos);
+    $count = count($arr);
+    if ($count!==1) {
+        return in_array($contain, $arr);
     }else{
-        return false;
+        //将两个参数进行按位与运算，不为0则表示$contain属于$pos
+        $res = $pos & $contain;
+        if($res !== 0){
+            return true;
+        }else{
+            return false;
+        }
     }
+    
 }
 
 /**
@@ -1082,18 +1089,13 @@ function curl_post($url='', $postdata=''){
 }
 
 function get_slider($id){
-    $sliders = D("Document")->order("id DESC")->limit(5)->lists($id);
+    $sliders = D("Document")->limit(5)->lists($id,$order="level ASC,id DESC");
     if (!empty($sliders)) {
         foreach ($sliders as $key => $value) {
-            if (trim($value["content"]) || $value["link_id"] == 0) {
-                $href = U('Article/detail',array('id'=>$value['id']));
-            }else {
-                $href = $value["link_id"];
-            }
+            $href = U('Article/detail',array('id'=>$value['link_id']));
             $sliders[$key]["href"] = $href;
         }
     }
-
     return $sliders;
 }
 

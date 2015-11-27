@@ -9,11 +9,11 @@ $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
         <h3>
             <span></span>安徽要闻
             <hr/>
-            <a href="{:U('Article/lists',array('category'=>40))}" class="more">更多>></a>
+            <a href="{:U('Article/lists',array('category'=>40))}" class="more" target="_blank">更多></a>
         </h3>
         <ul>
             <volist name="ahyw" id="article" offset="0" length="10">
-                <li><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></li>
+                <li><a href="{:U('Article/detail?id='.$article['id'])}" target="_blank">{$article.title}</a></li>
             </volist>
         </ul>
     </div>
@@ -22,11 +22,11 @@ $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
         <h3>
             <span></span>政策动态
             <hr/>
-            <a href="{:U('Article/lists',array('category'=>41))}" class="more">更多>></a>
+            <a href="{:U('Article/lists',array('category'=>41))}" class="more" target="_blank">更多></a>
         </h3>
         <ul>
             <volist name="zcdt" id="article" offset="0" length="10">
-                <li><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></li>
+                <li><a href="{:U('Article/detail?id='.$article['id'])}" target="_blank">{$article.title}</a></li>
             </volist>
         </ul>
     </div>
@@ -34,11 +34,11 @@ $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
         <h3>
             <span></span>江淮资讯
             <hr/>
-            <a href="{:U('Article/lists',array('category'=>42))}" class="more">更多>></a>
+            <a href="{:U('Article/lists',array('category'=>42))}" class="more" target="_blank">更多></a>
         </h3>
         <ul>
             <volist name="jhzx" id="article" offset="0" length="10">
-                <li><a href="{:U('Article/detail?id='.$article['id'])}">{$article.title}</a></li>
+                <li><a href="{:U('Article/detail?id='.$article['id'])}" target="_blank">{$article.title}</a></li>
             </volist>
         </ul>
     </div>
