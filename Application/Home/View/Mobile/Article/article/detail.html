@@ -1,8 +1,16 @@
 <extend name="Base/common"/>
 <block name="body">
     <div class="main-colum">
-        <div class="section article-box" style="padding:20px;">
+        <div class="section article-box" style="padding:20px;padding-top:0">
         	<h1>{$info.title}</h1>
+        	<div class="article-infobox">
+        		<?php if ( $info['source'] ) { ?>
+				<span>来源：<a>{$info.source} </a></span>
+				<?php } ?>
+				<span>分类：<a href="{:U('Article/lists',array('category'=>$category['id']))}" target="_blank">{$category.title}</a> </span>
+				<span>时间：<a>{$info.create_time|time_format}</a> </span>
+				<span>阅读：<a>{$info.view}</a> 次 </span>
+			</div>
         	<hr/>
 			<div id="article_content"  style="padding-top:20px;">
         		{$info.content|htmlspecialchars_decode}

@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>安徽要闻</title>
 	<meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link href="__CSS__/mobile.css" rel="stylesheet">
 	<meta name="format-detection" content="telephone=no">
 	<style type="text/css">
 	*{
@@ -36,13 +37,8 @@
 
 	}
 	.content ul li{
-		padding-left:2px;
+		padding-left:2%;
 		margin-bottom:2%;
-		background-image: url(__IMG__/weixin/yaowen-con-bg1.png);
-		background-repeat: no-repeat;
-		background-size:40%;
-		background-position: 2% 2%;
-		height:130px;
 		background-color: #ffffff;
 		margin-top:2%;
 		overflow: hidden;
@@ -55,29 +51,23 @@
 		<div class="nav">
 			<img src="__IMG__/weixin/yaowen-nav-bg.png">
 		</div>
+		<?php  
+            $Document = D('Document');
+            $ahyw = $Document->order("create_time DESC")->limit(10)->lists(40);
+        ?>
 		<div class="content">
-			<ul>
-				<a href="">
-					<li>
-						<p>2016年安徽高考报名正式启动 考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表考生可先预填表 </p>
-					</li>
-				</a>
-				<a href="">
-					<li>
-						<p>2016年安徽高考报名正式启动 考生可先预填表</p>
-					</li>
-				</a>
-				<a href="">
-					<li>
-						<p>2016年安徽高考报名正式启动 考生可先预填表</p>
-					</li>
-				</a>
-				<a href="">
-					<li>
-						<p>2016年安徽高考报名正式启动 考生可先预填表</p>
-					</li>
-				</a>
-			</ul>
+			<div class="tou">
+	            <ul>
+	                <volist name="ahyw" id="vo">
+	                    <li>
+	                        <div class="txt">
+	                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+	                        </div>
+	                    </li>
+	                </volist>
+	            </ul>
+	            <a href="/"><p>进入首页></p></a>
+	        </div>
 		</div>
 	</div>
 </body>

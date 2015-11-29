@@ -31,28 +31,22 @@
     <div class="main-colum sae">
         <div class="navigation">
             当前位置：<a href="/" target="_blank">首页</a>&nbsp;>&nbsp;<a href="{:U('Article/lists',array('category'=>$category['id']))}">{$category.title}</a>
-            <div class="topDate">
-                <php>echo date(Y年m月d日);</php> <php>echo $days[$today];</php>
-            </div>
         </div>
         <div class="section article-list">
-        	<div class="dt">
-                <div class="tabmenu">
-                    <ul>
-                        <li><a class="active">{$category.title}</a></li>
-                    </ul>
-                </div>
-                <div class="lyxd">
-                    <ul>
-                        <volist name="list" id="data">
-			        		<li><a href="{:U('Article/detail?id='.$data['id'])}">{$data.title}</a></li>
-			        	</volist>
-                    </ul>
-                </div>
-            </div>
-            <div class="onethink pagination pagination-right pagination-large">
-				<article:page cate="$category['id']" listrow="$category['list_row']" />
-			</div>
+        	<div class="tou">
+	            <ul>
+	                <volist name="list" id="vo">
+	                    <li>
+	                        <div class="txt">
+	                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+	                        </div>
+	                    </li>
+	                </volist>
+	            </ul>
+	            <div class="onethink pagination pagination-right pagination-large">
+					<article:page cate="$category['id']" listrow="$category['list_row']" />
+				</div>
+	        </div>
         </div>
         <include file="Base/side_government_information"/>
     </div>

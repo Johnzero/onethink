@@ -5,33 +5,12 @@
 </block>
 
 <block name="script">
-    <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
     <script src="__JS__/select2.min.js"></script>
     <script src="__JS__/validator.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.select-box').select2();
-            $('.level1 select').change(function(){ 
-                var id = $(this).children('option:selected').val();
-                $.post("{:U('Ask/getSubclass')}", { id: id },function(data){
-                    if (data) {
-                        $(".level2").css("visibility","inherit");
-                        $('.level2 select').select2();
-                        $(".level2 select").empty();
-                        $(".level2 select").append(data);
-                    }else {
-                        $(".level2").css("visibility","hidden");
-                        $(".level2 select").empty();
-                    }
-                });
-            });
-        })
-    </script>
 </block> 
 
 <block name="body">
-    <div class="main-colum" style="height:1055px;">
+    <div class="main-colum" style="height:1055px;margin-bottom:30px;">
         <div class="section">
             <div class="tip"><span class="danger">*</span> 代表必填项目，为便于我们联系调查，请如实填写个人资料。</div>
             <div class="clearfix">&nbsp;</div>
@@ -42,6 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label><span class="danger">*</span>联系方式</label>
+                    <br/>
                     <input class="form-control" name="tel" type="text" placeholder="您的手机号码"  tip="请输入正确的手机号码">
                 </div>
                 <div class="form-group">
@@ -55,7 +35,7 @@
                 <div class="clearfix">&nbsp;</div>
                 <div class="form-group">
                     <label><span class="danger">*</span>标题</label>
-                    <input class="form-control" name="title" type="text" placeholder="标题"  tip="请输入留言标题">
+                    <input class="form-control" name="title" type="text" placeholder="标题" tip="请输入留言标题">
                 </div>
 
                 <div class="form-group level1">
@@ -97,6 +77,14 @@
                     文件尺寸：小于 500 kb <br>
                     可用扩展名：jpg,bmp,gif,png,jpeg,doc</p>
                 </div>
+
+                <div class="form-group form-inline">
+                    <label><span class="danger">*</span>验证码</label>
+                    <br/>
+                    <input class="form-control" name="yzm" type="text" style="width: 468px;" tip="请输入验证码！">
+                    <a href="javascript:void(0);" class="btn btn-primary" id="yzm">获取短信验证码</a>
+                </div>
+
                 <div class="checkbox">
                     <label>
                         <input name="rule" type="checkbox" value="1" checked="">&nbsp;&nbsp;我已经阅读 <a class="danger" href="#" target="_blank" "">留言管理条例</a>

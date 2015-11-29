@@ -524,3 +524,12 @@ a{text-decoration:none;}
     display:block;width:90%; margin:0 auto; background-color: #0662b7; height:45px; line-height: 45px; color:white; font-size:18px; border-radius:5px; border:none; text-align: center;
 }
 
+.topDate {
+    width: 180px;
+    height: 35px;
+    line-height: 32px;
+    margin-left: 20px;
+    float: right;
+    color: #959595;
+    text-align: right;
+}

@@ -86,7 +86,7 @@ abstract class Addon{
         if(!is_file($templateFile)){
             $templateFile = $this->addon_path.$templateFile.C('TMPL_TEMPLATE_SUFFIX');
             if(!is_file($templateFile)){
-                throw new \Exception("模板不存在:$templateFile");
+                throw new \Exception("模板不存在1:$templateFile");
             }
         }
         return $this->view->fetch($templateFile);

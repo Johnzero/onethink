@@ -11,11 +11,19 @@ $jhzx = $Document->order("create_time DESC")->limit(10)->lists(42);
             <hr/>
             <a href="{:U('Article/lists',array('category'=>40))}" class="more" target="_blank">更多></a>
         </h3>
-        <ul>
-            <volist name="ahyw" id="article" offset="0" length="10">
-                <li><a href="{:U('Article/detail?id='.$article['id'])}" target="_blank">{$article.title}</a></li>
-            </volist>
-        </ul>
+        <div class="tou">
+            <h1>新闻头条</h1>
+            <ul>
+                <volist name="lists" id="vo">
+                    <li>
+                        <div class="txt">
+                            <a href="{:U('Article/detail',array('id'=>$vo['id']))}">{$vo.title}</a><span>({$vo.create_time|date='m-d',###})</span>
+                        </div>
+                    </li>
+                </volist>
+            </ul>
+            <a href="{:U('Article/lists',array('category'=>40))}"><p>进入新闻头条></p></a>
+        </div>
     </div>
 
     <div class="lyxd">

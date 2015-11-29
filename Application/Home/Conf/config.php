@@ -21,6 +21,7 @@ return array(
 
     'TMPL_ACTION_ERROR'     =>  MODULE_PATH.'View/default/Public/error.html',
     'TMPL_ACTION_SUCCESS'   =>  MODULE_PATH.'View/default/Public/success.html',
+    'TMPL_EXCEPTION_FILE'   =>  MODULE_PATH.'View/default/Public/exception.html',
 
 
     /* 数据缓存设置 */
