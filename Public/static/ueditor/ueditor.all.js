@@ -1890,7 +1890,9 @@ var domUtils = dom.domUtils = {
                     break;
                 case 'style':
                     node.style.cssText = '';
-                    !browser.ie && node.removeAttributeNode(node.getAttributeNode('style'))
+                    if (node.getAttributeNode('style') !== null) { // 加判断
+                        !browser.ie && node.removeAttributeNode(node.getAttributeNode('style'))
+                    }
             }
             node.removeAttribute(ci);
         }
@@ -12961,12 +12963,12 @@ UE.plugins['pasteplain'] = function(){
                 for (var r = 0; r < rowsNum; r++) {
                     html.push('<tr>');
                     for (var c = 0; c < colsNum; c++) {
-                        html.push('<td width="' + tdWidth + '"  vAlign="' + opt.tdvalign + '" >' + (browser.ie ? domUtils.fillChar : '<br/>') + '</td>')
+                        html.push('<td style="border:1px solid #ccc;" width="' + tdWidth + '"  vAlign="' + opt.tdvalign + '" >' + (browser.ie ? domUtils.fillChar : '<br/>') + '</td>')
                     }
                     html.push('</tr>')
                 }
                 //禁止指定table-width
-                return '<table><tbody>' + html.join('') + '</tbody></table>'
+                return '<table style="border-collapse:collapse;"><tbody>' + html.join('') + '</tbody></table>' 
             }
 
             if (!opt) {
@@ -13741,6 +13743,7 @@ UE.plugins['pasteplain'] = function(){
         execCommand: function (cmd) {
             var table = getTableItemsByRange(this).table;
             table.setAttribute("data-sort", cmd == "enablesort" ? "sortEnabled" : "sortDisabled");
+            table.setAttribute("style", "border-collapse:collapse;");
         }
     };
     UE.commands["settablebackground"] = {

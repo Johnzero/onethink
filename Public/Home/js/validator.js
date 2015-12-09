@@ -82,7 +82,7 @@ $(document).ready(function () {
     $('.select-box').select2();
     $('.level1 select').change(function(){ 
         var id = $(this).children('option:selected').val();
-        $.post("{:U('Ask/getSubclass')}", { id: id },function(data){
+        $.post("/Ask/getSubclass.html", { id: id },function(data){
             if (data) {
                 $(".level2").css("visibility","inherit");
                 $('.level2 select').select2();

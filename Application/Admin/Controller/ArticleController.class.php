@@ -145,6 +145,17 @@ class ArticleController extends AdminController {
         }
         $this->assign('groupId', $this->group_id);
 
+        $map_sh['status']  =   2;
+        $map_sh['bianji_status']  =  0;
+        $sh_count = M('Document')->where($map_sh)->count();
+        $_SESSION["menu_nums"]["待编辑审核"] = $sh_count;
+
+        $map_wd['uid'] = UID;
+        $map_wd['status']  =  array("eq",0);
+        $wd_count = M('Document')->where($map_wd)->count();
+        $_SESSION["menu_nums"]["我的文档"] = $wd_count;
+
+
     }
 
     /**
@@ -308,7 +319,7 @@ class ArticleController extends AdminController {
 			$map['uid'] = UID;
 		}
 		
-        $list = $this->lists($Document,$map,'level DESC,DOCUMENT.id DESC',$field);
+        $list = $this->lists($Document,$map,'update_time DESC,DOCUMENT.id DESC',$field);
 
         if($map['pid']){
             // 获取上级文档
@@ -350,7 +361,7 @@ class ArticleController extends AdminController {
         if ( I('ids') ) {
             $doc_id  =  (array)I('ids');
 			D("Document")->where(array('id'=>array('in',$doc_id)))->save(array("bianji_status"=>1));
-			$this->success( '校验成功', U("Article/examine_bj"));
+			$this->success( '校验成功', U("Article/examine"));
 		}
 		else
 		{
@@ -561,17 +572,16 @@ class ArticleController extends AdminController {
         $this->display();
     }
 
-    /**
-     * 我的文档
-     * @author huajie <banhuajie@163.com>
-     */
     public function mydocument($status = null, $title = null){
         //获取左边菜单
         $this->getMenu();
 
         $Document   =   D('Document');
-        /* 查询条件初始化 */
-        $map['uid'] = UID;
+
+        if ( UID != 1 ) {
+            $map['uid'] = UID;
+        }
+        
         if(isset($title)){
             $map['title']   =   array('like', '%'.$title.'%');
         }
@@ -815,7 +825,7 @@ class ArticleController extends AdminController {
                     $map['pid'] = $pid;
                 }
             }
-            $list = M('Document')->where($map)->field('id,title')->order('level DESC,id DESC')->select();
+            $list = M('Document')->where($map)->field('id,title')->order('update_time DESC,id DESC')->select();
 
             $this->assign('list', $list);
             $this->meta_title = '文档排序';

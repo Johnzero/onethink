@@ -622,7 +622,7 @@ body {
 .orange.btn-shadow {
     color: #fff;
     background: #f59c0a;
-    background-image: url("../images/wyly.png");
+    background-image: url("../images/wyly1.png");
 }
 /*?*/
 .reo.btn-shadow {
@@ -1083,6 +1083,10 @@ p {
 #article_content p {
     font: 16px/28px Microsoft YaHei, Arial;
     margin-top: 15px !important;
+    background-color:white !important;
+}
+#article_content div {
+    background-color:white !important;
 }
 
 .article-box>h1 {
@@ -1425,3 +1429,20 @@ p {
     height: 50px;
     overflow: hidden;
 }
+
+/*右侧悬浮窗口*/
+.home_web{width:130px;height:300px;position:fixed; _position:absolute;left:50%;top:234px;_top:auto;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); _margin-top:234px;margin-left:526px;z-index:999;}
+.close{
+    width: 40px;
+    height: 10px;
+    float: right;
+    margin-bottom: 12px;
+    padding-right: 2px;
+    cursor: pointer;
+    display: block;
+    margin-right: 5px;
+}
+.wx{    font-size: 12px;width:128px;height:272px;padding-top:6px;border:1px solid #ddd;clear:both;background:#eee;line-height:18px;font-family:"Microsoft YaHei",微软雅黑;text-align:center;}
+.wx img{width:80px;height:80px;margin:8px auto 6px;}
+.wx span{color:#cd3501;}
+/*右侧悬浮窗口END*/

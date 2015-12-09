@@ -171,7 +171,7 @@ class AdminController extends Controller {
      * @author huajie  <banhuajie@163.com>
      */
     protected function restore (  $model , $where = array() , $msg = array( 'success'=>'状态还原成功！', 'error'=>'状态还原失败！')){
-        $data    = array('status' => 1);
+        $data    = array('status' => 2,'bianji_status'=>0);
         $where   = array_merge(array('status' => -1),$where);
         $this->editRow(   $model , $data, $where, $msg);
     }

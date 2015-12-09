@@ -52,7 +52,7 @@ class IndexController extends HomeController {
         }
         $this->assign('ask', $ask);
 
-        $slider = D("Document")->where("slider LIKE '%1%' AND status = 1")->order("create_time DESC")->limit(5)->select();
+        $slider = D("Document")->where("slider LIKE '%1%' AND status = 1")->order("level DESC,create_time DESC")->limit(5)->select();
         $this->assign('slider', $slider);
 
         $question = file_get_contents("http://www.ah.gov.cn/tmp/jsonp/ajax.shtml?action=getszxx&nums=6");

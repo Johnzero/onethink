@@ -92,6 +92,8 @@
 				
 				<?php if ( $group_id == 1 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
 					<a href="{:U('Ask/change?id='.$vo['id'])}" title="指派"><i class="fa fa-reply-all"></i></a>
+				<?php }else if ( $group_id == 5 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
+					<a href="{:U('Ask/change?id='.$vo['id'])}" title="指派"><i class="fa fa-reply-all"></i></a>
 				<?php }else if ( $group_id == 3 && $vo['status'] == 0 && empty($vo['member']) ) { ?>
 					<a href="{:U('Ask/adopt?id='.$vo['id'])}" class="ajax-get confirm" title="认领" target-form="form-horizontal"><i class="fa fa-reply-all"></i></a>
 				<?php } ?>

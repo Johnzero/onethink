@@ -60,16 +60,19 @@ function get_list_field($data, $grid){
                 $show   =   isset($array[1])?$array[1]:$value;
                 // 替换系统特殊字符串
                 $href   =   str_replace(
-                    array('[DELETE]','[EDIT]','[LIST]'),
+                    array('[DELETE]','[EDIT]','[LIST]','[SHOW]'),
                     array('setstatus?status=-1&ids=[id]',
                     'edit?id=[id]&model=[model_id]&cate_id=[category_id]',
-                    'index?pid=[id]&model=[model_id]&cate_id=[category_id]'),
+                    'index?pid=[id]&model=[model_id]&cate_id=[category_id]',"/Article/detail/show/admin/id/[id].html"),
                     $href);
 
                 // 替换数据变量
                 $href   =   preg_replace_callback('/\[([a-z_]+)\]/', function($match) use($data){return $data[$match[1]];}, $href);
-
-                $val[]  =   '<a target="_blank" href="'.U($href).'">'.$show.'</a>';
+                if ( trim($show) != "预览") {
+                    $val[]  =   '<a target="_blank" href="'.U($href).'">'.$show.'</a>';
+                }else{
+                    $val[]  =   '<a target="_blank" href="'.$href.'">'.$show.'</a>';
+                }
             }
         }
         $value  =   implode(' ',$val);
@@ -108,8 +111,8 @@ function get_addonlist_field($data, $grid,$addon){
                 $show   =   isset($array[1])?$array[1]:$value;
                 // 替换系统特殊字符串
                 $href   =   str_replace(
-                    array('[DELETE]','[EDIT]','[ADDON]'),
-                    array('del?ids=[id]&name=[ADDON]','edit?id=[id]&name=[ADDON]',$addon),
+                    array('[DELETE]','[EDIT]','[ADDON]','[SHOW]'),
+                    array('del?ids=[id]&name=[ADDON]','edit?id=[id]&name=[ADDON]',"sdfasdfs",$addon),
                     $href);
 
                 // 替换数据变量

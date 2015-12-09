@@ -1,6 +1,5 @@
 <div id="subnav" class="subnav">
     <notempty name="_extra_menu">
-        {// 动态扩展菜单 //}
         {:extra_menu($_extra_menu,$__MENU__)}
     </notempty>
     <volist name="__MENU__.child" id="sub_menu">
@@ -8,9 +7,18 @@
         <notempty name="sub_menu">
             <notempty name="key"><h3><i class="icon icon-unfold"></i>{$key}</h3></notempty>
             <ul class="side-sub-menu">
+
+                <?php var_dump("asdfsadfsdf"); ?>
+
                 <volist name="sub_menu" id="menu">
                     <li>
-                        <a class="item" href="{$menu.url|U}">{$menu.title}</a>
+                        <a class="item" href="{$menu.url|U}">{$menu.title}
+                            <?php if ($_SESSION["menu_nums"][$menu['title']]) { ?>
+                            <div class="circle">
+                                <p id="messages">{$_SESSION["menu_nums"][$menu['title']]}</p>
+                            </div>
+                            <?php } ?>
+                        </a>
                     </li>
                 </volist>
             </ul>
@@ -18,19 +26,40 @@
         <!-- /子导航 -->
     </volist>
  <h3>
- 	<i class="icon <notin name="Think.ACTION_NAME"  value="mydocument,draftbox,examine">icon-fold</notin>"></i>
+ 	<!-- <i class="icon <notin name="Think.ACTION_NAME"  value="index,mydocument,draftbox,examine">icon-fold</notin>"></i> -->
+    <i class="icon"></i>
+
  	个人中心
  </h3>
- 	<ul class="side-sub-menu <notin name="Think.ACTION_NAME"  value="jiaoyan,mydocument,draftbox,examine,examine_bj">subnav-off</notin>">
+ 	<!-- <ul class="side-sub-menu <notin name="Think.ACTION_NAME"  value="jiaoyan,mydocument,draftbox,examine,examine_bj">subnav-off</notin>"> -->
 
- 		<li <eq name="Think.ACTION_NAME" value="mydocument">class="current"</eq>><a class="item" href="{:U('article/mydocument')}">我的文档</a></li>
+    <ul class="side-sub-menu">
+
+ 		<li <eq name="Think.ACTION_NAME" value="mydocument">class="current"</eq>><a class="item" href="{:U('article/mydocument')}">
+        我的文档</a>
+            <?php if ($_SESSION["menu_nums"]['我的文档']) { ?>
+            <div class="circle">
+                <p id="messages">
+                    {$_SESSION["menu_nums"]['我的文档']}
+                </p>
+            </div>
+            <?php } ?>
+        </li>
         
         <eq name="groupId" value="1">
-            <li <eq name="Think.ACTION_NAME" value="examine_bj">class="examine"</eq>><a class="item" href="{:U('article/examine_bj')}">待编辑审核</a></li>
+            <li <eq name="Think.ACTION_NAME" value="examine_bj">class="current"</eq>><a class="item" href="{:U('article/examine_bj')}">待编辑审核</a>
+                <?php if ($_SESSION["menu_nums"]['待编辑审核']) { ?>
+                <div class="circle">
+                    <p id="messages">
+                        {$_SESSION["menu_nums"]['待编辑审核']}
+                    </p>
+                </div>
+                <?php } ?> 
+            </li>
         </eq>
 
 		<eq name="groupId" value="1">
-		    <li <eq name="Think.ACTION_NAME" value="examine">class="examine"</eq>><a class="item" href="{:U('article/examine')}">待发布</a></li>
+		    <li <eq name="Think.ACTION_NAME" value="examine">class="current"</eq>><a class="item" href="{:U('article/examine')}">待发布</a></li>
 		</eq>
 
         <eq name="show_draftbox" value="1">
@@ -110,5 +139,6 @@
         },function(){
             $(this).removeClass("hover");
         });
+        // $($(".subnav>h3>.icon-fold")[0]).click()
     })
 </script>

@@ -4,7 +4,7 @@
     <include file="sidemenu" />
 </block>
 <block name="style">
-<link rel="stylesheet" type="text/css" href="__CSS__/table.css" media="all">
+<link rel="stylesheet" type="text/css" href="__CSS__/table.css">
 <style type="text/css">
     .form-horizontal {
         width: 45%;
@@ -27,31 +27,27 @@
         <div class="form-item">
             <label class="item-label">办理情况</label>
             <div class="controls">
-                <label class="textarea input-large">
-                    <textarea name="explain">
-                        <?php if ( trim($reply['explain']) ) { ?>
-                           {$reply.explain}
-                        <?php } else { ?>
-                            {:C('DF_MB')}
-                        <?php } ?>
-                    </textarea>
-                    {:hook('adminArticleEdit', array('name'=>'explain'))}
-                </label>
+                <textarea name="explain">
+                    <?php if ( trim($reply['explain']) ) { ?>
+                       {$reply.explain}
+                    <?php } else { ?>
+                        {:C('DF_MB')}
+                    <?php } ?>
+                </textarea>
+                {:hook('adminArticleEdit', array('name'=>'explain'))}
             </div>
         </div>
 		<div class="form-item">
             <label class="item-label">网上答复口径</label>
             <div class="controls">
-                <label class="textarea input-large">
-                    <textarea name="reply_content">
-                        <?php if ( trim($reply['reply_content']) ) { ?>
-                            {$reply.reply_content}
-                        <?php } else { ?>
-                            {:C('DF_MB')}
-                        <?php } ?>
-                    </textarea>
-                    {:hook('adminArticleEdit', array('name'=>'reply_content'))}
-                </label>
+                <textarea name="reply_content">
+                    <?php if ( trim($reply['reply_content']) ) { ?>
+                        {$reply.reply_content}
+                    <?php } else { ?>
+                        {:C('DF_MB')}
+                    <?php } ?>
+                </textarea>
+                {:hook('adminArticleEdit', array('name'=>'reply_content'))}
             </div>
         </div>
 

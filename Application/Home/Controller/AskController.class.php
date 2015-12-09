@@ -138,7 +138,7 @@ class AskController extends HomeController {
                 $num = rand(1111,9999);
                 $_SESSION['code'] = $num;
                 S('code',$num,60);
-                $content = "网友您好：您此次的验证码为： ". $num;
+                $content = "您好，您当前的验证码为".$num;
                 $re = message($tel,$content);
                 if ( $re['res_code'] != 1 ) {
                     $result = array();
